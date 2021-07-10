@@ -38,7 +38,7 @@
   {#if data}
   <div class="caption">
     <div class="title">
-      <span><Icon icon={'icon:chunter.Hashtag'} size={16}/></span>
+      <span><Icon icon={''} size={16}/></span>
       {data.name}
     </div>
     <div class="subtitle">{data.description}</div>

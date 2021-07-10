@@ -13,19 +13,12 @@
 // limitations under the License.
 //
 
-import { Builder } from '@anticrm/model'
+import { loadMetadata } from '@anticrm/platform'
+import chunter from '@anticrm/chunter'
 
-import { createModel as coreModel } from '@anticrm/model-core'
-import { createModel as workbenchModel } from '@anticrm/model-workbench'
-import { createModel as chunterModel } from '@anticrm/model-chunter'
-// import { createModel as taskModel } from '@anticrm/model-task'
-
-const builder = new Builder()
-
-coreModel(builder)
-workbenchModel(builder)
-chunterModel(builder)
-// taskModel(builder)
-
-export default builder
-
+const icons = require('../assets/icons.svg')
+loadMetadata(chunter.icon, {
+  Chunter: `${icons}#chunter`,
+  Hashtag: `${icons}#hashtag`,
+  Lock: `${icons}#lock`
+})

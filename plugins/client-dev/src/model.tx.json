@@ -1,6 +1,6 @@
 [
   {
-    "_id": "60ea013338591dec20c24d37",
+    "_id": "60ea1bed99344930945b8640",
     "_class": "core.class.TxCreateDoc",
     "space": "core.space.Tx",
     "modifiedBy": "core.account.System",
@@ -13,7 +13,7 @@
     }
   },
   {
-    "_id": "60ea013338591dec20c24d38",
+    "_id": "60ea1bed99344930945b8641",
     "_class": "core.class.TxCreateDoc",
     "space": "core.space.Tx",
     "modifiedBy": "core.account.System",
@@ -27,7 +27,7 @@
     }
   },
   {
-    "_id": "60ea013338591dec20c24d39",
+    "_id": "60ea1bed99344930945b8642",
     "_class": "core.class.TxCreateDoc",
     "space": "core.space.Tx",
     "modifiedBy": "core.account.System",
@@ -42,7 +42,7 @@
     }
   },
   {
-    "_id": "60ea013338591dec20c24d3a",
+    "_id": "60ea1bed99344930945b8643",
     "_class": "core.class.TxCreateDoc",
     "space": "core.space.Tx",
     "modifiedBy": "core.account.System",
@@ -57,7 +57,7 @@
     }
   },
   {
-    "_id": "60ea013338591dec20c24d3b",
+    "_id": "60ea1bed99344930945b8644",
     "_class": "core.class.TxCreateDoc",
     "space": "core.space.Tx",
     "modifiedBy": "core.account.System",
@@ -72,7 +72,7 @@
     }
   },
   {
-    "_id": "60ea013338591dec20c24d3c",
+    "_id": "60ea1bed99344930945b8645",
     "_class": "core.class.TxCreateDoc",
     "space": "core.space.Tx",
     "modifiedBy": "core.account.System",
@@ -86,7 +86,7 @@
     }
   },
   {
-    "_id": "60ea013338591dec20c24d3d",
+    "_id": "60ea1bed99344930945b8646",
     "_class": "core.class.TxCreateDoc",
     "space": "core.space.Tx",
     "modifiedBy": "core.account.System",
@@ -100,7 +100,7 @@
     }
   },
   {
-    "_id": "60ea013338591dec20c24d3e",
+    "_id": "60ea1bed99344930945b8647",
     "_class": "core.class.TxCreateDoc",
     "space": "core.space.Tx",
     "modifiedBy": "core.account.System",
@@ -115,7 +115,7 @@
     }
   },
   {
-    "_id": "60ea013338591dec20c24d3f",
+    "_id": "60ea1bed99344930945b8648",
     "_class": "core.class.TxCreateDoc",
     "space": "core.space.Tx",
     "modifiedBy": "core.account.System",
@@ -129,7 +129,7 @@
     }
   },
   {
-    "_id": "60ea013338591dec20c24d40",
+    "_id": "60ea1bed99344930945b8649",
     "_class": "core.class.TxCreateDoc",
     "space": "core.space.Tx",
     "modifiedBy": "core.account.System",
@@ -141,6 +141,93 @@
       "domain": "model",
       "kind": 0,
       "extends": "core.class.Doc"
+    }
+  },
+  {
+    "_id": "60ea1bed99344930945b864a",
+    "_class": "core.class.TxCreateDoc",
+    "space": "core.space.Tx",
+    "modifiedBy": "core.account.System",
+    "modifiedOn": 0,
+    "objectId": "chunter.class.Message",
+    "objectClass": "core.class.Class",
+    "objectSpace": "core.space.Model",
+    "attributes": {
+      "kind": 0,
+      "extends": "core.class.Doc"
+    }
+  },
+  {
+    "_id": "60ea1bed99344930945b864b",
+    "_class": "core.class.TxCreateDoc",
+    "space": "core.space.Tx",
+    "modifiedBy": "core.account.System",
+    "modifiedOn": 0,
+    "objectId": "chunter.class.Channel",
+    "objectClass": "core.class.Class",
+    "objectSpace": "core.space.Model",
+    "attributes": {
+      "domain": "model",
+      "kind": 0,
+      "extends": "core.class.Space"
+    }
+  },
+  {
+    "_id": "60ea1bed99344930945b864c",
+    "_class": "core.class.TxCreateDoc",
+    "space": "core.space.Tx",
+    "modifiedBy": "core.account.System",
+    "modifiedOn": 0,
+    "objectId": "60ea1bed99344930945b864d",
+    "objectClass": "workbench.class.Application",
+    "objectSpace": "core.space.Model",
+    "attributes": {
+      "label": "chunter.string.ApplicationLabelChunter",
+      "icon": "chunter.icon.Chunter",
+      "navigatorModel": {
+        "spaces": [
+          {
+            "label": "chunter.string.Channels",
+            "spaceIcon": "chunter.icon.Hashtag",
+            "spaceClass": "chunter.class.Channel",
+            "addSpaceLabel": "chunter.string.CreateChannel",
+            "createComponent": "chunter.component.CreateChannel"
+          }
+        ],
+        "spaceView": "chunter.component.ChannelView"
+      }
+    }
+  },
+  {
+    "_id": "60ea1bed99344930945b864e",
+    "_class": "core.class.TxCreateDoc",
+    "space": "core.space.Tx",
+    "modifiedBy": "core.account.System",
+    "modifiedOn": 0,
+    "objectId": "60ea1bed99344930945b864f",
+    "objectClass": "chunter.class.Channel",
+    "objectSpace": "core.space.Model",
+    "attributes": {
+      "name": "general",
+      "description": "General Channel",
+      "private": false,
+      "members": []
+    }
+  },
+  {
+    "_id": "60ea1bed99344930945b8650",
+    "_class": "core.class.TxCreateDoc",
+    "space": "core.space.Tx",
+    "modifiedBy": "core.account.System",
+    "modifiedOn": 0,
+    "objectId": "60ea1bed99344930945b8651",
+    "objectClass": "chunter.class.Channel",
+    "objectSpace": "core.space.Model",
+    "attributes": {
+      "name": "random",
+      "description": "Random Talks",
+      "private": false,
+      "members": []
     }
   }
 ]

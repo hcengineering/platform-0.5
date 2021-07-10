@@ -13,7 +13,7 @@
 // limitations under the License.
 //
 
-import type { Plugin, Metadata } from '@anticrm/platform'
+import type { Plugin, Asset } from '@anticrm/platform'
 import { plugin } from '@anticrm/platform'
 
 export interface LoginInfo {
@@ -36,6 +36,6 @@ export const loginId = 'login' as Plugin
 
 export default plugin(loginId, {
   metadata: {
-    AccountsUrl: '' as Metadata<string>
+    AccountsUrl: '' as Asset
   }
 })

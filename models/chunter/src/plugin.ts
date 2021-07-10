@@ -13,19 +13,13 @@
 // limitations under the License.
 //
 
-import { Builder } from '@anticrm/model'
+import { chunterId } from '@anticrm/chunter'
+import chunter from '@anticrm/plugin-chunter/src/plugin'
+import type { IntlString } from '@anticrm/platform'
+import { mergeIds } from '@anticrm/platform' 
 
-import { createModel as coreModel } from '@anticrm/model-core'
-import { createModel as workbenchModel } from '@anticrm/model-workbench'
-import { createModel as chunterModel } from '@anticrm/model-chunter'
-// import { createModel as taskModel } from '@anticrm/model-task'
-
-const builder = new Builder()
-
-coreModel(builder)
-workbenchModel(builder)
-chunterModel(builder)
-// taskModel(builder)
-
-export default builder
-
+export default mergeIds(chunterId, chunter, {
+  string: { 
+    ApplicationLabelChunter: '' as IntlString,
+  }
+})
