@@ -17,9 +17,9 @@ import { plugin } from '@anticrm/platform'
 import type { Account, Class, Doc, Obj, Ref, Space } from './classes'
 import type { Tx, TxCreateDoc, TxRemoveDoc, TxUpdateDoc } from './tx'
 
-const PluginCore = 'core' as Plugin
+export const coreId = 'core' as Plugin
 
-export default plugin(PluginCore, {
+export default plugin(coreId, {
   class: {
     Obj: '' as Ref<Class<Obj>>,
     Doc: '' as Ref<Class<Doc>>,

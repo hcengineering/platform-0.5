@@ -6,6 +6,7 @@ specifiers:
   '@rush-temp/client': file:./projects/client.tgz
   '@rush-temp/core': file:./projects/core.tgz
   '@rush-temp/login': file:./projects/login.tgz
+  '@rush-temp/model': file:./projects/model.tgz
   '@rush-temp/platform': file:./projects/platform.tgz
   '@rush-temp/plugin-client-dev': file:./projects/plugin-client-dev.tgz
   '@rush-temp/plugin-login': file:./projects/plugin-login.tgz
@@ -16,6 +17,7 @@ specifiers:
   '@rush-temp/ui': file:./projects/ui.tgz
   '@rush-temp/workbench': file:./projects/workbench.tgz
   '@types/node': ^14.14.40
+  '@types/toposort': ~2.0.3
   '@typescript-eslint/eslint-plugin': ^4.22.0
   '@typescript-eslint/parser': ^4.22.0
   autoprefixer: ^10.2.6
@@ -47,6 +49,7 @@ specifiers:
   svelte-loader: ^3.1.0
   svelte-preprocess: ^4.7.0
   svgo-loader: ^3.0.0
+  toposort: ^2.0.2
   ts-loader: ^8.1.0
   ts-standard: ^10.0.0
   webpack: ^5.32.0
@@ -60,6 +63,7 @@ dependencies:
   '@rush-temp/client': file:projects/client.tgz_@typescript-eslint+parser@4.28.2
   '@rush-temp/core': file:projects/core.tgz
   '@rush-temp/login': file:projects/login.tgz_@typescript-eslint+parser@4.28.2
+  '@rush-temp/model': file:projects/model.tgz
   '@rush-temp/platform': file:projects/platform.tgz_@typescript-eslint+parser@4.28.2
   '@rush-temp/plugin-client-dev': file:projects/plugin-client-dev.tgz_@typescript-eslint+parser@4.28.2
   '@rush-temp/plugin-login': file:projects/plugin-login.tgz_618b6e38b91b7916210decbe12d57e78
@@ -70,6 +74,7 @@ dependencies:
   '@rush-temp/ui': file:projects/ui.tgz_cbc0e39e3e20123a16504524f8a87d83
   '@rush-temp/workbench': file:projects/workbench.tgz_@typescript-eslint+parser@4.28.2
   '@types/node': 14.17.5
+  '@types/toposort': 2.0.3
   '@typescript-eslint/eslint-plugin': 4.28.2_a3b1fdfbd5b8eda7bb8034a5736f94f5
   '@typescript-eslint/parser': 4.28.2_eslint@7.30.0
   autoprefixer: 10.2.6_postcss@8.3.5
@@ -101,6 +106,7 @@ dependencies:
   svelte-loader: 3.1.2_svelte@3.38.3
   svelte-preprocess: 4.7.4_1e60e55b022cbc4d590e891355c7d065
   svgo-loader: 3.0.0
+  toposort: 2.0.2
   ts-loader: 8.3.0_webpack@5.44.0
   ts-standard: 10.0.0_@typescript-eslint+parser@4.28.2
   webpack: 5.44.0_webpack-cli@4.7.2
@@ -1182,6 +1188,10 @@ packages:
 
   /@types/stack-utils/2.0.1:
     resolution: {integrity: sha512-Hl219/BT5fLAaz6NDkSuhzasy49dwQS/DSdu4MdggFB8zcXv7vflBI3xp7FEmkmdDkBUI2bPUNeMttp2knYdxw==}
+    dev: false
+
+  /@types/toposort/2.0.3:
+    resolution: {integrity: sha512-jRtyvEu0Na/sy0oIxBW0f6wPQjidgVqlmCTJVHEGTNEUdL1f0YSvdPzHY7nX7MUWAZS6zcAa0KkqofHjy/xDZQ==}
     dev: false
 
   /@types/yargs-parser/20.2.1:
@@ -7979,6 +7989,10 @@ packages:
     engines: {node: '>=0.6'}
     dev: false
 
+  /toposort/2.0.2:
+    resolution: {integrity: sha1-riF2gXXRVZ1IvvNUILL0li8JwzA=}
+    dev: false
+
   /totalist/1.1.0:
     resolution: {integrity: sha512-gduQwd1rOdDMGxFG1gEvhV88Oirdo2p+KjoYFU7k2g+i7n6AFFbDQ5kMPUsW0pNbfQsB/cwXvT1i4Bue0s9g5g==}
     engines: {node: '>=6'}
@@ -8882,6 +8896,35 @@ packages:
       - supports-color
     dev: false
 
+  file:projects/model.tgz:
+    resolution: {integrity: sha512-UVGIAjsLADap4S6adBQPDbFPY0QYwOtRDn/BWaWmd0zaHMLCYegjeX8y6eKEwyw9Dp9o0QgfWHovpZOfEhqQzw==, tarball: file:projects/model.tgz}
+    name: '@rush-temp/model'
+    version: 0.0.0
+    dependencies:
+      '@microsoft/api-extractor': 7.18.1
+      '@types/jest': 26.0.24
+      '@types/toposort': 2.0.3
+      '@typescript-eslint/eslint-plugin': 4.28.2_5031fffb45dfb7117e61c1d8ea1ef3ff
+      '@typescript-eslint/parser': 4.28.2_eslint@7.30.0+typescript@4.3.5
+      eslint: 7.30.0
+      eslint-config-standard: 16.0.3_68aba462ebcb9819879db75ba6ea05da
+      eslint-config-standard-with-typescript: 20.0.0_2637e9af5db27789995bc2395a80d787
+      eslint-plugin-import: 2.23.4_eslint@7.30.0
+      eslint-plugin-node: 11.1.0_eslint@7.30.0
+      eslint-plugin-promise: 5.1.0_eslint@7.30.0
+      jest: 26.6.3
+      prettier: 2.3.2
+      toposort: 2.0.2
+      ts-jest: 26.5.6_jest@26.6.3+typescript@4.3.5
+      typescript: 4.3.5
+    transitivePeerDependencies:
+      - bufferutil
+      - canvas
+      - supports-color
+      - ts-node
+      - utf-8-validate
+    dev: false
+
   file:projects/platform.tgz_@typescript-eslint+parser@4.28.2:
     resolution: {integrity: sha512-pyJDbevWsQOSSlGG3BLbQw/Iqjmf5Zxgw9lhxi1h1FGU0Y+srEz5k3/hTLIbh0XLFQxgGMnBjudhN1gPZDeTFw==, tarball: file:projects/platform.tgz}
     id: file:projects/platform.tgz
@@ -8987,7 +9030,7 @@ packages:
     dev: false
 
   file:projects/prod.tgz_sass@1.35.2:
-    resolution: {integrity: sha512-pK1elEJ+BKYunC/dY52Ion5Yk0odbZ+FW7WooxT1U2mjXe5unugQzTdVPCtxc228StHJgYAfAU2fp6LSv972ww==, tarball: file:projects/prod.tgz}
+    resolution: {integrity: sha512-XC2L79pUDVPOLdaNO96862lo08NuUIi0/6mO1+hBFJOzaz5IID4UDYUptVDrrbuMe2aSinTE17Fj4gGZnDKHrw==, tarball: file:projects/prod.tgz}
     id: file:projects/prod.tgz
     name: '@rush-temp/prod'
     version: 0.0.0
