@@ -8,6 +8,7 @@ specifiers:
   '@rush-temp/platform': file:./projects/platform.tgz
   '@rush-temp/plugin-login': file:./projects/plugin-login.tgz
   '@rush-temp/prod': file:./projects/prod.tgz
+  '@rush-temp/query': file:./projects/query.tgz
   '@rush-temp/theme': file:./projects/theme.tgz
   '@rush-temp/ui': file:./projects/ui.tgz
   '@types/node': ^14.14.40
@@ -24,7 +25,6 @@ specifiers:
   eslint-plugin-import: ^2.22.1
   eslint-plugin-node: ^11.1.0
   eslint-plugin-promise: ^5.1.0
-  eslint-plugin-standard: ^5.0.0
   eslint-plugin-svelte3: ^3.1.2
   eslint-svelte3-preprocess: ~0.0.5
   file-loader: ^6.2.0
@@ -58,6 +58,7 @@ dependencies:
   '@rush-temp/platform': file:projects/platform.tgz_@typescript-eslint+parser@4.28.2
   '@rush-temp/plugin-login': file:projects/plugin-login.tgz_618b6e38b91b7916210decbe12d57e78
   '@rush-temp/prod': file:projects/prod.tgz_sass@1.35.2
+  '@rush-temp/query': file:projects/query.tgz
   '@rush-temp/theme': file:projects/theme.tgz_f3ce97d49bdaa529894a1e7040d14116
   '@rush-temp/ui': file:projects/ui.tgz_cbc0e39e3e20123a16504524f8a87d83
   '@types/node': 14.17.5
@@ -74,7 +75,6 @@ dependencies:
   eslint-plugin-import: 2.23.4_eslint@7.30.0
   eslint-plugin-node: 11.1.0_eslint@7.30.0
   eslint-plugin-promise: 5.1.0_eslint@7.30.0
-  eslint-plugin-standard: 5.0.0_eslint@7.30.0
   eslint-plugin-svelte3: 3.2.0_eslint@7.30.0+svelte@3.38.3
   eslint-svelte3-preprocess: 0.0.5_svelte@3.38.3
   file-loader: 6.2.0_webpack@5.44.0
@@ -8807,7 +8807,7 @@ packages:
     dev: false
 
   file:projects/core.tgz:
-    resolution: {integrity: sha512-2VM4pE6rAgQXhhWK81GTnaA5y9PTXJskM2S5oGFVrlY/ArvPoenz0OCRF3FV/xXsq2zmSmtJ/2CKnKai/rOcDg==, tarball: file:projects/core.tgz}
+    resolution: {integrity: sha512-kpXpHMq4+ouySG+1/Wf/yDzhfaNfdQdMEkP7w92fhA9d23FSf4J2g/q54cvtNBTa/NxNDZlF+ni3kxjVqRQ2Aw==, tarball: file:projects/core.tgz}
     name: '@rush-temp/core'
     version: 0.0.0
     dependencies:
@@ -8940,6 +8940,33 @@ packages:
       - sass
       - ts-node
       - typescript
+      - utf-8-validate
+    dev: false
+
+  file:projects/query.tgz:
+    resolution: {integrity: sha512-Rw0LliY7aT1dNVXRsEOtfGBPZY9v6qhgqupLX8GA2FtHt3BJKnk7crvS7ErFazH/iQiHUeD5sb3/PCY7y/aQHQ==, tarball: file:projects/query.tgz}
+    name: '@rush-temp/query'
+    version: 0.0.0
+    dependencies:
+      '@microsoft/api-extractor': 7.18.1
+      '@types/jest': 26.0.24
+      '@typescript-eslint/eslint-plugin': 4.28.2_5031fffb45dfb7117e61c1d8ea1ef3ff
+      '@typescript-eslint/parser': 4.28.2_eslint@7.30.0+typescript@4.3.5
+      eslint: 7.30.0
+      eslint-config-standard: 16.0.3_68aba462ebcb9819879db75ba6ea05da
+      eslint-config-standard-with-typescript: 20.0.0_2637e9af5db27789995bc2395a80d787
+      eslint-plugin-import: 2.23.4_eslint@7.30.0
+      eslint-plugin-node: 11.1.0_eslint@7.30.0
+      eslint-plugin-promise: 5.1.0_eslint@7.30.0
+      jest: 26.6.3
+      prettier: 2.3.2
+      ts-jest: 26.5.6_jest@26.6.3+typescript@4.3.5
+      typescript: 4.3.5
+    transitivePeerDependencies:
+      - bufferutil
+      - canvas
+      - supports-color
+      - ts-node
       - utf-8-validate
     dev: false
 

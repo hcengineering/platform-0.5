@@ -410,6 +410,11 @@
       "shouldPublish": true
     },
     {
+      "packageName": "@anticrm/query",
+      "projectFolder": "packages/query",
+      "shouldPublish": true
+    },
+    {
       "packageName": "@anticrm/login",
       "projectFolder": "packages/login",
       "shouldPublish": true
