@@ -18,6 +18,8 @@ import { loadStringsStatic } from './i18n'
 import { Platform } from './platform'
 import { addLocation } from './resource'
 
+import type { Resource } from './platform'
+
 export * from './platform'
 export * from './ident'
 export * from './status'
@@ -36,7 +38,5 @@ const resources = async () => ({
 })
 
 addLocation(Platform, resources)
-
-import type { Resource } from './platform'
 type URL = string
 export type Asset = Resource<URL>

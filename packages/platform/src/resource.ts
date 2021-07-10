@@ -38,7 +38,7 @@ export function addLocation<R extends Resources> (
   locations.set(plugin, module)
 }
 
-function getLocation(plugin: Plugin): PluginLoader<Resources> {
+function getLocation (plugin: Plugin): PluginLoader<Resources> {
   const location = locations.get(plugin)
   if (location === undefined) {
     throw new PlatformError(
@@ -58,17 +58,17 @@ async function loadPlugin (id: Plugin): Promise<Resources> {
     const status = new Status(Severity.INFO, platform.status.LoadingPlugin, {
       plugin: id
     })
-    pluginLoader = monitor(status, getLocation(id)()).then(plugin => plugin.default())
+    pluginLoader = monitor(status, getLocation(id)()).then(
+      async (plugin) => await plugin.default()
+    )
     loading.set(id, pluginLoader)
   }
-  return pluginLoader
+  return await pluginLoader
 }
 
 const cachedResource = new Map<string, any>()
 
-export async function getResource<T> (
-  resource: Resource<T>
-): Promise<T> {
+export async function getResource<T> (resource: Resource<T>): Promise<T> {
   const cached = cachedResource.get(resource)
   if (cached !== undefined) {
     return cached
@@ -77,7 +77,9 @@ export async function getResource<T> (
   const resources = loading.get(info.component) ?? loadPlugin(info.component)
   const value = (await resources)[info.kind]?.[info.name]
   if (value === undefined) {
-    throw new PlatformError(new Status(Severity.ERROR, platform.status.ResourceNotFound, { resource }))
+    throw new PlatformError(
+      new Status(Severity.ERROR, platform.status.ResourceNotFound, { resource })
+    )
   }
   cachedResource.set(resource, value)
   return value
