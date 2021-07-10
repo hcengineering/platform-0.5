@@ -86,6 +86,11 @@ export default plugin(Platform, {
 
     LoadingPlugin: '' as StatusCode<{ plugin: string }>,
     NoLocationForPlugin: '' as StatusCode<{ plugin: Plugin }>,
-    ResourceNotFound: '' as StatusCode<{ resource: Resource<any> }>
+    ResourceNotFound: '' as StatusCode<{ resource: Resource<any> }>,
+
+    BadRequest: '' as StatusCode
+    // Forbidden: '' as StatusCode,
+    // Unauthorized: '' as StatusCode,
+    // UnknownMethod: '' as StatusCode<{ method: string }>
   }
 })

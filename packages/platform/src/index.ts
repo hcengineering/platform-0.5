@@ -27,6 +27,7 @@ export * from './event'
 export * from './resource'
 export * from './i18n'
 export * from './metadata'
+export * from './rpc'
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 const resources = async () => ({

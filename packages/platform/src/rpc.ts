@@ -13,16 +13,8 @@
 // limitations under the License.
 //
 
-import { plugin, Plugin, PlatformError, Severity, Status, StatusCode } from '@anticrm/platform'
-
-export const rpc = plugin('rpc' as Plugin, {
-  status: {
-    Unauthorized: '' as StatusCode,
-    Forbidden: '' as StatusCode,
-    BadRequest: '' as StatusCode,
-    UnknownMethod: '' as StatusCode<{ method: string }>  
-  }
-})
+import platform from './platform'
+import { PlatformError, Severity, Status } from './status'
 
 export type ReqId = string | number
 export class Request<P extends any[], M extends string = string> {
@@ -58,7 +50,9 @@ export function readResponse<D> (response: string): Response<D> {
 export function readRequest<P extends any[]> (request: string): Request<P> {
   const result: Request<P> = JSON.parse(request)
   if (typeof result.method !== 'string') {
-    throw new PlatformError(new Status(Severity.ERROR, rpc.status.BadRequest, {}))
+    throw new PlatformError(
+      new Status(Severity.ERROR, platform.status.BadRequest, {})
+    )
   }
   return result
 }

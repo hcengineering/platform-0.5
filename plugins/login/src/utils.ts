@@ -13,8 +13,8 @@
 // limitations under the License.
 //
 
-import { Status, OK, unknownError, getMetadata } from '@anticrm/platform'
-import { Request, Response, serialize } from '@anticrm/rpc'
+import { Status, OK, unknownError, getMetadata, serialize } from '@anticrm/platform'
+import type { Request, Response } from '@anticrm/platform'
 
 import login from '@anticrm/login'
 

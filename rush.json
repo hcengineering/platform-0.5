@@ -395,11 +395,6 @@
       "shouldPublish": true
     },
     {
-      "packageName": "@anticrm/rpc",
-      "projectFolder": "packages/rpc",
-      "shouldPublish": true
-    },
-    {
       "packageName": "@anticrm/theme",
       "projectFolder": "packages/theme",
       "shouldPublish": true
