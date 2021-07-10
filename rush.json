@@ -405,6 +405,11 @@
       "shouldPublish": true
     },
     {
+      "packageName": "@anticrm/core",
+      "projectFolder": "packages/core",
+      "shouldPublish": true
+    },
+    {
       "packageName": "@anticrm/login",
       "projectFolder": "packages/login",
       "shouldPublish": true
