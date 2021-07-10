@@ -15,17 +15,17 @@
 
 import { plugin } from '@anticrm/platform'
 import type { Metadata, Plugin, Resource } from '@anticrm/platform'
-import type { Storage, TxOperations } from '@anticrm/core'
+import type { Client, TxOperations } from '@anticrm/core'
 import type { LiveQuery } from '@anticrm/query'
 
-export type Client = Storage & LiveQuery & TxOperations
+export type Connection = Client & LiveQuery & TxOperations
 
 export const clientId = 'client' as Plugin
 
 export default plugin(clientId, 
   {
     function: {
-      GetClient: '' as Resource<() => Promise<Client>>
+      GetClient: '' as Resource<() => Promise<Connection>>
     },
     metadata: {
       ClientUrl: '' as Metadata<string>

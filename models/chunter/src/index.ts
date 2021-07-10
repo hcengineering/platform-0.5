@@ -13,7 +13,7 @@
 // limitations under the License.
 //
 
-import { Builder, Model } from '@anticrm/model'
+import { Builder, Model, UX } from '@anticrm/model'
 
 import { TSpace, TDoc } from '@anticrm/model-core'
 import type { Channel, Message } from '@anticrm/chunter'
@@ -23,6 +23,7 @@ import core from '@anticrm/model-core'
 import chunter from './plugin'
 
 @Model(chunter.class.Channel, core.class.Space)
+@UX(chunter.string.Channel, chunter.icon.Hashtag)
 export class TChannel extends TSpace implements Channel {}
 
 @Model(chunter.class.Message, core.class.Doc)
@@ -39,7 +40,6 @@ export function createModel(builder: Builder) {
       spaces: [
         {
           label: chunter.string.Channels,
-          spaceIcon: chunter.icon.Hashtag,
           spaceClass: chunter.class.Channel,
           addSpaceLabel: chunter.string.CreateChannel,
           createComponent: chunter.component.CreateChannel

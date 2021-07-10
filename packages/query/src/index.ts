@@ -13,7 +13,7 @@
 // limitations under the License.
 //
 
-import { Ref, Class, Doc, Tx, DocumentQuery, TxCreateDoc, TxRemoveDoc, Client, Obj, FindOptions, TxUpdateDoc, getOperator, TxProcessor, resultSort, SortingQuery, FindResult } from '@anticrm/core'
+import { Ref, Class, Doc, Tx, DocumentQuery, TxCreateDoc, TxRemoveDoc, Client, Obj, FindOptions, TxUpdateDoc, getOperator, TxProcessor, resultSort, SortingQuery, FindResult, Hierarchy } from '@anticrm/core'
 
 interface Query {
   _class: Ref<Class<Doc>>
@@ -33,12 +33,12 @@ export class LiveQuery extends TxProcessor implements Client {
     this.client = client
   }
 
-  isDerived<T extends Obj>(_class: Ref<Class<T>>, from: Ref<Class<T>>): boolean {
-    return this.client.isDerived(_class, from)
+  getHierarchy(): Hierarchy {
+    return this.client.getHierarchy()
   }
 
   private match (q: Query, doc: Doc): boolean {
-    if (!this.isDerived(doc._class, q._class)) {
+    if (!this.getHierarchy().isDerived(doc._class, q._class)) {
       return false
     }
     for (const key in q.query) {

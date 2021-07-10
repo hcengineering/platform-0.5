@@ -1,6 +1,6 @@
 [
   {
-    "_id": "60ea1bed99344930945b8640",
+    "_id": "60ea265e485688ef8b46c0f7",
     "_class": "core.class.TxCreateDoc",
     "space": "core.space.Tx",
     "modifiedBy": "core.account.System",
@@ -13,7 +13,7 @@
     }
   },
   {
-    "_id": "60ea1bed99344930945b8641",
+    "_id": "60ea265e485688ef8b46c0f8",
     "_class": "core.class.TxCreateDoc",
     "space": "core.space.Tx",
     "modifiedBy": "core.account.System",
@@ -27,7 +27,7 @@
     }
   },
   {
-    "_id": "60ea1bed99344930945b8642",
+    "_id": "60ea265e485688ef8b46c0f9",
     "_class": "core.class.TxCreateDoc",
     "space": "core.space.Tx",
     "modifiedBy": "core.account.System",
@@ -42,7 +42,7 @@
     }
   },
   {
-    "_id": "60ea1bed99344930945b8643",
+    "_id": "60ea265e485688ef8b46c0fa",
     "_class": "core.class.TxCreateDoc",
     "space": "core.space.Tx",
     "modifiedBy": "core.account.System",
@@ -57,7 +57,7 @@
     }
   },
   {
-    "_id": "60ea1bed99344930945b8644",
+    "_id": "60ea265e485688ef8b46c0fb",
     "_class": "core.class.TxCreateDoc",
     "space": "core.space.Tx",
     "modifiedBy": "core.account.System",
@@ -72,7 +72,7 @@
     }
   },
   {
-    "_id": "60ea1bed99344930945b8645",
+    "_id": "60ea265e485688ef8b46c0fc",
     "_class": "core.class.TxCreateDoc",
     "space": "core.space.Tx",
     "modifiedBy": "core.account.System",
@@ -86,7 +86,7 @@
     }
   },
   {
-    "_id": "60ea1bed99344930945b8646",
+    "_id": "60ea265e485688ef8b46c0fd",
     "_class": "core.class.TxCreateDoc",
     "space": "core.space.Tx",
     "modifiedBy": "core.account.System",
@@ -100,7 +100,7 @@
     }
   },
   {
-    "_id": "60ea1bed99344930945b8647",
+    "_id": "60ea265e485688ef8b46c0fe",
     "_class": "core.class.TxCreateDoc",
     "space": "core.space.Tx",
     "modifiedBy": "core.account.System",
@@ -115,7 +115,7 @@
     }
   },
   {
-    "_id": "60ea1bed99344930945b8648",
+    "_id": "60ea265e485688ef8b46c0ff",
     "_class": "core.class.TxCreateDoc",
     "space": "core.space.Tx",
     "modifiedBy": "core.account.System",
@@ -129,7 +129,7 @@
     }
   },
   {
-    "_id": "60ea1bed99344930945b8649",
+    "_id": "60ea265e485688ef8b46c100",
     "_class": "core.class.TxCreateDoc",
     "space": "core.space.Tx",
     "modifiedBy": "core.account.System",
@@ -144,7 +144,7 @@
     }
   },
   {
-    "_id": "60ea1bed99344930945b864a",
+    "_id": "60ea265e485688ef8b46c101",
     "_class": "core.class.TxCreateDoc",
     "space": "core.space.Tx",
     "modifiedBy": "core.account.System",
@@ -158,7 +158,7 @@
     }
   },
   {
-    "_id": "60ea1bed99344930945b864b",
+    "_id": "60ea265e485688ef8b46c102",
     "_class": "core.class.TxCreateDoc",
     "space": "core.space.Tx",
     "modifiedBy": "core.account.System",
@@ -169,16 +169,18 @@
     "attributes": {
       "domain": "model",
       "kind": 0,
-      "extends": "core.class.Space"
+      "extends": "core.class.Space",
+      "label": "chunter.string.Channel",
+      "icon": "chunter.icon.Hashtag"
     }
   },
   {
-    "_id": "60ea1bed99344930945b864c",
+    "_id": "60ea265e485688ef8b46c103",
     "_class": "core.class.TxCreateDoc",
     "space": "core.space.Tx",
     "modifiedBy": "core.account.System",
     "modifiedOn": 0,
-    "objectId": "60ea1bed99344930945b864d",
+    "objectId": "60ea265e485688ef8b46c104",
     "objectClass": "workbench.class.Application",
     "objectSpace": "core.space.Model",
     "attributes": {
@@ -199,12 +201,12 @@
     }
   },
   {
-    "_id": "60ea1bed99344930945b864e",
+    "_id": "60ea265e485688ef8b46c105",
     "_class": "core.class.TxCreateDoc",
     "space": "core.space.Tx",
     "modifiedBy": "core.account.System",
     "modifiedOn": 0,
-    "objectId": "60ea1bed99344930945b864f",
+    "objectId": "60ea265e485688ef8b46c106",
     "objectClass": "chunter.class.Channel",
     "objectSpace": "core.space.Model",
     "attributes": {
@@ -215,12 +217,12 @@
     }
   },
   {
-    "_id": "60ea1bed99344930945b8650",
+    "_id": "60ea265e485688ef8b46c107",
     "_class": "core.class.TxCreateDoc",
     "space": "core.space.Tx",
     "modifiedBy": "core.account.System",
     "modifiedOn": 0,
-    "objectId": "60ea1bed99344930945b8651",
+    "objectId": "60ea265e485688ef8b46c108",
     "objectClass": "chunter.class.Channel",
     "objectSpace": "core.space.Model",
     "attributes": {

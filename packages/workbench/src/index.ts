@@ -18,7 +18,7 @@ import { getContext, setContext } from 'svelte'
 import type { IntlString, Asset } from '@anticrm/platform'
 import type { Ref, Class, Doc, Space, TxOperations } from '@anticrm/core'
 import type { Plugin } from '@anticrm/platform'
-import type { Client } from '@anticrm/client'
+import type { Connection } from '@anticrm/client'
 import type { AnyComponent, AnySvelteComponent } from '@anticrm/ui'
 import { writable } from 'svelte/store'
 
@@ -32,7 +32,6 @@ export interface Application extends Doc {
 
 export interface SpacesNavModel {
   label: IntlString
-  spaceIcon: Asset
   spaceClass: Ref<Class<Space>>
   addSpaceLabel: IntlString
   createComponent: AnyComponent
@@ -54,11 +53,11 @@ export default plugin(workbenchId, {
 
 const CLIENT_CONEXT = 'workbench.context.Client'
 
-export function getClient(): Client {
-  return getContext<Client>(CLIENT_CONEXT)
+export function getClient(): Connection {
+  return getContext<Connection>(CLIENT_CONEXT)
 }
 
-export function setClient(client: Client) {
+export function setClient(client: Connection) {
   setContext(CLIENT_CONEXT, client)
 }
 

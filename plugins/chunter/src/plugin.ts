@@ -31,6 +31,7 @@ export default mergeIds(chunterId, chunter, {
     Message: '' as Ref<Class<Message>>
   },
   string: {
+    Channel: '' as IntlString,
     Channels: '' as IntlString,
     CreateChannel: '' as IntlString,
     ChannelName: '' as IntlString,

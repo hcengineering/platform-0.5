@@ -32,6 +32,7 @@ import {
   Hierarchy,
   DOMAIN_MODEL
 } from '@anticrm/core'
+import type { IntlString, Asset } from '@anticrm/platform'
 import toposort from 'toposort'
 
 import core from './component'
@@ -42,6 +43,8 @@ interface ClassTxes {
   _id: Ref<Class<Obj>>
   extends?: Ref<Class<Obj>>
   domain?: Domain
+  label?: IntlString
+  icon?: Asset
   txes: Array<NoIDs<Tx>>
 }
 
@@ -90,6 +93,17 @@ export function Model<T extends Obj> (
   }
 }
 
+export function UX<T extends Obj> (
+  label: IntlString,
+  icon?: Asset,
+) {
+  return function classDecorator<C extends new () => T> (constructor: C): void {
+    const txes = getTxes(constructor.prototype)
+    txes.label = label
+    txes.icon = icon
+  }
+}
+
 function generateIds (objectId: Ref<Doc>, txes: Array<NoIDs<Tx>>): Tx[] {
   return txes.map((tx) => ({
     _id: generateId<Tx>(),
@@ -125,7 +139,9 @@ function _generateTx (tx: ClassTxes): Tx[] {
     {
       domain: tx.domain,
       kind: ClassifierKind.CLASS,
-      extends: tx.extends
+      extends: tx.extends,
+      label: tx.label,
+      icon: tx.icon
     },
     objectId
   )

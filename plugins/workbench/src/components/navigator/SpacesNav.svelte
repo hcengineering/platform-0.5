@@ -16,7 +16,7 @@
 <script lang="ts">
   import { onDestroy } from 'svelte'
 
-  import type { Asset } from '@anticrm/status'
+  import type { Asset } from '@anticrm/platform'
   import type { Ref, Space } from '@anticrm/core'
   import type { SpacesNavModel } from '@anticrm/workbench'
   import { Action, navigate, getCurrentLocation } from '@anticrm/ui'
@@ -24,18 +24,21 @@
   import { IconAdd } from '@anticrm/ui'
   import { getClient, showModal } from '@anticrm/workbench'
 
+  import { classIcon } from '../../utils'
+
   import TreeNode from './TreeNode.svelte'
   import TreeItem from './TreeItem.svelte'
 
   export let model: SpacesNavModel
   export let space: Ref<Space> | undefined
 
+  const client = getClient()
   let spaces: Space[] = []
   let unsubscribe = () => {}
 
   $: {
     unsubscribe()
-    unsubscribe = getClient().query(model.spaceClass, {}, result => { spaces = result })
+    unsubscribe = client.query(model.spaceClass, {}, result => { spaces = result })
   }
 
   onDestroy(unsubscribe)
@@ -59,7 +62,7 @@
 <div>
   <TreeNode label={model.label} actions={[addSpace]}>
     {#each spaces as space}
-      <TreeItem title={space.name} icon={model.spaceIcon} on:click={() => { selectSpace(space._id) }}/>
+      <TreeItem title={space.name} icon={classIcon(client, space._class)} on:click={() => { selectSpace(space._id) }}/>
     {/each}
   </TreeNode>
 </div>

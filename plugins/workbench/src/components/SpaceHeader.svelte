@@ -21,16 +21,18 @@
   import Star from './icons/Star.svelte'
 
   import { getClient } from '@anticrm/workbench'
+  import { classIcon } from '../utils'
   import core from '@anticrm/core'
 
   export let space: Ref<Space> | undefined
 
-  let data: Data<Space> | undefined
+  const client = getClient()
+  let data: Space | undefined
 
   let unsubscribe = () => {}
   $: {
     unsubscribe()
-    unsubscribe = getClient().query(core.class.Space, { _id: space }, result => { data = result[0] })
+    unsubscribe = client.query(core.class.Space, { _id: space }, result => { data = result[0] })
   }
 </script>
 
@@ -38,7 +40,7 @@
   {#if data}
   <div class="caption">
     <div class="title">
-      <span><Icon icon={''} size={16}/></span>
+      <span><Icon icon={classIcon(client, data._class)} size={16}/></span>
       {data.name}
     </div>
     <div class="subtitle">{data.description}</div>

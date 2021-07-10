@@ -36,7 +36,7 @@ describe('query', () => {
     let expectedLength = 0
     const txes = await getModel()
     for (let i = 0; i < txes.length; i++) {
-      if (storage.isDerived((txes[i] as TxCreateDoc<Doc>).objectClass, core.class.Space)) {
+      if (storage.getHierarchy().isDerived((txes[i] as TxCreateDoc<Doc>).objectClass, core.class.Space)) {
         expectedLength++
       }
     }
@@ -54,7 +54,7 @@ describe('query', () => {
     let expectedLength = 0
     const txes = await getModel()
     for (let i = 0; i < txes.length; i++) {
-      if (storage.isDerived((txes[i] as TxCreateDoc<Doc>).objectClass, core.class.Space)) {
+      if (storage.getHierarchy().isDerived((txes[i] as TxCreateDoc<Doc>).objectClass, core.class.Space)) {
         expectedLength++
       }
     }
@@ -107,7 +107,7 @@ describe('query', () => {
     let expectedLength = 0
     const txes = await getModel()
     for (let i = 0; i < txes.length; i++) {
-      if (storage.isDerived((txes[i] as TxCreateDoc<Doc>).objectClass, core.class.Space)) {
+      if (storage.getHierarchy().isDerived((txes[i] as TxCreateDoc<Doc>).objectClass, core.class.Space)) {
         expectedLength++
       }
     }
@@ -241,8 +241,8 @@ class ClientImpl implements Client {
     await Promise.all([this.model.tx(tx), this.transactions.tx(tx)])
   }
 
-  isDerived<T extends Obj>(_class: Ref<Class<T>>, from: Ref<Class<T>>): boolean {
-    return this.hierarchy.isDerived(_class, from)
+  getHierarchy(): Hierarchy {
+    return this.hierarchy
   }
 
   async findAll<T extends Doc>(_class: Ref<Class<T>>, query: DocumentQuery<T>, options?: FindOptions<T>): Promise<FindResult<T>> {

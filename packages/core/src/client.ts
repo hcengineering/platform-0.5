@@ -27,17 +27,15 @@ import core from './component'
 type TxHander = (tx: Tx) => void
 
 export interface Client extends Storage {
-  isDerived: <T extends Obj>(_class: Ref<Class<T>>, from: Ref<Class<T>>) => boolean
+  getHierarchy(): Hierarchy
 }
 
-class ClientImpl extends TxProcessor implements Storage {
+class ClientImpl extends TxProcessor implements Storage, Client {
   constructor (private readonly hierarchy: Hierarchy, private readonly model: ModelDb, private readonly conn: Storage) {
     super()
   }
 
-  isDerived<T extends Obj>(_class: Ref<Class<T>>, from: Ref<Class<T>>): boolean {
-    return this.hierarchy.isDerived(_class, from)
-  }
+  getHierarchy(): Hierarchy { return this.hierarchy }
 
   async findAll<T extends Doc>(
     _class: Ref<Class<T>>,

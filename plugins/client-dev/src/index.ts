@@ -14,7 +14,7 @@
 //
 
 import core, { createClient, withOperations } from '@anticrm/core'
-import type { Client } from '@anticrm/client'
+import type { Connection } from '@anticrm/client'
 import { LiveQuery } from '@anticrm/query'
 
 import { connect } from './connection'
@@ -27,11 +27,11 @@ import { connect } from './connection'
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 export default async () => {
 
-  let client: Client | undefined
+  let client: Connection | undefined
 
   return {
     function: {
-      GetClient: async (): Promise<Client> => {
+      GetClient: async (): Promise<Connection> => {
         if (client === undefined) {
           const storage = await createClient(connect)
           client = withOperations(core.account.System, new LiveQuery(storage))
