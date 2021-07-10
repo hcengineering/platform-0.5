@@ -16,8 +16,8 @@
 import { addLocation } from '@anticrm/platform'
 
 import { loginId } from '@anticrm/login'
-// import workbench from '@anticrm/workbench'
-// import core from '@anticrm/plugin-core'
+import { clientId } from '@anticrm/client'
+import { workbenchId } from '@anticrm/workbench'
 // import chunter from '@anticrm/chunter'
 // import task from '@anticrm/task'
 // import meeting from '@anticrm/meeting'
@@ -49,12 +49,12 @@ export function configurePlatform() {
 // platform.setMetadata(ui.metadata.DefaultApplication, 'workbench')
 
   // if (process.env.CLIENT === 'dev')
-  //   addLocation(core, () => import(/* webpackChunkName: "plugin-core-dev" */ '@anticrm/plugin-core-dev'))
+  addLocation(clientId, () => import(/* webpackChunkName: "client-dev" */ '@anticrm/plugin-client-dev'))
   // else
   //   addLocation(core, () => import(/* webpackChunkName: "plugin-core" */ '@anticrm/plugin-core-impl'))
 
   addLocation(loginId, () => import(/* webpackChunkName: "login" */ '@anticrm/plugin-login'))
-  // addLocation(workbench, () => import(/* webpackChunkName: "workbench" */ '@anticrm/workbench-impl'))
+  addLocation(workbenchId, () => import(/* webpackChunkName: "workbench" */ '@anticrm/plugin-workbench'))
   // addLocation(chunter, () => import(/* webpackChunkName: "chunter" */ '@anticrm/chunter-impl'))
   // addLocation(task, () => import(/* webpackChunkName: "task" */ '@anticrm/task-impl'))
   // addLocation(meeting, () => import(/* webpackChunkName: "meeting" */ '@anticrm/meeting-impl'))

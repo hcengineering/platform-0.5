@@ -1,5 +1,5 @@
 //
-// Copyright © 2020 Anticrm Platform Contributors.
+// Copyright © 2020, 2021 Anticrm Platform Contributors.
 //
 // Licensed under the Eclipse Public License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License. You may
@@ -13,22 +13,15 @@
 // limitations under the License.
 //
 
-import { plugin } from '@anticrm/platform'
-import type { Metadata, Plugin, Resource } from '@anticrm/platform'
-import type { Storage, TxOperations } from '@anticrm/core'
-import type { LiveQuery } from '@anticrm/query'
+import WorkbenchApp from './components/WorkbenchApp.svelte'
 
-export type Client = Storage & LiveQuery & TxOperations
-
-export const clientId = 'client' as Plugin
-
-export default plugin(clientId, 
-  {
-    function: {
-      GetClient: '' as Resource<() => Promise<Client>>
-    },
-    metadata: {
-      ClientUrl: '' as Metadata<string>
-    }
+/*!
+ * Anticrm Platform™ Workbench Plugin
+ * © 2020 Anticrm Platform Contributors. All Rights Reserved.
+ * Licensed under the Eclipse Public License, Version 2.0
+ */
+export default async () => ({
+  component: {
+    WorkbenchApp
   }
-)
+})

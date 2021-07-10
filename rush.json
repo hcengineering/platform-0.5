@@ -435,9 +435,19 @@
       "shouldPublish": true
     },
     {
+      "packageName": "@anticrm/workbench",
+      "projectFolder": "packages/workbench",
+      "shouldPublish": true
+    },
+    {
+      "packageName": "@anticrm/plugin-workbench",
+      "projectFolder": "plugins/workbench",
+      "shouldPublish": true
+    },
+    {
       "packageName": "prod",
       "projectFolder": "dev/prod",
-      "shouldPublish": true
+      "shouldPublish": false
     }
 
     // {
