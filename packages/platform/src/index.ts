@@ -24,6 +24,7 @@ export * from './status'
 export * from './event'
 export * from './resource'
 export * from './i18n'
+export * from './metadata'
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 const resources = async () => ({
@@ -35,3 +36,7 @@ const resources = async () => ({
 })
 
 addLocation(Platform, resources)
+
+import type { Resource } from './platform'
+type URL = string
+export type Asset = Resource<URL>

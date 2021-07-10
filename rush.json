@@ -393,7 +393,23 @@
       "packageName": "@anticrm/platform",
       "projectFolder": "packages/platform",
       "shouldPublish": true
+    },
+    {
+      "packageName": "@anticrm/theme",
+      "projectFolder": "packages/theme",
+      "shouldPublish": true
+    },
+    {
+      "packageName": "@anticrm/ui",
+      "projectFolder": "packages/ui",
+      "shouldPublish": true
+    },
+    {
+      "packageName": "prod",
+      "projectFolder": "dev/prod",
+      "shouldPublish": true
     }
+
     // {
     //   /**
     //    * The NPM package name of the project (must match package.json)
