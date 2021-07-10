@@ -19,11 +19,12 @@
   import NavHeader from './NavHeader.svelte'
   import avatar from '../../img/avatar.png'
 
-  import { setContext, onDestroy } from 'svelte'
-  import type { Client } from '@anticrm/plugin-core'
+  import { onDestroy } from 'svelte'
+  import type { Client } from '@anticrm/client'
 
   import type { Ref, Space } from '@anticrm/core'
   import type { Application, NavigatorModel } from '@anticrm/workbench'
+  import { setClient } from '@anticrm/workbench'
   import workbench from '@anticrm/workbench'
 
   import Navigator from './Navigator.svelte'
@@ -34,7 +35,7 @@
 
   export let client: Client
 
-  setContext(workbench.context.Client, client)
+  setClient(client)
 
   let currentApp: Ref<Application> | undefined
   let currentSpace: Ref<Space> | undefined

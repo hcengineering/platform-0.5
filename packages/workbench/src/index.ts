@@ -13,7 +13,7 @@
 // limitations under the License.
 //
 
-import { getContext } from 'svelte'
+import { getContext, setContext } from 'svelte'
 
 import type { IntlString, Asset } from '@anticrm/platform'
 import type { Ref, Class, Doc, Space, TxOperations } from '@anticrm/core'
@@ -54,27 +54,31 @@ export default plugin(workbenchId, {
 
 const CLIENT_CONEXT = 'workbench.context.Client'
 
-export function getClient(): Client & TxOperations {
-  return getContext<Client & TxOperations>(CLIENT_CONEXT)
+export function getClient(): Client {
+  return getContext<Client>(CLIENT_CONEXT)
 }
 
-// interface CompAndProps {
-//   is: AnySvelteComponent | AnyComponent | undefined
-//   props: any
-//   element: HTMLElement | undefined
-// }
+export function setClient(client: Client) {
+  setContext(CLIENT_CONEXT, client)
+}
 
-// export const store = writable<CompAndProps>({
-//   is: undefined,
-//   props: {},
-//   element: undefined
-// })
+interface CompAndProps {
+  is: AnySvelteComponent | AnyComponent | undefined
+  props: any
+  element: HTMLElement | undefined
+}
 
-// export function showModal (component: AnySvelteComponent | AnyComponent, props: any, element?: HTMLElement): void {
-//   store.set({ is: component, props, element: element })
-// }
+export const store = writable<CompAndProps>({
+  is: undefined,
+  props: {},
+  element: undefined
+})
 
-// export function closeModal (): void {
-//   store.set({ is: undefined, props: {}, element: undefined })
-// }
+export function showModal (component: AnySvelteComponent | AnyComponent, props: any, element?: HTMLElement): void {
+  store.set({ is: component, props, element: element })
+}
+
+export function closeModal (): void {
+  store.set({ is: undefined, props: {}, element: undefined })
+}
 

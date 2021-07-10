@@ -14,7 +14,7 @@
 -->
 
 <script lang="ts">
-  import type { IntlString, Asset } from '@anticrm/status'
+  import type { IntlString, Asset } from '@anticrm/platform'
   import { Icon, Tooltip } from '@anticrm/ui'
 
   export let label: IntlString
