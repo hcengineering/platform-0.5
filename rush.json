@@ -425,6 +425,11 @@
       "shouldPublish": true
     },
     {
+      "packageName": "@anticrm/client",
+      "projectFolder": "packages/client",
+      "shouldPublish": true
+    },
+    {
       "packageName": "prod",
       "projectFolder": "dev/prod",
       "shouldPublish": true
