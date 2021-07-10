@@ -62,19 +62,18 @@ export async function getResource<T> (
   resource: Resource<T>
 ): Promise<T | undefined> {
   const cached = cachedResource.get(resource)
-  if (cached === undefined) {
-    const info = parseId(resource)
-    let loaded = resources.get(info.component)
-    if (loaded === undefined) {
-      loaded = await loadPlugin(info.component)
-      resources.set(info.component, loaded)
-    }
-    const value = loaded[info.kind]?.[info.name]
-    if (value !== undefined) {
-      cachedResource.set(resource, value)
-    }
-    return value
-  } else {
+  if (cached !== undefined) {
     return cached
   }
+  const info = parseId(resource)
+  let loaded = resources.get(info.component)
+  if (loaded === undefined) {
+    loaded = await loadPlugin(info.component)
+    resources.set(info.component, loaded)
+  }
+  const value = loaded[info.kind]?.[info.name]
+  if (value !== undefined) {
+    cachedResource.set(resource, value)
+  }
+  return value
 }

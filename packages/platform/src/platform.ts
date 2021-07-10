@@ -53,16 +53,13 @@ function identify (
   for (const key in namespace) {
     const value = namespace[key]
     if (typeof result[key] === 'string') {
-      throw new Error(`'mergeIds' overwrites '${key}'.`)
+      throw new Error(`'identify' overwrites '${key}'.`)
     }
+    const ident = prefix + '.' + key
     result[key] =
       typeof value === 'string'
-        ? prefix + '.' + key
-        : identify(
-          result[key] === undefined ? {} : result[key],
-          prefix + '.' + key,
-          value
-        )
+        ? ident
+        : identify(result[key] ?? {}, ident, value)
   }
   return result
 }
