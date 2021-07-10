@@ -21,6 +21,9 @@ import { addLocation } from './resource'
 export * from './platform'
 export * from './ident'
 export * from './status'
+export * from './event'
+export * from './resource'
+export * from './i18n'
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 const resources = async () => ({
