@@ -65,7 +65,6 @@ async function loadPlugin (id: Plugin): Promise<Resources> {
 }
 
 const cachedResource = new Map<string, any>()
-const resources = new Map<Plugin, Resources>()
 
 export async function getResource<T> (
   resource: Resource<T>
@@ -75,12 +74,11 @@ export async function getResource<T> (
     return cached
   }
   const info = parseId(resource)
-  let loaded = resources.get(info.component)
-  if (loaded === undefined) {
-    loaded = await loadPlugin(info.component)
-    resources.set(info.component, loaded)
+  let resources = loading.get(info.component)
+  if (resources === undefined) {
+    resources = loadPlugin(info.component)
   }
-  const value = loaded[info.kind]?.[info.name]
+  const value = (await resources)[info.kind]?.[info.name]
   if (value === undefined) {
     throw new PlatformError(new Status(Severity.ERROR, platform.status.ResourceNotFound, { resource }))
   }
