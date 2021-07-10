@@ -430,6 +430,11 @@
       "shouldPublish": true
     },
     {
+      "packageName": "@anticrm/plugin-client-dev",
+      "projectFolder": "plugins/client-dev",
+      "shouldPublish": true
+    },
+    {
       "packageName": "prod",
       "projectFolder": "dev/prod",
       "shouldPublish": true

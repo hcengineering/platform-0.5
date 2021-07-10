@@ -13,22 +13,19 @@
 // limitations under the License.
 //
 
-import { plugin } from '@anticrm/platform'
-import type { Metadata, Plugin, Resource } from '@anticrm/platform'
-import type { Storage, TxOperations } from '@anticrm/core'
-import type { LiveQuery } from '@anticrm/query'
+import { connect } from '../connection'
+import core, { createClient } from '@anticrm/core'
 
-export type Client = Storage & LiveQuery & TxOperations
+describe('client', () => {
+  it('should create connection', async () => {
+    const conn = await connect(() => {})
+    const txes = await conn.findAll(core.class.Tx, {})
+    expect(txes.length).toBe(25)
+  })
 
-const PluginClient = 'client' as Plugin
-
-export default plugin(PluginClient, 
-  {
-    function: {
-      GetClient: '' as Resource<() => Promise<Client>>
-    },
-    metadata: {
-      ClientUrl: '' as Metadata<string>
-    }
-  }
-)
+  it('should create client', async () => {
+    const client = await createClient(connect)
+    const txes = await client.findAll(core.class.Class, {})
+    expect(txes.length).toBe(18)
+  })
+})

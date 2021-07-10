@@ -7,6 +7,7 @@ specifiers:
   '@rush-temp/core': file:./projects/core.tgz
   '@rush-temp/login': file:./projects/login.tgz
   '@rush-temp/platform': file:./projects/platform.tgz
+  '@rush-temp/plugin-client-dev': file:./projects/plugin-client-dev.tgz
   '@rush-temp/plugin-login': file:./projects/plugin-login.tgz
   '@rush-temp/prod': file:./projects/prod.tgz
   '@rush-temp/query': file:./projects/query.tgz
@@ -58,6 +59,7 @@ dependencies:
   '@rush-temp/core': file:projects/core.tgz
   '@rush-temp/login': file:projects/login.tgz_@typescript-eslint+parser@4.28.2
   '@rush-temp/platform': file:projects/platform.tgz_@typescript-eslint+parser@4.28.2
+  '@rush-temp/plugin-client-dev': file:projects/plugin-client-dev.tgz_@typescript-eslint+parser@4.28.2
   '@rush-temp/plugin-login': file:projects/plugin-login.tgz_618b6e38b91b7916210decbe12d57e78
   '@rush-temp/prod': file:projects/prod.tgz_sass@1.35.2
   '@rush-temp/query': file:projects/query.tgz
@@ -8895,6 +8897,28 @@ packages:
       - bufferutil
       - canvas
       - node-notifier
+      - supports-color
+      - ts-node
+      - utf-8-validate
+    dev: false
+
+  file:projects/plugin-client-dev.tgz_@typescript-eslint+parser@4.28.2:
+    resolution: {integrity: sha512-uhLADWwRjGBO3Fmi7FopRdUxjtaiX8/bava2TndHHC4qSIovIUbkuFIO2G72IzohDFCLXW1sTDi2U3wfDbOz+A==, tarball: file:projects/plugin-client-dev.tgz}
+    id: file:projects/plugin-client-dev.tgz
+    name: '@rush-temp/plugin-client-dev'
+    version: 0.0.0
+    dependencies:
+      '@microsoft/api-extractor': 7.18.1
+      '@types/jest': 26.0.24
+      jest: 26.6.3
+      prettier: 2.3.2
+      ts-jest: 26.5.6_jest@26.6.3+typescript@4.3.5
+      ts-standard: 10.0.0_702a8502199281702e4c6a3a1eba84f6
+      typescript: 4.3.5
+    transitivePeerDependencies:
+      - '@typescript-eslint/parser'
+      - bufferutil
+      - canvas
       - supports-color
       - ts-node
       - utf-8-validate
