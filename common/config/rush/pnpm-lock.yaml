@@ -2,14 +2,17 @@ lockfileVersion: 5.3
 
 specifiers:
   '@babel/runtime': ^7.13.10
+  '@rush-temp/login': file:./projects/login.tgz
   '@rush-temp/platform': file:./projects/platform.tgz
+  '@rush-temp/plugin-login': file:./projects/plugin-login.tgz
   '@rush-temp/prod': file:./projects/prod.tgz
+  '@rush-temp/rpc': file:./projects/rpc.tgz
   '@rush-temp/theme': file:./projects/theme.tgz
   '@rush-temp/ui': file:./projects/ui.tgz
   '@types/node': ^14.14.40
   '@typescript-eslint/eslint-plugin': ^4.22.0
   '@typescript-eslint/parser': ^4.22.0
-  autoprefixer: ~10.2.6
+  autoprefixer: ^10.2.6
   core-js: ^3.10.1
   cross-env: ^7.0.3
   css-loader: ^5.2.1
@@ -20,14 +23,15 @@ specifiers:
   eslint-plugin-import: ^2.22.1
   eslint-plugin-node: ^11.1.0
   eslint-plugin-promise: ^5.1.0
+  eslint-plugin-standard: ^5.0.0
   eslint-plugin-svelte3: ^3.1.2
   eslint-svelte3-preprocess: ~0.0.5
   file-loader: ^6.2.0
   intl-messageformat: ^9.7.1
   mini-css-extract-plugin: ^1.4.1
-  postcss: ~8.3.4
-  postcss-load-config: ~3.1.0
-  postcss-loader: ~6.1.0
+  postcss: ^8.3.4
+  postcss-load-config: ^3.1.0
+  postcss-loader: ^6.1.0
   prettier-plugin-svelte: ^2.2.0
   sass: ^1.32.8
   sass-loader: ^11.0.1
@@ -47,8 +51,11 @@ specifiers:
 
 dependencies:
   '@babel/runtime': 7.14.6
+  '@rush-temp/login': file:projects/login.tgz_@typescript-eslint+parser@4.28.2
   '@rush-temp/platform': file:projects/platform.tgz_@typescript-eslint+parser@4.28.2
+  '@rush-temp/plugin-login': file:projects/plugin-login.tgz_618b6e38b91b7916210decbe12d57e78
   '@rush-temp/prod': file:projects/prod.tgz_sass@1.35.2
+  '@rush-temp/rpc': file:projects/rpc.tgz
   '@rush-temp/theme': file:projects/theme.tgz_f3ce97d49bdaa529894a1e7040d14116
   '@rush-temp/ui': file:projects/ui.tgz_cbc0e39e3e20123a16504524f8a87d83
   '@types/node': 14.17.5
@@ -65,6 +72,7 @@ dependencies:
   eslint-plugin-import: 2.23.4_eslint@7.30.0
   eslint-plugin-node: 11.1.0_eslint@7.30.0
   eslint-plugin-promise: 5.1.0_eslint@7.30.0
+  eslint-plugin-standard: 5.0.0_eslint@7.30.0
   eslint-plugin-svelte3: 3.2.0_eslint@7.30.0+svelte@3.38.3
   eslint-svelte3-preprocess: 0.0.5_svelte@3.38.3
   file-loader: 6.2.0_webpack@5.44.0
@@ -3171,6 +3179,15 @@ packages:
 
   /eslint-plugin-standard/4.1.0_eslint@7.30.0:
     resolution: {integrity: sha512-ZL7+QRixjTR6/528YNGyDotyffm5OQst/sGxKDwGb9Uqs4In5Egi4+jbobhqJoyoCM6/7v/1A5fhQ7ScMtDjaQ==}
+    peerDependencies:
+      eslint: '>=5.0.0'
+    dependencies:
+      eslint: 7.30.0
+    dev: false
+
+  /eslint-plugin-standard/5.0.0_eslint@7.30.0:
+    resolution: {integrity: sha512-eSIXPc9wBM4BrniMzJRBm2uoVuXz2EPa+NXPk2+itrVt+r5SbKFERx/IgrK/HmfjddyKVz2f+j+7gBRvu19xLg==}
+    deprecated: 'standard 16.0.0 and eslint-config-standard 16.0.0 no longer require the eslint-plugin-standard package. You can remove it from your dependencies with ''npm rm eslint-plugin-standard''. More info here: https://github.com/standard/standard/issues/1316'
     peerDependencies:
       eslint: '>=5.0.0'
     dependencies:
@@ -8771,6 +8788,21 @@ packages:
       commander: 2.20.3
     dev: false
 
+  file:projects/login.tgz_@typescript-eslint+parser@4.28.2:
+    resolution: {integrity: sha512-Ed/Rzj0ilRox8igfekV0y8SG6OIRJ7U7ZdAl/Yh3yiWkcfE480YQ9+nv91Vl4iM6LyoV7MkIXUX47U2wlPEPxA==, tarball: file:projects/login.tgz}
+    id: file:projects/login.tgz
+    name: '@rush-temp/login'
+    version: 0.0.0
+    dependencies:
+      '@microsoft/api-extractor': 7.18.1
+      prettier: 2.3.2
+      ts-standard: 10.0.0_702a8502199281702e4c6a3a1eba84f6
+      typescript: 4.3.5
+    transitivePeerDependencies:
+      - '@typescript-eslint/parser'
+      - supports-color
+    dev: false
+
   file:projects/platform.tgz_@typescript-eslint+parser@4.28.2:
     resolution: {integrity: sha512-pyJDbevWsQOSSlGG3BLbQw/Iqjmf5Zxgw9lhxi1h1FGU0Y+srEz5k3/hTLIbh0XLFQxgGMnBjudhN1gPZDeTFw==, tarball: file:projects/platform.tgz}
     id: file:projects/platform.tgz
@@ -8795,8 +8827,37 @@ packages:
       - utf-8-validate
     dev: false
 
+  file:projects/plugin-login.tgz_618b6e38b91b7916210decbe12d57e78:
+    resolution: {integrity: sha512-9N/F8qIW6NOJsHQBekH9rOtKdUrETbckI1BgQqTKCvQKSjp4yt71/E3uRPAF6jcptOGb6fRZFaGw9B6PZ077nA==, tarball: file:projects/plugin-login.tgz}
+    id: file:projects/plugin-login.tgz
+    name: '@rush-temp/plugin-login'
+    version: 0.0.0
+    dependencies:
+      '@microsoft/api-extractor': 7.18.1
+      prettier: 2.3.2
+      sass: 1.35.2
+      svelte: 3.38.3
+      svelte-check: 2.2.2_1e60e55b022cbc4d590e891355c7d065
+      svelte-loader: 3.1.2_svelte@3.38.3
+      svelte-preprocess: 4.7.4_f72cb119e5efb9f4f70f63ca9c9312db
+      ts-standard: 10.0.0_702a8502199281702e4c6a3a1eba84f6
+      typescript: 4.3.5
+    transitivePeerDependencies:
+      - '@babel/core'
+      - '@typescript-eslint/parser'
+      - coffeescript
+      - less
+      - node-sass
+      - postcss
+      - postcss-load-config
+      - pug
+      - stylus
+      - sugarss
+      - supports-color
+    dev: false
+
   file:projects/prod.tgz_sass@1.35.2:
-    resolution: {integrity: sha512-1R1VhZgAhnoPspNfGQ5t+ALIfVnL2Vsmu+8htTJyu9j+/6eA3VZC1Qj53TkG/Nvr1SqgbiCRhCswye64ZvYZMA==, tarball: file:projects/prod.tgz}
+    resolution: {integrity: sha512-YvHAq9prwTKfbPYrBY+fYt5xx57sf3+ogsW9Oy0hqo4nnExVCgoeG9fXbC+Qfh8gu21YPgA46pUYsMx55HMOzw==, tarball: file:projects/prod.tgz}
     id: file:projects/prod.tgz
     name: '@rush-temp/prod'
     version: 0.0.0
@@ -8831,6 +8892,27 @@ packages:
       - ts-node
       - typescript
       - utf-8-validate
+    dev: false
+
+  file:projects/rpc.tgz:
+    resolution: {integrity: sha512-I0Vg5LboXQzFWl8yQhPfKmnge6Fvfdkg78qx73B83tzq01pWAGjNoruioVHFyLGQxJXYBI7xnn55Co+68W+Srg==, tarball: file:projects/rpc.tgz}
+    name: '@rush-temp/rpc'
+    version: 0.0.0
+    dependencies:
+      '@microsoft/api-extractor': 7.18.1
+      '@typescript-eslint/eslint-plugin': 4.28.2_5031fffb45dfb7117e61c1d8ea1ef3ff
+      '@typescript-eslint/parser': 4.28.2_eslint@7.30.0+typescript@4.3.5
+      eslint: 7.30.0
+      eslint-config-standard: 16.0.3_68aba462ebcb9819879db75ba6ea05da
+      eslint-config-standard-with-typescript: 20.0.0_2637e9af5db27789995bc2395a80d787
+      eslint-plugin-import: 2.23.4_eslint@7.30.0
+      eslint-plugin-node: 11.1.0_eslint@7.30.0
+      eslint-plugin-promise: 5.1.0_eslint@7.30.0
+      eslint-plugin-standard: 5.0.0_eslint@7.30.0
+      prettier: 2.3.2
+      typescript: 4.3.5
+    transitivePeerDependencies:
+      - supports-color
     dev: false
 
   file:projects/theme.tgz_f3ce97d49bdaa529894a1e7040d14116:

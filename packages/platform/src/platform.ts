@@ -85,6 +85,7 @@ export default plugin(Platform, {
     InvalidId: '' as StatusCode<{ id: string }>,
 
     LoadingPlugin: '' as StatusCode<{ plugin: string }>,
-    NoLocationForPlugin: '' as StatusCode<{ plugin: Plugin }>
+    NoLocationForPlugin: '' as StatusCode<{ plugin: Plugin }>,
+    ResourceNotFound: '' as StatusCode<{ resource: Resource<any> }>
   }
 })

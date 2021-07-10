@@ -60,7 +60,7 @@ describe('ident', () => {
           MyString: 'xxx' as StatusCode<{}>
         }
       })
-    expect(f).toThrowError("'mergeIds' overwrites")
+    expect(f).toThrowError("'identify' overwrites")
   })
 
   it('should fail to parse id', () => {

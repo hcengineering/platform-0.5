@@ -21,6 +21,10 @@ const locale = 'en'
 
 type StringsLocation = Record<string, () => Promise<Record<string, string>>>
 
+export function getLocale(): string {
+  return locale
+}
+
 export async function loadStringsStatic (
   location: StringsLocation
 ): Promise<Record<string, string>> {
@@ -37,11 +41,11 @@ export async function translate<P extends {}> (
 ): Promise<string> {
   let compiled = compiledStrings.get(string)
   if (compiled === undefined) {
-    const translation = await getResource(string)
-    if (translation !== undefined) {
+    try {
+      const translation = await getResource(string)
       compiled = new IntlMessageFormat(translation, locale)
       compiledStrings.set(string, compiled)
-    } else {
+    } catch(err) {
       return string
     }
   }

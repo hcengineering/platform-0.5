@@ -15,7 +15,7 @@
 
 import { addLocation } from '@anticrm/platform'
 
-// import login from '@anticrm/login'
+import { loginId } from '@anticrm/login'
 // import workbench from '@anticrm/workbench'
 // import core from '@anticrm/plugin-core'
 // import chunter from '@anticrm/chunter'
@@ -53,7 +53,7 @@ export function configurePlatform() {
   // else
   //   addLocation(core, () => import(/* webpackChunkName: "plugin-core" */ '@anticrm/plugin-core-impl'))
 
-  // addLocation(login, () => import(/* webpackChunkName: "login" */ '@anticrm/login-impl'))
+  addLocation(loginId, () => import(/* webpackChunkName: "login" */ '@anticrm/plugin-login'))
   // addLocation(workbench, () => import(/* webpackChunkName: "workbench" */ '@anticrm/workbench-impl'))
   // addLocation(chunter, () => import(/* webpackChunkName: "chunter" */ '@anticrm/chunter-impl'))
   // addLocation(task, () => import(/* webpackChunkName: "task" */ '@anticrm/task-impl'))

@@ -395,6 +395,11 @@
       "shouldPublish": true
     },
     {
+      "packageName": "@anticrm/rpc",
+      "projectFolder": "packages/rpc",
+      "shouldPublish": true
+    },
+    {
       "packageName": "@anticrm/theme",
       "projectFolder": "packages/theme",
       "shouldPublish": true
@@ -402,6 +407,16 @@
     {
       "packageName": "@anticrm/ui",
       "projectFolder": "packages/ui",
+      "shouldPublish": true
+    },
+    {
+      "packageName": "@anticrm/login",
+      "projectFolder": "packages/login",
+      "shouldPublish": true
+    },
+    {
+      "packageName": "@anticrm/plugin-login",
+      "projectFolder": "plugins/login",
       "shouldPublish": true
     },
     {
