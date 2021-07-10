@@ -74,10 +74,7 @@ export async function getResource<T> (
     return cached
   }
   const info = parseId(resource)
-  let resources = loading.get(info.component)
-  if (resources === undefined) {
-    resources = loadPlugin(info.component)
-  }
+  const resources = loading.get(info.component) ?? loadPlugin(info.component)
   const value = (await resources)[info.kind]?.[info.name]
   if (value === undefined) {
     throw new PlatformError(new Status(Severity.ERROR, platform.status.ResourceNotFound, { resource }))
