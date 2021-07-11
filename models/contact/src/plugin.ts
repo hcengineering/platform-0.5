@@ -13,21 +13,15 @@
 // limitations under the License.
 //
 
-import { Builder } from '@anticrm/model'
+import { mergeIds } from '@anticrm/platform' 
+import type { Ref, Class } from '@anticrm/core'
+import type { Contact, Person, Organization } from '@anticrm/contact'
+import contact, { contactId } from '@anticrm/contact'
 
-import { createModel as coreModel } from '@anticrm/model-core'
-import { createModel as workbenchModel } from '@anticrm/model-workbench'
-import { createModel as contactModel } from '@anticrm/model-contact'
-import { createModel as chunterModel } from '@anticrm/model-chunter'
-// import { createModel as taskModel } from '@anticrm/model-task'
-
-const builder = new Builder()
-
-coreModel(builder)
-workbenchModel(builder)
-contactModel(builder)
-chunterModel(builder)
-// taskModel(builder)
-
-export default builder
-
+export const ids = mergeIds(contactId, contact, {
+  class: {
+    Contact: '' as Ref<Class<Contact>>,
+    Person: '' as Ref<Class<Person>>,
+    Organization: '' as Ref<Class<Organization>>
+  }
+})

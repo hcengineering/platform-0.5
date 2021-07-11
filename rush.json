@@ -26,7 +26,7 @@
    * Specify one of: "pnpmVersion", "npmVersion", or "yarnVersion".  See the Rush documentation
    * for details about these alternatives.
    */
-  "pnpmVersion": "6.3.0",
+  "pnpmVersion": "6.10.0",
 
   // "npmVersion": "4.5.0",
   // "yarnVersion": "1.9.4",
@@ -435,6 +435,11 @@
       "shouldPublish": true
     },
     {
+      "packageName": "@anticrm/contact",
+      "projectFolder": "packages/contact",
+      "shouldPublish": true
+    },
+    {
       "packageName": "@anticrm/login",
       "projectFolder": "packages/login",
       "shouldPublish": true
@@ -487,6 +492,11 @@
     {
       "packageName": "@anticrm/model-workbench",
       "projectFolder": "models/workbench",
+      "shouldPublish": false
+    },
+    {
+      "packageName": "@anticrm/model-contact",
+      "projectFolder": "models/contact",
       "shouldPublish": false
     },
     {
