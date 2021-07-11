@@ -68,7 +68,7 @@ export const websiteUrl = siteBucket.websiteEndpoint
 // Get the hosted zone by domain name
 const zoneId = aws.route53.getZone({ name: "hc.engineering." }).then(zone => zone.zoneId)
 
-const tenMinutes = 60 * 10;
+const tenMinutes = 60 * 10
 
 // Per AWS, ACM certificate must be in the us-east-1 region.
 const eastRegion = new aws.Provider("east", {
