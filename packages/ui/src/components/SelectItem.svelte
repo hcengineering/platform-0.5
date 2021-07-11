@@ -14,7 +14,6 @@
 -->
 
 <script lang="ts">
-  import type { IntlString } from '@anticrm/platform'
   import type { AnySvelteComponent, IPopupItem } from '../types'
   import Label from './Label.svelte'
   import PopupMenu from './PopupMenu.svelte'
@@ -49,7 +48,7 @@
         <svelte:component this={component} {...item.props}/>
       {/if}
     </div>
-    <div class="icon"><ActionIcon label={'Remove'} direction={'left'} icon={Close} size={16} action={async () => { item.selected = false }}/></div>
+    <div class="icon"><ActionIcon label={'Remove'} direction={'top'} icon={Close} size={16} action={async () => { item.selected = false }}/></div>
   </button>
   {#if byTitle }
     <PopupItem bind:title={item.title} selectable bind:selected={item.selected}/>
