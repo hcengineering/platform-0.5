@@ -6,9 +6,9 @@ import { readdirSync, lstatSync } from 'fs'
 import { join } from 'path'
 
 const siteBucket = new aws.s3.Bucket('anticrm-app', {
+  acl: "public-read",
   website: {
-    indexDocument: 'index.html',
-    errorDocument: 'index.html'
+    indexDocument: 'index.html'
   }
 })
 
@@ -23,6 +23,7 @@ function createObjects(root: string, path: string): void {
       createObjects(root, relative)
     } else {
       new aws.s3.BucketObject(relative, {
+        acl: 'public-read',
         bucket: siteBucket,
         source: new pulumi.asset.FileAsset(absolute),     // use FileAsset to point to a file
         contentType: getType(absolute) || undefined, // set the MIME type of the file
@@ -37,30 +38,30 @@ createObjects(buildDir + '/dist', '')
 
 export const bucketName = siteBucket.bucket // create a stack export for bucket name
 
-// Create an S3 Bucket Policy to allow public read of all objects in bucket
-// This reusable function can be pulled out into its own module
-function publicReadPolicyForBucket(bucketName: string) {
-  return JSON.stringify({
-    Version: "2012-10-17",
-    Statement: [{
-      Effect: "Allow",
-      Principal: "*",
-      Action: [
-        "s3:GetObject"
-      ],
-      Resource: [
-        `arn:aws:s3:::${bucketName}/*` // policy refers to bucket name explicitly
-      ]
-    }]
-  })
-}
+// // Create an S3 Bucket Policy to allow public read of all objects in bucket
+// // This reusable function can be pulled out into its own module
+// function publicReadPolicyForBucket(bucketName: string) {
+//   return JSON.stringify({
+//     Version: "2012-10-17",
+//     Statement: [{
+//       Effect: "Allow",
+//       Principal: "*",
+//       Action: [
+//         "s3:GetObject"
+//       ],
+//       Resource: [
+//         `arn:aws:s3:::${bucketName}/*` // policy refers to bucket name explicitly
+//       ]
+//     }]
+//   })
+// }
 
-// Set the access policy for the bucket so all objects are readable
-new aws.s3.BucketPolicy('bucketPolicy', {
-  bucket: siteBucket.bucket, // depends on siteBucket -- see explanation below
-  policy: siteBucket.bucket.apply(publicReadPolicyForBucket)
-          // transform the siteBucket.bucket output property -- see explanation below
-});
+// // Set the access policy for the bucket so all objects are readable
+// new aws.s3.BucketPolicy('bucketPolicy', {
+//   bucket: siteBucket.bucket, // depends on siteBucket -- see explanation below
+//   policy: siteBucket.bucket.apply(publicReadPolicyForBucket)
+//           // transform the siteBucket.bucket output property -- see explanation below
+// });
 
 export const websiteUrl = siteBucket.websiteEndpoint
 
@@ -157,7 +158,7 @@ const distributionArgs: aws.cloudfront.DistributionArgs = {
   // You can customize error responses. When CloudFront receives an error from the origin (e.g. S3 or some other
   // web service) it can return a different error code, and return the response for a different resource.
   customErrorResponses: [
-    { errorCode: 404, responseCode: 404, responsePagePath: "/404.html" },
+    { errorCode: 404, responseCode: 200, responsePagePath: "/index.html"  },
   ],
 
   restrictions: {
