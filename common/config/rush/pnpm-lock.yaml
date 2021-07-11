@@ -2,7 +2,6 @@ lockfileVersion: 5.3
 
 specifiers:
   '@babel/runtime': ^7.13.10
-  '@jest/globals': ^27.0.3
   '@rush-temp/chunter': file:./projects/chunter.tgz
   '@rush-temp/chunter-assets': file:./projects/chunter-assets.tgz
   '@rush-temp/client': file:./projects/client.tgz
@@ -21,12 +20,23 @@ specifiers:
   '@rush-temp/prod': file:./projects/prod.tgz
   '@rush-temp/query': file:./projects/query.tgz
   '@rush-temp/text': file:./projects/text.tgz
+  '@rush-temp/text-editor': file:./projects/text-editor.tgz
   '@rush-temp/text-ui': file:./projects/text-ui.tgz
   '@rush-temp/theme': file:./projects/theme.tgz
   '@rush-temp/ui': file:./projects/ui.tgz
   '@rush-temp/workbench': file:./projects/workbench.tgz
+  '@testing-library/svelte': ^3.0.3
   '@types/markdown-it': ^12.0.2
   '@types/node': ^14.14.40
+  '@types/prosemirror-commands': ^1.0.3
+  '@types/prosemirror-history': ^1.0.1
+  '@types/prosemirror-inputrules': ^1.0.2
+  '@types/prosemirror-keymap': ^1.0.3
+  '@types/prosemirror-model': ^1.7.2
+  '@types/prosemirror-schema-basic': ^1.0.1
+  '@types/prosemirror-schema-list': ^1.0.1
+  '@types/prosemirror-state': ^1.2.6
+  '@types/prosemirror-view': ^1.15.0
   '@types/toposort': ^2.0.3
   '@typescript-eslint/eslint-plugin': ^4.22.0
   '@typescript-eslint/parser': ^4.22.0
@@ -41,9 +51,9 @@ specifiers:
   eslint-plugin-import: ^2.22.1
   eslint-plugin-node: ^11.1.0
   eslint-plugin-promise: ^5.1.0
+  eslint-plugin-standard: ^5.0.0
   eslint-plugin-svelte3: ^3.1.2
   eslint-svelte3-preprocess: ~0.0.5
-  fast-equals: ^2.0.3
   file-loader: ^6.2.0
   intl-messageformat: ^9.7.1
   markdown-it: ^12.0.6
@@ -52,12 +62,22 @@ specifiers:
   postcss-load-config: ^3.1.0
   postcss-loader: ^6.1.0
   prettier-plugin-svelte: ^2.2.0
+  prosemirror-commands: ^1.1.4
+  prosemirror-history: ^1.1.3
+  prosemirror-inputrules: ^1.1.2
+  prosemirror-keymap: ^1.1.4
+  prosemirror-model: ^1.14.2
+  prosemirror-schema-basic: ^1.1.2
+  prosemirror-schema-list: ^1.1.2
+  prosemirror-state: ^1.3.4
+  prosemirror-view: ^1.15.2
   sass: ^1.32.8
   sass-loader: ^11.0.1
   simplytyped: ^3.3.0
   style-loader: ^2.0.0
   svelte: ^3.37.0
   svelte-check: ^2.1.0
+  svelte-jester: ^1.7.0
   svelte-loader: ^3.1.0
   svelte-preprocess: ^4.7.0
   svgo-loader: ^3.0.0
@@ -72,7 +92,6 @@ specifiers:
 
 dependencies:
   '@babel/runtime': 7.14.6
-  '@jest/globals': 27.0.6
   '@rush-temp/chunter': file:projects/chunter.tgz_9c26a505e26b50edcfa9f28c7953ad70
   '@rush-temp/chunter-assets': file:projects/chunter-assets.tgz_9c26a505e26b50edcfa9f28c7953ad70
   '@rush-temp/client': file:projects/client.tgz_9c26a505e26b50edcfa9f28c7953ad70
@@ -91,12 +110,23 @@ dependencies:
   '@rush-temp/prod': file:projects/prod.tgz_sass@1.35.2+ts-node@10.1.0
   '@rush-temp/query': file:projects/query.tgz_ts-node@10.1.0
   '@rush-temp/text': file:projects/text.tgz_ts-node@10.1.0
+  '@rush-temp/text-editor': file:projects/text-editor.tgz_814488e722ed49c4c8aeb5211df9d5a0
   '@rush-temp/text-ui': file:projects/text-ui.tgz_814488e722ed49c4c8aeb5211df9d5a0
   '@rush-temp/theme': file:projects/theme.tgz_f3ce97d49bdaa529894a1e7040d14116
   '@rush-temp/ui': file:projects/ui.tgz_814488e722ed49c4c8aeb5211df9d5a0
   '@rush-temp/workbench': file:projects/workbench.tgz_9c26a505e26b50edcfa9f28c7953ad70
+  '@testing-library/svelte': 3.0.3_svelte@3.38.3
   '@types/markdown-it': 12.0.3
   '@types/node': 14.17.5
+  '@types/prosemirror-commands': 1.0.4
+  '@types/prosemirror-history': 1.0.3
+  '@types/prosemirror-inputrules': 1.0.4
+  '@types/prosemirror-keymap': 1.0.4
+  '@types/prosemirror-model': 1.13.1
+  '@types/prosemirror-schema-basic': 1.0.2
+  '@types/prosemirror-schema-list': 1.0.3
+  '@types/prosemirror-state': 1.2.7
+  '@types/prosemirror-view': 1.17.2
   '@types/toposort': 2.0.3
   '@typescript-eslint/eslint-plugin': 4.28.2_a3b1fdfbd5b8eda7bb8034a5736f94f5
   '@typescript-eslint/parser': 4.28.2_eslint@7.30.0
@@ -111,9 +141,9 @@ dependencies:
   eslint-plugin-import: 2.23.4_eslint@7.30.0
   eslint-plugin-node: 11.1.0_eslint@7.30.0
   eslint-plugin-promise: 5.1.0_eslint@7.30.0
+  eslint-plugin-standard: 5.0.0_eslint@7.30.0
   eslint-plugin-svelte3: 3.2.0_eslint@7.30.0+svelte@3.38.3
   eslint-svelte3-preprocess: 0.0.5_svelte@3.38.3
-  fast-equals: 2.0.3
   file-loader: 6.2.0_webpack@5.44.0
   intl-messageformat: 9.7.1
   markdown-it: 12.1.0
@@ -122,12 +152,22 @@ dependencies:
   postcss-load-config: 3.1.0_ts-node@10.1.0
   postcss-loader: 6.1.1_postcss@8.3.5+webpack@5.44.0
   prettier-plugin-svelte: 2.3.1_svelte@3.38.3
+  prosemirror-commands: 1.1.10
+  prosemirror-history: 1.1.3
+  prosemirror-inputrules: 1.1.3
+  prosemirror-keymap: 1.1.4
+  prosemirror-model: 1.14.2
+  prosemirror-schema-basic: 1.1.2
+  prosemirror-schema-list: 1.1.5
+  prosemirror-state: 1.3.4
+  prosemirror-view: 1.18.8
   sass: 1.35.2
   sass-loader: 11.1.1_sass@1.35.2+webpack@5.44.0
   simplytyped: 3.3.0
   style-loader: 2.0.0_webpack@5.44.0
   svelte: 3.38.3
   svelte-check: 2.2.2_1e60e55b022cbc4d590e891355c7d065
+  svelte-jester: 1.7.0_svelte@3.38.3
   svelte-loader: 3.1.2_svelte@3.38.3
   svelte-preprocess: 4.7.4_1e60e55b022cbc4d590e891355c7d065
   svgo-loader: 3.0.0
@@ -449,6 +489,14 @@ packages:
     dependencies:
       '@babel/core': 7.14.6
       '@babel/helper-plugin-utils': 7.14.5
+    dev: false
+
+  /@babel/runtime-corejs3/7.14.7:
+    resolution: {integrity: sha512-Wvzcw4mBYbTagyBVZpAJWI06auSIj033T/yNE0Zn1xcup83MieCddZA7ls3kme17L4NOGBrQ09Q+nKB41RLWBA==}
+    engines: {node: '>=6.9.0'}
+    dependencies:
+      core-js-pure: 3.15.2
+      regenerator-runtime: 0.13.7
     dev: false
 
   /@babel/runtime/7.14.6:
@@ -1073,6 +1121,30 @@ packages:
       '@sinonjs/commons': 1.8.3
     dev: false
 
+  /@testing-library/dom/7.31.2:
+    resolution: {integrity: sha512-3UqjCpey6HiTZT92vODYLPxTBWlM8ZOOjr3LX5F37/VRipW2M1kX6I/Cm4VXzteZqfGfagg8yXywpcOgQBlNsQ==}
+    engines: {node: '>=10'}
+    dependencies:
+      '@babel/code-frame': 7.14.5
+      '@babel/runtime': 7.14.6
+      '@types/aria-query': 4.2.2
+      aria-query: 4.2.2
+      chalk: 4.1.1
+      dom-accessibility-api: 0.5.6
+      lz-string: 1.4.4
+      pretty-format: 26.6.2
+    dev: false
+
+  /@testing-library/svelte/3.0.3_svelte@3.38.3:
+    resolution: {integrity: sha512-GxafAllShGM2nkntFGURZ7fYVlUYwv7K62lqv1aFqtTYzzeZ2Cu8zTVhtE/Qt3bk2zMl6+FPKP03wjLip/G8mA==}
+    engines: {node: '>= 8'}
+    peerDependencies:
+      svelte: 3.x
+    dependencies:
+      '@testing-library/dom': 7.31.2
+      svelte: 3.38.3
+    dev: false
+
   /@tootallnate/once/1.1.2:
     resolution: {integrity: sha512-RbzJvlNzmRq5c3O09UipeuXno4tA1FE6ikOjxZK0tuxVv3412l64l5t1W5pj4+rJq9vpkm/kwiR07aZXnsKPxw==}
     engines: {node: '>= 6'}
@@ -1101,6 +1173,10 @@ packages:
 
   /@types/argparse/1.0.38:
     resolution: {integrity: sha512-ebDJ9b0e702Yr7pWgB0jzm+CX4Srzz8RcXtLJDJB+BSccqMa36uyH/zUsSYao5+BD1ytv3k3rPYCq4mAE1hsXA==}
+    dev: false
+
+  /@types/aria-query/4.2.2:
+    resolution: {integrity: sha512-HnYpAE1Y6kRyKM/XkEuiRQhTHvkzMBurTHnpFLYLBGPIylZNPs9jJcuOOYWxPLJCSEtmZT0Y8rHDokKN7rRTig==}
     dev: false
 
   /@types/babel__core/7.1.15:
@@ -1230,12 +1306,89 @@ packages:
     resolution: {integrity: sha512-Gj7cI7z+98M282Tqmp2K5EIsoouUEzbBJhQQzDE3jSIRk6r9gsz0oUokqIUR4u1R3dMHo0pDHM7sNOHyhulypw==}
     dev: false
 
+  /@types/orderedmap/1.0.0:
+    resolution: {integrity: sha512-dxKo80TqYx3YtBipHwA/SdFmMMyLCnP+5mkEqN0eMjcTBzHkiiX0ES118DsjDBjvD+zeSsSU9jULTZ+frog+Gw==}
+    dev: false
+
   /@types/parse-json/4.0.0:
     resolution: {integrity: sha512-//oorEZjL6sbPcKUaCdIGlIUeH26mgzimjBB77G6XRgnDl/L5wOnpyBGRe/Mmf5CVW3PwEBE1NjiMZ/ssFh4wA==}
     dev: false
 
   /@types/prettier/2.3.2:
     resolution: {integrity: sha512-eI5Yrz3Qv4KPUa/nSIAi0h+qX0XyewOliug5F2QAtuRg6Kjg6jfmxe1GIwoIRhZspD1A0RP8ANrPwvEXXtRFog==}
+    dev: false
+
+  /@types/prosemirror-commands/1.0.4:
+    resolution: {integrity: sha512-utDNYB3EXLjAfYIcRWJe6pn3kcQ5kG4RijbT/0Y/TFOm6yhvYS/D9eJVnijdg9LDjykapcezchxGRqFD5LcyaQ==}
+    dependencies:
+      '@types/prosemirror-model': 1.13.1
+      '@types/prosemirror-state': 1.2.7
+      '@types/prosemirror-view': 1.17.2
+    dev: false
+
+  /@types/prosemirror-history/1.0.3:
+    resolution: {integrity: sha512-5TloMDRavgLjOAKXp1Li8u0xcsspzbT1Cm9F2pwHOkgvQOz1jWQb2VIXO7RVNsFjLBZdIXlyfSLivro3DuMWXg==}
+    dependencies:
+      '@types/prosemirror-model': 1.13.1
+      '@types/prosemirror-state': 1.2.7
+    dev: false
+
+  /@types/prosemirror-inputrules/1.0.4:
+    resolution: {integrity: sha512-lJIMpOjO47SYozQybUkpV6QmfuQt7GZKHtVrvS+mR5UekA8NMC5HRIVMyaIauJLWhKU6oaNjpVaXdw41kh165g==}
+    dependencies:
+      '@types/prosemirror-model': 1.13.1
+      '@types/prosemirror-state': 1.2.7
+    dev: false
+
+  /@types/prosemirror-keymap/1.0.4:
+    resolution: {integrity: sha512-ycevwkqUh+jEQtPwqO7sWGcm+Sybmhu8MpBsM8DlO3+YTKnXbKA6SDz/+q14q1wK3UA8lHJyfR+v+GPxfUSemg==}
+    dependencies:
+      '@types/prosemirror-commands': 1.0.4
+      '@types/prosemirror-model': 1.13.1
+      '@types/prosemirror-state': 1.2.7
+      '@types/prosemirror-view': 1.17.2
+    dev: false
+
+  /@types/prosemirror-model/1.13.1:
+    resolution: {integrity: sha512-tA1AlI+YR2t3Ve5eeQVJnQm4yV4wVlNfeogHusD1X3OEqqMYTuPssThgIMR4PxPHtvV871Ix8a20bUiJvULDgw==}
+    dependencies:
+      '@types/orderedmap': 1.0.0
+    dev: false
+
+  /@types/prosemirror-schema-basic/1.0.2:
+    resolution: {integrity: sha512-dzT/6t+dq8/On1be0yarcOIu8wROjhK8QB5wslpLbtTIr5wb0iQv/esJm/KAHcD/PBXR9nSV4TL5AtQmBrcRnw==}
+    dependencies:
+      '@types/prosemirror-model': 1.13.1
+    dev: false
+
+  /@types/prosemirror-schema-list/1.0.3:
+    resolution: {integrity: sha512-uWybOf+M2Ea7rlbs0yLsS4YJYNGXYtn4N+w8HCw3Vvfl6wBAROzlMt0gV/D/VW/7J/LlAjwMezuGe8xi24HzXA==}
+    dependencies:
+      '@types/orderedmap': 1.0.0
+      '@types/prosemirror-model': 1.13.1
+      '@types/prosemirror-state': 1.2.7
+    dev: false
+
+  /@types/prosemirror-state/1.2.7:
+    resolution: {integrity: sha512-clJf5uw3/XQnBJtl2RqYXoLMGBySnLYl43xtDvFfQZKkLnnYcM1SDU8dcz7lWjl2Dm+H98RpLOl44pp7DYT+wA==}
+    dependencies:
+      '@types/prosemirror-model': 1.13.1
+      '@types/prosemirror-transform': 1.1.4
+      '@types/prosemirror-view': 1.17.2
+    dev: false
+
+  /@types/prosemirror-transform/1.1.4:
+    resolution: {integrity: sha512-HP1PauvkqSgDquZut8HaLOTUDQ6jja/LAy4OA7tTS1XG7wqRnX3gLUyEj0mD6vFd4y8BPkNddNdOh/BeGHlUjg==}
+    dependencies:
+      '@types/prosemirror-model': 1.13.1
+    dev: false
+
+  /@types/prosemirror-view/1.17.2:
+    resolution: {integrity: sha512-1yUTQZ3yx2YvJTHZdY/rmvSiJ8tJLhUmlNgbFdkFaFcKC6LTBntg5lQvOZ53Aytadab+M/xz7/TzGX8iYB/7gw==}
+    dependencies:
+      '@types/prosemirror-model': 1.13.1
+      '@types/prosemirror-state': 1.2.7
+      '@types/prosemirror-transform': 1.1.4
     dev: false
 
   /@types/pug/2.0.5:
@@ -1784,6 +1937,14 @@ packages:
 
   /argparse/2.0.1:
     resolution: {integrity: sha512-8+9WqebbFzpX9OR+Wa6O29asIogeRMzcGtAINdpMHHyAg10f05aSFVBbcEqGf/PXw1EjAZ+q2/bEBg3DvurK3Q==}
+    dev: false
+
+  /aria-query/4.2.2:
+    resolution: {integrity: sha512-o/HelwhuKpTj/frsOsbNLNgnNGVIFsVP/SW2BSF14gVl7kAfMOJ6/8wUAUvG1R1NHKrfG+2sHZTu0yauT1qBrA==}
+    engines: {node: '>=6.0'}
+    dependencies:
+      '@babel/runtime': 7.14.6
+      '@babel/runtime-corejs3': 7.14.7
     dev: false
 
   /arr-diff/4.0.0:
@@ -2475,6 +2636,11 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: false
 
+  /core-js-pure/3.15.2:
+    resolution: {integrity: sha512-D42L7RYh1J2grW8ttxoY1+17Y4wXZeKe7uyplAI3FkNQyI5OgBIAjUfFiTPfL1rs0qLpxaabITNbjKl1Sp82tA==}
+    requiresBuild: true
+    dev: false
+
   /core-js/3.15.2:
     resolution: {integrity: sha512-tKs41J7NJVuaya8DxIOCnl8QuPHx5/ZVbFo1oKgVl1qHFBBrDctzQGtuLjPpRdNTWmKPH6oEvgN/MUID+l485Q==}
     requiresBuild: true
@@ -2810,6 +2976,10 @@ packages:
     engines: {node: '>=6.0.0'}
     dependencies:
       esutils: 2.0.3
+    dev: false
+
+  /dom-accessibility-api/0.5.6:
+    resolution: {integrity: sha512-DplGLZd8L1lN64jlT27N9TVSESFR5STaEJvX+thCby7fuCHonfPpAlodYc3vuUYbDuDec5w8AMP7oCM5TWFsqw==}
     dev: false
 
   /dom-serializer/1.3.2:
@@ -3282,6 +3452,15 @@ packages:
 
   /eslint-plugin-standard/4.1.0_eslint@7.30.0:
     resolution: {integrity: sha512-ZL7+QRixjTR6/528YNGyDotyffm5OQst/sGxKDwGb9Uqs4In5Egi4+jbobhqJoyoCM6/7v/1A5fhQ7ScMtDjaQ==}
+    peerDependencies:
+      eslint: '>=5.0.0'
+    dependencies:
+      eslint: 7.30.0
+    dev: false
+
+  /eslint-plugin-standard/5.0.0_eslint@7.30.0:
+    resolution: {integrity: sha512-eSIXPc9wBM4BrniMzJRBm2uoVuXz2EPa+NXPk2+itrVt+r5SbKFERx/IgrK/HmfjddyKVz2f+j+7gBRvu19xLg==}
+    deprecated: 'standard 16.0.0 and eslint-config-standard 16.0.0 no longer require the eslint-plugin-standard package. You can remove it from your dependencies with ''npm rm eslint-plugin-standard''. More info here: https://github.com/standard/standard/issues/1316'
     peerDependencies:
       eslint: '>=5.0.0'
     dependencies:
@@ -5840,6 +6019,11 @@ packages:
       yallist: 4.0.0
     dev: false
 
+  /lz-string/1.4.4:
+    resolution: {integrity: sha1-wNjq82BZ9wV5bh40SBHPTEmNOiY=}
+    hasBin: true
+    dev: false
+
   /make-dir/3.1.0:
     resolution: {integrity: sha512-g3FeP20LNwhALb/6Cz6Dd4F2ngze0jz7tbzrD2wAV+o9FeNHe4rL+yK2md0J/fiSf1sa1ADhXqi5+oVwOM/eGw==}
     engines: {node: '>=8'}
@@ -6348,6 +6532,10 @@ packages:
       word-wrap: 1.2.3
     dev: false
 
+  /orderedmap/1.1.1:
+    resolution: {integrity: sha512-3Ux8um0zXbVacKUkcytc0u3HgC0b0bBLT+I60r2J/En72cI0nZffqrA7Xtf2Hqs27j1g82llR5Mhbd0Z1XW4AQ==}
+    dev: false
+
   /original/1.0.2:
     resolution: {integrity: sha512-hyBVl6iqqUOJ8FqRe+l/gS8H+kKYjrEndd5Pm1MfBtsEKA038HkkdbAl/72EAXGyonD/PFsvmVG+EvcIpliMBg==}
     dependencies:
@@ -6805,6 +6993,76 @@ packages:
       react-is: 16.13.1
     dev: false
 
+  /prosemirror-commands/1.1.10:
+    resolution: {integrity: sha512-IWyBBXNAd44RM6NnBPljwq+/CM2oYCQJkF+YhKEAZNwzW0uFdGf4qComhjbKZzqFdu6Iub2ZhNsXgwPibA0lCQ==}
+    dependencies:
+      prosemirror-model: 1.14.2
+      prosemirror-state: 1.3.4
+      prosemirror-transform: 1.3.2
+    dev: false
+
+  /prosemirror-history/1.1.3:
+    resolution: {integrity: sha512-zGDotijea+vnfnyyUGyiy1wfOQhf0B/b6zYcCouBV8yo6JmrE9X23M5q7Nf/nATywEZbgRLG70R4DmfSTC+gfg==}
+    dependencies:
+      prosemirror-state: 1.3.4
+      prosemirror-transform: 1.3.2
+      rope-sequence: 1.3.2
+    dev: false
+
+  /prosemirror-inputrules/1.1.3:
+    resolution: {integrity: sha512-ZaHCLyBtvbyIHv0f5p6boQTIJjlD6o2NPZiEaZWT2DA+j591zS29QQEMT4lBqwcLW3qRSf7ZvoKNbf05YrsStw==}
+    dependencies:
+      prosemirror-state: 1.3.4
+      prosemirror-transform: 1.3.2
+    dev: false
+
+  /prosemirror-keymap/1.1.4:
+    resolution: {integrity: sha512-Al8cVUOnDFL4gcI5IDlG6xbZ0aOD/i3B17VT+1JbHWDguCgt/lBHVTHUBcKvvbSg6+q/W4Nj1Fu6bwZSca3xjg==}
+    dependencies:
+      prosemirror-state: 1.3.4
+      w3c-keyname: 2.2.4
+    dev: false
+
+  /prosemirror-model/1.14.2:
+    resolution: {integrity: sha512-TwkACyEiSi8FJiRhg2ffbzmQRy5DR+aTwAr7trNQNZL24HJR8ouxy4qCkG99PnWK0xZ0AjSMtPXSU6hnxAiP7Q==}
+    dependencies:
+      orderedmap: 1.1.1
+    dev: false
+
+  /prosemirror-schema-basic/1.1.2:
+    resolution: {integrity: sha512-G4q8WflNsR1Q33QAV4MQO0xWrHLOJ+BQcKswGXMy626wlQj6c/1n1v4eC9ns+h2y1r/fJHZEgSZnsNhm9lbrDw==}
+    dependencies:
+      prosemirror-model: 1.14.2
+    dev: false
+
+  /prosemirror-schema-list/1.1.5:
+    resolution: {integrity: sha512-9gadhga/wySVfb/iZ2vOpndbG0XroeLw0HkkZN5demNbOea6U5oQtJmvyYWC7ZVf3WkhmVdVsOXrllM9JcC20A==}
+    dependencies:
+      prosemirror-model: 1.14.2
+      prosemirror-transform: 1.3.2
+    dev: false
+
+  /prosemirror-state/1.3.4:
+    resolution: {integrity: sha512-Xkkrpd1y/TQ6HKzN3agsQIGRcLckUMA9u3j207L04mt8ToRgpGeyhbVv0HI7omDORIBHjR29b7AwlATFFf2GLA==}
+    dependencies:
+      prosemirror-model: 1.14.2
+      prosemirror-transform: 1.3.2
+    dev: false
+
+  /prosemirror-transform/1.3.2:
+    resolution: {integrity: sha512-/G6d/u9Mf6Bv3H1XR8VxhpjmUO75LYmnvj+s3ZfZpakU1hnQbsvCEybml1B3f2IWUAAQRFkbO1PnsbFhLZsYsw==}
+    dependencies:
+      prosemirror-model: 1.14.2
+    dev: false
+
+  /prosemirror-view/1.18.8:
+    resolution: {integrity: sha512-iLNonsRUM+ByIxJZP+tRuE8jUy56jfgf8oxnc4InWYTYdPibARs4FL6DQ6D56GdPMlXyTjXjSdfDp/x8mwHhtw==}
+    dependencies:
+      prosemirror-model: 1.14.2
+      prosemirror-state: 1.3.4
+      prosemirror-transform: 1.3.2
+    dev: false
+
   /proxy-addr/2.0.7:
     resolution: {integrity: sha512-llQsMLSUDUPT44jdrU/O37qlnifitDP+ZwrmmZcoSKyLKvtZxpyV0n2/bD/N4tBAAZ/gJEdZU7KMraoK1+XYAg==}
     engines: {node: '>= 0.10'}
@@ -7110,6 +7368,10 @@ packages:
     hasBin: true
     dependencies:
       glob: 7.1.7
+    dev: false
+
+  /rope-sequence/1.3.2:
+    resolution: {integrity: sha512-ku6MFrwEVSVmXLvy3dYph3LAMNS0890K7fabn+0YIRQ2T96T9F4gkFf0vf0WW0JUraNWwGRtInEpH7yO4tbQZg==}
     dev: false
 
   /rsvp/4.8.5:
@@ -7806,6 +8068,27 @@ packages:
     resolution: {integrity: sha512-3O+kkbT1XKAomKB0LRcdY8JUTzONoNZ8rSH4iEdG7piIYsw+KkXpTkbbU1Sc1yPY4onfXkmCrHElYsxr0V1Snw==}
     peerDependencies:
       svelte: '>=3.19.0'
+    dependencies:
+      svelte: 3.38.3
+    dev: false
+
+  /svelte-jester/1.7.0_jest@26.6.3+svelte@3.38.3:
+    resolution: {integrity: sha512-eWJSmxGXR/jetU+gpuAvrSEZT7PpNxrhV2GoUm/WQUtXFjGJcy6sZTq3kKaUz7q8VddHU1/yt9cxDRxo8IUsLA==}
+    engines: {node: '>= 14'}
+    peerDependencies:
+      jest: <= 26
+      svelte: '>= 3'
+    dependencies:
+      jest: 26.6.3_ts-node@10.1.0
+      svelte: 3.38.3
+    dev: false
+
+  /svelte-jester/1.7.0_svelte@3.38.3:
+    resolution: {integrity: sha512-eWJSmxGXR/jetU+gpuAvrSEZT7PpNxrhV2GoUm/WQUtXFjGJcy6sZTq3kKaUz7q8VddHU1/yt9cxDRxo8IUsLA==}
+    engines: {node: '>= 14'}
+    peerDependencies:
+      jest: <= 26
+      svelte: '>= 3'
     dependencies:
       svelte: 3.38.3
     dev: false
@@ -8524,6 +8807,10 @@ packages:
     resolution: {integrity: sha512-z8P5DvDNjKDoFIHK7q8r8lackT6l+jo/Ye3HOle7l9nICP9lf1Ci25fy9vHd0JOWewkIFzXIEig3TdKT7JQ5fQ==}
     dependencies:
       browser-process-hrtime: 1.0.0
+    dev: false
+
+  /w3c-keyname/2.2.4:
+    resolution: {integrity: sha512-tOhfEwEzFLJzf6d1ZPkYfGj+FWhIpBux9ppoP3rlclw3Z0BZv3N7b7030Z1kYth+6rDuAsXUFr+d0VE6Ed1ikw==}
     dev: false
 
   /w3c-xmlserializer/2.0.0:
@@ -9258,7 +9545,7 @@ packages:
     dev: false
 
   file:projects/plugin-chunter.tgz_00682bb88e6504b414986dc6472c6748:
-    resolution: {integrity: sha512-KawXmOGSgTG7ewVJYdmKeVsYAQDNT5OujlUTJY8LlMVXce5PC2Jm6u3p6QawFqsHyKoCM9/GKLRuziK/0L4fkw==, tarball: file:projects/plugin-chunter.tgz}
+    resolution: {integrity: sha512-r3/Wcc169WsoXRgwjdGUmI/PwhhwmIbA8gyatqBnNZ+brFIRTM/FS9VxCN0X4jJYxAdaIgDfPHLBes24/WDJBw==, tarball: file:projects/plugin-chunter.tgz}
     id: file:projects/plugin-chunter.tgz
     name: '@rush-temp/plugin-chunter'
     version: 0.0.0
@@ -9433,6 +9720,72 @@ packages:
     transitivePeerDependencies:
       - bufferutil
       - canvas
+      - supports-color
+      - ts-node
+      - utf-8-validate
+    dev: false
+
+  file:projects/text-editor.tgz_814488e722ed49c4c8aeb5211df9d5a0:
+    resolution: {integrity: sha512-d3wRZ5UnbqJ62m5rmyzMFMI3dphUEVqgSwMy3TKrfyB+HTOTG5LqjYK7B5HOEy0CzvHM1TTF8KSx20+Lizmn8A==, tarball: file:projects/text-editor.tgz}
+    id: file:projects/text-editor.tgz
+    name: '@rush-temp/text-editor'
+    version: 0.0.0
+    dependencies:
+      '@jest/globals': 26.6.2
+      '@testing-library/svelte': 3.0.3_svelte@3.38.3
+      '@types/jest': 26.0.24
+      '@types/prosemirror-commands': 1.0.4
+      '@types/prosemirror-history': 1.0.3
+      '@types/prosemirror-inputrules': 1.0.4
+      '@types/prosemirror-keymap': 1.0.4
+      '@types/prosemirror-model': 1.13.1
+      '@types/prosemirror-schema-basic': 1.0.2
+      '@types/prosemirror-schema-list': 1.0.3
+      '@types/prosemirror-state': 1.2.7
+      '@types/prosemirror-view': 1.17.2
+      '@typescript-eslint/eslint-plugin': 4.28.2_5031fffb45dfb7117e61c1d8ea1ef3ff
+      '@typescript-eslint/parser': 4.28.2_eslint@7.30.0+typescript@4.3.5
+      eslint: 7.30.0
+      eslint-config-standard: 16.0.3_68aba462ebcb9819879db75ba6ea05da
+      eslint-config-standard-with-typescript: 20.0.0_2637e9af5db27789995bc2395a80d787
+      eslint-plugin-import: 2.23.4_eslint@7.30.0
+      eslint-plugin-node: 11.1.0_eslint@7.30.0
+      eslint-plugin-promise: 5.1.0_eslint@7.30.0
+      eslint-plugin-standard: 5.0.0_eslint@7.30.0
+      eslint-plugin-svelte3: 3.2.0_eslint@7.30.0+svelte@3.38.3
+      fast-equals: 2.0.3
+      jest: 26.6.3_ts-node@10.1.0
+      prettier: 2.3.2
+      prettier-plugin-svelte: 2.3.1_prettier@2.3.2+svelte@3.38.3
+      prosemirror-commands: 1.1.10
+      prosemirror-history: 1.1.3
+      prosemirror-inputrules: 1.1.3
+      prosemirror-keymap: 1.1.4
+      prosemirror-model: 1.14.2
+      prosemirror-schema-basic: 1.1.2
+      prosemirror-schema-list: 1.1.5
+      prosemirror-state: 1.3.4
+      prosemirror-view: 1.18.8
+      sass: 1.35.2
+      svelte: 3.38.3
+      svelte-check: 2.2.2_1e60e55b022cbc4d590e891355c7d065
+      svelte-jester: 1.7.0_jest@26.6.3+svelte@3.38.3
+      svelte-loader: 3.1.2_svelte@3.38.3
+      svelte-preprocess: 4.7.4_f72cb119e5efb9f4f70f63ca9c9312db
+      ts-jest: 26.5.6_jest@26.6.3+typescript@4.3.5
+      typescript: 4.3.5
+    transitivePeerDependencies:
+      - '@babel/core'
+      - bufferutil
+      - canvas
+      - coffeescript
+      - less
+      - node-sass
+      - postcss
+      - postcss-load-config
+      - pug
+      - stylus
+      - sugarss
       - supports-color
       - ts-node
       - utf-8-validate
