@@ -1,6 +1,6 @@
 [
   {
-    "_id": "60ea265e485688ef8b46c0f7",
+    "_id": "60eaeea5e201bf94118bdc58",
     "_class": "core.class.TxCreateDoc",
     "space": "core.space.Tx",
     "modifiedBy": "core.account.System",
@@ -13,7 +13,7 @@
     }
   },
   {
-    "_id": "60ea265e485688ef8b46c0f8",
+    "_id": "60eaeea5e201bf94118bdc59",
     "_class": "core.class.TxCreateDoc",
     "space": "core.space.Tx",
     "modifiedBy": "core.account.System",
@@ -27,7 +27,7 @@
     }
   },
   {
-    "_id": "60ea265e485688ef8b46c0f9",
+    "_id": "60eaeea5e201bf94118bdc5a",
     "_class": "core.class.TxCreateDoc",
     "space": "core.space.Tx",
     "modifiedBy": "core.account.System",
@@ -42,7 +42,7 @@
     }
   },
   {
-    "_id": "60ea265e485688ef8b46c0fa",
+    "_id": "60eaeea5e201bf94118bdc5b",
     "_class": "core.class.TxCreateDoc",
     "space": "core.space.Tx",
     "modifiedBy": "core.account.System",
@@ -57,7 +57,7 @@
     }
   },
   {
-    "_id": "60ea265e485688ef8b46c0fb",
+    "_id": "60eaeea5e201bf94118bdc5c",
     "_class": "core.class.TxCreateDoc",
     "space": "core.space.Tx",
     "modifiedBy": "core.account.System",
@@ -72,7 +72,7 @@
     }
   },
   {
-    "_id": "60ea265e485688ef8b46c0fc",
+    "_id": "60eaeea5e201bf94118bdc5d",
     "_class": "core.class.TxCreateDoc",
     "space": "core.space.Tx",
     "modifiedBy": "core.account.System",
@@ -86,7 +86,7 @@
     }
   },
   {
-    "_id": "60ea265e485688ef8b46c0fd",
+    "_id": "60eaeea5e201bf94118bdc5e",
     "_class": "core.class.TxCreateDoc",
     "space": "core.space.Tx",
     "modifiedBy": "core.account.System",
@@ -100,7 +100,7 @@
     }
   },
   {
-    "_id": "60ea265e485688ef8b46c0fe",
+    "_id": "60eaeea5e201bf94118bdc5f",
     "_class": "core.class.TxCreateDoc",
     "space": "core.space.Tx",
     "modifiedBy": "core.account.System",
@@ -115,7 +115,7 @@
     }
   },
   {
-    "_id": "60ea265e485688ef8b46c0ff",
+    "_id": "60eaeea5e201bf94118bdc60",
     "_class": "core.class.TxCreateDoc",
     "space": "core.space.Tx",
     "modifiedBy": "core.account.System",
@@ -129,7 +129,7 @@
     }
   },
   {
-    "_id": "60ea265e485688ef8b46c100",
+    "_id": "60eaeea5e201bf94118bdc61",
     "_class": "core.class.TxCreateDoc",
     "space": "core.space.Tx",
     "modifiedBy": "core.account.System",
@@ -144,7 +144,49 @@
     }
   },
   {
-    "_id": "60ea265e485688ef8b46c101",
+    "_id": "60eaeea5e201bf94118bdc62",
+    "_class": "core.class.TxCreateDoc",
+    "space": "core.space.Tx",
+    "modifiedBy": "core.account.System",
+    "modifiedOn": 0,
+    "objectId": "contact.class.Contact",
+    "objectClass": "core.class.Class",
+    "objectSpace": "core.space.Model",
+    "attributes": {
+      "kind": 0,
+      "extends": "core.class.Doc"
+    }
+  },
+  {
+    "_id": "60eaeea5e201bf94118bdc63",
+    "_class": "core.class.TxCreateDoc",
+    "space": "core.space.Tx",
+    "modifiedBy": "core.account.System",
+    "modifiedOn": 0,
+    "objectId": "contact.class.Organization",
+    "objectClass": "core.class.Class",
+    "objectSpace": "core.space.Model",
+    "attributes": {
+      "kind": 0,
+      "extends": "contact.class.Contact"
+    }
+  },
+  {
+    "_id": "60eaeea5e201bf94118bdc64",
+    "_class": "core.class.TxCreateDoc",
+    "space": "core.space.Tx",
+    "modifiedBy": "core.account.System",
+    "modifiedOn": 0,
+    "objectId": "contact.class.Person",
+    "objectClass": "core.class.Class",
+    "objectSpace": "core.space.Model",
+    "attributes": {
+      "kind": 0,
+      "extends": "contact.class.Contact"
+    }
+  },
+  {
+    "_id": "60eaeea5e201bf94118bdc65",
     "_class": "core.class.TxCreateDoc",
     "space": "core.space.Tx",
     "modifiedBy": "core.account.System",
@@ -158,7 +200,7 @@
     }
   },
   {
-    "_id": "60ea265e485688ef8b46c102",
+    "_id": "60eaeea5e201bf94118bdc66",
     "_class": "core.class.TxCreateDoc",
     "space": "core.space.Tx",
     "modifiedBy": "core.account.System",
@@ -175,12 +217,12 @@
     }
   },
   {
-    "_id": "60ea265e485688ef8b46c103",
+    "_id": "60eaeea5e201bf94118bdc67",
     "_class": "core.class.TxCreateDoc",
     "space": "core.space.Tx",
     "modifiedBy": "core.account.System",
     "modifiedOn": 0,
-    "objectId": "60ea265e485688ef8b46c104",
+    "objectId": "60eaeea5e201bf94118bdc68",
     "objectClass": "workbench.class.Application",
     "objectSpace": "core.space.Model",
     "attributes": {
@@ -190,7 +232,6 @@
         "spaces": [
           {
             "label": "chunter.string.Channels",
-            "spaceIcon": "chunter.icon.Hashtag",
             "spaceClass": "chunter.class.Channel",
             "addSpaceLabel": "chunter.string.CreateChannel",
             "createComponent": "chunter.component.CreateChannel"
@@ -201,12 +242,12 @@
     }
   },
   {
-    "_id": "60ea265e485688ef8b46c105",
+    "_id": "60eaeea5e201bf94118bdc69",
     "_class": "core.class.TxCreateDoc",
     "space": "core.space.Tx",
     "modifiedBy": "core.account.System",
     "modifiedOn": 0,
-    "objectId": "60ea265e485688ef8b46c106",
+    "objectId": "60eaeea5e201bf94118bdc6a",
     "objectClass": "chunter.class.Channel",
     "objectSpace": "core.space.Model",
     "attributes": {
@@ -217,17 +258,93 @@
     }
   },
   {
-    "_id": "60ea265e485688ef8b46c107",
+    "_id": "60eaeea5e201bf94118bdc6b",
     "_class": "core.class.TxCreateDoc",
     "space": "core.space.Tx",
     "modifiedBy": "core.account.System",
     "modifiedOn": 0,
-    "objectId": "60ea265e485688ef8b46c108",
+    "objectId": "60eaeea5e201bf94118bdc6c",
     "objectClass": "chunter.class.Channel",
     "objectSpace": "core.space.Model",
     "attributes": {
       "name": "random",
       "description": "Random Talks",
+      "private": false,
+      "members": []
+    }
+  },
+  {
+    "_id": "60eaeea5e201bf94118bdc6d",
+    "_class": "core.class.TxCreateDoc",
+    "space": "core.space.Tx",
+    "modifiedBy": "core.account.System",
+    "modifiedOn": 0,
+    "objectId": "recruit.class.Candidates",
+    "objectClass": "core.class.Class",
+    "objectSpace": "core.space.Model",
+    "attributes": {
+      "domain": "model",
+      "kind": 0,
+      "extends": "core.class.Space"
+    }
+  },
+  {
+    "_id": "60eaeea5e201bf94118bdc6e",
+    "_class": "core.class.TxCreateDoc",
+    "space": "core.space.Tx",
+    "modifiedBy": "core.account.System",
+    "modifiedOn": 0,
+    "objectId": "recruit.class.Vacancy",
+    "objectClass": "core.class.Class",
+    "objectSpace": "core.space.Model",
+    "attributes": {
+      "kind": 0,
+      "extends": "core.class.Space"
+    }
+  },
+  {
+    "_id": "60eaeea5e201bf94118bdc6f",
+    "_class": "core.class.TxCreateDoc",
+    "space": "core.space.Tx",
+    "modifiedBy": "core.account.System",
+    "modifiedOn": 0,
+    "objectId": "60eaeea5e201bf94118bdc70",
+    "objectClass": "workbench.class.Application",
+    "objectSpace": "core.space.Model",
+    "attributes": {
+      "label": "recruit.string.RecruitApplication",
+      "icon": "recruit.icon.RecruitApplication",
+      "navigatorModel": {
+        "spaces": [
+          {
+            "label": "recruit.string.Vacancies",
+            "spaceClass": "recruit.class.Vacancy",
+            "addSpaceLabel": "recruit.string.CreateVacancy",
+            "createComponent": "recruit.component.CreateVacancy"
+          },
+          {
+            "label": "recruit.string.CandidatePools",
+            "spaceClass": "recruit.class.Candidates",
+            "addSpaceLabel": "recruit.string.CreateCandidates",
+            "createComponent": "recruit.component.CreateCandidates"
+          }
+        ],
+        "spaceView": "recruit.component.RecruitingView"
+      }
+    }
+  },
+  {
+    "_id": "60eaeea5e201bf94118bdc71",
+    "_class": "core.class.TxCreateDoc",
+    "space": "core.space.Tx",
+    "modifiedBy": "core.account.System",
+    "modifiedOn": 0,
+    "objectId": "60eaeea5e201bf94118bdc72",
+    "objectClass": "recruit.class.Candidates",
+    "objectSpace": "core.space.Model",
+    "attributes": {
+      "name": "public",
+      "description": "Public Candidates",
       "private": false,
       "members": []
     }

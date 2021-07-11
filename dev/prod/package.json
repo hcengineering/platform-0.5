@@ -49,6 +49,9 @@
     "@anticrm/plugin-workbench": "~0.5.0",
     "@anticrm/chunter": "~0.5.0",
     "@anticrm/plugin-chunter": "~0.5.0",
-    "@anticrm/chunter-assets": "~0.5.0"
+    "@anticrm/chunter-assets": "~0.5.0",
+    "@anticrm/recruit": "~0.5.0",
+    "@anticrm/plugin-recruit": "~0.5.0",
+    "@anticrm/recruit-assets": "~0.5.0"
   }
 }

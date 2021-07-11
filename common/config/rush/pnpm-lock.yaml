@@ -14,14 +14,18 @@ specifiers:
   '@rush-temp/model-chunter': file:./projects/model-chunter.tgz
   '@rush-temp/model-contact': file:./projects/model-contact.tgz
   '@rush-temp/model-core': file:./projects/model-core.tgz
+  '@rush-temp/model-recruit': file:./projects/model-recruit.tgz
   '@rush-temp/model-workbench': file:./projects/model-workbench.tgz
   '@rush-temp/platform': file:./projects/platform.tgz
   '@rush-temp/plugin-chunter': file:./projects/plugin-chunter.tgz
   '@rush-temp/plugin-client-dev': file:./projects/plugin-client-dev.tgz
   '@rush-temp/plugin-login': file:./projects/plugin-login.tgz
+  '@rush-temp/plugin-recruit': file:./projects/plugin-recruit.tgz
   '@rush-temp/plugin-workbench': file:./projects/plugin-workbench.tgz
   '@rush-temp/prod': file:./projects/prod.tgz
   '@rush-temp/query': file:./projects/query.tgz
+  '@rush-temp/recruit': file:./projects/recruit.tgz
+  '@rush-temp/recruit-assets': file:./projects/recruit-assets.tgz
   '@rush-temp/text': file:./projects/text.tgz
   '@rush-temp/text-editor': file:./projects/text-editor.tgz
   '@rush-temp/text-ui': file:./projects/text-ui.tgz
@@ -106,14 +110,18 @@ dependencies:
   '@rush-temp/model-chunter': file:projects/model-chunter.tgz_9c26a505e26b50edcfa9f28c7953ad70
   '@rush-temp/model-contact': file:projects/model-contact.tgz_9c26a505e26b50edcfa9f28c7953ad70
   '@rush-temp/model-core': file:projects/model-core.tgz_25d496ffe1f157ff03e21f385e47b1fa
+  '@rush-temp/model-recruit': file:projects/model-recruit.tgz_9c26a505e26b50edcfa9f28c7953ad70
   '@rush-temp/model-workbench': file:projects/model-workbench.tgz_9c26a505e26b50edcfa9f28c7953ad70
   '@rush-temp/platform': file:projects/platform.tgz_9c26a505e26b50edcfa9f28c7953ad70
   '@rush-temp/plugin-chunter': file:projects/plugin-chunter.tgz_00682bb88e6504b414986dc6472c6748
   '@rush-temp/plugin-client-dev': file:projects/plugin-client-dev.tgz_9c26a505e26b50edcfa9f28c7953ad70
   '@rush-temp/plugin-login': file:projects/plugin-login.tgz_618b6e38b91b7916210decbe12d57e78
+  '@rush-temp/plugin-recruit': file:projects/plugin-recruit.tgz_00682bb88e6504b414986dc6472c6748
   '@rush-temp/plugin-workbench': file:projects/plugin-workbench.tgz_618b6e38b91b7916210decbe12d57e78
   '@rush-temp/prod': file:projects/prod.tgz_sass@1.35.2+ts-node@10.1.0
   '@rush-temp/query': file:projects/query.tgz_ts-node@10.1.0
+  '@rush-temp/recruit': file:projects/recruit.tgz_9c26a505e26b50edcfa9f28c7953ad70
+  '@rush-temp/recruit-assets': file:projects/recruit-assets.tgz_9c26a505e26b50edcfa9f28c7953ad70
   '@rush-temp/text': file:projects/text.tgz_ts-node@10.1.0
   '@rush-temp/text-editor': file:projects/text-editor.tgz_814488e722ed49c4c8aeb5211df9d5a0
   '@rush-temp/text-ui': file:projects/text-ui.tgz_814488e722ed49c4c8aeb5211df9d5a0
@@ -9423,7 +9431,7 @@ packages:
     dev: false
 
   file:projects/model-all.tgz_25d496ffe1f157ff03e21f385e47b1fa:
-    resolution: {integrity: sha512-cK6YAsv1vn2z+dcvg18vkSZ3WrHmic8UeOM+DHw6Ri2PpuSjmuZw2NYiCzGgLJDBrR7fVOkbzLBKY3Kwzy9PPw==, tarball: file:projects/model-all.tgz}
+    resolution: {integrity: sha512-GoUWoQPPpjYKj7LGzZtMg06Z8DfGGaSrDJXFP/tS61jaKqF6pIGiFQngpkddZKpaoWnQgMAhN+bOeHBN+P292w==, tarball: file:projects/model-all.tgz}
     id: file:projects/model-all.tgz
     name: '@rush-temp/model-all'
     version: 0.0.0
@@ -9513,6 +9521,28 @@ packages:
       - bufferutil
       - canvas
       - supports-color
+      - utf-8-validate
+    dev: false
+
+  file:projects/model-recruit.tgz_9c26a505e26b50edcfa9f28c7953ad70:
+    resolution: {integrity: sha512-YvZCg5iJ6Ah1DLH1Bzlvw++EtDE8h4T7uhBYGuk0IJkGkAwIvl6AFTZ1MGY6HNUxFmNBcL4U3yzmhnmiaizz0g==, tarball: file:projects/model-recruit.tgz}
+    id: file:projects/model-recruit.tgz
+    name: '@rush-temp/model-recruit'
+    version: 0.0.0
+    dependencies:
+      '@microsoft/api-extractor': 7.18.1
+      '@types/jest': 26.0.24
+      jest: 26.6.3_ts-node@10.1.0
+      prettier: 2.3.2
+      ts-jest: 26.5.6_jest@26.6.3+typescript@4.3.5
+      ts-standard: 10.0.0_702a8502199281702e4c6a3a1eba84f6
+      typescript: 4.3.5
+    transitivePeerDependencies:
+      - '@typescript-eslint/parser'
+      - bufferutil
+      - canvas
+      - supports-color
+      - ts-node
       - utf-8-validate
     dev: false
 
@@ -9678,6 +9708,41 @@ packages:
       - supports-color
     dev: false
 
+  file:projects/plugin-recruit.tgz_00682bb88e6504b414986dc6472c6748:
+    resolution: {integrity: sha512-9wMJ+1M+zpO/OgYdu+SjUlSAUjkuy9/9prkgJSmXbgg9AWYVwJr5szuQLfqMam/Od1iAkdi5bNMXoNNUeobq2A==, tarball: file:projects/plugin-recruit.tgz}
+    id: file:projects/plugin-recruit.tgz
+    name: '@rush-temp/plugin-recruit'
+    version: 0.0.0
+    dependencies:
+      '@microsoft/api-extractor': 7.18.1
+      '@types/jest': 26.0.24
+      jest: 26.6.3_ts-node@10.1.0
+      prettier: 2.3.2
+      sass: 1.35.2
+      svelte: 3.38.3
+      svelte-check: 2.2.2_1e60e55b022cbc4d590e891355c7d065
+      svelte-loader: 3.1.2_svelte@3.38.3
+      ts-jest: 26.5.6_jest@26.6.3+typescript@4.3.5
+      ts-standard: 10.0.0_702a8502199281702e4c6a3a1eba84f6
+      typescript: 4.3.5
+    transitivePeerDependencies:
+      - '@babel/core'
+      - '@typescript-eslint/parser'
+      - bufferutil
+      - canvas
+      - coffeescript
+      - less
+      - node-sass
+      - postcss
+      - postcss-load-config
+      - pug
+      - stylus
+      - sugarss
+      - supports-color
+      - ts-node
+      - utf-8-validate
+    dev: false
+
   file:projects/plugin-workbench.tgz_618b6e38b91b7916210decbe12d57e78:
     resolution: {integrity: sha512-DMueFMqripnGzmcHAvdeVK1HX0upfYg2vD9Nw4bNNV3BnoK3/uq1wLq5mS4Q4GyZ+BfwPb143flxsLWOeYftWQ==, tarball: file:projects/plugin-workbench.tgz}
     id: file:projects/plugin-workbench.tgz
@@ -9766,6 +9831,51 @@ packages:
       ts-jest: 26.5.6_jest@26.6.3+typescript@4.3.5
       typescript: 4.3.5
     transitivePeerDependencies:
+      - bufferutil
+      - canvas
+      - supports-color
+      - ts-node
+      - utf-8-validate
+    dev: false
+
+  file:projects/recruit-assets.tgz_9c26a505e26b50edcfa9f28c7953ad70:
+    resolution: {integrity: sha512-FlVAl/0vsKzYRGGeFTZXAGeBDl6JHRjak/T4W4SfmVlyO52V3hNRS57BwpjeTAeUL3JJHZ8/l99wz6vPnJjBVA==, tarball: file:projects/recruit-assets.tgz}
+    id: file:projects/recruit-assets.tgz
+    name: '@rush-temp/recruit-assets'
+    version: 0.0.0
+    dependencies:
+      '@microsoft/api-extractor': 7.18.1
+      '@types/jest': 26.0.24
+      '@types/node': 14.17.5
+      jest: 26.6.3_ts-node@10.1.0
+      prettier: 2.3.2
+      ts-jest: 26.5.6_jest@26.6.3+typescript@4.3.5
+      ts-standard: 10.0.0_702a8502199281702e4c6a3a1eba84f6
+      typescript: 4.3.5
+    transitivePeerDependencies:
+      - '@typescript-eslint/parser'
+      - bufferutil
+      - canvas
+      - supports-color
+      - ts-node
+      - utf-8-validate
+    dev: false
+
+  file:projects/recruit.tgz_9c26a505e26b50edcfa9f28c7953ad70:
+    resolution: {integrity: sha512-crXShRjiv0CXqUT+6ThrJUqK15wj2d+yk42UG6NGNy2nzea0PJfFnXROF2AhF99vRpNhz7UbcDhIPsbsgCGjhA==, tarball: file:projects/recruit.tgz}
+    id: file:projects/recruit.tgz
+    name: '@rush-temp/recruit'
+    version: 0.0.0
+    dependencies:
+      '@microsoft/api-extractor': 7.18.1
+      '@types/jest': 26.0.24
+      jest: 26.6.3_ts-node@10.1.0
+      prettier: 2.3.2
+      ts-jest: 26.5.6_jest@26.6.3+typescript@4.3.5
+      ts-standard: 10.0.0_702a8502199281702e4c6a3a1eba84f6
+      typescript: 4.3.5
+    transitivePeerDependencies:
+      - '@typescript-eslint/parser'
       - bufferutil
       - canvas
       - supports-color

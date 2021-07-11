@@ -465,6 +465,21 @@
       "shouldPublish": true
     },
     {
+      "packageName": "@anticrm/recruit",
+      "projectFolder": "packages/recruit",
+      "shouldPublish": true
+    },
+    {
+      "packageName": "@anticrm/plugin-recruit",
+      "projectFolder": "plugins/recruit",
+      "shouldPublish": true
+    },
+    {
+      "packageName": "@anticrm/recruit-assets",
+      "projectFolder": "plugins/recruit-assets",
+      "shouldPublish": true
+    },
+    {
       "packageName": "@anticrm/client",
       "projectFolder": "packages/client",
       "shouldPublish": true
@@ -497,6 +512,11 @@
     {
       "packageName": "@anticrm/model-contact",
       "projectFolder": "models/contact",
+      "shouldPublish": false
+    },
+    {
+      "packageName": "@anticrm/model-recruit",
+      "projectFolder": "models/recruit",
       "shouldPublish": false
     },
     {
