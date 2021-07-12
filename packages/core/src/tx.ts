@@ -67,7 +67,7 @@ export class TxProcessor implements WithTx {
     }
   }
 
-  static createDoc2Doc (tx: TxCreateDoc<Doc>): Doc {
+  static createDoc2Doc<T extends Doc> (tx: TxCreateDoc<T>): T {
     return {
       _id: tx.objectId,
       _class: tx.objectClass,
@@ -75,7 +75,7 @@ export class TxProcessor implements WithTx {
       modifiedBy: tx.modifiedBy,
       modifiedOn: tx.modifiedOn,
       ...tx.attributes
-    }
+    } as T
   }
 
   protected async txCreateDoc (tx: TxCreateDoc<Doc>): Promise<void> {}

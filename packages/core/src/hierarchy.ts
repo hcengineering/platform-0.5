@@ -13,15 +13,45 @@
 // limitations under the License.
 //
 
-import type { Ref, Class, Obj, Data, Domain } from './classes'
+import { Ref, Class, Obj, Domain, Mixin, Doc, ClassifierKind } from './classes'
 import type { Tx, TxCreateDoc } from './tx'
+import { TxProcessor  } from './tx'
 
 import core from './component'
 
 export class Hierarchy {
-  private readonly classes = new Map<Ref<Class<Obj>>, Data<Class<Obj>>>()
+  private readonly classes = new Map<Ref<Class<Obj>>, Class<Obj>>()
   private readonly descendants = new Map<Ref<Class<Obj>>, Ref<Class<Obj>>[]>()
   private readonly ancestors = new Map<Ref<Class<Obj>>, Ref<Class<Obj>>[]>()
+  private readonly proxies = new Map<Ref<Mixin<Doc>>, ProxyHandler<Doc>>()
+
+  private createMixinProxyHandler(mixin: Ref<Mixin<Doc>>): ProxyHandler<Doc> {
+    const value = this.getClass(mixin)
+    const ancestor = this.getClass(value.extends as Ref<Class<Obj>>)
+    const ancestorProxy = ancestor.kind === ClassifierKind.MIXIN ? this.getMixinProxyHandler(ancestor._id) : null
+    return { 
+      get(target: any, property: string, receiver: any): any {
+        const value = target[mixin]?.[property]
+        if (value === undefined)
+          return (ancestorProxy !== null) ? ancestorProxy.get?.(target, property, receiver) : target[property]
+        return value
+      }
+    }
+  }
+
+  private getMixinProxyHandler(mixin: Ref<Mixin<Doc>>): ProxyHandler<Doc> {
+    const handler = this.proxies.get(mixin)
+    if (handler === undefined) {
+      const handler = this.createMixinProxyHandler(mixin)
+      this.proxies.set(mixin, handler)
+      return handler
+    }
+    return handler
+  }
+
+  as<D extends Doc, M extends D>(doc: D, mixin: Ref<Mixin<M>>): M {
+    return new Proxy(doc, this.getMixinProxyHandler(mixin)) as M
+  }
 
   getAncestors (_class: Ref<Class<Obj>>): Ref<Class<Obj>>[] {
     const result = this.ancestors.get(_class)
@@ -31,7 +61,7 @@ export class Hierarchy {
     return result
   }
 
-  getClass (_class: Ref<Class<Obj>>): Data<Class<Obj>> {
+  getClass (_class: Ref<Class<Obj>>): Class<Obj> {
     const data = this.classes.get(_class)
     if (data === undefined) {
       throw new Error('class not found: ' + _class)
@@ -57,7 +87,7 @@ export class Hierarchy {
     const createTx = tx as TxCreateDoc<Class<Obj>>
     if (createTx.objectClass !== core.class.Class) return
     const _id: Ref<Class<Obj>> = createTx.objectId
-    this.classes.set(_id, createTx.attributes)
+    this.classes.set(_id, TxProcessor.createDoc2Doc(createTx))
     this.addAncestors(_id)
     this.addDescendant(_id)
   }
