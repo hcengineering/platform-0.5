@@ -14,18 +14,23 @@
 //
 
 import type { KeysByType } from 'simplytyped'
-import type { Class, Data, Doc, Domain, Ref, Account, Space, Arr } from './classes'
+import type { Class, Data, Doc, Domain, Ref, Account, Space, Arr, Mixin } from './classes'
 import core from './component'
 import { generateId } from './utils'
 
 export interface Tx<T extends Doc = Doc> extends Doc {
   objectId: Ref<T>
+  objectClass: Ref<Class<T>>
   objectSpace: Ref<Space>
 }
 
 export interface TxCreateDoc<T extends Doc> extends Tx<T> {
-  objectClass: Ref<Class<T>>
   attributes: Data<T>
+}
+
+export interface TxMixin<M extends Doc> extends Tx<Doc> {
+  mixin: Ref<Mixin<M>>
+  attributes: Data<M>
 }
 
 type ArrayAsElement<T extends Doc> = {
@@ -41,12 +46,10 @@ interface PushOptions<T extends Doc> {
 export type DocumentUpdate<T extends Doc> = Partial<Data<T>> & PushOptions<T>
 
 export interface TxUpdateDoc<T extends Doc> extends Tx<T> {
-  objectClass: Ref<Class<T>>
   operations: DocumentUpdate<T>
 }
 
 export interface TxRemoveDoc<T extends Doc> extends Tx<T> {
-  objectClass: Ref<Class<T>>
 }
 
 export const DOMAIN_TX = 'tx' as Domain
@@ -64,10 +67,12 @@ export class TxProcessor implements WithTx {
         return await this.txUpdateDoc(tx as TxUpdateDoc<Doc>)
       case core.class.TxRemoveDoc:
         return await this.txRemoveDoc(tx as TxRemoveDoc<Doc>)
+      case core.class.TxMixin:
+        return await this.txMixin(tx as TxMixin<Doc>)
     }
   }
 
-  static createDoc2Doc (tx: TxCreateDoc<Doc>): Doc {
+  static createDoc2Doc<T extends Doc> (tx: TxCreateDoc<T>): T {
     return {
       _id: tx.objectId,
       _class: tx.objectClass,
@@ -75,12 +80,13 @@ export class TxProcessor implements WithTx {
       modifiedBy: tx.modifiedBy,
       modifiedOn: tx.modifiedOn,
       ...tx.attributes
-    }
+    } as T
   }
 
   protected async txCreateDoc (tx: TxCreateDoc<Doc>): Promise<void> {}
   protected async txUpdateDoc (tx: TxUpdateDoc<Doc>): Promise<void> {}
   protected async txRemoveDoc (tx: TxRemoveDoc<Doc>): Promise<void> {}
+  protected async txMixin (tx:TxMixin<Doc>): Promise<void> {}
 }
 
 export interface TxOperations {

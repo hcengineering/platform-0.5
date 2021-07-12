@@ -20,7 +20,7 @@ import type { Hierarchy } from './hierarchy'
 import { getOperator } from './operator'
 import { findProperty, resultSort } from './query'
 import { DocumentQuery, FindOptions, FindResult, Storage } from './storage'
-import { Tx, TxCreateDoc, TxProcessor, TxRemoveDoc, TxUpdateDoc } from './tx'
+import { Tx, TxCreateDoc, TxMixin, TxProcessor, TxRemoveDoc, TxUpdateDoc } from './tx'
 
 class MemDb extends TxProcessor {
   protected readonly hierarchy: Hierarchy
@@ -155,5 +155,11 @@ export class ModelDb extends MemDb implements Storage {
 
   protected async txRemoveDoc (tx: TxRemoveDoc<Doc>): Promise<void> {
     this.delDoc(tx.objectId)
+  }
+
+  // TODO: process ancessor mixins
+  protected async txMixin (tx: TxMixin<Doc>): Promise<void> {
+    const obj = this.getObject(tx.objectId) as any
+    obj[tx.mixin] = tx.attributes
   }
 }
