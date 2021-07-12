@@ -15,7 +15,7 @@
 
 <script lang="ts">
   import { createEventDispatcher } from 'svelte'
-  import { EditBox, Dialog, ToggleWithLabel } from '@anticrm/ui'
+  import { TextArea, EditBox, Dialog, ToggleWithLabel } from '@anticrm/ui'
 
   import { getClient } from '@anticrm/workbench'
 
@@ -44,7 +44,7 @@
         on:close={() => { dispatch('close') }}>
   <div class="content">
     <div class="row"><EditBox label={chunter.string.ChannelName} bind:value={name}/></div>
-    <div class="row"><EditBox label={chunter.string.ChannelDescription} bind:value={description}/></div>
+    <div class="row"><TextArea label={chunter.string.ChannelDescription} bind:value={description}/></div>
     <div class="row"><ToggleWithLabel label={chunter.string.MakePrivate} description={chunter.string.MakePrivateDescription}/></div>
   </div>
 </Dialog>

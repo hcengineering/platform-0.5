@@ -157,7 +157,7 @@ export class ModelDb extends MemDb implements Storage {
     this.delDoc(tx.objectId)
   }
 
-  // TODO: process ancessor/descendant mixing
+  // TODO: process ancessor mixins
   protected async txMixin (tx: TxMixin<Doc>): Promise<void> {
     const obj = this.getObject(tx.objectId) as any
     obj[tx.mixin] = tx.attributes
