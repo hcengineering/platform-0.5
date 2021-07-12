@@ -23,7 +23,9 @@ import type {
   Tx,
   TxCreateDoc,
   TxRemoveDoc,
-  TxUpdateDoc
+  TxUpdateDoc,
+  TxMixin,
+  Mixin
 } from '@anticrm/core'
 import { DOMAIN_TX } from '@anticrm/core'
 import { Model } from '@anticrm/model'
@@ -35,22 +37,26 @@ import { TDoc } from './core'
 @Model(core.class.Tx, core.class.Doc, DOMAIN_TX)
 export class TTx<T extends Doc> extends TDoc implements Tx<T> {
   objectId!: Ref<T>
+  objectClass!: Ref<Class<T>>
   objectSpace!: Ref<Space>
 }
 
 @Model(core.class.TxCreateDoc, core.class.Tx)
 export class TTxCreateDoc<T extends Doc> extends TTx<T> implements TxCreateDoc<T> {
-  objectClass!: Ref<Class<T>>
   attributes!: Data<T>
+}
+
+@Model(core.class.TxMixin, core.class.Tx)
+export class TTxMixin<M extends Doc> extends TTx<Doc> implements TxMixin<M> {
+  mixin!: Ref<Mixin<M>>
+  attributes!: Data<M>
 }
 
 @Model(core.class.TxUpdateDoc, core.class.Tx)
 export class TTxUpdateDoc<T extends Doc> extends TTx<T> implements TxUpdateDoc<T> {
-  objectClass!: Ref<Class<T>>
   operations!: DocumentUpdate<T>
 }
 
 @Model(core.class.TxRemoveDoc, core.class.Tx)
 export class TTxRemoveDoc<T extends Doc> extends TTx<T> implements TxRemoveDoc<T> {
-  objectClass!: Ref<Class<T>>
 }
