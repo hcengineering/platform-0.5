@@ -13,7 +13,12 @@
 // limitations under the License.
 //
 
+import CreateVacancy from './components/CreateVacancy.svelte'
+import CreateCandidates from './components/CreateCandidates.svelte'
+
 export default async () => ({
   component: {
+    CreateVacancy,
+    CreateCandidates,
   }
 })
