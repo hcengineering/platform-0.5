@@ -24,13 +24,14 @@ import type {
   Obj,
   Data,
   TxCreateDoc,
-  Domain
+  Domain,
+  TxMixin,
+  Mixin
 } from '@anticrm/core'
 import {
   ClassifierKind,
   generateId,
-  Hierarchy,
-  DOMAIN_MODEL
+  // Hierarchy,
 } from '@anticrm/core'
 import type { IntlString, Asset } from '@anticrm/platform'
 import toposort from 'toposort'
@@ -114,7 +115,6 @@ function generateIds (objectId: Ref<Doc>, txes: Array<NoIDs<Tx>>): Tx[] {
 
 function txCreateDoc<T extends Doc> (
   _class: Ref<Class<T>>,
-  domain: Domain,
   attributes: Data<T>,
   objectId?: Ref<T>
 ): TxCreateDoc<T> {
@@ -123,10 +123,30 @@ function txCreateDoc<T extends Doc> (
     _class: core.class.TxCreateDoc,
     space: core.space.Tx,
     modifiedBy: core.account.System,
-    modifiedOn: 0,
+    modifiedOn: Date.now(),
     objectId: objectId ?? generateId(),
     objectClass: _class,
     objectSpace: core.space.Model,
+    attributes
+  }
+}
+
+function txMixin<M extends Doc> (
+  objectId: Ref<Doc>,
+  objectClass: Ref<Class<Doc>>,
+  mixin: Ref<Mixin<M>>,
+  attributes: Data<M>,
+): TxMixin<M> {
+  return {
+    _id: generateId<TxMixin<M>>(),
+    _class: core.class.TxCreateDoc,
+    space: core.space.Tx,
+    modifiedBy: core.account.System,
+    modifiedOn: Date.now(),
+    objectId,
+    objectClass,
+    objectSpace: core.space.Model,
+    mixin,
     attributes
   }
 }
@@ -135,7 +155,6 @@ function _generateTx (tx: ClassTxes): Tx[] {
   const objectId = tx._id
   const createTx = txCreateDoc(
     core.class.Class,
-    DOMAIN_MODEL,
     {
       domain: tx.domain,
       kind: ClassifierKind.CLASS,
@@ -150,7 +169,7 @@ function _generateTx (tx: ClassTxes): Tx[] {
 
 export class Builder {
   private readonly txes: Tx[] = []
-  private readonly hierarchy = new Hierarchy()
+  // private readonly hierarchy = new Hierarchy()
 
   createModel (...classes: Array<new () => Obj>): void {
     const txes = classes.map((ctor) => getTxes(ctor.prototype))
@@ -164,7 +183,7 @@ export class Builder {
 
     for (const tx of generated) {
       this.txes.push(tx)
-      this.hierarchy.tx(tx)
+      // this.hierarchy.tx(tx)
     }
   }
 
@@ -193,12 +212,20 @@ export class Builder {
     this.txes.push(
       txCreateDoc(
         _class,
-        this.hierarchy.getDomain(_class),
         attributes,
         objectId
       )
     )
   }
+
+  mixin<M extends Doc> (
+    objectId: Ref<Doc>,
+    objectClass: Ref<Class<Doc>>,
+    mixin: Ref<Mixin<M>>,
+    attributes: Data<M>,
+  ): void {
+    this.txes.push(txMixin(objectId, objectClass, mixin, attributes))
+  }  
 
   getTxes (): Tx[] {
     return this.txes
