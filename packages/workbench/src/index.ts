@@ -16,7 +16,7 @@
 import { getContext, setContext } from 'svelte'
 
 import type { IntlString, Asset } from '@anticrm/platform'
-import type { Ref, Class, Doc, Space, Mixin } from '@anticrm/core'
+import type { Ref, Class, Doc, Obj, Space, Mixin } from '@anticrm/core'
 import type { Plugin } from '@anticrm/platform'
 import type { Connection } from '@anticrm/client'
 import type { AnyComponent, AnySvelteComponent } from '@anticrm/ui'
@@ -42,7 +42,7 @@ export interface NavigatorModel {
   spaces: SpacesNavModel[]
 }
 
-export interface SpaceView extends Space {
+export interface SpaceView extends Class<Obj> {
   view: AnyComponent
 }
 
