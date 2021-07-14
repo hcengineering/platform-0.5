@@ -26,7 +26,7 @@ export default plugin(coreId, {
     Class: '' as Ref<Class<Class<Obj>>>,
     Tx: '' as Ref<Class<Tx>>,
     TxCreateDoc: '' as Ref<Class<TxCreateDoc<Doc>>>,
-    TxMixin: '' as Ref<Class<TxMixin<Doc>>>,
+    TxMixin: '' as Ref<Class<TxMixin<Doc, Doc>>>,
     TxUpdateDoc: '' as Ref<Class<TxUpdateDoc<Doc>>>,
     TxRemoveDoc: '' as Ref<Class<TxRemoveDoc<Doc>>>,
     Space: '' as Ref<Class<Space>>,

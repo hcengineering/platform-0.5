@@ -33,6 +33,9 @@ export class TMessage extends TDoc implements Message {
 
 export function createModel(builder: Builder) {
   builder.createModel(TChannel, TMessage)
+  builder.mixin(chunter.class.Channel, core.class.Class, workbench.mixin.SpaceView, {
+    view: chunter.component.ChannelView
+  })
   builder.createDoc(workbench.class.Application, {
     label: chunter.string.ApplicationLabelChunter,
     icon: chunter.icon.Chunter,
@@ -44,8 +47,7 @@ export function createModel(builder: Builder) {
           addSpaceLabel: chunter.string.CreateChannel,
           createComponent: chunter.component.CreateChannel
         }
-      ],
-      spaceView: chunter.component.ChannelView
+      ]
     }
   })
   builder.createDoc(chunter.class.Channel, {

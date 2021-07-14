@@ -28,9 +28,11 @@ export interface TxCreateDoc<T extends Doc> extends Tx<T> {
   attributes: Data<T>
 }
 
-export interface TxMixin<M extends Doc> extends Tx<Doc> {
+export type ExtendedAttributes<D extends Doc, M extends D> = Omit<M, keyof D>
+
+export interface TxMixin<D extends Doc, M extends D> extends Tx<D> {
   mixin: Ref<Mixin<M>>
-  attributes: Data<M>
+  attributes: ExtendedAttributes<D, M>
 }
 
 type ArrayAsElement<T extends Doc> = {
@@ -68,7 +70,7 @@ export class TxProcessor implements WithTx {
       case core.class.TxRemoveDoc:
         return await this.txRemoveDoc(tx as TxRemoveDoc<Doc>)
       case core.class.TxMixin:
-        return await this.txMixin(tx as TxMixin<Doc>)
+        return await this.txMixin(tx as TxMixin<Doc, Doc>)
     }
   }
 
@@ -86,7 +88,7 @@ export class TxProcessor implements WithTx {
   protected async txCreateDoc (tx: TxCreateDoc<Doc>): Promise<void> {}
   protected async txUpdateDoc (tx: TxUpdateDoc<Doc>): Promise<void> {}
   protected async txRemoveDoc (tx: TxRemoveDoc<Doc>): Promise<void> {}
-  protected async txMixin (tx:TxMixin<Doc>): Promise<void> {}
+  protected async txMixin (tx:TxMixin<Doc, Doc>): Promise<void> {}
 }
 
 export interface TxOperations {

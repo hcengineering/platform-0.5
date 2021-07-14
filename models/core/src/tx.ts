@@ -25,7 +25,8 @@ import type {
   TxRemoveDoc,
   TxUpdateDoc,
   TxMixin,
-  Mixin
+  Mixin,
+  ExtendedAttributes
 } from '@anticrm/core'
 import { DOMAIN_TX } from '@anticrm/core'
 import { Model } from '@anticrm/model'
@@ -47,9 +48,9 @@ export class TTxCreateDoc<T extends Doc> extends TTx<T> implements TxCreateDoc<T
 }
 
 @Model(core.class.TxMixin, core.class.Tx)
-export class TTxMixin<M extends Doc> extends TTx<Doc> implements TxMixin<M> {
+export class TTxMixin<D extends Doc, M extends D> extends TTx<D> implements TxMixin<D, M> {
   mixin!: Ref<Mixin<M>>
-  attributes!: Data<M>
+  attributes!: ExtendedAttributes<D, M>
 }
 
 @Model(core.class.TxUpdateDoc, core.class.Tx)

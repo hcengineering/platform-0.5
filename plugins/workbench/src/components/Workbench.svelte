@@ -20,7 +20,7 @@
   import avatar from '../../img/avatar.png'
 
   import { onDestroy } from 'svelte'
-  import type { Client } from '@anticrm/client'
+  import type { Connection } from '@anticrm/client'
 
   import type { Ref, Space } from '@anticrm/core'
   import type { Application, NavigatorModel } from '@anticrm/workbench'
@@ -31,19 +31,27 @@
   import Modal from './Modal.svelte'
   import SpaceHeader from './SpaceHeader.svelte'
   
-  import { Component, location } from '@anticrm/ui'
+  import { AnyComponent, Component, location } from '@anticrm/ui'
+  import core from '@anticrm/core'
 
-  export let client: Client
+  export let client: Connection
 
   setClient(client)
 
   let currentApp: Ref<Application> | undefined
   let currentSpace: Ref<Space> | undefined
+  let currentView: AnyComponent | undefined
   let navigatorModel: NavigatorModel | undefined
 
   onDestroy(location.subscribe(async (loc) => {
     currentApp = loc.path[1] as Ref<Application>
     currentSpace = loc.path[2] as Ref<Space>
+    const space = (await client.findAll(core.class.Space, { _id: currentSpace }))[0]
+    if (space) {
+      const spaceClass = (await client.findAll(core.class.Class, { _id: space._class }))[0]
+      const view = client.getHierarchy().as(spaceClass, workbench.mixin.SpaceView)
+      currentView = view.view
+    }
     navigatorModel = (await client.findAll(workbench.class.Application, { _id: currentApp }))[0]?.navigatorModel
   }))
 </script>
@@ -69,8 +77,8 @@
   {/if}
   <div class="component">
     <SpaceHeader space={currentSpace}/>
-    {#if navigatorModel}
-      <Component is={navigatorModel.spaceView} props={ { space: currentSpace } }/>
+    {#if currentView}
+      <Component is={currentView} props={ { space: currentSpace } }/>
     {/if}
   </div>
   <!-- <div class="aside"><Chat thread/></div> -->

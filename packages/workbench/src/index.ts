@@ -16,7 +16,7 @@
 import { getContext, setContext } from 'svelte'
 
 import type { IntlString, Asset } from '@anticrm/platform'
-import type { Ref, Class, Doc, Space, TxOperations } from '@anticrm/core'
+import type { Ref, Class, Doc, Space, Mixin } from '@anticrm/core'
 import type { Plugin } from '@anticrm/platform'
 import type { Connection } from '@anticrm/client'
 import type { AnyComponent, AnySvelteComponent } from '@anticrm/ui'
@@ -40,7 +40,10 @@ export interface SpacesNavModel {
 
 export interface NavigatorModel {
   spaces: SpacesNavModel[]
-  spaceView: AnyComponent
+}
+
+export interface SpaceView extends Space {
+  view: AnyComponent
 }
 
 export const workbenchId = 'workbench' as Plugin
@@ -48,6 +51,9 @@ export const workbenchId = 'workbench' as Plugin
 export default plugin(workbenchId, {
   class: {
     Application: '' as Ref<Class<Application>>
+  },
+  mixin: {
+    SpaceView: '' as Ref<Mixin<SpaceView>>
   }
 })
 

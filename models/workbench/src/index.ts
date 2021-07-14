@@ -14,21 +14,27 @@
 //
 
 import type { IntlString, Asset } from '@anticrm/platform'
-import type { Doc } from '@anticrm/core'
 import { DOMAIN_MODEL } from '@anticrm/core' 
-import { Model, Builder } from '@anticrm/model'
+import { Model, Mixin, Builder } from '@anticrm/model'
+import type { Application, SpaceView } from '@anticrm/workbench'
+import type { AnyComponent } from '@anticrm/ui'
 
-import core, { TDoc } from '@anticrm/model-core'
+import core, { TDoc, TClass } from '@anticrm/model-core'
 import workbench from './plugin'
 
 @Model(workbench.class.Application, core.class.Doc, DOMAIN_MODEL)
-export class TApplication extends TDoc implements Doc {
+export class TApplication extends TDoc implements Application {
   label!: IntlString
   icon!: Asset
 }
 
+@Mixin(workbench.mixin.SpaceView, core.class.Class)
+export class TSpaceView extends TClass implements SpaceView {
+  view!: AnyComponent
+}
+
 export function createModel(builder: Builder) {
-  builder.createModel(TApplication)
+  builder.createModel(TApplication, TSpaceView)
 }
 
 export default workbench

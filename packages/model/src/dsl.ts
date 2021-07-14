@@ -26,7 +26,8 @@ import type {
   TxCreateDoc,
   Domain,
   TxMixin,
-  Mixin
+  Mixin,
+  ExtendedAttributes
 } from '@anticrm/core'
 import {
   ClassifierKind,
@@ -47,6 +48,7 @@ interface ClassTxes {
   label?: IntlString
   icon?: Asset
   txes: Array<NoIDs<Tx>>
+  kind: ClassifierKind
 }
 
 const transactions = new Map<any, ClassTxes>()
@@ -91,6 +93,19 @@ export function Model<T extends Obj> (
     txes._id = _class
     txes.extends = _class !== core.class.Obj ? _extends : undefined
     txes.domain = domain
+    txes.kind = ClassifierKind.CLASS
+  }
+}
+
+export function Mixin<T extends Obj> (
+  _class: Ref<Class<T>>,
+  _extends: Ref<Class<Obj>>,
+) {
+  return function classDecorator<C extends new () => T> (constructor: C): void {
+    const txes = getTxes(constructor.prototype)
+    txes._id = _class
+    txes.extends = _extends
+    txes.kind = ClassifierKind.MIXIN
   }
 }
 
@@ -131,15 +146,15 @@ function txCreateDoc<T extends Doc> (
   }
 }
 
-function txMixin<M extends Doc> (
-  objectId: Ref<Doc>,
-  objectClass: Ref<Class<Doc>>,
+function txMixin<D extends Doc, M extends D> (
+  objectId: Ref<D>,
+  objectClass: Ref<Class<D>>,
   mixin: Ref<Mixin<M>>,
-  attributes: Data<M>,
-): TxMixin<M> {
+  attributes: ExtendedAttributes<D, M>,
+): TxMixin<D, M> {
   return {
-    _id: generateId<TxMixin<M>>(),
-    _class: core.class.TxCreateDoc,
+    _id: generateId<TxMixin<D, M>>(),
+    _class: core.class.TxMixin,
     space: core.space.Tx,
     modifiedBy: core.account.System,
     modifiedOn: Date.now(),
@@ -218,11 +233,11 @@ export class Builder {
     )
   }
 
-  mixin<M extends Doc> (
-    objectId: Ref<Doc>,
-    objectClass: Ref<Class<Doc>>,
+  mixin<D extends Doc, M extends D> (
+    objectId: Ref<D>,
+    objectClass: Ref<Class<D>>,
     mixin: Ref<Mixin<M>>,
-    attributes: Data<M>,
+    attributes: ExtendedAttributes<D, M>,
   ): void {
     this.txes.push(txMixin(objectId, objectClass, mixin, attributes))
   }  
