@@ -15,35 +15,14 @@
 
 <script lang="ts">
   import type { Ref, Space } from '@anticrm/core'
-  import chunter from '../plugin'
   import { getClient } from '@anticrm/workbench'
-
-  import Channel from './Channel.svelte'
-  import ReferenceInput from './ReferenceInput.svelte'
 
   export let space: Ref<Space>
 
   const client = getClient()
 
-  function onMessage(event: CustomEvent) {
-    client.createDoc(chunter.class.Message, space, {
-      content: event.detail
-    })
-  }
 </script>
 
-<div class="msg-board">
-  <Channel {space} />
-</div>
-<ReferenceInput thread={false} on:message={onMessage}/>
+<h1>Vacancy</h1>
 
-<style lang="scss">
-  .msg-board {
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-    margin: 15px 15px 0px;
-    padding: 25px 25px 0px;
-    overflow: auto;
-  }
-</style>
+{space}
