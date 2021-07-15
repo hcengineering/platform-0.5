@@ -38,7 +38,7 @@
   }
 
   function showCreateDialog() {
-    showModal(createItemDialog as AnyComponent, {})
+    showModal(createItemDialog as AnyComponent, { space })
   }
 </script>
 
@@ -52,7 +52,7 @@
     <div class="subtitle">{data.description}</div>
   </div>
   {#if createItemDialog}
-    <Button label="Create" on:click={showCreateDialog}/>
+    <Button label="Create" primary={true} on:click={showCreateDialog}/>
   {/if}
   <div class="buttons">
     <div class="button"><ActionIcon icon={Star} size={16}/></div>

@@ -33,7 +33,7 @@ export class TCandidates extends TSpace implements Candidates {}
 export class TCandidate extends TPerson implements Candidate {}
 
 export function createModel(builder: Builder) {
-  builder.createModel(TVacancy, TCandidates)
+  builder.createModel(TVacancy, TCandidates, TCandidate)
   builder.mixin(recruit.class.Vacancy, core.class.Class, workbench.mixin.SpaceView, {
     view: recruit.component.VacancyView
   })

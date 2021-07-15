@@ -15,26 +15,26 @@
 
 <script lang="ts">
   import { createEventDispatcher } from 'svelte'
+  import type { Ref, Space } from '@anticrm/core'
   import { TextArea, EditBox, Dialog, ToggleWithLabel } from '@anticrm/ui'
 
   import { getClient } from '@anticrm/workbench'
 
   import recruit from '../plugin'
-  import core from '@anticrm/core'
+
+  export let space: Ref<Space>
 
   const dispatch = createEventDispatcher()
 
-  let name: string = ''
-  let description: string = ''
+  let firstName: string = ''
+  let lastName: string = ''
 
   const client = getClient()
 
   function createCandidate() {
-    client.createDoc(recruit.class.Candidates, core.space.Model, {
-      name,
-      description,
-      private: false,
-      members: []
+    client.createDoc(recruit.class.Candidate, space, {
+      firstName,
+      lastName
     })
   }
 </script>
@@ -44,9 +44,8 @@
         okAction={createCandidate}
         on:close={() => { dispatch('close') }}>
   <div class="content">
-    <div class="row"><EditBox label={recruit.string.CandidatesName} bind:value={name}/></div>
-    <div class="row"><TextArea label={recruit.string.CandidatesDescription} bind:value={description}/></div>
-    <div class="row"><ToggleWithLabel label={recruit.string.MakePrivate} description={recruit.string.MakePrivateDescription}/></div>
+    <div class="row"><EditBox label={recruit.string.FirstName} bind:value={firstName}/></div>
+    <div class="row"><EditBox label={recruit.string.LastName} bind:value={lastName}/></div>
   </div>
 </Dialog>
 

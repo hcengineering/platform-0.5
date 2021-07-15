@@ -22,9 +22,6 @@ import { recruitId } from '@anticrm/recruit'
 import recruit from '@anticrm/plugin-recruit/src/plugin'
 
 export default mergeIds(recruitId, recruit, {
-  class: {
-    Candidate: '' as Ref<Class<Candidate>>
-  },
   string: {
     RecruitApplication: '' as IntlString,
     Vacancies: '' as IntlString,
