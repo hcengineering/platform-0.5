@@ -14,17 +14,19 @@
 -->
 
 <script lang="ts">
-  import type { Ref, Space, Data } from '@anticrm/core'
-  import { Icon, ActionIcon } from '@anticrm/ui'
+  import type { Ref, Space } from '@anticrm/core'
+  import { Icon, ActionIcon, Button } from '@anticrm/ui'
+  import type { AnyComponent } from '@anticrm/ui'
   import MoreH from './icons/MoreH.svelte'
   import Add from './icons/Add.svelte'
   import Star from './icons/Star.svelte'
 
-  import { getClient } from '@anticrm/workbench'
+  import { getClient, showModal } from '@anticrm/workbench'
   import { classIcon } from '../utils'
   import core from '@anticrm/core'
 
   export let space: Ref<Space> | undefined
+  export let createItemDialog: AnyComponent | undefined
 
   const client = getClient()
   let data: Space | undefined
@@ -33,6 +35,10 @@
   $: {
     unsubscribe()
     unsubscribe = client.query(core.class.Space, { _id: space }, result => { data = result[0] })
+  }
+
+  function showCreateDialog() {
+    showModal(createItemDialog as AnyComponent, {})
   }
 </script>
 
@@ -45,6 +51,9 @@
     </div>
     <div class="subtitle">{data.description}</div>
   </div>
+  {#if createItemDialog}
+    <Button label="Create" on:click={showCreateDialog}/>
+  {/if}
   <div class="buttons">
     <div class="button"><ActionIcon icon={Star} size={16}/></div>
     <div class="button"><ActionIcon icon={Add} size={16}/></div>

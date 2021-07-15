@@ -41,6 +41,7 @@
   let currentApp: Ref<Application> | undefined
   let currentSpace: Ref<Space> | undefined
   let currentView: AnyComponent | undefined
+  let createItemDialog: AnyComponent | undefined
   let navigatorModel: NavigatorModel | undefined
 
   onDestroy(location.subscribe(async (loc) => {
@@ -51,6 +52,7 @@
       const spaceClass = (await client.findAll(core.class.Class, { _id: space._class }))[0]
       const view = client.getHierarchy().as(spaceClass, workbench.mixin.SpaceView)
       currentView = view.view
+      createItemDialog = view.createItemDialog
     }
     navigatorModel = (await client.findAll(workbench.class.Application, { _id: currentApp }))[0]?.navigatorModel
   }))
@@ -72,11 +74,11 @@
   {#if navigator}
   <div class="navigator">
     <NavHeader/>
-    <Navigator model={navigatorModel} space={currentSpace}/>
+    <Navigator model={navigatorModel}/>
   </div>
   {/if}
   <div class="component">
-    <SpaceHeader space={currentSpace}/>
+    <SpaceHeader space={currentSpace} {createItemDialog}/>
     {#if currentView}
       <Component is={currentView} props={ { space: currentSpace } }/>
     {/if}

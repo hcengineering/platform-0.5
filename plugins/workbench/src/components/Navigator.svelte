@@ -19,11 +19,10 @@
   import SpacesNav from './navigator/SpacesNav.svelte'
 
   export let model: NavigatorModel | undefined
-  export let space: Ref<Space> | undefined
 </script>
 
 {#if model}
   {#each model.spaces as m}
-    <SpacesNav model={m} {space}/>
+    <SpacesNav model={m}/>
   {/each}
 {/if}

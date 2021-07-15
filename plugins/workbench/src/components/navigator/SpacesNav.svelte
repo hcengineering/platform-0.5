@@ -30,8 +30,7 @@
   import TreeItem from './TreeItem.svelte'
 
   export let model: SpacesNavModel
-  export let space: Ref<Space> | undefined
-
+  
   const client = getClient()
   let spaces: Space[] = []
   let unsubscribe = () => {}

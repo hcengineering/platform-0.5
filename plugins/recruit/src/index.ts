@@ -15,6 +15,7 @@
 
 import CreateVacancy from './components/CreateVacancy.svelte'
 import CreateCandidates from './components/CreateCandidates.svelte'
+import CreateCandidate from './components/CreateCandidate.svelte'
 
 import VacancyView from './components/VacancyView.svelte'
 import CandidatesView from './components/CandidatesView.svelte'
@@ -23,6 +24,7 @@ export default async () => ({
   component: {
     CreateVacancy,
     CreateCandidates,
+    CreateCandidate,
     VacancyView,
     CandidatesView
   }

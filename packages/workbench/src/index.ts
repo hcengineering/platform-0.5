@@ -44,6 +44,7 @@ export interface NavigatorModel {
 
 export interface SpaceView extends Class<Obj> {
   view: AnyComponent
+  createItemDialog?: AnyComponent
 }
 
 export const workbenchId = 'workbench' as Plugin

@@ -38,7 +38,8 @@ export function createModel(builder: Builder) {
     view: recruit.component.VacancyView
   })
   builder.mixin(recruit.class.Candidates, core.class.Class, workbench.mixin.SpaceView, {
-    view: recruit.component.CandidatesView
+    view: recruit.component.CandidatesView,
+    createItemDialog: recruit.component.CreateCandidate
   })
   builder.createDoc(workbench.class.Application, {
     label: recruit.string.RecruitApplication,
