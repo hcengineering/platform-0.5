@@ -95,7 +95,6 @@ export class LiveQuery extends TxProcessor implements Client {
   async txCreateDoc (tx: TxCreateDoc<Doc>): Promise<void> {
     for (const q of this.queries) {
       const doc = TxProcessor.createDoc2Doc(tx)
-      console.log('doc created: ', doc, JSON.stringify(q.query), 'class: ', q._class)
       if (this.match(q, doc)) {
         console.log('matched query')
         if (q.result instanceof Promise) {
