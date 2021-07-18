@@ -20,6 +20,8 @@ import CreateCandidate from './components/CreateCandidate.svelte'
 import VacancyView from './components/VacancyView.svelte'
 import CandidatesView from './components/CandidatesView.svelte'
 
+import { getLocale } from '@anticrm/platform'
+
 export default async () => ({
   component: {
     CreateVacancy,
@@ -27,5 +29,6 @@ export default async () => ({
     CreateCandidate,
     VacancyView,
     CandidatesView
-  }
+  },
+  string: await import (`../lang/${getLocale()}.json`)
 })
