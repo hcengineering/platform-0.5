@@ -26,6 +26,8 @@ specifiers:
   '@rush-temp/query': file:./projects/query.tgz
   '@rush-temp/recruit': file:./projects/recruit.tgz
   '@rush-temp/recruit-assets': file:./projects/recruit-assets.tgz
+  '@rush-temp/table': file:./projects/table.tgz
+  '@rush-temp/table-resources': file:./projects/table-resources.tgz
   '@rush-temp/text': file:./projects/text.tgz
   '@rush-temp/text-editor': file:./projects/text-editor.tgz
   '@rush-temp/text-ui': file:./projects/text-ui.tgz
@@ -122,6 +124,8 @@ dependencies:
   '@rush-temp/query': file:projects/query.tgz_ts-node@10.1.0
   '@rush-temp/recruit': file:projects/recruit.tgz_9c26a505e26b50edcfa9f28c7953ad70
   '@rush-temp/recruit-assets': file:projects/recruit-assets.tgz_9c26a505e26b50edcfa9f28c7953ad70
+  '@rush-temp/table': file:projects/table.tgz_9c26a505e26b50edcfa9f28c7953ad70
+  '@rush-temp/table-resources': file:projects/table-resources.tgz_00682bb88e6504b414986dc6472c6748
   '@rush-temp/text': file:projects/text.tgz_ts-node@10.1.0
   '@rush-temp/text-editor': file:projects/text-editor.tgz_814488e722ed49c4c8aeb5211df9d5a0
   '@rush-temp/text-ui': file:projects/text-ui.tgz_814488e722ed49c4c8aeb5211df9d5a0
@@ -9431,7 +9435,7 @@ packages:
     dev: false
 
   file:projects/model-all.tgz_25d496ffe1f157ff03e21f385e47b1fa:
-    resolution: {integrity: sha512-GoUWoQPPpjYKj7LGzZtMg06Z8DfGGaSrDJXFP/tS61jaKqF6pIGiFQngpkddZKpaoWnQgMAhN+bOeHBN+P292w==, tarball: file:projects/model-all.tgz}
+    resolution: {integrity: sha512-hyb6YHAQQ5ukNC6p4yeIkYLIGYThPS9ETvTDZsfTgdm2hR91h/vsb2EVENYypWgtpVU7Fxr6TbJ/aIjgzx7TbA==, tarball: file:projects/model-all.tgz}
     id: file:projects/model-all.tgz
     name: '@rush-temp/model-all'
     version: 0.0.0
@@ -9547,7 +9551,7 @@ packages:
     dev: false
 
   file:projects/model-workbench.tgz_9c26a505e26b50edcfa9f28c7953ad70:
-    resolution: {integrity: sha512-Cay6AHxWB1jVb1E+XwJfB3aCmal9zEO3R9w9ks3JINUm2EOUhDdCv0zAWYRNEpm4TDS5i6oQVAZCH0QXCa9FsQ==, tarball: file:projects/model-workbench.tgz}
+    resolution: {integrity: sha512-/7JBPEZPERRZXf+7Pe9TZHIe5eKpWBMe+K9SMHfJq4U3TwHV4zaEGySA1BMxfJsDw7c8qhre8YtTQ2Y0sDbxow==, tarball: file:projects/model-workbench.tgz}
     id: file:projects/model-workbench.tgz
     name: '@rush-temp/model-workbench'
     version: 0.0.0
@@ -9773,7 +9777,7 @@ packages:
     dev: false
 
   file:projects/prod.tgz_sass@1.35.2+ts-node@10.1.0:
-    resolution: {integrity: sha512-YUpKTrW4kWB6L2BbCIvOPNKCKA4zWIOON7Mc+F4UMZkridXszg6v/FC9RzN33d0i32UeupALip24bMFKQwvnhQ==, tarball: file:projects/prod.tgz}
+    resolution: {integrity: sha512-97WfE1Y6A3xa70g7uYFomhCOfjHVsXFzabKVhF1z2fmNFj71u940bwgjchqUgaCz7j8dPe4kyxuutA4esLiR4A==, tarball: file:projects/prod.tgz}
     id: file:projects/prod.tgz
     name: '@rush-temp/prod'
     version: 0.0.0
@@ -9865,6 +9869,63 @@ packages:
     resolution: {integrity: sha512-crXShRjiv0CXqUT+6ThrJUqK15wj2d+yk42UG6NGNy2nzea0PJfFnXROF2AhF99vRpNhz7UbcDhIPsbsgCGjhA==, tarball: file:projects/recruit.tgz}
     id: file:projects/recruit.tgz
     name: '@rush-temp/recruit'
+    version: 0.0.0
+    dependencies:
+      '@microsoft/api-extractor': 7.18.1
+      '@types/jest': 26.0.24
+      jest: 26.6.3_ts-node@10.1.0
+      prettier: 2.3.2
+      ts-jest: 26.5.6_jest@26.6.3+typescript@4.3.5
+      ts-standard: 10.0.0_702a8502199281702e4c6a3a1eba84f6
+      typescript: 4.3.5
+    transitivePeerDependencies:
+      - '@typescript-eslint/parser'
+      - bufferutil
+      - canvas
+      - supports-color
+      - ts-node
+      - utf-8-validate
+    dev: false
+
+  file:projects/table-resources.tgz_00682bb88e6504b414986dc6472c6748:
+    resolution: {integrity: sha512-qA92Dice6Xf2xhc/oip5OCubRMUR+q33sThDFJu83db//YLMLltt2CfVES+FTD/KrOGPJa92K/Ai3Caq7DSlxg==, tarball: file:projects/table-resources.tgz}
+    id: file:projects/table-resources.tgz
+    name: '@rush-temp/table-resources'
+    version: 0.0.0
+    dependencies:
+      '@microsoft/api-extractor': 7.18.1
+      '@types/jest': 26.0.24
+      jest: 26.6.3_ts-node@10.1.0
+      prettier: 2.3.2
+      sass: 1.35.2
+      svelte: 3.38.3
+      svelte-check: 2.2.2_1e60e55b022cbc4d590e891355c7d065
+      svelte-loader: 3.1.2_svelte@3.38.3
+      ts-jest: 26.5.6_jest@26.6.3+typescript@4.3.5
+      ts-standard: 10.0.0_702a8502199281702e4c6a3a1eba84f6
+      typescript: 4.3.5
+    transitivePeerDependencies:
+      - '@babel/core'
+      - '@typescript-eslint/parser'
+      - bufferutil
+      - canvas
+      - coffeescript
+      - less
+      - node-sass
+      - postcss
+      - postcss-load-config
+      - pug
+      - stylus
+      - sugarss
+      - supports-color
+      - ts-node
+      - utf-8-validate
+    dev: false
+
+  file:projects/table.tgz_9c26a505e26b50edcfa9f28c7953ad70:
+    resolution: {integrity: sha512-a4QNBfKXkoKz48bml0e+4t4c/+FLFGsPKlyDqeNFkK7/xwh2yC+0SC/ivHpYrsEMZPx96qZ1XJn59xgJuSl5+w==, tarball: file:projects/table.tgz}
+    id: file:projects/table.tgz
+    name: '@rush-temp/table'
     version: 0.0.0
     dependencies:
       '@microsoft/api-extractor': 7.18.1

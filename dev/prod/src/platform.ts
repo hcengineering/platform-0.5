@@ -20,6 +20,7 @@ import { clientId } from '@anticrm/client'
 import { workbenchId } from '@anticrm/workbench'
 import { chunterId } from '@anticrm/chunter'
 import { recruitId } from '@anticrm/recruit'
+import { tableId } from '@anticrm/table'
 // import task from '@anticrm/task'
 // import meeting from '@anticrm/meeting'
 // import i18n from '@anticrm/platform-i18n'
@@ -58,7 +59,8 @@ export function configurePlatform() {
   addLocation(loginId, () => import(/* webpackChunkName: "login" */ '@anticrm/plugin-login'))
   addLocation(workbenchId, () => import(/* webpackChunkName: "workbench" */ '@anticrm/plugin-workbench'))
   addLocation(chunterId, () => import(/* webpackChunkName: "chunter" */ '@anticrm/plugin-chunter'))
-  addLocation(recruitId, () => import(/* webpackChunkName: "chunter" */ '@anticrm/plugin-recruit'))
+  addLocation(recruitId, () => import(/* webpackChunkName: "recruit" */ '@anticrm/plugin-recruit'))
+  addLocation(tableId, () => import(/* webpackChunkName: "table" */ '@anticrm/table-resources'))
   // addLocation(task, () => import(/* webpackChunkName: "task" */ '@anticrm/task-impl'))
   // addLocation(meeting, () => import(/* webpackChunkName: "meeting" */ '@anticrm/meeting-impl'))
   // platform.addLocation(i18n, () => import(/* webpackChunkName: "platform-i18n" */ '@anticrm/platform-i18n/src/plugin'))

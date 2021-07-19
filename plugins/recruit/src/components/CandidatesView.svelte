@@ -17,12 +17,31 @@
   import type { Ref, Space } from '@anticrm/core'
   import { getClient } from '@anticrm/workbench'
 
+  import { Component, StringPresenter } from '@anticrm/ui'
+  import recruit from '../plugin'
+  import table from '@anticrm/table'
+
   export let space: Ref<Space>
 
   const client = getClient()
 
 </script>
 
-<h1>Candidates</h1>
-
-{space}
+<Component is={table.component.TableView} props={
+  {
+    _class:recruit.class.Candidate, 
+    space, 
+    model: [
+      { 
+        label: 'First',
+        key: 'firstName',
+        component: StringPresenter
+      },
+      { 
+        label: 'Last',
+        key: 'lastName',
+        component: StringPresenter
+      },
+    ]
+  }
+}/>

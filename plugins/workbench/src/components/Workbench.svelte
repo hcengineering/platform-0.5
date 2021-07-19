@@ -53,6 +53,9 @@
       const view = client.getHierarchy().as(spaceClass, workbench.mixin.SpaceView)
       currentView = view.view
       createItemDialog = view.createItemDialog
+    } else {
+      currentView = undefined
+      createItemDialog = undefined
     }
     navigatorModel = (await client.findAll(workbench.class.Application, { _id: currentApp }))[0]?.navigatorModel
   }))

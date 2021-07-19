@@ -465,6 +465,16 @@
       "shouldPublish": true
     },
     {
+      "packageName": "@anticrm/table",
+      "projectFolder": "plugins/table",
+      "shouldPublish": true
+    },
+    {
+      "packageName": "@anticrm/table-resources",
+      "projectFolder": "plugins/table-resources",
+      "shouldPublish": true
+    },
+    {
       "packageName": "@anticrm/recruit",
       "projectFolder": "packages/recruit",
       "shouldPublish": true
