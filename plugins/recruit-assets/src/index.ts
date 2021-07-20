@@ -18,5 +18,5 @@ import recruit from '@anticrm/recruit'
 
 const icons = require('../assets/icons.svg')
 loadMetadata(recruit.icon, {
-  RecruitApplication: `${icons}#hashtag`,
+  RecruitApplication: `${icons}#recruitment`,
 })

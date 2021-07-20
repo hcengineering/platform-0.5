@@ -13,7 +13,7 @@
 // limitations under the License.
 //
 
-import { Builder, Model } from '@anticrm/model'
+import { Builder, Model, UX } from '@anticrm/model'
 
 import { TSpace } from '@anticrm/model-core'
 import type { Vacancy, Candidates, Candidate } from '@anticrm/recruit'
@@ -27,6 +27,7 @@ import recruit from './plugin'
 export class TVacancy extends TSpace implements Vacancy {}
 
 @Model(recruit.class.Candidates, core.class.Space)
+@UX(recruit.string.CandidatePools, recruit.icon.RecruitApplication)
 export class TCandidates extends TSpace implements Candidates {}
 
 @Model(recruit.class.Candidate, contact.class.Person)
