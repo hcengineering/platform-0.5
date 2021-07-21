@@ -59,8 +59,8 @@
   <div class="content">
     <Section icon={File} title={'Personal Information'}>
       <div class="grid">
-        <EditBox label={'First name *'} placeholder={'John'} />
-        <EditBox label={'Last name *'} placeholder={'Smith'} />
+        <EditBox label={'First name *'} placeholder={'John'} bind:value={firstName}/>
+        <EditBox label={'Last name *'} placeholder={'Smith'} bind:value={lastName}/>
         <EditBox label={'Email *'} placeholder={'john.smith@gmail.com'} />
         <EditBox label={'Phone *'} placeholder={'+00 (000) 000 00'} />
       </div>
