@@ -46,7 +46,6 @@
 
     .label {
       margin-bottom: 4px;
-      font-family: inherit;
       font-size: 12px;
       font-weight: 500;
       color: var(--theme-caption-color);
@@ -60,6 +59,7 @@
       height: 21px;
       margin: -3px;
       padding: 2px;
+      font-family: inherit;
       font-size: 14px;
       line-height: 150%;
       color: var(--theme-caption-color);
