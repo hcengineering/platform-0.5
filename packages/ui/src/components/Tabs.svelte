@@ -21,8 +21,8 @@
     title: IntlString
   }
 
-  export let tabs: Array<Tab> = [{ title: 'Applications' }, { title: 'Interviews' }, { title: 'Activity' }, { title: 'Documents' }, { title: 'Details' }]
-  export let selected: IntlString = 'Details'
+  export let tabs: Array<Tab> = [{ title: 'General' }, { title: 'Attachments' }]
+  export let selected: IntlString = 'General'
 </script>
 
 <div class="tabs-container">
@@ -41,29 +41,29 @@
     flex-direction: row;
     align-items: stretch;
     flex-wrap: nowrap;
+    margin-bottom: 16px;
     width: 100%;
-    height: 54px;
-    min-height: 54px;
+    height: 72px;
+    min-height: 72px;
     border-bottom: 1px solid var(--theme-menu-divider);
 
     .tab {
       display: flex;
       align-items: center;
-      margin-left: 40px;
-      height: 54px;
+      height: 72px;
       color: var(--theme-content-trans-color);
       cursor: pointer;
       user-select: none;
 
       &.selected {
         border-top: 2px solid transparent;
-        border-bottom: 2px solid var(--primary-button-enabled);
+        border-bottom: 2px solid var(--theme-caption-color);
         color: var(--theme-caption-color);
         cursor: default;
       }
     }
     .tab + .tab {
-      margin-left: 64px;
+      margin-left: 40px;
     }
     .grow {
       min-width: 40px;
