@@ -14,21 +14,40 @@
 -->
 
 <script lang="ts">
+  import { onMount } from 'svelte'
   import type { IntlString } from '@anticrm/platform'
   import Label from './Label.svelte'
 
   export let label: IntlString | undefined
   export let width: string | undefined
   export let value: string | undefined
-  export let placeholder: string | undefined
+  export let placeholder: string = 'placeholder'
+
+  let text: HTMLElement
+  let input: HTMLInputElement
+
+  function computeSize(t: EventTarget | null) {
+    const target = t as HTMLInputElement
+    const value = target.value
+    text.innerHTML = (value === '' ? placeholder : value).replaceAll(' ', '&nbsp;')
+    target.style.width = text.clientWidth + 6 + 'px'
+  }
+
+  onMount(() => { computeSize(input) })
 </script>
 
 <div class="editbox" style="{width ? 'width: ' + width : ''}">
+  <div class="text" bind:this={text}></div>
   {#if label}<div class="label"><Label label={label}/></div>{/if}
-  <input type="text" bind:value {placeholder}/>
+  <input bind:this={input} type="text" bind:value {placeholder} on:input={(ev) => ev.target && computeSize(ev.target)}/>
 </div>
 
 <style lang="scss">
+
+  .text {
+    position: absolute;
+    visibility: hidden;
+  }
   .editbox {
     display: flex;
     flex-direction: column;
@@ -46,7 +65,7 @@
     }
 
     input {
-      width: auto;
+      max-width: 100%;
       height: 21px;
       margin: -3px;
       padding: 2px;
@@ -65,6 +84,17 @@
       &::placeholder {
         color: var(--theme-content-dark-color);
       }
+
+      &::-webkit-contacts-auto-fill-button,
+      &::-webkit-credentials-auto-fill-button {
+        visibility: hidden;
+        display: none !important;
+        pointer-events: none;
+        height: 0;
+        width: 0;
+        margin: 0;
+      }
+
     }
   }
 </style>
