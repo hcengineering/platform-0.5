@@ -35,7 +35,7 @@
                                { name: 'elon', title: 'Elon Musk' },
                                { name: 'kathryn', title: 'Kathryn Minshew' }]
   export let vAlign: 'top' | 'middle' | 'bottom' = 'bottom'
-  export let hAlign: 'left' | 'center' | 'right' = 'left'
+  export let hAlign: 'left' | 'center' | 'right' = 'right'
   export let margin: number = 16
   export let showSearch: boolean = false
 
