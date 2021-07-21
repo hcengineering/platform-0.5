@@ -56,7 +56,7 @@
   <div class="content">
     <Section icon={File} label={'General Information'}>
       <div class="grid">
-        <UserBox title='Candidate' caption='Candidates' hAlign='right' showHeader/>
+        <UserBox title='Candidate' caption='Candidates' hAlign='right' showSearch/>
       </div>
     </Section>
   </div>
