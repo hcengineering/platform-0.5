@@ -17,31 +17,68 @@
   import type { Ref, Space } from '@anticrm/core'
   import { getClient } from '@anticrm/workbench'
 
-  import { Component, StringPresenter } from '@anticrm/ui'
+  import { Component, StringPresenter, ViewSelection } from '@anticrm/ui'
   import recruit from '../plugin'
   import table from '@anticrm/table'
 
   export let space: Ref<Space>
+  export let view: string = 'list'
 
   const client = getClient()
 
 </script>
 
-<Component is={table.component.TableView} props={
-  {
-    _class:recruit.class.Candidate, 
-    space, 
-    model: [
-      { 
-        label: 'First',
-        key: 'firstName',
-        component: StringPresenter
-      },
-      { 
-        label: 'Last',
-        key: 'lastName',
-        component: StringPresenter
-      },
-    ]
+<div class="container">
+  <div class="toolbar">
+    <div style="flex-grow: 1" />
+    <ViewSelection bind:selected={view} />
+  </div>
+  <div class="content">
+
+    <Component is={table.component.TableView} props={
+      {
+        _class:recruit.class.Candidate, 
+        space, 
+        model: [
+          { 
+            label: 'First',
+            key: 'firstName',
+            component: StringPresenter
+          },
+          { 
+            label: 'Last',
+            key: 'lastName',
+            component: StringPresenter
+          },
+        ]
+      }
+    }/>
+
+  </div>
+</div>
+
+<style lang="scss">
+  .container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+
+    .toolbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: auto;
+      min-height: 40px;
+      height: 40px;
+      margin: 40px 40px 0;
+    }
+    .content {
+      display: flex;
+      flex-direction: column;
+      width: auto;
+      height: 100%;
+      margin: 40px;
+    }
   }
-}/>
+</style>

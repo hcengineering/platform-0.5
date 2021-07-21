@@ -71,6 +71,9 @@
       &:focus {
         border-color: var(--primary-button-enabled);
       }
+      &::placeholder {
+        color: var(--theme-content-dark-color);
+      }
     }
   }
   .error {
