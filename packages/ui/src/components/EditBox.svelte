@@ -41,12 +41,12 @@
   .editbox {
     display: flex;
     flex-direction: column;
-    font-family: inherit;
     min-width: 50px;
     height: 36px;
 
     .label {
       margin-bottom: 4px;
+      font-family: inherit;
       font-size: 12px;
       font-weight: 500;
       color: var(--theme-caption-color);
