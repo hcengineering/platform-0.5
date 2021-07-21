@@ -48,8 +48,8 @@
   }
 </script>
 
-<Dialog label={recruit.string.CreateCandidate} 
-        okLabel={recruit.string.CreateCandidate} 
+<Dialog label={'Create Application'} 
+        okLabel={'Create Application'} 
         okAction={createCandidate}
         on:close={() => { dispatch('close') }}>
   <Tabs/>
