@@ -1,4 +1,7 @@
 {
   "Vacancies": "Vacancies",
-  "CandidatePools": "Candidates"
+  "CandidatePools": "Candidates",
+  "VacancyName": "Vacancy Title *",
+  "CreateVacancy": "Create Vacancy",
+  "MakePrivate": "Make Private"
 }
