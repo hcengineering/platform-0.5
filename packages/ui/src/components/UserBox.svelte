@@ -57,7 +57,7 @@
       {#if selected}
         <div class="avatar"><UserInfo user={selected.name} size={36} avatarOnly /></div>
       {:else}
-        <div class="icon">{#if pressed}<Close/>{:else}<Add/>{/if}</div>
+        <div class="icon">{#if pressed}<Close size={16} />{:else}<Add size={16} />{/if}</div>
       {/if}
     </button>
     {#if selected}

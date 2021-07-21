@@ -15,7 +15,7 @@
 
 <script lang="ts">
   import type { IntlString } from '@anticrm/platform'
-  import EditBox from './EditBox.svelte'
+  import Label from './Label.svelte'
 
   export let title: IntlString | undefined = undefined
   export let caption: IntlString | undefined = undefined
@@ -55,7 +55,10 @@
       {#if showSearch}
         <div class="header">
           <div class="title">{title}</div>
-          <EditBox label={'Search'} bind:value={search} />
+          <div class="editbox">
+            <input type="text" bind:value={search} placeholder=" " />
+            <div class="label"><Label label={'Search'} /></div>
+          </div>          
           <div class="caption">{caption}</div>
         </div>
       {/if}
@@ -121,6 +124,52 @@
           font-weight: 500;
           color: var(--theme-caption-color);
         }
+
+        .editbox {
+          position: relative;
+          display: flex;
+          flex-direction: column;
+          padding: 0;
+          min-width: 50px;
+          height: 52px;
+          background-color: var(--theme-bg-accent-color);
+          border: 1px solid var(--theme-bg-accent-hover);
+          border-radius: 12px;
+          &:focus-within {
+            background-color: var(--theme-bg-focused-color);
+            border-color: var(--theme-bg-focused-border);
+          }
+          input {
+            height: 52px;
+            margin: 0;
+            padding: 14px 20px 0px;
+            font-family: inherit;
+            color: var(--theme-caption-color);
+            background-color: transparent;
+            outline: none;
+            border: none;
+            border-radius: 12px;
+            font-size: 14px;
+            line-height: 17px;
+          }
+          .label {
+            position: absolute;
+            top: 18px;
+            left: 20px;
+            font-size: 12px;
+            line-height: 14px;
+            color: var(--theme-caption-color);
+            pointer-events: none;
+            opacity: 0.3;
+            transition: all 200ms;
+            user-select: none;
+          }
+          input:focus + .label,
+          input:not(:placeholder-shown) + .label {
+            top: 10px;
+          }
+        }
+
         .caption {
           margin: 24px 0 16px;
           font-size: 12px;
