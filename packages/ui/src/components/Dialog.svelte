@@ -66,7 +66,7 @@
       max-height: 100vh;
       height: 100vh;
       background-color: var(--theme-bg-color);
-      border-radius: 30px;
+      border-radius: 30px 0 0 30px;
       box-shadow: 0px 50px 120px rgba(0, 0, 0, 0.4);
 
       .header {

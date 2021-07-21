@@ -41,7 +41,6 @@
   .editbox {
     display: flex;
     flex-direction: column;
-    font-family: inherit;
     min-width: 50px;
     height: 36px;
 
@@ -60,6 +59,7 @@
       height: 21px;
       margin: -3px;
       padding: 2px;
+      font-family: inherit;
       font-size: 14px;
       line-height: 150%;
       color: var(--theme-caption-color);
@@ -70,6 +70,9 @@
 
       &:focus {
         border-color: var(--primary-button-enabled);
+      }
+      &::placeholder {
+        color: var(--theme-content-dark-color);
       }
     }
   }
