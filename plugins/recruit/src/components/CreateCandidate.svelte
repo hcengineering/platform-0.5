@@ -57,7 +57,7 @@
   </div>
   <Tabs/>
   <div class="content">
-    <Section icon={File} title={'Personal Information'}>
+    <Section icon={File} label={'Personal Information'}>
       <div class="grid">
         <EditBox label={'First name *'} placeholder={'John'} bind:value={firstName}/>
         <EditBox label={'Last name *'} placeholder={'Smith'} bind:value={lastName}/>
@@ -65,7 +65,7 @@
         <EditBox label={'Phone *'} placeholder={'+00 (000) 000 00'} />
       </div>
     </Section>
-    <Section icon={Address} title={'Address'} topLine>
+    <Section icon={Address} label={'Address'} topLine>
       <div class="grid">
         <EditBox label={'Street'} placeholder={'Broderick st'} />
         <EditBox label={'City *'} placeholder={'Los Angeles'} />

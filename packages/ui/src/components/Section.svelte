@@ -21,21 +21,21 @@
   import ArrowDown from './icons/Down.svelte'
 
   export let icon: AnySvelteComponent
-  export let title: IntlString
+  export let label: IntlString
   export let topLine: boolean = false
-  export let show: boolean = false
+  export let closed: boolean = false
 </script>
 
 <div class="section-container" class:topLine={topLine}
   on:click|preventDefault={() => {
-    show = !show
+    closed = !closed
   }}
 >
   <svelte:component this={icon} size={20} />
-  <div class="title"><Label label={title} /></div>
-  <div class="arrow">{#if show}<ArrowDown />{:else}<ArrowUp />{/if}</div>
+  <div class="title"><Label {label} /></div>
+  <div class="arrow">{#if closed}<ArrowUp />{:else}<ArrowDown />{/if}</div>
 </div>
-{#if show}<div class="section-content"><slot/></div>{/if}
+{#if !closed}<div class="section-content"><slot/></div>{/if}
 
 <style lang="scss">
   .section-container {
