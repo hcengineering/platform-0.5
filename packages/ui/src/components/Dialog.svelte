@@ -32,14 +32,13 @@
 </script>
 
 <div class="container">
-  <div class="null"/>
   <div class="dialog">
     <div class="header">
       <div class="title"><Label {label}/></div>
       <div class="tool" on:click={() => { dispatch('close') }}><Close size={16}/></div>
     </div>
     <div class="content">
-      <ScrollBox vertical><slot/></ScrollBox>
+      <ScrollBox vertical gap={0}><slot/></ScrollBox>
     </div>
     <div class="footer">
       <Button label={okLabel} primary on:click={() => { okAction(); dispatch('close') }}/>
@@ -53,7 +52,7 @@
     position: relative;
     display: flex;
     justify-content: space-between;
-    flex-direction: row;
+    flex-direction: row-reverse;
     width: 100vw;
     max-height: 100vh;
     height: 100vh;
@@ -75,18 +74,17 @@
         justify-content: space-between;
         align-items: center;
         flex-shrink: 0;
-        margin-top: 12px;
         padding: 0 32px 0 40px;
         height: 72px;
 
         .title {
           flex-grow: 1;
           font-weight: 500;
-          font-size: 20px;
-          line-height: 26px;
+          font-size: 18px;
           color: var(--theme-caption-color);
           user-select: none;
         }
+
         .tool {
           width: 16px;
           height: 16px;
@@ -101,9 +99,9 @@
 
       .content {
         flex-shrink: 0;
-        margin: 24px 20px 0;
-        padding: 0 20px;
-        height: calc(100vh - 204px);
+        width: 640px;
+        margin: 0 40px;
+        height: calc(100vh - 168px);
       }
 
       .footer {

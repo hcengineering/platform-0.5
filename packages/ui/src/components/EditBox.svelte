@@ -20,69 +20,57 @@
   export let label: IntlString | undefined
   export let width: string | undefined
   export let value: string | undefined
+  export let placeholder: string | undefined
   export let error: string | undefined
   export let password: boolean | undefined
   export let id: string | undefined
 </script>
 
 <div class="editbox{error ? ' error' : ''}" style="{width ? 'width: ' + width : ''}">
-  {#if password}
-    <input type="password" class:nolabel={!label} {id} bind:value on:keyup placeholder=" "/>
-  {:else}
-    <input type="text" class:nolabel={!label} {id} bind:value on:keyup placeholder=" "/>
-  {/if}
   {#if label}
     <div class="label"><Label label={label}/></div>
+  {/if}
+  {#if password}
+    <input type="password" {id} bind:value on:keyup placeholder=" "/>
+  {:else}
+    <input type="text" {id} bind:value on:keyup {placeholder}/>
   {/if}
 </div>
 
 <style lang="scss">
   .editbox {
-    position: relative;
     display: flex;
     flex-direction: column;
-    padding: 0;
     font-family: inherit;
     min-width: 50px;
-    height: 52px;
-    background-color: var(--theme-bg-accent-color);
-    border: 1px solid var(--theme-bg-accent-hover);
-    border-radius: 12px;
-    &:focus-within {
-      background-color: var(--theme-bg-focused-color);
-      border-color: var(--theme-bg-focused-border);
-    }
-    input {
-      height: 52px;
-      margin: 0;
-      padding: 14px 20px 0px;
-      color: var(--theme-caption-color);
-      background-color: transparent;
-      outline: none;
-      border: none;
-      border-radius: 12px;
-      font-size: 14px;
-      line-height: 17px;
-    }
-    .nolabel {
-      padding-top: 0;
-    }
-    
+    height: 36px;
+
     .label {
-      position: absolute;
-      top: 18px;
-      left: 20px;
+      margin-bottom: 4px;
       font-size: 12px;
-      line-height: 14px;
+      font-weight: 500;
       color: var(--theme-caption-color);
+      opacity: .8;
       pointer-events: none;
-      opacity: 0.3;
-      transition: all 200ms;
       user-select: none;
     }
-    input:focus + .label,
-    input:not(:placeholder-shown) + .label {
-      top: 10px;
+
+    input {
+      width: auto;
+      height: 21px;
+      margin: -3px;
+      padding: 2px;
+      font-size: 14px;
+      line-height: 150%;
+      color: var(--theme-caption-color);
+      background-color: transparent;
+      border: 1px solid transparent;
+      border-radius: 2px;
+      outline: none;
+
+      &:focus {
+        border-color: var(--primary-button-enabled);
+      }
     }
   }
   .error {
