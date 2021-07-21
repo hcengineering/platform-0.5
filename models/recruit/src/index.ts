@@ -37,7 +37,8 @@ export class TCandidate extends TPerson implements Candidate {}
 export function createModel(builder: Builder) {
   builder.createModel(TVacancy, TCandidates, TCandidate)
   builder.mixin(recruit.class.Vacancy, core.class.Class, workbench.mixin.SpaceView, {
-    view: recruit.component.VacancyView
+    view: recruit.component.VacancyView,
+    createItemDialog: recruit.component.CreateApplication
   })
   builder.mixin(recruit.class.Candidates, core.class.Class, workbench.mixin.SpaceView, {
     view: recruit.component.CandidatesView,
