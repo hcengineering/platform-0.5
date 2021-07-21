@@ -4,5 +4,6 @@
   "VacancyName": "Vacancy Title *",
   "VacancyDescription": "Vacancy Description",
   "CreateVacancy": "Create Vacancy",
+  "CreateCandidate": "Create Candidate",
   "MakePrivate": "Make Private"
 }
