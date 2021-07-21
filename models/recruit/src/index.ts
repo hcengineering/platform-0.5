@@ -24,6 +24,7 @@ import contact, { TPerson } from '@anticrm/model-contact'
 import recruit from './plugin'
 
 @Model(recruit.class.Vacancy, core.class.Space)
+@UX(recruit.string.Vacancy, recruit.icon.Vacancy)
 export class TVacancy extends TSpace implements Vacancy {}
 
 @Model(recruit.class.Candidates, core.class.Space)

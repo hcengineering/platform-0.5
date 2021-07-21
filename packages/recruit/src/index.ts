@@ -28,6 +28,7 @@ export const recruitId = 'recruit' as Plugin
 
 export default plugin(recruitId, {
   icon: {
-    RecruitApplication: '' as Asset
+    RecruitApplication: '' as Asset,
+    Vacancy: '' as Asset
   },
 })

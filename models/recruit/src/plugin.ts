@@ -25,7 +25,8 @@ export default mergeIds(recruitId, recruit, {
   string: {
     RecruitApplication: '' as IntlString,
     Vacancies: '' as IntlString,
-    CandidatePools: '' as IntlString
+    CandidatePools: '' as IntlString,
+    Vacancy: '' as IntlString,
   },
   component: {
     CreateVacancy: '' as AnyComponent,

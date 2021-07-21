@@ -23,6 +23,9 @@ export interface Contact extends Doc {
 export interface Person extends Contact {
   firstName: string
   lastName: string
+  email: string
+  phone: string
+  city: string
 }
 
 export interface Organization extends Contact {

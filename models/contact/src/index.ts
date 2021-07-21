@@ -29,6 +29,9 @@ export class TContact extends TDoc implements Contact {
 export class TPerson extends TContact implements Person {
   firstName!: string
   lastName!: string
+  email!: string
+  phone!: string
+  city!: string
 }
 
 @Model(contact.class.Organization, contact.class.Contact)

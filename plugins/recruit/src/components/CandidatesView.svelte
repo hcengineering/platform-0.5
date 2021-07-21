@@ -41,13 +41,28 @@
         space, 
         model: [
           { 
-            label: 'First',
+            label: 'First Name',
             key: 'firstName',
             component: StringPresenter
           },
           { 
-            label: 'Last',
+            label: 'Last Name',
             key: 'lastName',
+            component: StringPresenter
+          },
+          { 
+            label: 'Email',
+            key: 'email',
+            component: StringPresenter
+          },
+          { 
+            label: 'Phone',
+            key: 'phone',
+            component: StringPresenter
+          },
+          { 
+            label: 'City',
+            key: 'city',
             component: StringPresenter
           },
         ]

@@ -31,13 +31,19 @@
 
   let firstName: string = ''
   let lastName: string = ''
+  let email: string = ''
+  let phone: string = ''
+  let city: string = ''
 
   const client = getClient()
 
   function createCandidate() {
     client.createDoc(recruit.class.Candidate, space, {
       firstName,
-      lastName
+      lastName,
+      email,
+      phone,
+      city,
     })
   }
 </script>
@@ -61,14 +67,14 @@
       <div class="grid">
         <EditBox label={'First name *'} placeholder={'John'} bind:value={firstName}/>
         <EditBox label={'Last name *'} placeholder={'Smith'} bind:value={lastName}/>
-        <EditBox label={'Email *'} placeholder={'john.smith@gmail.com'} />
-        <EditBox label={'Phone *'} placeholder={'+00 (000) 000 00'} />
+        <EditBox label={'Email *'} placeholder={'john.smith@gmail.com'} bind:value={email}/>
+        <EditBox label={'Phone *'} placeholder={'+00 (000) 000 00'} bind:value={phone}/>
       </div>
     </Section>
     <Section icon={Address} label={'Address'} topLine>
       <div class="grid">
         <EditBox label={'Street'} placeholder={'Broderick st'} />
-        <EditBox label={'City *'} placeholder={'Los Angeles'} />
+        <EditBox label={'City *'} placeholder={'Los Angeles'} bind:value={city}/>
         <EditBox label={'ZIP / Postal code'} placeholder={'26892'} />
         <EditBox label={'Country'} placeholder={'United States'} />
       </div>
