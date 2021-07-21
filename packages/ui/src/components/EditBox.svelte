@@ -21,20 +21,11 @@
   export let width: string | undefined
   export let value: string | undefined
   export let placeholder: string | undefined
-  export let error: string | undefined
-  export let password: boolean | undefined
-  export let id: string | undefined
 </script>
 
-<div class="editbox{error ? ' error' : ''}" style="{width ? 'width: ' + width : ''}">
-  {#if label}
-    <div class="label"><Label label={label}/></div>
-  {/if}
-  {#if password}
-    <input type="password" {id} bind:value on:keyup placeholder=" "/>
-  {:else}
-    <input type="text" {id} bind:value on:keyup {placeholder}/>
-  {/if}
+<div class="editbox" style="{width ? 'width: ' + width : ''}">
+  {#if label}<div class="label"><Label label={label}/></div>{/if}
+  <input type="text" bind:value {placeholder}/>
 </div>
 
 <style lang="scss">
@@ -74,12 +65,6 @@
       &::placeholder {
         color: var(--theme-content-dark-color);
       }
-    }
-  }
-  .error {
-    border: 1px solid var(--system-error-60-color);
-    &:focus-within {
-      border-color: var(--system-error-color);
     }
   }
 </style>
