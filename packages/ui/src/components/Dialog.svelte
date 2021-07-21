@@ -42,7 +42,7 @@
     </div>
     <div class="footer">
       <Button label={okLabel} primary on:click={() => { okAction(); dispatch('close') }}/>
-      <Button label={okLabel} on:click={() => { okAction(); dispatch('close') }}/>
+      <Button label={'Cancel'} on:click={() => { okAction(); dispatch('close') }}/>
     </div>
   </div>
 </div>
