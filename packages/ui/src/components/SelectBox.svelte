@@ -12,111 +12,64 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 -->
-
 <script lang="ts">
-  import type { IntlString } from '@anticrm/platform'
-  import type { AnySvelteComponent, IPopupItem } from '../types'
-  import Label from './Label.svelte'
-  import PopupMenu from './PopupMenu.svelte'
-  import PopupItem from './PopupItem.svelte'
-  import SelectItem from './SelectItem.svelte'
-  import Add from './icons/Add.svelte'
-  import Close from './icons/Close.svelte'
-
-  export let component: AnySvelteComponent | undefined = undefined
-  export let title: IntlString | undefined = undefined
-  export let items: Array<IPopupItem>
-  export let vAlign: 'top' | 'middle' | 'bottom' = 'bottom'
-  export let hAlign: 'left' | 'center' | 'right' = 'left'
-  export let margin: number = 16
-  export let gap: number = 8
-
-  let byTitle: boolean = (component) ? false : true
-  let pressed: boolean = false
-  let count: number
-
-  $: count = items.filter(i => i.selected).length
-
+  export let gap: number = 12
+  export let vertical: boolean = false
+  export let stretch: boolean = false
+  export let bothScroll: boolean = false
 </script>
 
-<div class="selectBox" style="padding: {gap/2}px;">
-  {#each items.filter(i => i.selected) as complate}
-    <SelectItem bind:item={complate} bind:component={component} bind:items={items} {vAlign} {hAlign} {margin} {gap}/>
-  {/each}
-  {#if items.filter(i => !i.selected).length }
-    <PopupMenu {vAlign} {hAlign} {margin} bind:show={pressed}>
-      <button slot="trigger" class="btn" style="margin: {gap/2}px" class:selected={pressed}
-        on:click={(event) => {
-          pressed = !pressed
-          event.stopPropagation()
-        }}
-      >
-        <div class="icon">
-          {#if pressed}<Close/>{:else}<Add/>{/if}
-        </div>
-      </button>
-      {#each items.filter(i => !i.selected) as item}
-        {#if byTitle }
-          <PopupItem title={item.title} selectable bind:selected={item.selected} action={async () => { pressed = !pressed }}/>
-        {:else}
-          <PopupItem component={component} props={item.props} selectable bind:selected={item.selected} action={async () => { pressed = !pressed }}/>
-        {/if}
-      {/each}
-    </PopupMenu>
-  {/if}
+<div class="scrollBox" class:vertical class:bothScroll>
+  <div class="box" class:stretch style="gap: {gap}px">
+    <slot />
+  </div>
 </div>
 
 <style lang="scss">
-  .selectBox {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+  .scrollBox {
+    position: relative;
     width: auto;
-    background-color: var(--theme-button-bg-enabled);
-    border: 1px solid var(--theme-bg-accent-color);
-    border-radius: 12px;
+    height: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    margin-right: 0;
+    margin-bottom: -5px;
 
-    .btn {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin: 0;
-      padding: 0;
-      width: 40px;
-      height: 40px;
-      background-color: transparent;
-      border: 1px solid transparent;
-      border-radius: 12px;
-      outline: none;
-      cursor: pointer;
-
-      .icon {
-        width: 16px;
-        height: 16px;
-        opacity: .3;
+    .box {
+      position: absolute;
+      display: grid;
+      grid-auto-flow: column;
+      padding: 0 0 5px 0;
+      gap: 24px;
+      top: 0;
+      left: 0;
+      width: auto;
+      height: 100%;
+      &.stretch {
+        width: 100%;
       }
+    }
 
-      &.selected {
-        background-color: var(--theme-button-bg-focused);
-        border: 1px solid var(--theme-bg-accent-color);
-        .icon {
-          opacity: .6;
+    &.vertical {
+      margin: 0 -10px 0 -10px;
+      overflow-x: hidden;
+      overflow-y: auto;
+      .box {
+        padding: 0 10px 0 10px;
+        width: 100%;
+        height: auto;
+        grid-auto-flow: row;
+        &.stretch {
+          height: 100%;
         }
       }
+    }
 
-      &:hover {
-        background-color: var(--theme-button-bg-pressed);
-        border: 1px solid var(--theme-bg-accent-color);
-        .icon {
-          opacity: 1;
-        }
-      }
-      &:focus {
-        border: 1px solid var(--primary-button-focused-border);
-        box-shadow: 0 0 0 3px var(--primary-button-outline);
-        .icon {
-          opacity: 1;
-        }
+    &.bothScroll {
+      margin: 0 -5px -5px 0;
+      overflow: auto;
+      .box {
+        padding: 0 5px 5px 0;
       }
     }
   }
