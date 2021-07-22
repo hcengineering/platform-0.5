@@ -19,7 +19,7 @@ import core from './component'
 import type { Hierarchy } from './hierarchy'
 import { getOperator } from './operator'
 import { findProperty, resultSort } from './query'
-import { DocumentQuery, FindOptions, FindResult, Storage } from './storage'
+import type { DocumentQuery, FindOptions, FindResult, Storage, WithLookup, LookupData, Refs } from './storage'
 import { Tx, TxCreateDoc, TxMixin, TxProcessor, TxRemoveDoc, TxUpdateDoc } from './tx'
 
 class MemDb extends TxProcessor {
@@ -50,15 +50,15 @@ class MemDb extends TxProcessor {
     }
   }
 
-  private getByIdQuery<T extends Doc>(query: DocumentQuery<T>, _class: Ref<Class<T>>): Doc[] {
-    const result = []
+  private getByIdQuery<T extends Doc>(query: DocumentQuery<T>, _class: Ref<Class<T>>): T[] {
+    const result: T[] = []
     if (typeof query._id === 'string') {
-      const obj = this.objectById.get(query._id)
+      const obj = this.objectById.get(query._id) as T
       if (obj !== undefined) result.push(obj)
     } else if (query._id?.$in !== undefined) {
       const ids = query._id.$in
       for (const id of ids) {
-        const obj = this.objectById.get(id)
+        const obj = this.objectById.get(id) as T
         if (obj !== undefined) result.push(obj)
       }
     }
@@ -72,6 +72,19 @@ class MemDb extends TxProcessor {
       throw new PlatformError(new Status(Severity.ERROR, core.status.ObjectNotFound, { _id }))
     }
     return doc as T
+  }
+
+  private lookup<T extends Doc>(docs: T[], lookup: Refs<T>): WithLookup<T>[] {
+    const withLookup: WithLookup<T>[] = []
+    for (const doc of docs) {
+      const result: LookupData<T> = {}
+      for (const key in lookup) {
+        const id = (doc as any)[key] as Ref<Doc>
+        (result as any)[key] = this.getObject(id)
+      }
+      withLookup.push(Object.assign({}, doc, result))
+    }
+    return withLookup
   }
 
   async findAll<T extends Doc>(
@@ -97,9 +110,10 @@ class MemDb extends TxProcessor {
 
     if (options?.sort !== undefined) resultSort(result, options?.sort)
 
-    const total = result.length
+    if (options?.lookup !== undefined) result = this.lookup(result as T[], options.lookup)
+
     result = result.slice(0, options?.limit)
-    return Object.assign(result as T[], { total })
+    return result as T[]
   }
 
   addDoc (doc: Doc): void {

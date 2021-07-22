@@ -29,7 +29,7 @@ export type DocumentQuery<T extends Doc> = {
   [P in keyof T]?: ObjQueryType<T[P]>
 }
 
-type Refs<T extends Doc> = Partial<Pick<T, KeysByType<T, Ref<Doc>>>>
+export type Refs<T extends Doc> = Partial<Pick<T, KeysByType<T, Ref<Doc>>>>
 
 // eslint-disable-next-line @typescript-eslint/consistent-type-definitions
 export type FindOptions<T extends Doc> = {
@@ -53,8 +53,10 @@ type RefsAsDocs<T extends Doc> = {
 
 type RemoveNever<T extends object> = Omit<T, KeysByType<T, never>>
 
-type WithLookup<T extends Doc> = T & {
-  $lookup?: Partial<RemoveNever<RefsAsDocs<T>>>
+export type LookupData<T extends Doc> = Partial<RemoveNever<RefsAsDocs<T>>>
+
+export type WithLookup<T extends Doc> = T & {
+  $lookup?: LookupData<T>
 }
 
 export type FindResult<T extends Doc> = WithLookup<T>[]
