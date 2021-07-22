@@ -19,7 +19,8 @@
   import type { Ref } from '@anticrm/core'
   import type { Application } from '@anticrm/workbench'
   import { getCurrentLocation, navigate } from '@anticrm/ui'
-  import workbench, { getClient } from '@anticrm/workbench'
+  import { getClient } from '@anticrm/presentation'
+  import workbench from '@anticrm/workbench'
 
   import AppItem from './AppItem.svelte'
 

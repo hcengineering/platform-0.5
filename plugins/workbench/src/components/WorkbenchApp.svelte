@@ -16,12 +16,12 @@
 <script lang="ts">
 
 import { getResource } from '@anticrm/platform'
-import type { Client } from '@anticrm/client'
+import type { Connection } from '@anticrm/client'
 import client from '@anticrm/client'
 
 import Workbench from './Workbench.svelte'
 
-async function connect(): Promise<Client> {
+async function connect(): Promise<Connection> {
   const getClient = await getResource(client.function.GetClient)
   return getClient()
 }

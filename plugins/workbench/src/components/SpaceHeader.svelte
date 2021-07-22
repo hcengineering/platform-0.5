@@ -21,7 +21,8 @@
   import Add from './icons/Add.svelte'
   import Star from './icons/Star.svelte'
 
-  import { getClient, showModal } from '@anticrm/workbench'
+  import { getClient } from '@anticrm/presentation'
+  import { showModal } from '@anticrm/workbench'
   import { classIcon } from '../utils'
   import core from '@anticrm/core'
 

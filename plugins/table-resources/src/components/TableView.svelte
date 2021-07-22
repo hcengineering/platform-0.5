@@ -22,7 +22,7 @@ import type { AttributeModel } from '@anticrm/table'
 
 import { Label } from '@anticrm/ui'
 
-import { getClient } from '@anticrm/workbench'
+import { getClient } from '@anticrm/presentation'
 
 export let _class: Ref<Class<Doc>>
 export let space: Ref<Space>

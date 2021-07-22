@@ -15,7 +15,7 @@
 
 <script lang="ts">
   import type { Ref, Space } from '@anticrm/core'
-  import { getClient } from '@anticrm/workbench'
+  import { getClient } from '@anticrm/presentation'
 
   import { Component, StringPresenter, ViewSelection } from '@anticrm/ui'
   import recruit from '../plugin'

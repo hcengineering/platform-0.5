@@ -15,7 +15,7 @@
 
 <script lang="ts">
   import type { Ref, Space } from '@anticrm/core'
-  import { getClient } from '@anticrm/workbench'
+  import { getClient } from '@anticrm/presentation'
   import type { Message } from '@anticrm/chunter'
   import chunter from '../plugin'
 

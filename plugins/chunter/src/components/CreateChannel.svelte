@@ -17,7 +17,7 @@
   import { createEventDispatcher } from 'svelte'
   import { TextArea, EditBox, Dialog, ToggleWithLabel } from '@anticrm/ui'
 
-  import { getClient } from '@anticrm/workbench'
+  import { getClient } from '@anticrm/presentation'
 
   import chunter from '../plugin'
   import core from '@anticrm/core'

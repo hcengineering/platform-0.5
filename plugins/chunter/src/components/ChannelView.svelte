@@ -16,7 +16,7 @@
 <script lang="ts">
   import type { Ref, Space } from '@anticrm/core'
   import chunter from '../plugin'
-  import { getClient } from '@anticrm/workbench'
+  import { getClient } from '@anticrm/presentation'
 
   import Channel from './Channel.svelte'
   import ReferenceInput from './ReferenceInput.svelte'

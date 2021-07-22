@@ -30,7 +30,7 @@
     "@anticrm/platform":"~0.5.0",
     "@anticrm/ui":"~0.5.0",
     "@anticrm/table":"~0.5.0",
-    "@anticrm/workbench":"~0.5.0",
+    "@anticrm/presentation":"~0.5.0",
     "svelte":"^3.37.0"
   }
 }

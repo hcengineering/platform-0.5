@@ -24,7 +24,7 @@
 
   import type { Ref, Space } from '@anticrm/core'
   import type { Application, NavigatorModel } from '@anticrm/workbench'
-  import { setClient } from '@anticrm/workbench'
+  import { setClient } from '@anticrm/presentation'
   import workbench from '@anticrm/workbench'
 
   import Navigator from './Navigator.svelte'

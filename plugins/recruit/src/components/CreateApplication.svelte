@@ -21,7 +21,7 @@
   import Address from './icons/Address.svelte'
   import Attachment from './icons/Attachment.svelte'
 
-  import { getClient } from '@anticrm/workbench'
+  import { getClient } from '@anticrm/presentation'
 
   import recruit from '../plugin'
 

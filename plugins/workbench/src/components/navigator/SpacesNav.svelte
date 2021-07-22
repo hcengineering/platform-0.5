@@ -22,7 +22,8 @@
   import { Action, navigate, getCurrentLocation } from '@anticrm/ui'
 
   import { IconAdd } from '@anticrm/ui'
-  import { getClient, showModal } from '@anticrm/workbench'
+  import { getClient } from '@anticrm/presentation'
+  import { showModal } from '@anticrm/workbench'
 
   import { classIcon } from '../../utils'
 

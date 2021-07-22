@@ -15,7 +15,7 @@
 
 <script lang="ts">
   import type { Ref, Space } from '@anticrm/core'
-  import { getClient } from '@anticrm/workbench'
+  import { getClient } from '@anticrm/presentation'
 
   export let space: Ref<Space>
 

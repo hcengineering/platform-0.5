@@ -17,7 +17,7 @@
   import { createEventDispatcher } from 'svelte'
   import { TextArea, EditBox, Dialog, ToggleWithLabel, Tabs, Section } from '@anticrm/ui'
 
-  import { getClient } from '@anticrm/workbench'
+  import { getClient } from '@anticrm/presentation'
   import File from './icons/File.svelte'
   import Recruiting from './icons/Recruiting.svelte'
 
