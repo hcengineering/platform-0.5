@@ -17,81 +17,74 @@
   import Label from './Label.svelte'
   import EditBox from './EditBox.svelte'
   import PopupMenu from './PopupMenu.svelte'
-  import PopupItem from './PopupItem.svelte'
   import UserInfo from './UserInfo.svelte'
   import Add from './icons/Add.svelte'
   import Close from './icons/Close.svelte'
 
+  import chen from '../../img/chen.png'
+  import tim from '../../img/tim.png'
+  import elon from '../../img/elon.png'
+  import kathryn from '../../img/kathryn.png'
+
   interface IUser {
+    avatar: any
     name: string
     title: string
   }
 
   export let title: IntlString
-  export let label: IntlString
   export let caption: IntlString | undefined = 'PROJECT MEMBERS'
   export let selected: IUser | undefined = undefined
   export let users: IUser[] = [
-    { name: 'chen', title: 'Rosamund Chen' },
-    { name: 'tim', title: 'Tim Ferris' },
-    { name: 'elon', title: 'Elon Musk' },
-    { name: 'kathryn', title: 'Kathryn Minshew' }
+    { avatar: chen, name: 'chen', title: 'Rosamund Chen' },
+    { avatar: tim, name: 'tim', title: 'Tim Ferris' },
+    { avatar: elon, name: 'elon', title: 'Elon Musk' },
+    { avatar: kathryn, name: 'kathryn', title: 'Kathryn Minshew' }
   ]
   export let margin: number = 16
-  export let showSearch: boolean = false
 
   let pressed: boolean = false
   let search: string = ''
 </script>
 
 <div class="userBox">
-  <PopupMenu {margin} bind:show={pressed} bind:title={label} {caption} bind:showHeader={showSearch}>
+  <PopupMenu {margin} bind:show={pressed}>
     <button
       slot="trigger"
       class="btn"
       class:selected={pressed}
-      on:click|preventDefault={(event) => {
+      on:click={(event) => {
         pressed = !pressed
         event.stopPropagation()
       }}
     >
       {#if selected}
-        <div class="avatar"><UserInfo user={selected.name} size={36} avatarOnly /></div>
+        <div class="avatar"><UserInfo user={selected} size={34} avatarOnly /></div>
       {:else}
         <div class="icon">
           {#if pressed}<Close size={16} />{:else}<Add size={16} />{/if}
         </div>
       {/if}
     </button>
-    <div slot="header" class="search"><EditBox label={'Search'} bind:value={search} /></div>
-    {#if selected}
-      <PopupItem
-        component={UserInfo}
-        props={{ user: selected.name }}
-        selectable
-        selected
-        action={async () => {
-          selected = undefined
-          pressed = !pressed
-        }}
-      />
-    {/if}
-    {#each users.filter((u) => u !== selected && u.title.toLowerCase().indexOf(search.toLowerCase()) !== -1) as user}
-      <PopupItem
-        component={UserInfo}
-        props={{ user: user.name }}
-        selectable
-        action={async () => {
-          selected = user
-          pressed = !pressed
-        }}
-      />
+
+    <div class="header">
+      <div class="title"><Label label={title} /></div>
+      <EditBox label={'Search'} bind:value={search} />
+      <div class="caption"><Label label={caption} /></div>
+    </div>
+
+    {#each users as user}
+      <button class="menu-item" on:click={() => {
+        selected = user
+        pressed = !pressed
+      }}><UserInfo {user} /></button>
     {/each}
   </PopupMenu>
+
   <div class="selectUser">
     <div class="title"><Label label={title} /></div>
     <div class="user">
-      {#if selected}{selected.title}{:else}<Label {label} />{/if}
+      {#if selected}{selected.title}{:else}<Label label={'Not selected'} />{/if}
     </div>
   </div>
 </div>
@@ -124,6 +117,9 @@
       }
 
       .avatar {
+        display: flex;
+        justify-content: center;
+        align-items: center;
         width: 36px;
         height: 36px;
         border-radius: 50%;
@@ -151,6 +147,53 @@
         .icon {
           opacity: 1;
         }
+      }
+    }
+
+    .header {
+      text-align: left;
+      .title {
+        margin-bottom: 16px;
+        font-size: 14px;
+        font-weight: 500;
+        color: var(--theme-caption-color);
+      }
+      .caption {
+        margin: 24px 0 10px 7px;
+        font-size: 12px;
+        font-weight: 600;
+        line-height: 0.5px;
+        text-transform: uppercase;
+        color: var(--theme-content-color);
+      }
+    }
+
+    .menu-item {
+      position: relative;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-grow: 1;
+      margin: 0;
+      padding: 6px;
+      height: 40px;
+      background-color: transparent;
+      border: 1px solid transparent;
+      border-radius: 8px;
+      outline: none;
+      cursor: pointer;
+
+      &:hover {
+        background-color: var(--theme-button-bg-pressed);
+        border: 1px solid var(--theme-bg-accent-color);
+        .title {
+          color: var(--theme-caption-color);
+        }
+      }
+      &:focus {
+        border: 1px solid var(--primary-button-focused-border);
+        box-shadow: 0 0 0 3px var(--primary-button-outline);
+        z-index: 1;
       }
     }
 

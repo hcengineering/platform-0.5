@@ -14,27 +14,24 @@
 -->
 
 <script lang="ts">
-  import chen from '../../img/chen.png'
-  import tim from '../../img/tim.png'
-  import elon from '../../img/elon.png'
-  import kathryn from '../../img/kathryn.png'
+  interface IUser {
+    avatar: any
+    name: string
+    title: string
+  }
 
-  export let users: Object[] = [{ avatar: chen, name: 'chen', title: 'Rosamund Chen' },
-                                { avatar: tim, name: 'tim', title: 'Tim Ferris' },
-                                { avatar: elon, name: 'elon', title: 'Elon Musk' },
-                                { avatar: kathryn, name: 'kathryn', title: 'Kathryn Minshew' }]
-  export let user: string = 'chen'
-  export let suptitle: string | undefined
-  export let size: 24 | 32 | 36 = 24
+  export let user: IUser
+  export let subtitle: string | undefined = undefined
+  export let size: 24 | 32 | 34 | 36 = 24
   export let avatarOnly: boolean = false
 </script>
 
 <div class="user-container">
-  <div style="width: {size}px; height: {size}px;"><img style="width: {size}px; height: {size}px;" src={users.find(u => u.name === user).avatar} alt={20}/></div>
+  <div style="width: {size}px; height: {size}px;"><img style="width: {size}px; height: {size}px;" src={user.avatar} alt={user.title}/></div>
   {#if !avatarOnly}
     <div class="caption">
-      {#if suptitle}<div class="suptitle">{suptitle}</div>{/if}
-      <div class="title">{users.find(u => u.name === user).title}</div>
+      {#if subtitle}<div class="subtitle">{subtitle}</div>{/if}
+      <div class="title">{user.title}</div>
     </div>
   {/if}
 </div>
@@ -53,7 +50,7 @@
       margin-left: 8px;
       color: var(--theme-caption-color);
 
-      .suptitle {
+      .subtitle {
         opacity: .4;
       }
       .title {
