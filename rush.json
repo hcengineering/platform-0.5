@@ -405,6 +405,11 @@
       "shouldPublish": true
     },
     {
+      "packageName": "@anticrm/presentation",
+      "projectFolder": "packages/presentation",
+      "shouldPublish": true
+    },
+    {
       "packageName": "@anticrm/core",
       "projectFolder": "packages/core",
       "shouldPublish": true
