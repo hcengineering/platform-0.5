@@ -13,6 +13,7 @@
 // limitations under the License.
 //
 
+import type { KeysByType } from 'simplytyped'
 import type { Class, Doc, Ref } from './classes'
 import type { Tx } from './tx'
 
@@ -28,10 +29,13 @@ export type DocumentQuery<T extends Doc> = {
   [P in keyof T]?: ObjQueryType<T[P]>
 }
 
+type Refs<T extends Doc> = Partial<Pick<T, KeysByType<T, Ref<Doc>>>>
+
 // eslint-disable-next-line @typescript-eslint/consistent-type-definitions
 export type FindOptions<T extends Doc> = {
   limit?: number
   sort?: SortingQuery<T>
+  lookup?: Refs<T>
 }
 
 export type SortingQuery<T extends Doc> = {
@@ -43,9 +47,17 @@ export enum SortingOrder {
   Descending = -1
 }
 
-export interface FindResult<T extends Doc> extends Array<T> {
-  total: number
+type RefsAsDocs<T extends Doc> = {
+  [P in keyof T]: T[P] extends Ref<infer X> ? X : never
 }
+
+type RemoveNever<T extends object> = Omit<T, KeysByType<T, never>>
+
+type WithLookup<T extends Doc> = T & {
+  $lookup?: Partial<RemoveNever<RefsAsDocs<T>>>
+}
+
+export type FindResult<T extends Doc> = WithLookup<T>[]
 
 export interface Storage {
   findAll: <T extends Doc>(

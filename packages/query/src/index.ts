@@ -19,7 +19,6 @@ interface Query {
   _class: Ref<Class<Doc>>
   query: DocumentQuery<Doc>
   result: Doc[] | Promise<Doc[]>
-  total: number
   options?: FindOptions<Doc>
   callback: (result: FindResult<Doc>) => void
 }
@@ -60,7 +59,6 @@ export class LiveQuery extends TxProcessor implements Client {
       _class,
       query,
       result,
-      total: 0,
       options,
       callback: callback as (result: Doc[]) => void
     }
@@ -101,16 +99,15 @@ export class LiveQuery extends TxProcessor implements Client {
           q.result = await q.result
         }
         q.result.push(doc)
-        q.total++
 
         if (q.options?.sort !== undefined) resultSort(q.result, q.options?.sort)
 
         if (q.options?.limit !== undefined && q.result.length > q.options.limit) {
           if (q.result.pop()?._id !== doc._id) {
-            q.callback(Object.assign(q.result, { total: q.total }))
+            q.callback(q.result)
           }
         } else {
-          q.callback(Object.assign(q.result, { total: q.total }))
+          q.callback(q.result)
         }
       }
     }
@@ -124,7 +121,7 @@ export class LiveQuery extends TxProcessor implements Client {
       const index = q.result.findIndex(p => p._id === tx.objectId)
       if (index > -1) {
         q.result.splice(index, 1)
-        q.callback(Object.assign(q.result, { total: --q.total }))
+        q.callback(q.result)
       }
     }
   }
@@ -178,13 +175,12 @@ export class LiveQuery extends TxProcessor implements Client {
       if (q.result[q.options?.limit]._id === updatedDoc._id) {
         const res = await this.findAll(q._class, q.query, q.options)
         q.result = res
-        q.total = res.total
         q.callback(res)
         return
       }
-      if (q.result.pop()?._id !== updatedDoc._id) q.callback(Object.assign(q.result, { total: q.total }))
+      if (q.result.pop()?._id !== updatedDoc._id) q.callback(q.result)
     } else {
-      q.callback(Object.assign(q.result, { total: q.total }))
+      q.callback(q.result)
     }
   }
 }

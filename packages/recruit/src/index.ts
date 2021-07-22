@@ -15,7 +15,7 @@
 
 import { plugin } from '@anticrm/platform'
 import type { Plugin, Asset } from '@anticrm/platform'
-import type { Space } from '@anticrm/core'
+import type { Space, Doc, Ref } from '@anticrm/core'
 import type { Person } from '@anticrm/contact'
 
 export interface Vacancy extends Space {}
@@ -23,6 +23,10 @@ export interface Vacancy extends Space {}
 export interface Candidates extends Space {}
 
 export interface Candidate extends Person {}
+
+export interface Applicant extends Doc {
+  candidate: Ref<Candidate>
+}
 
 export const recruitId = 'recruit' as Plugin
 
