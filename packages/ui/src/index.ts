@@ -45,6 +45,7 @@ export { default as TextArea } from './components/TextArea.svelte'
 export { default as Section } from './components/Section.svelte'
 export { default as ViewSelection } from './components/ViewSelection.svelte'
 export { default as UserBox } from './components/UserBox.svelte'
+export { default as DatePicker } from './components/DatePicker.svelte'
 
 export { default as StringPresenter } from './components/presenter/StringPresenter.svelte'
 

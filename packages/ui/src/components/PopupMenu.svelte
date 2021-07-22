@@ -12,59 +12,111 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 -->
-
 <script lang="ts">
   import type { IntlString } from '@anticrm/platform'
+  import { onDestroy } from 'svelte/internal'
   import Label from './Label.svelte'
 
   export let title: IntlString | undefined = undefined
   export let caption: IntlString | undefined = undefined
-  export let search: string
-  export let value: string
-  export let vAlign: 'top' | 'middle' | 'bottom' = 'bottom'
-  export let hAlign: 'left' | 'center' | 'right' = 'right'
   export let margin: number = 16
-  export let showSearch: boolean = false
+  export let showHeader: boolean = false
   export let show: boolean
+  export let auto: boolean = false
 
-  let style: string = ''
+  let trigger: HTMLElement
+  let popup: HTMLElement
+  let scrolling: boolean
+  let elScroll: Node
+
   $: {
-    if (vAlign == 'top') style = `transform: translateY(-${margin}px);`
-    if (vAlign == 'middle') {
-      if (hAlign == 'left') style = `transform: translateX(-${margin}px);`
-      if (hAlign == 'right') style = `transform: translateX(${margin}px);`
-    }
-    if (vAlign == 'bottom') style = `transform: translateY(${margin}px);`
+    if (show) showPopup()
+    else hidePopup()
   }
-  const waitClick = (event: any) => {
-    let context: boolean = false
-    let startNode: Node = event.target
-    while (startNode.parentNode !== null) {
-      if (startNode.classList.contains('popup')) context = true
-      startNode = startNode.parentNode
-    }
-    if (!context) show = false
+
+  const showPopup = (): void => {
+    fitPopup()
+    popup.style.visibility = 'visible'
+    elScroll = findNode(trigger, 'scrollBox')
+    if (elScroll) elScroll.addEventListener('scroll', startScroll)
   }
+  const hidePopup = (): void => {
+    if (popup) {
+      popup.style.visibility = 'hidden'
+      popup.style.maxHeight = ''
+    }
+    if (elScroll) elScroll.removeEventListener('scroll', startScroll)
+  }
+
+  const fitPopup = (): void => {
+    const rectT = trigger.getBoundingClientRect()
+    const rectP = popup.getBoundingClientRect()
+    scrolling = false
+    if (rectT.top > document.body.clientHeight - rectT.bottom) {
+      // Up
+      if (rectT.top - 20 - margin < rectP.height) {
+        scrolling = true
+        popup.style.maxHeight = `${rectT.top - margin - 20}px`
+        popup.style.top = '20px'
+      } else popup.style.top = `${rectT.top - rectP.height - margin}px`
+    } else {
+      // Down
+      if (rectT.bottom + rectP.height + 20 + margin > document.body.clientHeight) {
+        scrolling = true
+        popup.style.maxHeight = `${document.body.clientHeight - rectT.bottom - margin - 20}px`
+      }
+      popup.style.top = `${rectT.bottom + margin}px`
+    }
+    if (rectT.left + rectP.width + 20 > document.body.clientWidth) {
+      popup.style.left = `${document.body.clientWidth - rectP.width - 20}px`
+    } else popup.style.left = `${rectT.left}px`
+  }
+
+  const findNode = (el: Node, name: string): any => {
+    while (el.parentNode !== null) {
+      if (el.classList.contains(name)) return el
+      el = el.parentNode
+    }
+    return false
+  }
+  const waitClick = (event: any): void => {
+    event.stopPropagation()
+    if (show) {
+      if (!findNode(event.target, 'popup')) show = false
+    }
+  }
+  const startScroll = (): void => { show = false }
+
+  onDestroy(() => {
+    if (elScroll) elScroll.removeEventListener('scroll', startScroll)
+  })
 </script>
 
-<svelte:window on:mouseup={waitClick}/>
+<svelte:window on:mouseup={waitClick} />
 <div class="popup-menu">
-  <div class="trigger"><slot name="trigger"/></div>
-  {#if show}
-    <div class="popup {vAlign} {hAlign}" style={style}>
-      {#if showSearch}
-        <div class="header">
-          <div class="title">{title}</div>
-          <div class="editbox">
-            <input type="text" bind:value={search} placeholder=" " />
-            <div class="label"><Label label={'Search'} /></div>
-          </div>          
-          <div class="caption">{caption}</div>
-        </div>
-      {/if}
-      <div class="content"><slot/></div>
-    </div>
-  {/if}
+  <div
+    bind:this={trigger}
+    class="trigger"
+    on:click={() => {
+      if (auto) {
+        show = !show
+      }
+    }}
+  >
+    <slot name="trigger" />
+  </div>
+  <div class="popup" bind:this={popup}>
+    {#if showHeader}
+      <div class="header">
+        <div class="title"><Label label={title} /></div>
+        <slot name="header" />
+        {#if caption}<div class="caption">{caption}</div>{/if}
+      </div>
+    {/if}
+    {#if show}
+      <div class="content" class:scrolling><slot /></div>
+    {/if}
+  </div>
 </div>
 
 <style lang="scss">
@@ -73,10 +125,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    
+
     .popup {
       box-sizing: border-box;
-      position: absolute;
+      position: fixed;
+      visibility: hidden;
       display: flex;
       flex-direction: column;
       padding: 24px 20px;
@@ -89,87 +142,14 @@
       text-align: center;
       z-index: 10;
 
-      &.left {
-        right: 0;
-        box-shadow: 8px 0px 20px rgba(0, 0, 0, 0.25);
-      }
-      &.center {
-        box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.25);
-      }
-      &.right {
-        left: 0;
-        box-shadow: -8px 0px 20px rgba(0, 0, 0, 0.25);
-      }
-
-      &.top {
-        bottom: 100%;
-      }
-      &.middle {
-        &.left {
-          right: 100%;
-        }
-        &.right {
-          left: 100%;
-        }
-      }
-      &.bottom {
-        top: 100%;
-      }
-
-      .header {  
-        text-align-last: left;
+      .header {
+        text-align: left;
         .title {
           margin-bottom: 16px;
           font-size: 14px;
           font-weight: 500;
           color: var(--theme-caption-color);
         }
-
-        .editbox {
-          position: relative;
-          display: flex;
-          flex-direction: column;
-          padding: 0;
-          min-width: 50px;
-          height: 52px;
-          background-color: var(--theme-bg-accent-color);
-          border: 1px solid var(--theme-bg-accent-hover);
-          border-radius: 12px;
-          &:focus-within {
-            background-color: var(--theme-bg-focused-color);
-            border-color: var(--theme-bg-focused-border);
-          }
-          input {
-            height: 52px;
-            margin: 0;
-            padding: 14px 20px 0px;
-            font-family: inherit;
-            color: var(--theme-caption-color);
-            background-color: transparent;
-            outline: none;
-            border: none;
-            border-radius: 12px;
-            font-size: 14px;
-            line-height: 17px;
-          }
-          .label {
-            position: absolute;
-            top: 18px;
-            left: 20px;
-            font-size: 12px;
-            line-height: 14px;
-            color: var(--theme-caption-color);
-            pointer-events: none;
-            opacity: 0.3;
-            transition: all 200ms;
-            user-select: none;
-          }
-          input:focus + .label,
-          input:not(:placeholder-shown) + .label {
-            top: 10px;
-          }
-        }
-
         .caption {
           margin: 24px 0 16px;
           font-size: 12px;
@@ -183,6 +163,10 @@
         display: flex;
         flex-direction: column;
         gap: 12px;
+
+        &.scrolling {
+          overflow-y: auto;
+        }
       }
     }
   }

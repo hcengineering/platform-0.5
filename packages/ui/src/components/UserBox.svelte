@@ -12,10 +12,10 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 -->
-
 <script lang="ts">
   import type { IntlString } from '@anticrm/platform'
   import Label from './Label.svelte'
+  import EditBox from './EditBox.svelte'
   import PopupMenu from './PopupMenu.svelte'
   import PopupItem from './PopupItem.svelte'
   import UserInfo from './UserInfo.svelte'
@@ -27,29 +27,30 @@
     title: string
   }
 
-  export let title: IntlString | undefined = 'Assign task'
+  export let title: IntlString
+  export let label: IntlString
   export let caption: IntlString | undefined = 'PROJECT MEMBERS'
   export let selected: IUser | undefined = undefined
-  export let users: IUser[] = [{ name: 'chen', title: 'Rosamund Chen' },
-                               { name: 'tim', title: 'Tim Ferris' },
-                               { name: 'elon', title: 'Elon Musk' },
-                               { name: 'kathryn', title: 'Kathryn Minshew' }]
-  export let vAlign: 'top' | 'middle' | 'bottom' = 'bottom'
-  export let hAlign: 'left' | 'center' | 'right' = 'right'
+  export let users: IUser[] = [
+    { name: 'chen', title: 'Rosamund Chen' },
+    { name: 'tim', title: 'Tim Ferris' },
+    { name: 'elon', title: 'Elon Musk' },
+    { name: 'kathryn', title: 'Kathryn Minshew' }
+  ]
   export let margin: number = 16
   export let showSearch: boolean = false
 
   let pressed: boolean = false
   let search: string = ''
-
 </script>
 
 <div class="userBox">
-  <PopupMenu {vAlign} {hAlign} {margin} bind:show={pressed}
-    bind:title={title} bind:caption={caption} bind:search={search} bind:showSearch={showSearch}
-  >
-    <button slot="trigger" class="btn" class:selected={pressed}
-      on:click={(event) => {
+  <PopupMenu {margin} bind:show={pressed} bind:title={label} {caption} bind:showHeader={showSearch}>
+    <button
+      slot="trigger"
+      class="btn"
+      class:selected={pressed}
+      on:click|preventDefault={(event) => {
         pressed = !pressed
         event.stopPropagation()
       }}
@@ -57,25 +58,41 @@
       {#if selected}
         <div class="avatar"><UserInfo user={selected.name} size={36} avatarOnly /></div>
       {:else}
-        <div class="icon">{#if pressed}<Close size={16} />{:else}<Add size={16} />{/if}</div>
+        <div class="icon">
+          {#if pressed}<Close size={16} />{:else}<Add size={16} />{/if}
+        </div>
       {/if}
     </button>
+    <div slot="header" class="search"><EditBox label={'Search'} bind:value={search} /></div>
     {#if selected}
-      <PopupItem component={UserInfo} props={{user: selected.name}} selectable selected action={async () => {
-        selected = undefined
-        pressed = !pressed
-      }}/>
+      <PopupItem
+        component={UserInfo}
+        props={{ user: selected.name }}
+        selectable
+        selected
+        action={async () => {
+          selected = undefined
+          pressed = !pressed
+        }}
+      />
     {/if}
-    {#each users.filter(u => (u !== selected) && (u.title.toLowerCase().indexOf(search.toLowerCase()) !== -1)) as user}
-      <PopupItem component={UserInfo} props={{user: user.name}} selectable action={async () => {
-        selected = user
-        pressed = !pressed
-      }}/>
+    {#each users.filter((u) => u !== selected && u.title.toLowerCase().indexOf(search.toLowerCase()) !== -1) as user}
+      <PopupItem
+        component={UserInfo}
+        props={{ user: user.name }}
+        selectable
+        action={async () => {
+          selected = user
+          pressed = !pressed
+        }}
+      />
     {/each}
   </PopupMenu>
   <div class="selectUser">
-    <div class="title">{title}</div>
-    <div class="user">{#if selected}{selected.title}{:else}{title}{/if}</div>
+    <div class="title"><Label label={title} /></div>
+    <div class="user">
+      {#if selected}{selected.title}{:else}<Label {label} />{/if}
+    </div>
   </div>
 </div>
 
@@ -103,7 +120,7 @@
       .icon {
         width: 16px;
         height: 16px;
-        opacity: .3;
+        opacity: 0.3;
       }
 
       .avatar {
@@ -117,7 +134,7 @@
         background-color: var(--theme-button-bg-focused);
         border: 1px solid var(--theme-bg-accent-color);
         .icon {
-          opacity: .6;
+          opacity: 0.6;
         }
       }
 
