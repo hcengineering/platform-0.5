@@ -14,11 +14,14 @@
 -->
 
 <script lang="ts">
+  import { onDestroy } from 'svelte'
+
   import type { IntlString } from '@anticrm/platform'
   import type { Ref, Class } from '@anticrm/core'
   import type { Contact } from '@anticrm/contact'
 
-  import Label from './Label.svelte'
+  import { getClient } from '../utils'
+
   import PopupMenu from './PopupMenu.svelte'
   import PopupItem from './PopupItem.svelte'
   import UserInfo from './UserInfo.svelte'
@@ -37,15 +40,17 @@
   let pressed: boolean = false
   let search: string = ''
 
-  // let client = getClient()
-  // let unsubscribe = () => {}
+  let objects: Contact[]
 
-  // $: {
-  //   unsubscribe()
-  //   unsubscribe = client.query(_class, { space }, result => { objects = result })
-  // }
+  let client = getClient()
+  let unsubscribe = () => {}
 
-  // onDestroy(unsubscribe)  
+  $: {
+    unsubscribe()
+    unsubscribe = client.query(_class, { }, result => { objects = result })
+  }
+
+  onDestroy(unsubscribe)  
 
 </script>
 
@@ -59,19 +64,19 @@
         event.stopPropagation()
       }}
     >
-      {#if selected}
+      {#if value}
         <div class="avatar"><UserInfo user={selected.name} size={36} avatarOnly /></div>
       {:else}
         <div class="icon">{#if pressed}<Close size={16} />{:else}<Add size={16} />{/if}</div>
       {/if}
     </button>
-    {#if selected}
+    {#if value}
       <PopupItem component={UserInfo} props={{user: selected.name}} selectable selected action={async () => {
-        selected = undefined
+        value = undefined
         pressed = !pressed
       }}/>
     {/if}
-    {#each users.filter(u => (u !== selected) && (u.title.toLowerCase().indexOf(search.toLowerCase()) !== -1)) as user}
+    {#each objects as user}
       <PopupItem component={UserInfo} props={{user: user.name}} selectable action={async () => {
         selected = user
         pressed = !pressed

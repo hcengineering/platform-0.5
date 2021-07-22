@@ -14,4 +14,15 @@
 // limitations under the License.
 //
 
-export * from './utils'
+import { getContext, setContext } from 'svelte'
+import type { Connection } from '@anticrm/client'
+
+const CLIENT_CONEXT = 'workbench.context.Client'
+
+export function getClient(): Connection {
+  return getContext<Connection>(CLIENT_CONEXT)
+}
+
+export function setClient(client: Connection) {
+  setContext(CLIENT_CONEXT, client)
+}

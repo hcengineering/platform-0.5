@@ -13,12 +13,9 @@
 // limitations under the License.
 //
 
-import { getContext, setContext } from 'svelte'
-
 import type { IntlString, Asset } from '@anticrm/platform'
 import type { Ref, Class, Doc, Obj, Space, Mixin } from '@anticrm/core'
 import type { Plugin } from '@anticrm/platform'
-import type { Connection } from '@anticrm/client'
 import type { AnyComponent, AnySvelteComponent } from '@anticrm/ui'
 import { writable } from 'svelte/store'
 
@@ -57,16 +54,6 @@ export default plugin(workbenchId, {
     SpaceView: '' as Ref<Mixin<SpaceView>>
   }
 })
-
-const CLIENT_CONEXT = 'workbench.context.Client'
-
-export function getClient(): Connection {
-  return getContext<Connection>(CLIENT_CONEXT)
-}
-
-export function setClient(client: Connection) {
-  setContext(CLIENT_CONEXT, client)
-}
 
 interface CompAndProps {
   is: AnySvelteComponent | AnyComponent | undefined
