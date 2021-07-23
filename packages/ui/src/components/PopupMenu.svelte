@@ -13,16 +13,10 @@
 // limitations under the License.
 -->
 <script lang="ts">
-  import type { IntlString } from '@anticrm/platform'
   import { onDestroy } from 'svelte/internal'
-  import Label from './Label.svelte'
 
-  export let title: IntlString | undefined = undefined
-  export let caption: IntlString | undefined = undefined
   export let margin: number = 16
-  export let showHeader: boolean = false
   export let show: boolean
-  export let auto: boolean = false
 
   let trigger: HTMLElement
   let popup: HTMLElement
@@ -92,27 +86,12 @@
   })
 </script>
 
-<svelte:window on:mouseup={waitClick} />
+<svelte:window on:mouseup={waitClick} on:resize={startScroll} />
 <div class="popup-menu">
-  <div
-    bind:this={trigger}
-    class="trigger"
-    on:click={() => {
-      if (auto) {
-        show = !show
-      }
-    }}
-  >
+  <div bind:this={trigger} class="trigger" on:click={() => { show = !show }}>
     <slot name="trigger" />
   </div>
   <div class="popup" bind:this={popup}>
-    {#if showHeader}
-      <div class="header">
-        <div class="title"><Label label={title} /></div>
-        <slot name="header" />
-        {#if caption}<div class="caption">{caption}</div>{/if}
-      </div>
-    {/if}
     {#if show}
       <div class="content" class:scrolling><slot /></div>
     {/if}
@@ -132,7 +111,7 @@
       visibility: hidden;
       display: flex;
       flex-direction: column;
-      padding: 24px 20px;
+      padding: 24px 20px 18px;
       color: var(--theme-caption-color);
       background-color: var(--theme-button-bg-hovered);
       border: 1px solid var(--theme-button-border-enabled);
@@ -142,27 +121,9 @@
       text-align: center;
       z-index: 10;
 
-      .header {
-        text-align: left;
-        .title {
-          margin-bottom: 16px;
-          font-size: 14px;
-          font-weight: 500;
-          color: var(--theme-caption-color);
-        }
-        .caption {
-          margin: 24px 0 16px;
-          font-size: 12px;
-          font-weight: 600;
-          line-height: 0.5px;
-          text-transform: uppercase;
-          color: var(--theme-content-color);
-        }
-      }
       .content {
         display: flex;
         flex-direction: column;
-        gap: 12px;
 
         &.scrolling {
           overflow-y: auto;

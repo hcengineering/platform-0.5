@@ -58,7 +58,7 @@
 </script>
 
 <div class="userBox">
-  <PopupMenu {margin} bind:show={pressed} bind:title showHeader>
+  <PopupMenu {margin} bind:show={pressed}>
     <button
       slot="trigger"
       class="btn"
@@ -72,25 +72,30 @@
         {#if pressed}<Close size={16} />{:else}<Calendar size={20} />{/if}
       </div>
     </button>
-    <div slot="header" class="header">
-      <button
-        class="btn arrow"
-        on:click|preventDefault={() => {
-          view.setMonth(view.getMonth() - 1)
-          view = view
-        }}><Back size={12} /></button
-      >
-      <div class="monthYear">
-        {monthYear}
+
+    <div class="header">
+      <div class="title"><Label label={title} /></div>
+      <div class="nav">
+        <button
+          class="btn arrow"
+          on:click|preventDefault={() => {
+            view.setMonth(view.getMonth() - 1)
+            view = view
+          }}><Back size={12} /></button
+        >
+        <div class="monthYear">
+          {monthYear}
+        </div>
+        <button
+          class="btn arrow"
+          on:click|preventDefault={() => {
+            view.setMonth(view.getMonth() + 1)
+            view = view
+          }}><Forward size={12} /></button
+        >
       </div>
-      <button
-        class="btn arrow"
-        on:click|preventDefault={() => {
-          view.setMonth(view.getMonth() + 1)
-          view = view
-        }}><Forward size={12} /></button
-      >
     </div>
+
     <div class="calendar">
       <div class="caption">Mo</div>
       <div class="caption">Tu</div>
@@ -187,15 +192,27 @@
 
     .header {
       display: flex;
-      justify-content: space-between;
-      align-items: center;
-      min-width: 200px;
+      flex-direction: column;
 
-      .monthYear {
-        margin: 0 16px;
-        font-weight: 600;
-        color: var(--theme-content-color);
-        white-space: nowrap;
+      .title {
+        margin-bottom: 22px;
+        font-size: 14px;
+        font-weight: 500;
+        color: var(--theme-caption-color);
+        text-align: left;
+      }
+      .nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        min-width: 200px;
+
+        .monthYear {
+          margin: 0 16px;
+          font-weight: 600;
+          color: var(--theme-content-color);
+          white-space: nowrap;
+        }
       }
     }
 
