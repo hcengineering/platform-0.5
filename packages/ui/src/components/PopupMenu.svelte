@@ -92,7 +92,9 @@
     <slot name="trigger" />
   </div>
   <div class="popup" bind:this={popup}>
-    <div class="content" class:scrolling><slot /></div>
+    {#if show}
+      <div class="content" class:scrolling><slot /></div>
+    {/if}
   </div>
 </div>
 
