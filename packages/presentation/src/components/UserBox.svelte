@@ -12,80 +12,73 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 -->
-
 <script lang="ts">
-  import { onDestroy } from 'svelte'
-
   import type { IntlString } from '@anticrm/platform'
-  import type { Ref, Class } from '@anticrm/core'
-  import type { Contact } from '@anticrm/contact'
 
-  import { getClient } from '../utils'
-
-  import PopupMenu from './PopupMenu.svelte'
-  import PopupItem from './PopupItem.svelte'
+  import { PopupMenu, Label, EditBox } from '@anticrm/ui'
   import UserInfo from './UserInfo.svelte'
   import Add from './icons/Add.svelte'
   import Close from './icons/Close.svelte'
 
-  export let _class: Ref<Class<Contact>>
-  export let title: IntlString | undefined = 'Assign task'
+  import chen from '../../img/chen.png'
+
+  import type { Ref, Class } from '@anticrm/core'
+  import type { Person } from '@anticrm/contact'
+  import { createQuery } from '../utils'
+
+  export let _class: Ref<Class<Person>>
+  export let title: IntlString
   export let caption: IntlString | undefined = 'PROJECT MEMBERS'
-  export let value: Ref<Contact> | undefined
-  export let vAlign: 'top' | 'middle' | 'bottom' = 'bottom'
-  export let hAlign: 'left' | 'center' | 'right' = 'right'
+  export let selected: IUser | undefined = undefined
   export let margin: number = 16
-  export let showSearch: boolean = false
 
   let pressed: boolean = false
   let search: string = ''
 
-  let objects: Contact[]
+  let objects: Person[] = []
 
-  let client = getClient()
-  let unsubscribe = () => {}
-
-  $: {
-    unsubscribe()
-    unsubscribe = client.query(_class, { }, result => { objects = result })
-  }
-
-  onDestroy(unsubscribe)  
-
+  const query = createQuery()
+  $: query.query(_class, {}, result => { objects = result })
 </script>
 
 <div class="userBox">
-  <PopupMenu {vAlign} {hAlign} {margin} bind:show={pressed}
-    bind:title={title} bind:caption={caption} bind:search={search} bind:showSearch={showSearch}
-  >
-    <button slot="trigger" class="btn" class:selected={pressed}
+  <PopupMenu {margin} bind:show={pressed}>
+    <button
+      slot="trigger"
+      class="btn"
+      class:selected={pressed}
       on:click={(event) => {
         pressed = !pressed
         event.stopPropagation()
       }}
     >
-      {#if value}
-        <div class="avatar"><UserInfo user={selected.name} size={36} avatarOnly /></div>
+      {#if selected}
+        <div class="avatar"><UserInfo avatar={chen} size={34} avatarOnly /></div>
       {:else}
-        <div class="icon">{#if pressed}<Close size={16} />{:else}<Add size={16} />{/if}</div>
+        <div class="icon">
+          {#if pressed}<Close size={16} />{:else}<Add size={16} />{/if}
+        </div>
       {/if}
     </button>
-    {#if value}
-      <PopupItem component={UserInfo} props={{user: selected.name}} selectable selected action={async () => {
-        value = undefined
-        pressed = !pressed
-      }}/>
-    {/if}
+
+    <div class="header">
+      <div class="title"><Label label={title} /></div>
+      <EditBox label={'Search'} bind:value={search} />
+      <div class="caption"><Label label={caption} /></div>
+    </div>
+
     {#each objects as user}
-      <PopupItem component={UserInfo} props={{user: user.name}} selectable action={async () => {
-        selected = user
+      <button class="menu-item" on:click={() => {
         pressed = !pressed
-      }}/>
+      }}><UserInfo title={user.firstName + ' ' + user.lastName} avatar={chen}/></button>
     {/each}
   </PopupMenu>
+
   <div class="selectUser">
-    <div class="title">{title}</div>
-    <div class="user">{#if selected}{selected.title}{:else}{title}{/if}</div>
+    <div class="title"><Label label={title} /></div>
+    <div class="user">
+      {#if selected}{selected.title}{:else}<Label label={'Not selected'} />{/if}
+    </div>
   </div>
 </div>
 
@@ -113,10 +106,13 @@
       .icon {
         width: 16px;
         height: 16px;
-        opacity: .3;
+        opacity: 0.3;
       }
 
       .avatar {
+        display: flex;
+        justify-content: center;
+        align-items: center;
         width: 36px;
         height: 36px;
         border-radius: 50%;
@@ -127,7 +123,7 @@
         background-color: var(--theme-button-bg-focused);
         border: 1px solid var(--theme-bg-accent-color);
         .icon {
-          opacity: .6;
+          opacity: 0.6;
         }
       }
 
@@ -144,6 +140,53 @@
         .icon {
           opacity: 1;
         }
+      }
+    }
+
+    .header {
+      text-align: left;
+      .title {
+        margin-bottom: 16px;
+        font-size: 14px;
+        font-weight: 500;
+        color: var(--theme-caption-color);
+      }
+      .caption {
+        margin: 24px 0 10px 7px;
+        font-size: 12px;
+        font-weight: 600;
+        line-height: 0.5px;
+        text-transform: uppercase;
+        color: var(--theme-content-color);
+      }
+    }
+
+    .menu-item {
+      position: relative;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-grow: 1;
+      margin: 0;
+      padding: 6px;
+      height: 40px;
+      background-color: transparent;
+      border: 1px solid transparent;
+      border-radius: 8px;
+      outline: none;
+      cursor: pointer;
+
+      &:hover {
+        background-color: var(--theme-button-bg-pressed);
+        border: 1px solid var(--theme-bg-accent-color);
+        .title {
+          color: var(--theme-caption-color);
+        }
+      }
+      &:focus {
+        border: 1px solid var(--primary-button-focused-border);
+        box-shadow: 0 0 0 3px var(--primary-button-outline);
+        z-index: 1;
       }
     }
 

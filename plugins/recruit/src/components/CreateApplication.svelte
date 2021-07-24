@@ -16,7 +16,8 @@
 <script lang="ts">
   import { createEventDispatcher } from 'svelte'
   import type { Ref, Space } from '@anticrm/core'
-  import { UserBox, DatePicker, EditBox, Dialog, Tabs, Section } from '@anticrm/ui'
+  import { DatePicker, EditBox, Dialog, Tabs, Section } from '@anticrm/ui'
+  import { UserBox } from '@anticrm/presentation'
   import File from './icons/File.svelte'
   import Address from './icons/Address.svelte'
   import Attachment from './icons/Attachment.svelte'
@@ -56,7 +57,7 @@
   <div class="content">
     <Section icon={File} label={'General Information'}>
       <div class="grid">
-        <UserBox title='Candidate' caption='Candidates' />
+        <UserBox _class={recruit.class.Candidate} title='Candidate' caption='Candidates' />
         <DatePicker title={'Pick due date'} />
       </div>
     </Section>

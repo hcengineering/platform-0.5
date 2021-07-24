@@ -14,19 +14,15 @@
 -->
 
 <script lang="ts">
-  import type { Asset } from '@anticrm/platform'
-
+  export let avatar: any
   export let title: string
-  export let avatar: Asset
-  export let subtitle: string | undefined
-  export let size: 24 | 32 | 36 = 24
+  export let subtitle: string | undefined = undefined
+  export let size: 24 | 32 | 34 | 36 = 24
   export let avatarOnly: boolean = false
 </script>
 
 <div class="user-container">
-  <div style="width: {size}px; height: {size}px;">
-    <img style="width: {size}px; height: {size}px;" src={avatar} alt=''/>
-  </div>
+  <div style="width: {size}px; height: {size}px;"><img style="width: {size}px; height: {size}px;" src={avatar} alt={title}/></div>
   {#if !avatarOnly}
     <div class="caption">
       {#if subtitle}<div class="subtitle">{subtitle}</div>{/if}

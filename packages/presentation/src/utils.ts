@@ -14,7 +14,9 @@
 // limitations under the License.
 //
 
-import { getContext, setContext } from 'svelte'
+import { getContext, setContext, onDestroy } from 'svelte'
+
+import type { Doc, Ref, Class, DocumentQuery, FindOptions } from '@anticrm/core'
 import type { Connection } from '@anticrm/client'
 
 const CLIENT_CONEXT = 'workbench.context.Client'
@@ -26,3 +28,19 @@ export function getClient(): Connection {
 export function setClient(client: Connection) {
   setContext(CLIENT_CONEXT, client)
 }
+
+class LiveQuery {
+  private unsubscribe = () => {}
+  private client = getClient()
+
+  constructor() { 
+    onDestroy(this.unsubscribe)
+  }
+
+  query<T extends Doc>(_class: Ref<Class<T>>, query: DocumentQuery<T>, callback: (result: T[]) => void, options?: FindOptions<T>) {
+    this.unsubscribe()
+    this.unsubscribe = this.client.query(_class, query, callback, options)
+  }
+}
+
+export function createQuery() { return new LiveQuery() }

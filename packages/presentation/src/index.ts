@@ -15,3 +15,5 @@
 //
 
 export * from './utils'
+
+export { default as UserBox } from './components/UserBox.svelte'
