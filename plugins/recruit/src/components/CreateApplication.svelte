@@ -18,6 +18,7 @@
   import type { Ref, Space } from '@anticrm/core'
   import { DatePicker, EditBox, Dialog, Tabs, Section } from '@anticrm/ui'
   import { UserBox } from '@anticrm/presentation'
+  import type { Person } from '@anticrm/contact'
   import File from './icons/File.svelte'
   import Address from './icons/Address.svelte'
   import Attachment from './icons/Attachment.svelte'
@@ -30,21 +31,13 @@
 
   const dispatch = createEventDispatcher()
 
-  let firstName: string = ''
-  let lastName: string = ''
-  let email: string = ''
-  let phone: string = ''
-  let city: string = ''
+  let candidate: Ref<Person>
 
   const client = getClient()
 
   function createCandidate() {
-    client.createDoc(recruit.class.Candidate, space, {
-      firstName,
-      lastName,
-      email,
-      phone,
-      city,
+    client.createDoc(recruit.class.Applicant, space, {
+      candidate,
     })
   }
 </script>
@@ -57,7 +50,7 @@
   <div class="content">
     <Section icon={File} label={'General Information'}>
       <div class="grid">
-        <UserBox _class={recruit.class.Candidate} title='Candidate' caption='Candidates' />
+        <UserBox _class={recruit.class.Candidate} title='Candidate' caption='Candidates' bind:value={candidate}/>
         <DatePicker title={'Pick due date'} />
       </div>
     </Section>

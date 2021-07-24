@@ -29,6 +29,7 @@
   export let _class: Ref<Class<Person>>
   export let title: IntlString
   export let caption: IntlString
+  export let value: Ref<Person>
   export let margin: number = 16
 
   let pressed: boolean = false
@@ -70,6 +71,7 @@
     {#each objects as user}
       <button class="menu-item" on:click={() => {
         selected = user
+        value = user._id
         pressed = !pressed
       }}><UserInfo title={user.firstName + ' ' + user.lastName} avatar={chen}/></button>
     {/each}

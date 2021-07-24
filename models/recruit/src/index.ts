@@ -14,14 +14,15 @@
 //
 
 import { Builder, Model, UX } from '@anticrm/model'
-
-import { TSpace } from '@anticrm/model-core'
-import type { Vacancy, Candidates, Candidate } from '@anticrm/recruit'
+import type { Ref } from '@anticrm/core'
+import { TSpace, TDoc } from '@anticrm/model-core'
+import type { Vacancy, Candidates, Candidate, Applicant } from '@anticrm/recruit'
 
 import workbench from '@anticrm/model-workbench'
 import core from '@anticrm/model-core'
 import contact, { TPerson } from '@anticrm/model-contact'
 import recruit from './plugin'
+import { Person } from '@anticrm/contact'
 
 @Model(recruit.class.Vacancy, core.class.Space)
 @UX(recruit.string.Vacancy, recruit.icon.Vacancy)
@@ -34,8 +35,13 @@ export class TCandidates extends TSpace implements Candidates {}
 @Model(recruit.class.Candidate, contact.class.Person)
 export class TCandidate extends TPerson implements Candidate {}
 
+@Model(recruit.class.Applicant, core.class.Doc)
+export class TApplicant extends TDoc implements Applicant {
+  candidate!: Ref<Person>
+}
+
 export function createModel(builder: Builder) {
-  builder.createModel(TVacancy, TCandidates, TCandidate)
+  builder.createModel(TVacancy, TCandidates, TCandidate, TApplicant)
   builder.mixin(recruit.class.Vacancy, core.class.Class, workbench.mixin.SpaceView, {
     view: recruit.component.VacancyView,
     createItemDialog: recruit.component.CreateApplication

@@ -16,13 +16,63 @@
 <script lang="ts">
   import type { Ref, Space } from '@anticrm/core'
   import { getClient } from '@anticrm/presentation'
+  import { Component, StringPresenter, ViewSelection } from '@anticrm/ui'
+  import table from '@anticrm/table'
+  import recruit from '../plugin'
 
   export let space: Ref<Space>
+  let view: string = 'list'
 
   const client = getClient()
 
 </script>
 
-<h1>Vacancy</h1>
+<div class="container">
+  <div class="toolbar">
+    <div style="flex-grow: 1" />
+    <ViewSelection bind:selected={view} />
+  </div>
+  <div class="content">
 
-{space}
+    <Component is={table.component.TableView} props={
+      {
+        _class:recruit.class.Applicant, 
+        space, 
+        model: [
+          { 
+            label: 'Candidate',
+            key: 'candidate',
+            component: StringPresenter
+          },
+        ]
+      }
+    }/>
+
+  </div>
+</div>
+
+<style lang="scss">
+  .container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+
+    .toolbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: auto;
+      min-height: 40px;
+      height: 40px;
+      margin: 40px 40px 0;
+    }
+    .content {
+      display: flex;
+      flex-direction: column;
+      width: auto;
+      height: 100%;
+      margin: 40px;
+    }
+  }
+</style>

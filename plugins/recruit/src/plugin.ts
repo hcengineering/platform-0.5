@@ -16,7 +16,7 @@
 import { mergeIds } from '@anticrm/platform'
 import type { IntlString } from '@anticrm/platform' 
 import type { Ref, Class } from '@anticrm/core'
-import type { Candidate, Candidates, Vacancy } from '@anticrm/recruit'
+import type { Applicant, Candidate, Candidates, Vacancy } from '@anticrm/recruit'
 import recruit, { recruitId } from '@anticrm/recruit'
 
 export default mergeIds(recruitId, recruit, {
@@ -24,6 +24,7 @@ export default mergeIds(recruitId, recruit, {
     Vacancy: '' as Ref<Class<Vacancy>>,
     Candidates: '' as Ref<Class<Candidates>>,
     Candidate: '' as Ref<Class<Candidate>>,
+    Applicant: '' as Ref<Class<Applicant>>,
   }, 
   string: {
     CreateVacancy: '' as IntlString,
