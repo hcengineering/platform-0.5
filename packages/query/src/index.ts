@@ -56,7 +56,6 @@ export class LiveQuery extends TxProcessor implements Client {
   }
 
   query<T extends Doc>(_class: Ref<Class<T>>, query: DocumentQuery<T>, callback: (result: T[]) => void, options?: FindOptions<T>): () => void {
-    console.log('query options:', options)
     const result = this.client.findAll(_class, query, options)
     const q: Query = {
       _class,

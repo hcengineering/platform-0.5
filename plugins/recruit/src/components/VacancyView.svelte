@@ -16,7 +16,7 @@
 <script lang="ts">
   import type { Ref, Space } from '@anticrm/core'
   import { getClient, UserInfo } from '@anticrm/presentation'
-  import { Component, ViewSelection } from '@anticrm/ui'
+  import { Component, ViewSelection, StringPresenter } from '@anticrm/ui'
   import table from '@anticrm/table'
   import recruit from '../plugin'
 
@@ -48,6 +48,16 @@
             label: 'Candidate',
             key: '$lookup.candidate',
             component: UserInfo
+          },
+          { 
+            label: 'Email',
+            key: '$lookup.candidate.email',
+            component: StringPresenter
+          },
+          { 
+            label: 'City',
+            key: '$lookup.candidate.city',
+            component: StringPresenter
           },
         ]
       }

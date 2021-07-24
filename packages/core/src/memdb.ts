@@ -92,9 +92,6 @@ class MemDb extends TxProcessor {
     query: DocumentQuery<T>,
     options?: FindOptions<T>
   ): Promise<FindResult<T>> {
-
-    console.log('find options: ', options)
-
     let result: Doc[]
     if (
       Object.prototype.hasOwnProperty.call(query, '_id') &&

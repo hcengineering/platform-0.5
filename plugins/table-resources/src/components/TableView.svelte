@@ -42,7 +42,8 @@ $: {
 onDestroy(unsubscribe)
 
 function getValue(doc: Doc, key: string): any {
-  console.log('getvalue', doc, key)
+  if (key.length === 0)
+    return doc
   const path = key.split('.')
   const len = path.length
   let obj = doc as any

@@ -18,6 +18,7 @@
   import { getClient } from '@anticrm/presentation'
 
   import { Component, StringPresenter, ViewSelection } from '@anticrm/ui'
+  import { UserInfo } from '@anticrm/presentation'
   import recruit from '../plugin'
   import table from '@anticrm/table'
 
@@ -41,14 +42,9 @@
         space, 
         model: [
           { 
-            label: 'First Name',
-            key: 'firstName',
-            component: StringPresenter
-          },
-          { 
-            label: 'Last Name',
-            key: 'lastName',
-            component: StringPresenter
+            label: 'Candidate',
+            key: '',
+            component: UserInfo
           },
           { 
             label: 'Email',
