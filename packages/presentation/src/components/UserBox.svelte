@@ -28,12 +28,12 @@
 
   export let _class: Ref<Class<Person>>
   export let title: IntlString
-  export let caption: IntlString | undefined = 'PROJECT MEMBERS'
-  export let selected: IUser | undefined = undefined
+  export let caption: IntlString
   export let margin: number = 16
 
   let pressed: boolean = false
   let search: string = ''
+  let selected: Person | undefined
 
   let objects: Person[] = []
 
@@ -69,6 +69,7 @@
 
     {#each objects as user}
       <button class="menu-item" on:click={() => {
+        selected = user
         pressed = !pressed
       }}><UserInfo title={user.firstName + ' ' + user.lastName} avatar={chen}/></button>
     {/each}
@@ -77,7 +78,7 @@
   <div class="selectUser">
     <div class="title"><Label label={title} /></div>
     <div class="user">
-      {#if selected}{selected.title}{:else}<Label label={'Not selected'} />{/if}
+      {#if selected}{selected.firstName + ' ' + selected.lastName}{:else}<Label label={'Not selected'} />{/if}
     </div>
   </div>
 </div>
