@@ -18,15 +18,13 @@
 
   import type { Person } from '@anticrm/contact'
 
-  import chen from '../../img/chen.png'
-
   export let value: Person
   export let subtitle: string | undefined = undefined
   export let size: 24 | 32 | 34 | 36 = 24
 </script>
 
 <div class="user-container">
-  <Avatar avatar={chen} {size} />
+  <Avatar {size} />
   <div class="user-info">
     {#if subtitle}<div class="subtitle">{subtitle}</div>{/if}
     <div class="title">{value.firstName + ' ' + value.lastName}</div>

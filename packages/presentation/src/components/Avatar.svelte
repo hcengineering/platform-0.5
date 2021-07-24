@@ -14,7 +14,9 @@
 -->
 
 <script lang="ts">
-  export let avatar: any
+  import chen from '../../img/chen.png'
+
+  export let avatar: any = chen
   export let size: 16 | 24 | 32 | 34 | 36 = 24
 </script>
 

@@ -25,8 +25,6 @@
   import type { Person } from '@anticrm/contact'
   import { createQuery } from '../utils'
 
-  import chen from '../../img/chen.png'
-
   export let _class: Ref<Class<Person>>
   export let title: IntlString
   export let caption: IntlString
@@ -53,7 +51,7 @@
       }}
     >
       {#if selected}
-        <Avatar avatar={chen} size={34} />
+        <Avatar size={34} />
       {:else}
         <div class="icon">
           {#if pressed}<Close size={16} />{:else}<Add size={16} />{/if}
