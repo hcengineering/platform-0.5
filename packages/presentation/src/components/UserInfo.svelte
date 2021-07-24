@@ -18,7 +18,7 @@
 
   import chen from '../../img/chen.png'
 
-  export let person: Person
+  export let value: Person
   export let subtitle: string | undefined = undefined
   export let size: 24 | 32 | 34 | 36 = 24
   export let avatarOnly: boolean = false
@@ -29,7 +29,7 @@
   {#if !avatarOnly}
     <div class="caption">
       {#if subtitle}<div class="subtitle">{subtitle}</div>{/if}
-      <div class="title">{person.firstName + ' ' + person.lastName}</div>
+      <div class="title">{value.firstName + ' ' + value.lastName}</div>
     </div>
   {/if}
 </div>

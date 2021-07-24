@@ -71,7 +71,7 @@
         selected = person
         value = person._id
         pressed = !pressed
-      }}><UserInfo {person}/></button>
+      }}><UserInfo value={person}/></button>
     {/each}
   </PopupMenu>
 

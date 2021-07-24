@@ -42,7 +42,15 @@ $: {
 onDestroy(unsubscribe)
 
 function getValue(doc: Doc, key: string): any {
-  return (doc as any)[key]
+  console.log('getvalue', doc, key)
+  const path = key.split('.')
+  const len = path.length
+  let obj = doc as any
+  for (let i=0; i<len; i++){
+    obj = obj?.[path[i]]
+  }
+  console.log('result', obj)
+  return obj
 }
 
 </script>
