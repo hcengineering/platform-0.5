@@ -13,7 +13,7 @@
 // limitations under the License.
 -->
 <script lang="ts">
-  import { onDestroy } from 'svelte/internal'
+  import { afterUpdate, onDestroy } from 'svelte/internal'
 
   export let margin: number = 16
   export let show: boolean
@@ -23,10 +23,10 @@
   let scrolling: boolean
   let elScroll: Node
 
-  $: {
+  afterUpdate(() => {
     if (show) showPopup()
     else hidePopup()
-  }
+  })
 
   const showPopup = (): void => {
     fitPopup()
