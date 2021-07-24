@@ -25,6 +25,8 @@
   import type { Person } from '@anticrm/contact'
   import { createQuery } from '../utils'
 
+  import chen from '../../img/chen.png'
+
   export let _class: Ref<Class<Person>>
   export let title: IntlString
   export let caption: IntlString
