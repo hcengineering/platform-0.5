@@ -13,7 +13,9 @@
 // limitations under the License.
 //
 
-import { Ref, Class, Doc, Tx, DocumentQuery, TxCreateDoc, TxRemoveDoc, Client, Obj, FindOptions, TxUpdateDoc, getOperator, TxProcessor, resultSort, SortingQuery, FindResult, Hierarchy } from '@anticrm/core'
+import { Ref, Class, Doc, Tx, DocumentQuery, TxCreateDoc, TxRemoveDoc, Client, 
+  Obj, FindOptions, TxUpdateDoc, getOperator, TxProcessor, resultSort, SortingQuery, 
+  FindResult, Hierarchy, Refs, WithLookup, LookupData } from '@anticrm/core'
 
 interface Query {
   _class: Ref<Class<Doc>>
@@ -54,6 +56,7 @@ export class LiveQuery extends TxProcessor implements Client {
   }
 
   query<T extends Doc>(_class: Ref<Class<T>>, query: DocumentQuery<T>, callback: (result: T[]) => void, options?: FindOptions<T>): () => void {
+    console.log('query options:', options)
     const result = this.client.findAll(_class, query, options)
     const q: Query = {
       _class,
@@ -90,14 +93,26 @@ export class LiveQuery extends TxProcessor implements Client {
     }
   }
 
+  private async lookup(doc: Doc, lookup: Refs<Doc>) {
+    const result: LookupData<Doc> = {}
+    for (const key in lookup) {
+      const _class = (lookup as any)[key] as Ref<Class<Doc>>
+      const _id = (doc as any)[key] as Ref<Doc>
+      (result as any)[key] = (await this.client.findAll(_class, { _id }))[0]
+    }
+    (doc as WithLookup<Doc>).$lookup = result
+  }
+
   async txCreateDoc (tx: TxCreateDoc<Doc>): Promise<void> {
     for (const q of this.queries) {
       const doc = TxProcessor.createDoc2Doc(tx)
       if (this.match(q, doc)) {
-        console.log('matched query')
         if (q.result instanceof Promise) {
           q.result = await q.result
         }
+
+        if (q.options?.lookup !== undefined) await this.lookup(doc, q.options.lookup)
+
         q.result.push(doc)
 
         if (q.options?.sort !== undefined) resultSort(q.result, q.options?.sort)

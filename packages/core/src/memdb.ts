@@ -82,7 +82,7 @@ class MemDb extends TxProcessor {
         const id = (doc as any)[key] as Ref<Doc>
         (result as any)[key] = this.getObject(id)
       }
-      withLookup.push(Object.assign({}, doc, result))
+      withLookup.push(Object.assign({}, doc, { $lookup: result }))
     }
     return withLookup
   }
@@ -92,6 +92,9 @@ class MemDb extends TxProcessor {
     query: DocumentQuery<T>,
     options?: FindOptions<T>
   ): Promise<FindResult<T>> {
+
+    console.log('find options: ', options)
+
     let result: Doc[]
     if (
       Object.prototype.hasOwnProperty.call(query, '_id') &&

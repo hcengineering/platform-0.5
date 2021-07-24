@@ -16,17 +16,20 @@
 <script lang="ts">
   import Avatar from './Avatar.svelte'
 
-  export let avatar: any
-  export let title: string
+  import type { Person } from '@anticrm/contact'
+
+  import chen from '../../img/chen.png'
+
+  export let value: Person
   export let subtitle: string | undefined = undefined
   export let size: 24 | 32 | 34 | 36 = 24
 </script>
 
 <div class="user-container">
-  <Avatar {avatar} {size} />
+  <Avatar avatar={chen} {size} />
   <div class="user-info">
     {#if subtitle}<div class="subtitle">{subtitle}</div>{/if}
-    <div class="title">{title}</div>
+    <div class="title">{value.firstName + ' ' + value.lastName}</div>
   </div>
 </div>
 

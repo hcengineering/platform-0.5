@@ -21,8 +21,6 @@
   import Add from './icons/Add.svelte'
   import Close from './icons/Close.svelte'
 
-  import chen from '../../img/chen.png'
-
   import type { Ref, Class } from '@anticrm/core'
   import type { Person } from '@anticrm/contact'
   import { createQuery } from '../utils'
@@ -30,6 +28,7 @@
   export let _class: Ref<Class<Person>>
   export let title: IntlString
   export let caption: IntlString
+  export let value: Ref<Person>
 
   let pressed: boolean = false
   let search: string = ''
@@ -66,11 +65,12 @@
       <div class="caption"><Label label={caption} /></div>
     </div>
 
-    {#each objects as user}
+    {#each objects as person}
       <button class="menu-item" on:click={() => {
-        selected = user
+        selected = person
+        value = person._id
         pressed = !pressed
-      }}><UserInfo title={user.firstName + ' ' + user.lastName} avatar={chen}/></button>
+      }}><UserInfo value={person}/></button>
     {/each}
   </PopupMenu>
 
