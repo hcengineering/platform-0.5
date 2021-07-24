@@ -23,7 +23,6 @@
 
   export let title: IntlString
   export let selected: Date = new Date(Date.now())
-  export let margin: number = 16
 
   let pressed: boolean = false
   let view: Date = selected
@@ -57,15 +56,14 @@
   }
 </script>
 
-<div class="userBox">
-  <PopupMenu {margin} bind:show={pressed}>
+<div class="dataPicker">
+  <PopupMenu bind:show={pressed}>
     <button
       slot="trigger"
       class="btn"
       class:selected={pressed}
-      on:click={(event) => {
+      on:click|preventDefault={() => {
         pressed = !pressed
-        event.stopPropagation()
       }}
     >
       <div class="icon">
@@ -130,11 +128,9 @@
 </div>
 
 <style lang="scss">
-  .userBox {
+  .dataPicker {
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    width: auto;
+    flex-wrap: nowrap;
 
     .btn {
       display: flex;
@@ -219,13 +215,13 @@
     .calendar {
       display: grid;
       grid-template-columns: repeat(7, 1fr);
-      margin-top: 20px;
+      margin-top: 18px;
 
       .caption {
         display: flex;
         justify-content: center;
         align-items: center;
-        height: 36px;
+        margin-bottom: 18px;
         font-size: 12px;
         color: var(--theme-content-trans-color);
       }
@@ -235,10 +231,11 @@
         align-items: center;
         width: 36px;
         height: 36px;
-        font-size: 14px;
+        font-family: inherit;
         font-weight: 500;
+        font-size: 14px;
         line-height: 24px;
-        letter-spacing: -0.5;
+        letter-spacing: -0.5px;
         color: var(--theme-content-color);
         border-radius: 8px;
         cursor: pointer;
@@ -256,11 +253,13 @@
 
     .selectDate {
       margin-left: 12px;
-      font-size: 14px;
       .title {
-        color: var(--theme-content-color);
+        font-size: 12px;
+        font-weight: 500;
+        color: var(--theme-content-accent-color);
       }
       .date {
+        font-size: 14px;
         color: var(--theme-caption-color);
       }
     }

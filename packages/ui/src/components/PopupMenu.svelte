@@ -15,7 +15,7 @@
 <script lang="ts">
   import { afterUpdate, onDestroy } from 'svelte/internal'
 
-  export let margin: number = 16
+  export let margin: number = 12
   export let show: boolean
 
   let trigger: HTMLElement
@@ -76,7 +76,7 @@
   const waitClick = (event: any): void => {
     event.stopPropagation()
     if (show) {
-      if (!findNode(event.target, 'popup')) show = false
+      if (!findNode(event.target, 'popup-menu')) show = false
     }
   }
   const startScroll = (): void => { show = false }
@@ -88,7 +88,7 @@
 
 <svelte:window on:mouseup={waitClick} on:resize={startScroll} />
 <div class="popup-menu">
-  <div bind:this={trigger} class="trigger" on:click={() => { show = !show }}>
+  <div bind:this={trigger}>
     <slot name="trigger" />
   </div>
   <div class="popup" bind:this={popup}>
@@ -99,35 +99,26 @@
 </div>
 
 <style lang="scss">
-  .popup-menu {
-    position: relative;
+  .popup {
+    position: fixed;
+    visibility: hidden;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column;
+    padding: 24px 20px 18px;
+    color: var(--theme-caption-color);
+    background-color: var(--theme-button-bg-hovered);
+    border: 1px solid var(--theme-button-border-enabled);
+    border-radius: 12px;
+    box-shadow: 0px 20px 60px rgba(0, 0, 0, 0.6);
+    user-select: none;
+    z-index: 10;
 
-    .popup {
-      box-sizing: border-box;
-      position: fixed;
-      visibility: hidden;
+    .content {
       display: flex;
       flex-direction: column;
-      padding: 24px 20px 18px;
-      color: var(--theme-caption-color);
-      background-color: var(--theme-button-bg-hovered);
-      border: 1px solid var(--theme-button-border-enabled);
-      border-radius: 12px;
-      box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.2);
-      user-select: none;
-      text-align: center;
-      z-index: 10;
 
-      .content {
-        display: flex;
-        flex-direction: column;
-
-        &.scrolling {
-          overflow-y: auto;
-        }
+      &.scrolling {
+        overflow-y: auto;
       }
     }
   }
