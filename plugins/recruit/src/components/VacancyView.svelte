@@ -37,7 +37,12 @@
     <Component is={table.component.TableView} props={
       {
         _class:recruit.class.Applicant, 
-        space, 
+        space,
+        options: {
+          lookup: {
+            candidate: recruit.class.Candidate
+          }
+        },
         model: [
           { 
             label: 'Candidate',
