@@ -20,8 +20,6 @@
   import Add from './icons/Add.svelte'
   import Close from './icons/Close.svelte'
 
-  import chen from '../../img/chen.png'
-
   import type { Ref, Class } from '@anticrm/core'
   import type { Person } from '@anticrm/contact'
   import { createQuery } from '../utils'
@@ -54,7 +52,7 @@
       }}
     >
       {#if selected}
-        <div class="avatar"><UserInfo avatar={chen} size={34} avatarOnly /></div>
+        <div class="avatar"><UserInfo size={34} avatarOnly /></div>
       {:else}
         <div class="icon">
           {#if pressed}<Close size={16} />{:else}<Add size={16} />{/if}
@@ -68,12 +66,12 @@
       <div class="caption"><Label label={caption} /></div>
     </div>
 
-    {#each objects as user}
+    {#each objects as person}
       <button class="menu-item" on:click={() => {
-        selected = user
-        value = user._id
+        selected = person
+        value = person._id
         pressed = !pressed
-      }}><UserInfo title={user.firstName + ' ' + user.lastName} avatar={chen}/></button>
+      }}><UserInfo {person}/></button>
     {/each}
   </PopupMenu>
 

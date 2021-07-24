@@ -17,7 +17,7 @@
 <script lang="ts">
 
 import { onDestroy } from 'svelte'
-import type { Ref, Class, Doc, Space } from '@anticrm/core'
+import type { Ref, Class, Doc, Space, FindOptions } from '@anticrm/core'
 import type { AttributeModel } from '@anticrm/table'
 
 import { Label } from '@anticrm/ui'
@@ -26,6 +26,7 @@ import { getClient } from '@anticrm/presentation'
 
 export let _class: Ref<Class<Doc>>
 export let space: Ref<Space>
+export let options: FindOptions<Doc> | undefined
 export let model: AttributeModel[]
 
 let objects: Doc[]
@@ -35,7 +36,7 @@ let unsubscribe = () => {}
 
 $: {
   unsubscribe()
-  unsubscribe = client.query(_class, { space }, result => { objects = result })
+  unsubscribe = client.query(_class, { space }, result => { objects = result; console.log(result) }, options)
 }
 
 onDestroy(unsubscribe)

@@ -14,19 +14,22 @@
 -->
 
 <script lang="ts">
-  export let avatar: any
-  export let title: string
+  import type { Person } from '@anticrm/contact'
+
+  import chen from '../../img/chen.png'
+
+  export let person: Person
   export let subtitle: string | undefined = undefined
   export let size: 24 | 32 | 34 | 36 = 24
   export let avatarOnly: boolean = false
 </script>
 
 <div class="user-container">
-  <div style="width: {size}px; height: {size}px;"><img style="width: {size}px; height: {size}px;" src={avatar} alt={title}/></div>
+  <div style="width: {size}px; height: {size}px;"><img style="width: {size}px; height: {size}px;" src={chen} alt={''}/></div>
   {#if !avatarOnly}
     <div class="caption">
       {#if subtitle}<div class="subtitle">{subtitle}</div>{/if}
-      <div class="title">{title}</div>
+      <div class="title">{person.firstName + ' ' + person.lastName}</div>
     </div>
   {/if}
 </div>
