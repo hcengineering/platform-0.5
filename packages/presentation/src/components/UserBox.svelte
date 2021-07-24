@@ -15,7 +15,8 @@
 <script lang="ts">
   import type { IntlString } from '@anticrm/platform'
 
-  import { PopupMenu, Label, EditBox } from '@anticrm/ui'
+  import { PopupMenu, Label } from '@anticrm/ui'
+  import Avatar from './Avatar.svelte'
   import UserInfo from './UserInfo.svelte'
   import Add from './icons/Add.svelte'
   import Close from './icons/Close.svelte'
@@ -28,7 +29,6 @@
   export let title: IntlString
   export let caption: IntlString
   export let value: Ref<Person>
-  export let margin: number = 16
 
   let pressed: boolean = false
   let search: string = ''
@@ -41,18 +41,17 @@
 </script>
 
 <div class="userBox">
-  <PopupMenu {margin} bind:show={pressed}>
+  <PopupMenu bind:show={pressed}>
     <button
       slot="trigger"
       class="btn"
       class:selected={pressed}
-      on:click={(event) => {
+      on:click|preventDefault={() => {
         pressed = !pressed
-        event.stopPropagation()
       }}
     >
       {#if selected}
-        <div class="avatar"><UserInfo size={34} avatarOnly /></div>
+        <Avatar size={34} />
       {:else}
         <div class="icon">
           {#if pressed}<Close size={16} />{:else}<Add size={16} />{/if}
@@ -62,7 +61,7 @@
 
     <div class="header">
       <div class="title"><Label label={title} /></div>
-      <EditBox label={'Search'} bind:value={search} />
+      <input class="searchBox" type="text" bind:value={search} placeholder="Search..." />
       <div class="caption"><Label label={caption} /></div>
     </div>
 
@@ -86,9 +85,7 @@
 <style lang="scss">
   .userBox {
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    width: auto;
+    flex-wrap: nowrap;
 
     .btn {
       display: flex;
@@ -110,22 +107,9 @@
         opacity: 0.3;
       }
 
-      .avatar {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 36px;
-        height: 36px;
-        border-radius: 50%;
-        opacity: 1;
-      }
-
       &.selected {
         background-color: var(--theme-button-bg-focused);
         border: 1px solid var(--theme-bg-accent-color);
-        .icon {
-          opacity: 0.6;
-        }
       }
 
       &:hover {
@@ -152,25 +136,44 @@
         font-weight: 500;
         color: var(--theme-caption-color);
       }
+      .searchBox {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        margin: 0;
+        padding: 12px 16px;
+        min-width: 220px;
+        height: 40px;
+        font-family: inherit;
+        font-size: 14px;
+        line-height: 17px;
+        color: var(--theme-caption-color);
+        background-color: var(--theme-bg-accent-color);
+        border: 1px solid var(--theme-bg-accent-hover);
+        border-radius: 12px;
+        outline: none;
+
+        &::placeholder {
+          color: var(--theme-content-trans-color);
+        }
+        &:focus {
+          background-color: var(--theme-bg-focused-color);
+          border-color: var(--theme-bg-focused-border);
+        }
+      }
       .caption {
-        margin: 24px 0 10px 7px;
+        margin: 16px 0 10px 6px;
         font-size: 12px;
         font-weight: 600;
-        line-height: 0.5px;
         text-transform: uppercase;
-        color: var(--theme-content-color);
+        color: var(--theme-content-dark-color);
       }
     }
 
     .menu-item {
-      position: relative;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-grow: 1;
       margin: 0;
       padding: 6px;
-      height: 40px;
+      font-family: inherit;
       background-color: transparent;
       border: 1px solid transparent;
       border-radius: 8px;
@@ -180,9 +183,6 @@
       &:hover {
         background-color: var(--theme-button-bg-pressed);
         border: 1px solid var(--theme-bg-accent-color);
-        .title {
-          color: var(--theme-caption-color);
-        }
       }
       &:focus {
         border: 1px solid var(--primary-button-focused-border);
@@ -193,11 +193,13 @@
 
     .selectUser {
       margin-left: 12px;
-      font-size: 14px;
       .title {
-        color: var(--theme-content-color);
+        font-size: 12px;
+        font-weight: 500;
+        color: var(--theme-content-accent-color);
       }
       .user {
+        font-size: 14px;
         color: var(--theme-caption-color);
       }
     }

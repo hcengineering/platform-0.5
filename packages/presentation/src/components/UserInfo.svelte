@@ -14,42 +14,38 @@
 -->
 
 <script lang="ts">
-  import type { Person } from '@anticrm/contact'
+  import Avatar from './Avatar.svelte'
 
-  import chen from '../../img/chen.png'
+  import type { Person } from '@anticrm/contact'
 
   export let value: Person
   export let subtitle: string | undefined = undefined
   export let size: 24 | 32 | 34 | 36 = 24
-  export let avatarOnly: boolean = false
 </script>
 
 <div class="user-container">
-  <div style="width: {size}px; height: {size}px;"><img style="width: {size}px; height: {size}px;" src={chen} alt={''}/></div>
-  {#if !avatarOnly}
-    <div class="caption">
-      {#if subtitle}<div class="subtitle">{subtitle}</div>{/if}
-      <div class="title">{value.firstName + ' ' + value.lastName}</div>
-    </div>
-  {/if}
+  <Avatar {size} />
+  <div class="user-info">
+    {#if subtitle}<div class="subtitle">{subtitle}</div>{/if}
+    <div class="title">{value.firstName + ' ' + value.lastName}</div>
+  </div>
 </div>
 
 <style lang="scss">
   .user-container {
     display: flex;
-    flex-direction: row;
     align-items: center;
     flex-wrap: nowrap;
 
-    .caption {
+    .user-info {
       display: flex;
       flex-direction: column;
-      flex-grow: 1;
       margin-left: 8px;
-      color: var(--theme-caption-color);
+      font-family: inherit;
+      color: var(--theme-content-accent-color);
 
       .subtitle {
-        opacity: .4;
+        color: var(--theme-content-dark-color);
       }
       .title {
         max-width: 150px;
