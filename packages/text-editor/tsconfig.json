@@ -1,14 +1,14 @@
 {
   "compilerOptions": {
     "moduleResolution": "node",
-    "target": "es6",
+    "target": "esnext",
     "module": "esnext",
     "declaration": true,
     "outDir": "./lib",
     "strict": true,
     "esModuleInterop": true,
     "lib": [
-      "es2018",
+      "esnext",
       "dom"
     ]
   }

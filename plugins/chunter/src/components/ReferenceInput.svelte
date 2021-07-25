@@ -13,108 +13,26 @@
 // limitations under the License.
 -->
 <script lang="ts">
-  import { createEventDispatcher } from 'svelte'
-
   import Send from './icons/Send.svelte'
   import Attach from './icons/Attach.svelte'
   import Emoji from './icons/Emoji.svelte'
   import GIF from './icons/GIF.svelte'
   import TextStyle from './icons/TextStyle.svelte'
 
-  import { EditorActions, EditorContentEvent, MessageEditor } from '@anticrm/text-editor'
-  import { MessageNode, newMessageDocument, serializeMessage } from '@anticrm/text'
+  import { TextEditor } from '@anticrm/text-editor'
 
-  export let thread: boolean = false
-
-  export let stylesEnabled = false
-  // If specified, submit button will be enabled, message will be send on any modify operation
-  export let submitEnabled = true
   export let lines = 1
-
-  const dispatch = createEventDispatcher()
-
-  let styleState: EditorContentEvent = {
-    isEmpty: true,
-    cursor: {
-      left: 0,
-      top: 0,
-      bottom: 0,
-      right: 0
-    },
-    bold: false,
-    italic: false,
-    completionWord: '',
-    selection: {
-      from: 0,
-      to: 0
-    },
-    completionEnd: '',
-    inputHeight: 0
-  }
-  let editorContent: MessageNode = newMessageDocument()
-
-  let htmlEditor: MessageEditor & EditorActions
-
-  const triggers = ['@', '#', '[[']
-
-  let currentPrefix = ''
-
-  function updateStyle (event: EditorContentEvent) {
-    styleState = event
-
-    if (event.completionWord.length === 0) {
-      currentPrefix = ''
-      return
-    }
-    if (event.completionWord.startsWith('[[')) {
-      if (event.completionWord.endsWith(']')) {
-        currentPrefix = ''
-      } else {
-        currentPrefix = event.completionWord.substring(2)
-      }
-    } else {
-      currentPrefix = ''
-    }
-    dispatch('update', editorContent)
-  }
-
-  function onKeyDown (event: any): void {
-    if (event.key === 'Enter' && !event.shiftKey) {
-      handleSubmit()
-      event.preventDefault()
-    }
-  }
-
-  function handleSubmit (): void {
-    if (!styleState.isEmpty) {
-      dispatch('message', serializeMessage(editorContent))
-    }
-    editorContent = newMessageDocument()
-  }
 </script>
 
 <div class="ref-container">
   <div class="textInput" style={`height: ${lines + 1}em;`}>
     <div
       class="inputMsg"
-      class:thread
-      class:edit-box-vertical={stylesEnabled}
-      class:edit-box-horizontal={!stylesEnabled}
-      on:keydown={onKeyDown}
     >
-      <MessageEditor
-        bind:this={htmlEditor}
-        bind:content={editorContent}
-        {triggers}
-        on:content={(event) => {
-          editorContent = event.detail
-        }}
-        on:styleEvent={(e) => updateStyle(e.detail)}
+      <TextEditor
       />
     </div>
-    {#if submitEnabled}
-      <button class="sendButton" on:click={() => handleSubmit()}><div class="icon"><Send /></div></button>
-    {/if}
+    <button class="sendButton"><div class="icon"><Send /></div></button>
   </div>
   <div class="buttons">
     <div class="tool"><Attach /></div>
