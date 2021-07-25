@@ -1,3 +1,5 @@
 {
-  "loadingPlugin": "Loading plugin '<b>'{plugin}'</b>'..."
+  "status": {
+    "loadingPlugin": "Loading plugin '<b>'{plugin}'</b>'..."
+  }
 }

@@ -455,6 +455,11 @@
       "shouldPublish": true
     },
     {
+      "packageName": "@anticrm/login-assets",
+      "projectFolder": "plugins/login-assets",
+      "shouldPublish": true
+    },
+    {
       "packageName": "@anticrm/chunter",
       "projectFolder": "packages/chunter",
       "shouldPublish": true

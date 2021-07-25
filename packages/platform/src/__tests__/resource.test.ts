@@ -17,7 +17,6 @@
 import type { Plugin, IntlString, Resource } from '../platform'
 import { plugin } from '../platform'
 import { addLocation, getResource } from '../resource'
-import { translate } from '../i18n'
 
 describe('resource', () => {
   const test = 'test' as Plugin
@@ -38,14 +37,6 @@ describe('resource', () => {
     expect(string).toBe('Test')
     const cached = await getResource(testPlugin.test.X)
     expect(cached).toBe('Test')
-    const intl = await getResource(testPlugin.string.Hello)
-    expect(intl).toBe('Hi {name}')
   })
 
-  it('should translate string', async () => {
-    const translated = await translate(testPlugin.string.Hello, {
-      name: 'John'
-    })
-    expect(translated).toBe('Hi John')
-  })
 })

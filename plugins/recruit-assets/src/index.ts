@@ -13,11 +13,13 @@
 // limitations under the License.
 //
 
-import { loadMetadata } from '@anticrm/platform'
-import recruit from '@anticrm/recruit'
+import { loadMetadata, addStringsLoader } from '@anticrm/platform'
+import recruit, { recruitId } from '@anticrm/recruit'
 
 const icons = require('../assets/icons.svg')
 loadMetadata(recruit.icon, {
   RecruitApplication: `${icons}#recruitment`,
   Vacancy: `${icons}#vacancy`
 })
+
+addStringsLoader(recruitId, async (lang: string) => await import(`../lang/${lang}.json`))

@@ -35,6 +35,7 @@ import { tableId } from '@anticrm/table'
 // import personExtras from '@anticrm/person-extras'
 // import calendar from '@anticrm/calendar'
 
+import '@anticrm/login-assets'
 import '@anticrm/chunter-assets'
 import '@anticrm/recruit-assets'
 // import '@anticrm/task-assets'

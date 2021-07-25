@@ -38,8 +38,7 @@ export type Plugin = string & { __plugin: true }
  */
 export type Resource<T> = Id & { __resource: T }
 
-export type IntlString<T extends Record<string, any> = {}> =
-  Resource<string> & { __intl_string: T }
+export type IntlString<T extends Record<string, any> = {}> = Id & { __intl_string: T }
 
 export type StatusCode<T extends Record<string, any> = {}> = IntlString<T>
 
@@ -76,9 +75,9 @@ export function mergeIds<N extends Namespace, M extends Namespace> (
   return identify({ ...ns }, plugin, merge) as N & M
 }
 
-export const Platform = 'platform' as Plugin
+export const platformId = 'platform' as Plugin
 
-export default plugin(Platform, {
+export default plugin(platformId, {
   status: {
     OK: '' as StatusCode,
     UnknownError: '' as StatusCode<{ message: string }>,
@@ -87,6 +86,8 @@ export default plugin(Platform, {
     LoadingPlugin: '' as StatusCode<{ plugin: string }>,
     NoLocationForPlugin: '' as StatusCode<{ plugin: Plugin }>,
     ResourceNotFound: '' as StatusCode<{ resource: Resource<any> }>,
+
+    NoLoaderForStrings: '' as StatusCode<{ plugin: Plugin }>,
 
     BadRequest: '' as StatusCode
     // Forbidden: '' as StatusCode,

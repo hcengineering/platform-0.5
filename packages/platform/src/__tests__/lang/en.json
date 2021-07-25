@@ -1,3 +1,5 @@
 {
-  "Hello": "Hi {name}"
+  "string": {
+    "loadingPlugin": "Loading plugin '<b>'{plugin}'</b>'..."
+  }
 }

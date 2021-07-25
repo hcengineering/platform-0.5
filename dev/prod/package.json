@@ -43,6 +43,7 @@
     "@anticrm/theme": "~0.5.0",
     "@anticrm/login": "~0.5.0",
     "@anticrm/plugin-login": "~0.5.0",
+    "@anticrm/login-assets": "~0.5.0",
     "@anticrm/client": "~0.5.0",
     "@anticrm/plugin-client-dev": "~0.5.0",
     "@anticrm/workbench": "~0.5.0",

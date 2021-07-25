@@ -13,13 +13,8 @@
 // limitations under the License.
 //
 
-import { loadStringsStatic } from '../i18n'
-
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 export default async () => ({
-  string: await loadStringsStatic({
-    en: async () => await import('./lang/en.json')
-  }),
   test: {
     X: 'Test'
   }

@@ -14,10 +14,8 @@
 // limitations under the License.
 //
 
-import { loadStringsStatic } from './i18n'
-import { Platform } from './platform'
-import { addLocation } from './resource'
-
+import { addStringsLoader } from './i18n'
+import { platformId } from './platform'
 import type { Metadata } from './metadata'
 
 export * from './platform'
@@ -29,15 +27,13 @@ export * from './i18n'
 export * from './metadata'
 export * from './rpc'
 
-// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-const resources = async () => ({
-  default: async () => ({
-    status: await loadStringsStatic({
-      en: async () => await import('./lang/en.json')
-    })
-  })
+addStringsLoader(platformId, async (lang: string) => {
+  switch (lang) {
+    case 'en':
+      return (await import('./lang/en.json'))
+  }
+  throw new Error('unsupported language')
 })
 
-addLocation(Platform, resources)
 type URL = string
 export type Asset = Metadata<URL>
