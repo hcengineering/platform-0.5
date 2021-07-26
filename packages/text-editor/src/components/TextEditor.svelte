@@ -53,7 +53,6 @@ onMount(() => {
 
             return {
               onStart: props => {
-                console.log('onStart', props)
                 component = new SvelteRenderer(MentionList, props)
               },
               onUpdate(props) {

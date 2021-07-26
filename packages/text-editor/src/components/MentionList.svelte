@@ -16,15 +16,28 @@
 
 <script lang="ts">
 
+import { Editor } from '@tiptap/core'
+
+export let editor: Editor
 export let query: string
+export let command: (props: any) => void
 
 export function onKeyDown() {
   console.log("onKeyDown!!!!!!!")
 }
 
+function click() {
+  command({id: 'fuck-this-id', label: 'Der Label'})
+  console.log(editor.getJSON())
+  console.log(editor.getHTML())
+}
+
 </script>
 
-<h1 class="x">HELLO! {query}</h1>
+<div class='x'>
+  <h1>HELLO! {query}</h1>
+  <button on:click={click}>Hey</button>
+</div>
 
 <style lang="scss">
 
