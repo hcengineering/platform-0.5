@@ -1,4 +1,4 @@
-//
+<!--
 // Copyright © 2020, 2021 Anticrm Platform Contributors.
 // Copyright © 2021 Hardcore Engineering Inc.
 // 
@@ -12,6 +12,27 @@
 // 
 // See the License for the specific language governing permissions and
 // limitations under the License.
-//
+-->
 
-export { default as TextEditor } from './components/TextEditor.svelte'
+<script lang="ts">
+
+export let query: string
+
+export function onKeyDown() {
+  console.log("onKeyDown!!!!!!!")
+}
+
+</script>
+
+<h1 class="x">HELLO! {query}</h1>
+
+<style lang="scss">
+
+.x {
+  position: absolute;
+  left: 100px;
+  top: 100px;
+  background-color: red;
+}
+
+</style>

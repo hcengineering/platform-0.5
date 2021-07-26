@@ -22,6 +22,10 @@ import StarterKit from '@tiptap/starter-kit'
 import Highlight from '@tiptap/extension-highlight'
 import Typography from '@tiptap/extension-typography'
 import Placeholder from '@tiptap/extension-placeholder'
+import Mention from '@tiptap/extension-mention'
+
+import MentionList from './MentionList.svelte'
+import { SvelteRenderer } from './SvelteRenderer'
 
 let element: HTMLElement
 let editor: Editor
@@ -34,6 +38,37 @@ onMount(() => {
       Highlight,
       Typography,
       Placeholder.configure({placeholder: 'Type something...'}),
+      Mention.configure({
+        HTMLAttributes: {
+          class: 'mention',
+        },
+        suggestion: {
+          items: query => {
+            return [
+              'Lea Thompson', 'Cyndi Lauper', 'Tom Cruise', 'Madonna', 'Jerry Hall', 'Joan Collins', 'Winona Ryder', 'Christina Applegate', 'Alyssa Milano', 'Molly Ringwald', 'Ally Sheedy', 'Debbie Harry', 'Olivia Newton-John', 'Elton John', 'Michael J. Fox', 'Axl Rose', 'Emilio Estevez', 'Ralph Macchio', 'Rob Lowe', 'Jennifer Grey', 'Mickey Rourke', 'John Cusack', 'Matthew Broderick', 'Justine Bateman', 'Lisa Bonet',
+            ].filter(item => item.toLowerCase().startsWith(query.toLowerCase())).slice(0, 5)
+          },
+          render: () => {
+            let component: any
+
+            return {
+              onStart: props => {
+                console.log('onStart', props)
+                component = new SvelteRenderer(MentionList, props)
+              },
+              onUpdate(props) {
+                component.updateProps(props)
+              },
+              onKeyDown(props) {
+                return component.onKeyDown(props)
+              },
+              onExit() {
+                component.destroy()
+              },
+            }
+          },
+        },
+      }),
     ],
     // content: 'dfgdfg',
     onTransaction: () => {

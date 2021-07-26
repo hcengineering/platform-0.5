@@ -42,6 +42,11 @@
     "@tiptap/starter-kit": "~2.0.0-beta.82",
     "@tiptap/extension-highlight": "~2.0.0-beta.14",
     "@tiptap/extension-typography": "~2.0.0-beta.12",
-    "@tiptap/extension-placeholder": "~2.0.0-beta.25"
+    "@tiptap/extension-placeholder": "~2.0.0-beta.25",
+    "@tiptap/extension-mention": "~2.0.0-beta.61",
+    "prosemirror-view": "~1.18.11",
+    "prosemirror-model": "~1.14.3",
+    "@types/prosemirror-view": "~1.18.0",
+    "@types/prosemirror-model": "~1.13.1"
   }
 }

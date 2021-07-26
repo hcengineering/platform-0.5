@@ -14,4 +14,28 @@
 // limitations under the License.
 //
 
-export { default as TextEditor } from './components/TextEditor.svelte'
+import { SvelteComponent } from 'svelte'
+
+export class SvelteRenderer  {
+
+  private component: SvelteComponent
+
+  constructor(comp: typeof SvelteComponent, props: any) {
+    const options = { target: document.body, props }
+    this.component = new (comp as any)(options)
+  }
+
+  updateProps(props: Record<string, any>): void {
+    this.component.$set(props)
+  }
+
+  onKeyDown(props: Record<string, any>): boolean {
+    if (this.component.onKeyDown)
+      this.component.onKeyDown()
+    return false
+  }
+
+  destroy(): void {
+    this.component.$destroy()
+  }
+}
