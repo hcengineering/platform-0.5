@@ -25,7 +25,10 @@ import { getClient } from '@anticrm/presentation'
 export let items: Person[]
 export let editor: Editor
 export let query: string
+export let clientRect: () => ClientRect
 export let command: (props: any) => void
+
+let popup: HTMLElement
 
 export function onKeyDown() {
   console.log("onKeyDown!!!!!!!")
@@ -39,24 +42,34 @@ function click() {
 
 let persons: Person[] = []
 
+let style = 'visibility: hidden'
+$: {
+  if (popup) {
+    const x = clientRect().left
+    const height = popup.getBoundingClientRect().height
+    const y = clientRect().top - height - 16
+    style = `left: ${x}px; top: ${y}px;`
+  }
+}
+
 //$: items(query).then(result => persons = result)
 
 </script>
 
-<div class='x'>
-  {#each items as item}
-    {item.firstName}
-  {/each}
-  <h1>HELLO! {query}</h1>
-  <button on:click={click}>Hey</button>
+<div>
+  <div bind:this={popup} class='completion' {style}>
+    {#each items as item}
+      {item.firstName}
+    {/each}
+    <h1>HELLO! {query}</h1>
+    <button on:click={click}>Hey</button>
+  </div>
 </div>
 
 <style lang="scss">
 
-.x {
+.completion {
   position: absolute;
-  left: 100px;
-  top: 100px;
   background-color: red;
 }
 
