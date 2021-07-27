@@ -13,6 +13,7 @@
 // limitations under the License.
 -->
 <script lang="ts">
+  import { createEventDispatcher } from 'svelte'
   import Send from './icons/Send.svelte'
   import Attach from './icons/Attach.svelte'
   import Emoji from './icons/Emoji.svelte'
@@ -21,14 +22,14 @@
 
   import { TextEditor } from '@anticrm/text-editor'
 
-  export let lines = 1
+  const dispatch = createEventDispatcher()
+
 </script>
 
 <div class="ref-container">
   <div class="textInput">
     <div class="inputMsg">
-      <TextEditor
-      />
+      <TextEditor on:enter={() => dispatch('enter')}/>
     </div>
     <button class="sendButton"><div class="icon"><Send /></div></button>
   </div>

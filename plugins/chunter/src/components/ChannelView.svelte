@@ -35,7 +35,7 @@
 <div class="msg-board">
   <Channel {space} />
 </div>
-<ReferenceInput thread={false} on:message={onMessage}/>
+<ReferenceInput on:enter={onMessage}/>
 
 <style lang="scss">
   .msg-board {

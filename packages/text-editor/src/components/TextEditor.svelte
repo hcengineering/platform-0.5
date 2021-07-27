@@ -16,8 +16,8 @@
 
 <script lang="ts">
 
-import { onMount, onDestroy } from 'svelte'
-import { Editor } from '@tiptap/core'
+import { onMount, onDestroy, createEventDispatcher } from 'svelte'
+import { Editor, Extension } from '@tiptap/core'
 import StarterKit from '@tiptap/starter-kit'
 import Highlight from '@tiptap/extension-highlight'
 import Typography from '@tiptap/extension-typography'
@@ -84,12 +84,22 @@ import contact from '@anticrm/contact'
 let element: HTMLElement
 let editor: Editor
 
+const dispatch = createEventDispatcher()
 const client = getClient()
+
+const HandleEnter = Extension.create({
+  addKeyboardShortcuts() {
+    return {
+      'Enter': () => { dispatch('enter'); return true },
+    }
+  },
+})
 
 onMount(() => {
   editor = new Editor({
-    element: element,
+    element,
     extensions: [
+      HandleEnter,
       StarterKit,
       Highlight,
       Typography,
@@ -140,7 +150,7 @@ onDestroy(() => {
 
 </script>
 
-<div style="width: 100%" bind:this={element} />
+<div style="width: 100%" bind:this={element}/>
 
 <style lang="scss" global>
 
