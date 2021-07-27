@@ -25,10 +25,8 @@
 </script>
 
 <div class="ref-container">
-  <div class="textInput" style={`height: ${lines + 1}em;`}>
-    <div
-      class="inputMsg"
-    >
+  <div class="textInput">
+    <div class="inputMsg">
       <TextEditor
       />
     </div>
@@ -52,7 +50,7 @@
     .textInput {
       display: flex;
       justify-content: space-between;
-      // align-items: center;
+      align-items: center;
       min-height: 44px;
       padding: 8px 16px;
       background-color: var(--theme-bg-accent-color);
@@ -60,6 +58,8 @@
       border-radius: 12px;
 
       .inputMsg {
+        display: flex;
+        align-items: center;
         width: 100%;
         height: 100%;
         color: var(--theme-content-color);
