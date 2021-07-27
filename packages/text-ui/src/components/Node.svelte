@@ -15,17 +15,25 @@
 -->
 
 <script lang="ts">
-  import Node from './Node.svelte'
-
-  export let message: string
-
-  let dom: HTMLElement
-
-  const parser = new DOMParser()
-
-  $: dom = parser.parseFromString(message, 'application/xhtml+xml').firstChild as HTMLElement
+  export let node: any
 </script>
 
-{#each dom.childNodes as node}
-  <Node {node}></Node>
-{/each}
+{#if node.nodeType === Node.TEXT_NODE}
+  {node.data}
+{:else}
+  {#if node.nodeName === 'em'}
+    <em>
+      {#each node.childNodes as kid}
+        <svelte:self node={kid}/>
+      {/each}
+    </em>
+  {:else if node.nodeName === 'strong'}
+    <strong>
+      {#each node.childNodes as kid}
+        <svelte:self node={kid}/>
+      {/each}
+    </strong>
+  {:else}
+    Unknown { node.nodeName }
+  {/if}
+{/if}
