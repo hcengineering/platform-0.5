@@ -30,6 +30,7 @@ specifiers:
   '@rush-temp/recruit-assets': file:./projects/recruit-assets.tgz
   '@rush-temp/table': file:./projects/table.tgz
   '@rush-temp/table-resources': file:./projects/table-resources.tgz
+  '@rush-temp/task': file:./projects/task.tgz
   '@rush-temp/text': file:./projects/text.tgz
   '@rush-temp/text-editor': file:./projects/text-editor.tgz
   '@rush-temp/text-ui': file:./projects/text-ui.tgz
@@ -117,6 +118,7 @@ dependencies:
   '@rush-temp/recruit-assets': file:projects/recruit-assets.tgz_23ed2e7cfc017d0cde46697e705ce1aa
   '@rush-temp/table': file:projects/table.tgz_23ed2e7cfc017d0cde46697e705ce1aa
   '@rush-temp/table-resources': file:projects/table-resources.tgz_a0a32d965f2ca21859801e8e9b52a066
+  '@rush-temp/task': file:projects/task.tgz_23ed2e7cfc017d0cde46697e705ce1aa
   '@rush-temp/text': file:projects/text.tgz_ts-node@10.1.0
   '@rush-temp/text-editor': file:projects/text-editor.tgz_31a9a36c12febab27be66838f0689686
   '@rush-temp/text-ui': file:projects/text-ui.tgz_31a9a36c12febab27be66838f0689686
@@ -10185,8 +10187,30 @@ packages:
       - utf-8-validate
     dev: false
 
+  file:projects/task.tgz_23ed2e7cfc017d0cde46697e705ce1aa:
+    resolution: {integrity: sha512-JP5Pa3540HifGtjzzVQpp5/UaePyefKykKV5Lx7T0XKHvmARUzvVNBeldhwxepyuHv7RkaYyZlNs6tHxoV3hVA==, tarball: file:projects/task.tgz}
+    id: file:projects/task.tgz
+    name: '@rush-temp/task'
+    version: 0.0.0
+    dependencies:
+      '@microsoft/api-extractor': 7.18.4
+      '@types/jest': 26.0.24
+      jest: 26.6.3_ts-node@10.1.0
+      prettier: 2.3.2
+      ts-jest: 26.5.6_jest@26.6.3+typescript@4.3.5
+      ts-standard: 10.0.0_e8f8737ec08c6b54ccd6ee9c0aab1b01
+      typescript: 4.3.5
+    transitivePeerDependencies:
+      - '@typescript-eslint/parser'
+      - bufferutil
+      - canvas
+      - supports-color
+      - ts-node
+      - utf-8-validate
+    dev: false
+
   file:projects/text-editor.tgz_31a9a36c12febab27be66838f0689686:
-    resolution: {integrity: sha512-QaS5HjWlQxmnnGo7NEAXHCWfzhr2qpt0+sE5meMmQ/IoCuzqJmpMkyCmwLdIfZn0uyKbFlC18+zM6u1jEmd8tw==, tarball: file:projects/text-editor.tgz}
+    resolution: {integrity: sha512-ir69mjpCmLyQzveFB3wklpawuh0vmmICMTUcj+2XprZuuG51lWzqjqdXQqaqHWoSeFsCTtpwBavtmK4j3i0Esg==, tarball: file:projects/text-editor.tgz}
     id: file:projects/text-editor.tgz
     name: '@rush-temp/text-editor'
     version: 0.0.0

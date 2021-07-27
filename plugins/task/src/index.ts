@@ -14,34 +14,21 @@
 //
 
 import { plugin } from '@anticrm/platform'
-import type { Plugin } from '@anticrm/platform'
-import type { Doc, Ref, Class } from '@anticrm/core'
+import type { Plugin, Asset } from '@anticrm/platform'
+import type { Space, Doc, Ref } from '@anticrm/core'
+import type { Employee } from '@anticrm/contact'
 
-export interface Contact extends Doc {
+export interface Project extends Space {}
+
+export interface Task extends Doc {
+  candidate: Ref<Employee>
 }
 
-export interface Person extends Contact {
-  firstName: string
-  lastName: string
-  email: string
-  phone: string
-  city: string
-}
+export const recruitId = 'recruit' as Plugin
 
-export interface Organization extends Contact {
-  name: string
-}
-
-export interface Employee extends Person {
-  
-}
-
-export const contactId = 'contact' as Plugin
-
-export default plugin(contactId, {
-  class: {
-    Contact: '' as Ref<Class<Contact>>,
-    Person: '' as Ref<Class<Person>>,
-    Organization: '' as Ref<Class<Organization>>
-  }
+export default plugin(recruitId, {
+  icon: {
+    RecruitApplication: '' as Asset,
+    Vacancy: '' as Asset
+  },
 })

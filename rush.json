@@ -500,6 +500,11 @@
       "shouldPublish": true
     },
     {
+      "packageName": "@anticrm/task",
+      "projectFolder": "plugins/task",
+      "shouldPublish": true
+    },
+    {
       "packageName": "@anticrm/client",
       "projectFolder": "packages/client",
       "shouldPublish": true
