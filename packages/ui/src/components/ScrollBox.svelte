@@ -60,7 +60,6 @@
         padding: 0 10px 0 10px;
         width: 100%;
         height: auto;
-        grid-auto-flow: row;
         &.stretch {
           height: 100%;
         }

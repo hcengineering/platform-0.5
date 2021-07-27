@@ -169,7 +169,7 @@ onDestroy(() => {
   p.is-editor-empty:first-child::before {
     content: attr(data-placeholder);
     float: left;
-    color: #ced4da;
+    color: var(--theme-content-trans-color);
     pointer-events: none;
     height: 0;
   }
