@@ -90,7 +90,13 @@ const client = getClient()
 const HandleEnter = Extension.create({
   addKeyboardShortcuts() {
     return {
-      'Enter': () => { dispatch('enter'); return true },
+      'Enter': () => {
+        this.editor.commands.clearContent(false)
+        dispatch('enter')
+        return true
+      }
+      
+      
     }
   },
 })
