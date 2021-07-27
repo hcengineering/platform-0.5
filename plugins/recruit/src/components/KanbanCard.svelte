@@ -34,7 +34,7 @@
 
 </script>
 
-<div class="card-container" {draggable} on:dragstart on:dragend>
+<div class="card-container" {draggable} class:draggable on:dragstart on:dragend>
   <div class="header">
     <UserInfo value={{firstName: card.firstName, lastName: card.lastName }} subtitle={'Candidate'} size={28} />
     <ActionIcon icon={MoreH} label={'More..'} direction={'left'} />
@@ -57,7 +57,6 @@
     border: 1px solid var(--theme-bg-accent-color);
     border-radius: 12px;
     user-select: none;
-    cursor: grab;
 
     .header {
       display: flex;
@@ -83,6 +82,10 @@
         gap: 8px;
         margin-top: 16px;
       }
+    }
+
+    &.draggable {
+      cursor: grab;
     }
   }
 </style>
