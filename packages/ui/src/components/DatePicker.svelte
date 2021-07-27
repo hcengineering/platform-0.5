@@ -79,8 +79,7 @@
           on:click|preventDefault={() => {
             view.setMonth(view.getMonth() - 1)
             view = view
-          }}><Back size={12} /></button
-        >
+          }}><div class="icon"><Back size={16} /></div></button>
         <div class="monthYear">
           {monthYear}
         </div>
@@ -89,8 +88,7 @@
           on:click|preventDefault={() => {
             view.setMonth(view.getMonth() + 1)
             view = view
-          }}><Forward size={12} /></button
-        >
+          }}><div class="icon"><Forward size={16} /></div></button>
       </div>
     </div>
 
@@ -156,10 +154,15 @@
       }
 
       &.arrow {
-        width: 28px;
-        height: 28px;
+        width: 32px;
+        height: 32px;
         border: 1px solid var(--theme-bg-accent-color);
         border-radius: 4px;
+
+        .icon {
+          width: 16px;
+          height: 16px;
+        }
       }
 
       &.selected {
@@ -189,24 +192,23 @@
     .header {
       display: flex;
       flex-direction: column;
+      color: var(--theme-caption-color);
 
       .title {
-        margin-bottom: 22px;
+        margin-bottom: 12px;
         font-size: 14px;
         font-weight: 500;
-        color: var(--theme-caption-color);
         text-align: left;
       }
       .nav {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        min-width: 200px;
+        min-width: 264px;
 
         .monthYear {
           margin: 0 16px;
-          font-weight: 600;
-          color: var(--theme-content-color);
+          line-height: 150%;
           white-space: nowrap;
         }
       }
@@ -215,15 +217,17 @@
     .calendar {
       display: grid;
       grid-template-columns: repeat(7, 1fr);
-      margin-top: 18px;
+      gap: 2px;
+      margin-top: 8px;
 
       .caption {
         display: flex;
         justify-content: center;
         align-items: center;
-        margin-bottom: 18px;
+        width: 36px;
+        height: 36px;
         font-size: 12px;
-        color: var(--theme-content-trans-color);
+        color: var(--theme-content-dark-color);
       }
       .day {
         display: flex;
@@ -232,21 +236,14 @@
         width: 36px;
         height: 36px;
         font-family: inherit;
-        font-weight: 500;
-        font-size: 14px;
-        line-height: 24px;
-        letter-spacing: -0.5px;
-        color: var(--theme-content-color);
+        color: var(--theme-content-dark-color);
         border-radius: 8px;
         cursor: pointer;
 
         &.selected {
-          background-color: rgb(68 116 246 / 10%);
+          background-color: var(--theme-button-bg-focused);
           border: 1px solid var(--theme-bg-accent-color);
-          color: var(--primary-button-enabled);
-        }
-        &:hover {
-          background-color: var(--theme-bg-accent-color);
+          color: var(--theme-caption-color);
         }
       }
     }

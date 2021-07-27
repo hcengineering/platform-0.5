@@ -104,7 +104,7 @@
     visibility: hidden;
     display: flex;
     flex-direction: column;
-    padding: 24px 20px 18px;
+    padding: 16px;
     color: var(--theme-caption-color);
     background-color: var(--theme-button-bg-hovered);
     border: 1px solid var(--theme-button-border-enabled);
