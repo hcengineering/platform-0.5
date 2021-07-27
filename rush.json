@@ -425,18 +425,8 @@
       "shouldPublish": true
     },
     {
-      "packageName": "@anticrm/text",
-      "projectFolder": "packages/text",
-      "shouldPublish": true
-    },
-    {
       "packageName": "@anticrm/text-editor",
       "projectFolder": "packages/text-editor",
-      "shouldPublish": true
-    },
-    {
-      "packageName": "@anticrm/text-ui",
-      "projectFolder": "packages/text-ui",
       "shouldPublish": true
     },
     {
