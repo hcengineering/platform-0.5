@@ -20,7 +20,7 @@
 
   export let value: Person
   export let subtitle: string | undefined = undefined
-  export let size: 24 | 32 | 34 | 36 = 24
+  export let size: 24 | 28 | 32 | 34 | 36 = 24
 </script>
 
 <div class="user-container">
@@ -45,6 +45,7 @@
       color: var(--theme-content-accent-color);
 
       .subtitle {
+        font-size: 12px;
         color: var(--theme-content-dark-color);
       }
       .title {

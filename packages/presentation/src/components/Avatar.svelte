@@ -17,7 +17,7 @@
   import chen from '../../img/chen.png'
 
   export let avatar: any = chen
-  export let size: 16 | 24 | 32 | 34 | 36 = 24
+  export let size: 16 | 24 | 32 | 34 | 36 | 88 = 24
 </script>
 
 <div class="avatar-container" style="width: {size}px; height: {size}px;">
