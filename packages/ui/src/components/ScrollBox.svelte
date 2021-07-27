@@ -56,6 +56,7 @@
       overflow-x: hidden;
       overflow-y: auto;
       .box {
+        grid-auto-flow: row;
         padding: 0 10px 0 10px;
         width: 100%;
         height: auto;

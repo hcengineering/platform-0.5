@@ -140,11 +140,17 @@ onDestroy(() => {
 
 </script>
 
-<div bind:this={element} />
+<div style="width: 100%" bind:this={element} />
 
 <style lang="scss" global>
 
 .ProseMirror {
+  outline: none;
+
+  p {
+    margin: 0;
+  }
+
     > * + * {
       margin-top: 0.75em;
     }
