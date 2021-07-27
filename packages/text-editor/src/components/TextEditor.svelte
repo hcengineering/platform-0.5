@@ -91,8 +91,8 @@ const HandleEnter = Extension.create({
   addKeyboardShortcuts() {
     return {
       'Enter': () => {
+        dispatch('message', this.editor.getHTML())
         this.editor.commands.clearContent(false)
-        dispatch('enter')
         return true
       }
       
@@ -167,9 +167,9 @@ onDestroy(() => {
     margin: 0;
   }
 
-    > * + * {
-      margin-top: 0.75em;
-    }
+  > * + * {
+    margin-top: 0.75em;
+  }
 
   /* Placeholder (at the top) */
   p.is-editor-empty:first-child::before {

@@ -29,7 +29,7 @@
 <div class="ref-container">
   <div class="textInput">
     <div class="inputMsg">
-      <TextEditor on:enter={() => dispatch('enter')}/>
+      <TextEditor on:message={ev => dispatch('message', ev.detail)}/>
     </div>
     <button class="sendButton"><div class="icon"><Send /></div></button>
   </div>
