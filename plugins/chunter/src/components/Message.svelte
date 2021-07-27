@@ -24,7 +24,7 @@
   import Replies from './Replies.svelte'
   import avatar from '../../img/avatar.png'
 
-  import { MarkdownViewer } from '@anticrm/text-ui'
+  import { MarkdownViewer } from '@anticrm/presentation'
 
   export let message: Message
 
