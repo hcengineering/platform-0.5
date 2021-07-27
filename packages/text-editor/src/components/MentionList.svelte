@@ -17,7 +17,12 @@
 <script lang="ts">
 
 import { Editor } from '@tiptap/core'
+import type { FindResult, Doc } from '@anticrm/core'
+import type { Person } from '@anticrm/contact'
+import contact from '@anticrm/contact'
+import { getClient } from '@anticrm/presentation'
 
+export let items: Person[]
 export let editor: Editor
 export let query: string
 export let command: (props: any) => void
@@ -32,9 +37,16 @@ function click() {
   console.log(editor.getHTML())
 }
 
+let persons: Person[] = []
+
+//$: items(query).then(result => persons = result)
+
 </script>
 
 <div class='x'>
+  {#each items as item}
+    {item.firstName}
+  {/each}
   <h1>HELLO! {query}</h1>
   <button on:click={click}>Hey</button>
 </div>

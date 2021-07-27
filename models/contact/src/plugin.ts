@@ -14,14 +14,8 @@
 //
 
 import { mergeIds } from '@anticrm/platform' 
-import type { Ref, Class } from '@anticrm/core'
-import type { Contact, Person, Organization } from '@anticrm/contact'
 import contact, { contactId } from '@anticrm/contact'
+import {} from '@anticrm/core'
 
 export const ids = mergeIds(contactId, contact, {
-  class: {
-    Contact: '' as Ref<Class<Contact>>,
-    Person: '' as Ref<Class<Person>>,
-    Organization: '' as Ref<Class<Organization>>
-  }
 })

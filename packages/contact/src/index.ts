@@ -15,7 +15,7 @@
 
 import { plugin } from '@anticrm/platform'
 import type { Plugin } from '@anticrm/platform'
-import type { Doc } from '@anticrm/core'
+import type { Doc, Ref, Class } from '@anticrm/core'
 
 export interface Contact extends Doc {
 }
@@ -35,4 +35,9 @@ export interface Organization extends Contact {
 export const contactId = 'contact' as Plugin
 
 export default plugin(contactId, {
+  class: {
+    Contact: '' as Ref<Class<Contact>>,
+    Person: '' as Ref<Class<Person>>,
+    Organization: '' as Ref<Class<Organization>>
+  }
 })

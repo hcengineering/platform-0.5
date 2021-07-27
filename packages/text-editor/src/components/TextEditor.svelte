@@ -27,58 +27,64 @@ import Mention from '@tiptap/extension-mention'
 import MentionList from './MentionList.svelte'
 import { SvelteRenderer } from './SvelteRenderer'
 
-const MyMention = Mention.extend({
-  addNodeView() {
-    return ({ editor, node, getPos }) => {
-      const { view } = editor
+import { getClient } from '@anticrm/presentation'
 
-      // Markup
-      /*
-        <div class="node-view">
-          <span class="label">Node view</span>
+import contact from '@anticrm/contact'
 
-          <div class="content">
-            <button>
-              This button has been clicked ${node.attrs.count} times.
-            </button>
-          </div>
-        </div>
-      */
+// const MyMention = Mention.extend({
+//   addNodeView() {
+//     return ({ editor, node, getPos }) => {
+//       const { view } = editor
 
-      const dom = document.createElement('div')
-      dom.classList.add('node-view')
+//       // Markup
+//       /*
+//         <div class="node-view">
+//           <span class="label">Node view</span>
 
-      const label = document.createElement('span')
-      label.classList.add('label')
-      label.innerHTML = 'Node view'
+//           <div class="content">
+//             <button>
+//               This button has been clicked ${node.attrs.count} times.
+//             </button>
+//           </div>
+//         </div>
+//       */
 
-      const content = document.createElement('div')
-      content.classList.add('content')
+//       const dom = document.createElement('div')
+//       dom.classList.add('node-view')
 
-      const button = document.createElement('button')
-      button.innerHTML = `This button has been clicked ${node.attrs.count} times.`
-      button.addEventListener('click', () => {
-        if (typeof getPos === 'function') {
-          view.dispatch(view.state.tr.setNodeMarkup(getPos(), undefined, {
-            count: node.attrs.count + 1,
-          }))
+//       const label = document.createElement('span')
+//       label.classList.add('label')
+//       label.innerHTML = 'Node view'
 
-          editor.commands.focus()
-        }
-      })
-      content.append(button)
+//       const content = document.createElement('div')
+//       content.classList.add('content')
 
-      dom.append(label, content)
+//       const button = document.createElement('button')
+//       button.innerHTML = `This button has been clicked ${node.attrs.count} times.`
+//       button.addEventListener('click', () => {
+//         if (typeof getPos === 'function') {
+//           view.dispatch(view.state.tr.setNodeMarkup(getPos(), undefined, {
+//             count: node.attrs.count + 1,
+//           }))
 
-      return {
-        dom,
-      }
-    }
-  }
-})
+//           editor.commands.focus()
+//         }
+//       })
+//       content.append(button)
+
+//       dom.append(label, content)
+
+//       return {
+//         dom,
+//       }
+//     }
+//   }
+// })
 
 let element: HTMLElement
 let editor: Editor
+
+const client = getClient()
 
 onMount(() => {
   editor = new Editor({
@@ -88,15 +94,14 @@ onMount(() => {
       Highlight,
       Typography,
       Placeholder.configure({placeholder: 'Type something...'}),
-      MyMention.configure({
+      Mention.configure({
         HTMLAttributes: {
           class: 'mention',
         },
         suggestion: {
-          items: query => {
-            return [
-              'Lea Thompson', 'Cyndi Lauper', 'Tom Cruise', 'Madonna', 'Jerry Hall', 'Joan Collins', 'Winona Ryder', 'Christina Applegate', 'Alyssa Milano', 'Molly Ringwald', 'Ally Sheedy', 'Debbie Harry', 'Olivia Newton-John', 'Elton John', 'Michael J. Fox', 'Axl Rose', 'Emilio Estevez', 'Ralph Macchio', 'Rob Lowe', 'Jennifer Grey', 'Mickey Rourke', 'John Cusack', 'Matthew Broderick', 'Justine Bateman', 'Lisa Bonet',
-            ].filter(item => item.toLowerCase().startsWith(query.toLowerCase())).slice(0, 5)
+          items: async query => {
+            const persons = await client.findAll(contact.class.Person, {})
+            return persons.filter(person => person.firstName.includes(query))
           },
           render: () => {
             let component: any
