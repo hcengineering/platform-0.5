@@ -15,7 +15,7 @@
 -->
 
 <script lang="ts">
-  import Node from './Node.svelte'
+  import Nodes from './Nodes.svelte'
 
   export let message: string
 
@@ -26,6 +26,4 @@
   $: dom = parser.parseFromString(message, 'application/xhtml+xml').firstChild as HTMLElement
 </script>
 
-{#each dom.childNodes as node}
-  <Node {node}></Node>
-{/each}
+<Nodes nodes={dom.childNodes}/>

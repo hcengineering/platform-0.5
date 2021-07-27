@@ -15,25 +15,22 @@
 -->
 
 <script lang="ts">
-  export let node: any
+  export let nodes: NodeListOf<any>
 </script>
 
-{#if node.nodeType === Node.TEXT_NODE}
-  {node.data}
-{:else}
-  {#if node.nodeName === 'em'}
-    <em>
-      {#each node.childNodes as kid}
-        <svelte:self node={kid}/>
-      {/each}
-    </em>
-  {:else if node.nodeName === 'strong'}
-    <strong>
-      {#each node.childNodes as kid}
-        <svelte:self node={kid}/>
-      {/each}
-    </strong>
-  {:else}
-    Unknown { node.nodeName }
-  {/if}
+{#if nodes}
+  {#each nodes as node}
+    {#if node.nodeType === Node.TEXT_NODE}
+      {node.data}
+    {:else}
+      {#if node.nodeName === 'em'}
+        <em><svelte:self nodes={node.childNodes}/></em>
+      {:else if node.nodeName === 'strong'}
+        <strong><svelte:self nodes={node.childNodes}/></strong>
+      {:else}
+        Unknown { node.nodeName }
+      {/if}
+    {/if}
+  {/each}
 {/if}
+
