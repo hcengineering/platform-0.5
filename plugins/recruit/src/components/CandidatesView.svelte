@@ -22,6 +22,9 @@
   import recruit from '../plugin'
   import table from '@anticrm/table'
 
+  import CardView from './CardView.svelte'
+  import KanbanView from './KanbanView.svelte'
+
   export let space: Ref<Space>
   export let view: string = 'list'
 
@@ -35,6 +38,8 @@
     <ViewSelection bind:selected={view} />
   </div>
   <div class="content">
+
+    {#if view === 'list'}
 
     <Component is={table.component.TableView} props={
       {
@@ -64,6 +69,12 @@
         ]
       }
     }/>
+
+    {:else if view === 'card'}
+      <CardView />
+    {:else if view === 'kanban'}
+      <KanbanView />
+    {/if}
 
   </div>
 </div>
