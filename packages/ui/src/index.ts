@@ -44,10 +44,12 @@ export { default as TextArea } from './components/TextArea.svelte'
 export { default as Section } from './components/Section.svelte'
 export { default as ViewSelection } from './components/ViewSelection.svelte'
 export { default as DatePicker } from './components/DatePicker.svelte'
+export { default as EditStylish } from './components/EditStylish.svelte'
 
 export { default as StringPresenter } from './components/presenter/StringPresenter.svelte'
 
 export { default as IconAdd } from './components/icons/Add.svelte'
+export { default as IconSearch } from './components/icons/Search.svelte'
 
 export function createApp (target: HTMLElement): SvelteComponent {
   return new Root({ target })
