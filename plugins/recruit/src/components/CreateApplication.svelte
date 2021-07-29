@@ -16,7 +16,7 @@
 <script lang="ts">
   import { createEventDispatcher } from 'svelte'
   import type { Ref, Space } from '@anticrm/core'
-  import { DatePicker, EditBox, Dialog, Tabs, Section } from '@anticrm/ui'
+  import { DatePicker, EditBox, Dialog, Tabs, Section, Grid } from '@anticrm/ui'
   import { UserBox } from '@anticrm/presentation'
   import type { Person } from '@anticrm/contact'
   import File from './icons/File.svelte'
@@ -47,33 +47,10 @@
         okAction={createCandidate}
         on:close={() => { dispatch('close') }}>
   <Tabs/>
-  <div class="content">
-    <Section icon={File} label={'General Information'}>
-      <div class="grid">
-        <UserBox _class={recruit.class.Candidate} title='Candidate' caption='Candidates' bind:value={candidate}/>
-        <DatePicker title={'Pick due date'} />
-      </div>
-    </Section>
-  </div>
+  <Section icon={File} label={'General Information'}>
+    <Grid>
+      <UserBox _class={recruit.class.Candidate} title='Candidate' caption='Candidates' bind:value={candidate}/>
+      <DatePicker title={'Pick due date'} />
+    </Grid>
+  </Section>
 </Dialog>
-
-<style lang="scss">
-
-  .content {
-    display: flex;
-    flex-direction: column;
-
-    .grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      column-gap: 24px;
-      row-gap: 40px;
-      
-      .row {
-        grid-column-start: 1;
-        grid-column-end: 3;
-      }
-    }
-  }
-
-</style>

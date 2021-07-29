@@ -15,7 +15,7 @@
 
 <script lang="ts">
   import { createEventDispatcher } from 'svelte'
-  import { TextArea, EditBox, Dialog, ToggleWithLabel, Tabs, Section } from '@anticrm/ui'
+  import { TextArea, EditBox, Dialog, ToggleWithLabel, Tabs, Section, Grid } from '@anticrm/ui'
 
   import { getClient } from '@anticrm/presentation'
   import File from './icons/File.svelte'
@@ -46,36 +46,13 @@
         okAction={createVacancy}
         on:close={() => { dispatch('close') }}>
   <Tabs/>
-  <div class="content">
-    <Section icon={File} label={'General Information'}>
-      <div class="grid">
-        <div class="row"><EditBox label={recruit.string.VacancyName} bind:value={name} placeholder="Software Engineer"/></div>
-        <div class="row"><TextArea label={recruit.string.VacancyDescription} bind:value={description} placeholder="Start typing..."/></div>
-        <div class="row"><ToggleWithLabel label={recruit.string.MakePrivate} description={recruit.string.MakePrivateDescription}/></div>
-      </div>
-    </Section>
-    <Section icon={Recruiting} label={'Vacancy Members'}>
-    </Section>
-  </div>
+  <Section icon={File} label={'General Information'}>
+    <Grid column={1}>
+      <EditBox label={recruit.string.VacancyName} bind:value={name} placeholder="Software Engineer"/>
+      <TextArea label={recruit.string.VacancyDescription} bind:value={description} placeholder="Start typing..."/>
+      <ToggleWithLabel label={recruit.string.MakePrivate} description={recruit.string.MakePrivateDescription}/>
+    </Grid>
+  </Section>
+  <Section icon={Recruiting} label={'Vacancy Members'}>
+  </Section>
 </Dialog>
-
-<style lang="scss">
-
-.content {
-    display: flex;
-    flex-direction: column;
-
-    .grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      column-gap: 24px;
-      row-gap: 40px;
-      
-      .row {
-        grid-column-start: 1;
-        grid-column-end: 3;
-      }
-    }
-  }
-
-</style>

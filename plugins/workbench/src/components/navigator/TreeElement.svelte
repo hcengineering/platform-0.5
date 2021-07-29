@@ -30,13 +30,10 @@
   export let collapsed = false
   export let actions: Action[] = []
 
-  let toolInvisible: boolean = true
-
   const dispatch = createEventDispatcher()
 </script>
 
-<div class="container" on:mouseover={() => { toolInvisible = false }} on:mouseout={() => { toolInvisible = true }}
-                       on:click|stopPropagation={() => {if (node && !icon) collapsed = !collapsed; dispatch('click')}}>
+<div class="container" on:click|stopPropagation={() => {if (node && !icon) collapsed = !collapsed; dispatch('click')}}>
   <div class="title" class:sub={!node}>
     <div class="icon" class:sub={!node}>
       {#if icon}
@@ -50,7 +47,7 @@
     </span>
     {#each actions as action}
       <div class="tool">
-        <ActionIcon label={action.label} icon={action.icon} size={16} action={action.action} invisible={toolInvisible}/>
+        <ActionIcon label={action.label} icon={action.icon} size={16} action={action.action} />
       </div>
     {/each}
     {#if notifications > 0 && collapsed}
@@ -110,6 +107,7 @@
         width: 16px;
         height: 16px;
         margin-left: 12px;
+        opacity: 0;
         &:last-child {
           margin-right: 10px;
         }
@@ -134,6 +132,10 @@
           visibility: visible;
         }
       }
+    }
+
+    &:hover .title .tool {
+      opacity: 1;
     }
   }
   .dropdown {

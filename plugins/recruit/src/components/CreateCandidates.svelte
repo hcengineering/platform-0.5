@@ -15,7 +15,7 @@
 
 <script lang="ts">
   import { createEventDispatcher } from 'svelte'
-  import { TextArea, EditBox, Dialog, ToggleWithLabel } from '@anticrm/ui'
+  import { TextArea, EditBox, Dialog, ToggleWithLabel, Grid } from '@anticrm/ui'
 
   import { getClient } from '@anticrm/presentation'
 
@@ -43,25 +43,9 @@
         okLabel={recruit.string.CreateCandidates} 
         okAction={createCandidates}
         on:close={() => { dispatch('close') }}>
-  <div class="content">
-    <div class="row"><EditBox label={recruit.string.CandidatesName} bind:value={name}/></div>
-    <div class="row"><TextArea label={recruit.string.CandidatesDescription} bind:value={description}/></div>
-    <div class="row"><ToggleWithLabel label={recruit.string.MakePrivate} description={recruit.string.MakePrivateDescription}/></div>
-  </div>
+  <Grid column={1}>
+    <EditBox label={recruit.string.CandidatesName} bind:value={name}/>
+    <TextArea label={recruit.string.CandidatesDescription} bind:value={description}/>
+    <ToggleWithLabel label={recruit.string.MakePrivate} description={recruit.string.MakePrivateDescription}/>
+  </Grid>
 </Dialog>
-
-
-<style lang="scss">
-
-  .content {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    row-gap: 20px;
-    
-    .row {
-      grid-column-start: 1;
-      grid-column-end: 3;
-    }
-  }
-
-</style>
