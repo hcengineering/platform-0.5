@@ -22,6 +22,7 @@
   export let width: string | undefined
   export let value: string | undefined
   export let placeholder: string = 'placeholder'
+  export let password: boolean = false
 
   let text: HTMLElement
   let input: HTMLInputElement
@@ -39,7 +40,11 @@
 <div class="editbox" style="{width ? 'width: ' + width : ''}">
   <div class="text" bind:this={text}></div>
   {#if label}<div class="label"><Label label={label}/></div>{/if}
-  <input bind:this={input} type="text" bind:value {placeholder} on:input={(ev) => ev.target && computeSize(ev.target)}/>
+  {#if password}
+    <input bind:this={input} type="password" bind:value {placeholder} on:input={(ev) => ev.target && computeSize(ev.target)}/>
+  {:else}
+    <input bind:this={input} type="text" bind:value {placeholder} on:input={(ev) => ev.target && computeSize(ev.target)}/>
+  {/if}
 </div>
 
 <style lang="scss">

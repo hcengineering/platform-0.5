@@ -67,9 +67,9 @@
         background-color: transparent;
         border: none;
         outline: none;
-        &.thread {
-          width: auto;
-        }
+        // &.thread {
+        //   width: auto;
+        // }
 
         // .flex-column {
         //   display: flex;
@@ -83,18 +83,18 @@
         //   align-items: flex-end;
         // }
 
-        .edit-box-horizontal {
-          width: 100%;
-          height: 100%;
-          margin-top: 7px;
-          align-self: center;
-        }
+        // .edit-box-horizontal {
+        //   width: 100%;
+        //   height: 100%;
+        //   margin-top: 7px;
+        //   align-self: center;
+        // }
 
-        .edit-box-vertical {
-          width: 100%;
-          height: 100%;
-          margin: 4px;
-        }
+        // .edit-box-vertical {
+        //   width: 100%;
+        //   height: 100%;
+        //   margin: 4px;
+        // }
       }
       .sendButton {
         display: flex;

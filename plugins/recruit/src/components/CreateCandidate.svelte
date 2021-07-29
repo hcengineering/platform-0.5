@@ -16,7 +16,7 @@
 <script lang="ts">
   import { createEventDispatcher } from 'svelte'
   import type { Ref, Space } from '@anticrm/core'
-  import { TextArea, EditBox, Dialog, Tabs, Section } from '@anticrm/ui'
+  import { TextArea, EditBox, Dialog, Tabs, Section, Grid, DialogHeader } from '@anticrm/ui'
   import File from './icons/File.svelte'
   import Address from './icons/Address.svelte'
   import Attachment from './icons/Attachment.svelte'
@@ -52,100 +52,22 @@
         okLabel={recruit.string.CreateCandidate} 
         okAction={createCandidate}
         on:close={() => { dispatch('close') }}>
-  <div class="header">
-    <div class="user-container">
-      <div class="avatar"></div>
-      <div class="info">
-        <div class="name">Candidate Name</div>
-        <div class="title">Candidate title</div>
-      </div>
-    </div>
-  </div>
+  <DialogHeader />
   <Tabs/>
-  <div class="content">
-    <Section icon={File} label={'Personal Information'}>
-      <div class="grid">
-        <EditBox label={'First name *'} placeholder={'John'} bind:value={firstName}/>
-        <EditBox label={'Last name *'} placeholder={'Smith'} bind:value={lastName}/>
-        <EditBox label={'Email *'} placeholder={'john.smith@gmail.com'} bind:value={email}/>
-        <EditBox label={'Phone *'} placeholder={'+00 (000) 000 00'} bind:value={phone}/>
-      </div>
-    </Section>
-    <Section icon={Address} label={'Address'} topLine>
-      <div class="grid">
-        <EditBox label={'Street'} placeholder={'Broderick st'} />
-        <EditBox label={'City *'} placeholder={'Los Angeles'} bind:value={city}/>
-        <EditBox label={'ZIP / Postal code'} placeholder={'26892'} />
-        <EditBox label={'Country'} placeholder={'United States'} />
-      </div>
-    </Section>
-  </div>
+  <Section icon={File} label={'Personal Information'}>
+    <Grid>
+      <EditBox label={'First name *'} placeholder={'John'} bind:value={firstName}/>
+      <EditBox label={'Last name *'} placeholder={'Smith'} bind:value={lastName}/>
+      <EditBox label={'Email *'} placeholder={'john.smith@gmail.com'} bind:value={email}/>
+      <EditBox label={'Phone *'} placeholder={'+00 (000) 000 00'} bind:value={phone}/>
+    </Grid>
+  </Section>
+  <Section icon={Address} label={'Address'}>
+    <Grid>
+      <EditBox label={'Street'} placeholder={'Broderick st'} />
+      <EditBox label={'City *'} placeholder={'Los Angeles'} bind:value={city}/>
+      <EditBox label={'ZIP / Postal code'} placeholder={'26892'} />
+      <EditBox label={'Country'} placeholder={'United States'} />
+    </Grid>
+  </Section>
 </Dialog>
-
-
-<style lang="scss">
-
-  .header {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 640px;
-    min-height: 240px;
-    background-image: url(../../img/header-green.png);
-    background-repeat: no-repeat;
-    background-clip: border-box;
-    background-size: cover;
-    border-radius: 20px;
-
-    .user-container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-
-      .avatar {
-        width: 80px;
-        height: 80px;
-        border-radius: 50%;
-        background-color: #C4C4C4;
-      }
-
-      .info {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin-top: 10px;
-
-        .name {
-          font-size: 16px;
-          font-weight: 500;
-          line-height: 150%;
-          color: var(--theme-caption-color);
-        }
-        .title {
-          font-size: 12px;
-          font-weight: 500;
-          color: var(--theme-caption-color);
-          opacity: .6;
-        }
-      }
-    }
-  }
-
-  .content {
-    display: flex;
-    flex-direction: column;
-
-    .grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      column-gap: 24px;
-      row-gap: 40px;
-      
-      .row {
-        grid-column-start: 1;
-        grid-column-end: 3;
-      }
-    }
-  }
-
-</style>

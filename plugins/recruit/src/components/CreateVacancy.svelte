@@ -54,7 +54,7 @@
         <div class="row"><ToggleWithLabel label={recruit.string.MakePrivate} description={recruit.string.MakePrivateDescription}/></div>
       </div>
     </Section>
-    <Section icon={Recruiting} label={'Vacancy Members'} topLine>
+    <Section icon={Recruiting} label={'Vacancy Members'}>
     </Section>
   </div>
 </Dialog>

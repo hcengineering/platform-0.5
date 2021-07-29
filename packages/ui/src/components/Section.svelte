@@ -22,11 +22,10 @@
 
   export let icon: AnySvelteComponent
   export let label: IntlString
-  export let topLine: boolean = false
   export let closed: boolean = false
 </script>
 
-<div class="section-container" class:topLine={topLine}
+<div class="section-container"
   on:click|preventDefault={() => {
     closed = !closed
   }}
@@ -49,10 +48,6 @@
     cursor: pointer;
     user-select: none;
 
-    &.topLine {
-      border-top: 1px solid var(--theme-menu-divider);
-    }
-
     .title {
       flex-grow: 1;
       margin-left: 12px;
@@ -65,5 +60,9 @@
   }
   .section-content {
     margin: 16px 0 54px;
+  }
+  :global(.section-container + .section-container),
+  :global(.section-content + .section-container) {
+    border-top: 1px solid var(--theme-menu-divider);
   }
 </style>

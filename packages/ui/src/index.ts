@@ -45,6 +45,9 @@ export { default as Section } from './components/Section.svelte'
 export { default as ViewSelection } from './components/ViewSelection.svelte'
 export { default as DatePicker } from './components/DatePicker.svelte'
 export { default as EditStylish } from './components/EditStylish.svelte'
+export { default as Grid } from './components/Grid.svelte'
+export { default as Row } from './components/Row.svelte'
+export { default as DialogHeader } from './components/DialogHeader.svelte'
 
 export { default as StringPresenter } from './components/presenter/StringPresenter.svelte'
 
