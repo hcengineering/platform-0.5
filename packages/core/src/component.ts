@@ -14,7 +14,7 @@
 //
 import type { Plugin, StatusCode } from '@anticrm/platform'
 import { plugin } from '@anticrm/platform'
-import type { Account, Class, Doc, Obj, Ref, Space } from './classes'
+import type { Account, Class, Doc, Obj, Ref, Space, AnyAttribute } from './classes'
 import type { Tx, TxCreateDoc, TxMixin, TxRemoveDoc, TxUpdateDoc } from './tx'
 
 export const coreId = 'core' as Plugin
@@ -24,6 +24,7 @@ export default plugin(coreId, {
     Obj: '' as Ref<Class<Obj>>,
     Doc: '' as Ref<Class<Doc>>,
     Class: '' as Ref<Class<Class<Obj>>>,
+    Attribute: '' as Ref<Class<AnyAttribute>>,
     Tx: '' as Ref<Class<Tx>>,
     TxCreateDoc: '' as Ref<Class<TxCreateDoc<Doc>>>,
     TxMixin: '' as Ref<Class<TxMixin<Doc, Doc>>>,

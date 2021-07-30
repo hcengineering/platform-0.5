@@ -16,10 +16,18 @@
 import { chunterId } from '@anticrm/chunter'
 import chunter from '@anticrm/plugin-chunter/src/plugin'
 import type { IntlString } from '@anticrm/platform'
-import { mergeIds } from '@anticrm/platform' 
+import { mergeIds, plugin } from '@anticrm/platform'
+import { chunterServerId } from '@anticrm/chunter-server'
+import type { Trigger } from '@anticrm/core'
 
 export default mergeIds(chunterId, chunter, {
   string: { 
     ApplicationLabelChunter: '' as IntlString,
+  }
+})
+
+export const server = plugin(chunterServerId, {
+  trigger: {
+    MessageContent: '' as Trigger
   }
 })

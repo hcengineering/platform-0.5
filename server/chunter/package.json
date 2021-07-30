@@ -1,5 +1,5 @@
 {
-  "name": "@anticrm/model-chunter",
+  "name": "@anticrm/chunter-server",
   "version": "0.5.0",
   "main": "lib/index.js",
   "author": "Anticrm Platform Contributors",
@@ -22,14 +22,7 @@
     "ts-jest": "^26.5.6"
   },
   "dependencies": {
-    "@anticrm/model":"~0.5.0",
     "@anticrm/core":"~0.5.0",
-    "@anticrm/platform":"~0.5.0",
-    "@anticrm/workbench":"~0.5.0",
-    "@anticrm/chunter":"~0.5.0",
-    "@anticrm/plugin-chunter":"~0.5.0",
-    "@anticrm/chunter-server":"~0.5.0",
-    "@anticrm/model-workbench":"~0.5.0",
-    "@anticrm/model-core":"~0.5.0"
+    "@anticrm/platform":"~0.5.0"
   }
 }

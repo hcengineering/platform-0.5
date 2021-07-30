@@ -13,7 +13,7 @@
 // limitations under the License.
 //
 
-import type { Account, Class, ClassifierKind, Doc, Domain, Mixin, Obj, Ref, Space, Timestamp } from '@anticrm/core'
+import type { Account, AnyAttribute, Class, ClassifierKind, Doc, Domain, Mixin, Obj, Ref, Space, Timestamp, Type, Trigger } from '@anticrm/core'
 import { DOMAIN_MODEL } from '@anticrm/core'
 import { Model } from '@anticrm/model'
 import core from './component'
@@ -41,3 +41,18 @@ export class TClass extends TDoc implements Class<Obj> {
 
 @Model(core.class.Mixin, core.class.Class)
 export class TMixin extends TClass implements Mixin<Doc> {}
+
+
+@Model(core.class.Attribute, core.class.Doc)
+export class TAttribute extends TDoc implements AnyAttribute {
+  attributeOf!: Ref<Class<Obj>>
+  name!: string
+  type!: Type<any>
+  trigger?: Trigger
+}
+
+@Model(core.class.Type, core.class.Doc)
+export class TType extends TDoc implements Type<any> {}
+
+@Model(core.class.TypeString, core.class.Type)
+export class TTypeString extends TType {}

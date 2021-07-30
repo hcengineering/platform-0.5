@@ -28,7 +28,8 @@ import type {
   TxMixin,
   Mixin,
   Space,
-  ExtendedAttributes
+  ExtendedAttributes,
+  Trigger
 } from '@anticrm/core'
 import {
   ClassifierKind,
@@ -64,7 +65,7 @@ function getTxes (target: any): ClassTxes {
   return txes
 }
 
-export function Prop (type: Type<PropertyType>) {
+export function Prop (type: Type<PropertyType>, trigger?: Trigger) {
   return function (target: any, propertyKey: string): void {
     const txes = getTxes(target)
     const tx: NoIDs<TxCreateDoc<Attribute<PropertyType>>> = {
@@ -75,6 +76,7 @@ export function Prop (type: Type<PropertyType>) {
       objectSpace: core.space.Model,
       objectClass: core.class.Attribute,
       attributes: {
+        trigger,
         type,
         name: propertyKey,
         attributeOf: txes._id

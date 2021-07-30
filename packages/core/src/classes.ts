@@ -13,7 +13,7 @@
 // limitations under the License.
 //
 
-import type { IntlString, Asset } from '@anticrm/platform'
+import type { IntlString, Asset, Resource } from '@anticrm/platform'
 
 export type Ref<T extends Doc> = string & { __ref: T }
 export type PrimitiveType = number | string | boolean | undefined | Ref<Doc>
@@ -40,13 +40,16 @@ export interface UXObject extends Obj {
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export interface Type<T extends PropertyType> extends UXObject {}
 
-// C O L L E C T I O N
+export type Trigger = Resource<() => void>
 
 export interface Attribute<T extends PropertyType> extends Doc, UXObject {
   attributeOf: Ref<Class<Obj>>
   name: string
   type: Type<T>
+  trigger?: Trigger
 }
+
+export type AnyAttribute = Attribute<Type<any>>
 
 export enum ClassifierKind {
   CLASS,

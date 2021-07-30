@@ -553,6 +553,11 @@
       "packageName": "prod",
       "projectFolder": "dev/prod",
       "shouldPublish": false
+    },
+    {
+      "packageName": "@anticrm/chunter-server",
+      "projectFolder": "server/chunter",
+      "shouldPublish": false
     }
 
     // {

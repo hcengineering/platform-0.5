@@ -13,7 +13,8 @@
 // limitations under the License.
 //
 
-import { Ref, Class, Obj, Domain, Mixin, Doc, ClassifierKind } from './classes'
+import type { Ref, Class, Obj, Domain, Mixin, Doc, AnyAttribute, Trigger } from './classes'
+import { ClassifierKind } from './classes'
 import type { Tx, TxCreateDoc } from './tx'
 import { TxProcessor  } from './tx'
 
@@ -21,6 +22,8 @@ import core from './component'
 
 export class Hierarchy {
   private readonly classes = new Map<Ref<Class<Obj>>, Class<Obj>>()
+  private readonly attributes = new Map<Ref<Class<Obj>>, Map<string, AnyAttribute>>()
+  private readonly triggers = new Map<Ref<Class<Obj>>, Map<string, Trigger>>()
   private readonly descendants = new Map<Ref<Class<Obj>>, Ref<Class<Obj>>[]>()
   private readonly ancestors = new Map<Ref<Class<Obj>>, Ref<Class<Obj>>[]>()
   private readonly proxies = new Map<Ref<Mixin<Doc>>, ProxyHandler<Doc>>()
@@ -84,12 +87,17 @@ export class Hierarchy {
 
   tx (tx: Tx): void {
     if (tx._class !== core.class.TxCreateDoc) return
-    const createTx = tx as TxCreateDoc<Class<Obj>>
-    if (createTx.objectClass !== core.class.Class) return
-    const _id: Ref<Class<Obj>> = createTx.objectId
-    this.classes.set(_id, TxProcessor.createDoc2Doc(createTx))
-    this.addAncestors(_id)
-    this.addDescendant(_id)
+    const createTx = tx as TxCreateDoc<Doc>
+    if (createTx.objectClass === core.class.Class) {
+      const createTx = tx as TxCreateDoc<Class<Obj>>
+      const _id = createTx.objectId
+      this.classes.set(_id, TxProcessor.createDoc2Doc(createTx))
+      this.addAncestors(_id)
+      this.addDescendant(_id)
+    } else if (createTx.objectClass === core.class.Attribute) {
+      const createTx = tx as TxCreateDoc<AnyAttribute>
+      this.addAttribute(TxProcessor.createDoc2Doc(createTx))
+    }
   }
 
   isDerived<T extends Obj>(_class: Ref<Class<T>>, from: Ref<Class<T>>): boolean {
@@ -135,4 +143,31 @@ export class Hierarchy {
       cl = attrs?.extends
     }
   }
+
+  private addAttribute(attribute: AnyAttribute) {
+    const _class = attribute.attributeOf
+    let attributes = this.attributes.get(_class)
+    if (attributes === undefined) {
+      attributes = new Map<string, AnyAttribute>()
+      this.attributes.set(_class, attributes)
+    }
+    attributes.set(attribute.name, attribute)
+    if (attribute.trigger !== undefined) {
+      let triggers = this.triggers.get(_class)
+      if (triggers === undefined) {
+        triggers = new Map<string, Trigger>()
+        this.triggers.set(_class, triggers)
+      }
+      triggers.set(attribute.name, attribute.trigger)
+    }
+  }
+
+  getAttribute(_class: Ref<Class<Obj>>, name: string): AnyAttribute | undefined {
+    return this.attributes.get(_class)?.get(name)
+  }
+
+  getTrigger(_class: Ref<Class<Obj>>, name: string): Trigger | undefined {
+    return this.triggers.get(_class)?.get(name)
+  }
+
 }

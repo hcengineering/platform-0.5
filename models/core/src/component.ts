@@ -13,13 +13,14 @@
 // limitations under the License.
 //
 
-import type { Class, Doc, Mixin, Ref } from '@anticrm/core'
+import type { Class, Doc, Mixin, Ref, Type } from '@anticrm/core'
 import { coreId } from '@anticrm/core'
 import core from '@anticrm/model'
 import { mergeIds } from '@anticrm/platform'
 
 export default mergeIds(coreId, core, {
   class: {
-    Mixin: '' as Ref<Class<Mixin<Doc>>>
+    Mixin: '' as Ref<Class<Mixin<Doc>>>,
+    Type: '' as Ref<Class<Type<any>>>
   }
 })
