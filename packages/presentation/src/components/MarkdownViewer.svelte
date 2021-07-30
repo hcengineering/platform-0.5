@@ -15,7 +15,7 @@
 -->
 
 <script lang="ts">
-  import Nodes from './Nodes.svelte'
+  import Nodes from './message/Nodes.svelte'
 
   export let message: string
 

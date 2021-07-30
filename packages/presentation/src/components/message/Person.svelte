@@ -15,22 +15,21 @@
 -->
 
 <script lang="ts">
-  export let nodes: NodeListOf<any>
+
+  import type { Ref } from '@anticrm/core'
+  import type { Person } from '@anticrm/contact'
+
+  export let objectId: Ref<Person>
+  export let title: string
+
 </script>
 
-{#if nodes}
-  {#each nodes as node}
-    {#if node.nodeType === Node.TEXT_NODE}
-      {node.data}
-    {:else}
-      {#if node.nodeName === 'em'}
-        <em><svelte:self nodes={node.childNodes}/></em>
-      {:else if node.nodeName === 'strong'}
-        <strong><svelte:self nodes={node.childNodes}/></strong>
-      {:else}
-        Unknown { node.nodeName }
-      {/if}
-    {/if}
-  {/each}
-{/if}
+<span class="person">{title}</span>
 
+<style lang="scss">
+
+  .person {
+    border: 1px solid red;
+  }
+
+</style>

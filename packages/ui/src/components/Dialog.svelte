@@ -32,7 +32,7 @@
 </script>
 
 <div class="container">
-  <div class="dialog">
+  <form class="dialog">
     <div class="header">
       <div class="title"><Label {label}/></div>
       <div class="tool" on:click={() => { dispatch('close') }}><Close size={16}/></div>
@@ -44,7 +44,7 @@
       <Button label={okLabel} primary on:click={() => { okAction(); dispatch('close') }}/>
       <Button label={'Cancel'} on:click={() => { okAction(); dispatch('close') }}/>
     </div>
-  </div>
+  </form>
 </div>
 
 <style lang="scss">

@@ -1,4 +1,4 @@
-//
+<!--
 // Copyright © 2020, 2021 Anticrm Platform Contributors.
 // Copyright © 2021 Hardcore Engineering Inc.
 // 
@@ -12,32 +12,29 @@
 // 
 // See the License for the specific language governing permissions and
 // limitations under the License.
-//
+-->
 
-import { SvelteComponent } from 'svelte'
+<script lang="ts">
+  import Person from './Person.svelte'
 
-export class SvelteRenderer  {
+  export let nodes: NodeListOf<any>
+</script>
 
-  private component: SvelteComponent
+{#if nodes}
+  {#each nodes as node}
+    {#if node.nodeType === Node.TEXT_NODE}
+      {node.data}
+    {:else}
+      {#if node.nodeName === 'em'}
+        <em><svelte:self nodes={node.childNodes}/></em>
+      {:else if node.nodeName === 'strong'}
+        <strong><svelte:self nodes={node.childNodes}/></strong>
+      {:else if node.nodeName === 'span'}
+        <Person objectId={node.getAttribute('data-id')} title={node.getAttribute('data-label')} />
+      {:else}
+        Unknown { node.nodeName }
+      {/if}
+    {/if}
+  {/each}
+{/if}
 
-  constructor(comp: typeof SvelteComponent, props: any) {
-    const options = { target: document.body, props }
-    this.component = new (comp as any)(options)
-  }
-
-  updateProps(props: Record<string, any>): void {
-    this.component.$set(props)
-  }
-
-  onKeyDown(props: Record<string, any>): boolean {
-    if (this.component.onKeyDown)
-      return this.component.onKeyDown(props.event)
-    return false
-  }
-
-  destroy(): void {
-    if (this.component.done)
-      this.component.done()
-    this.component.$destroy()
-  }
-}

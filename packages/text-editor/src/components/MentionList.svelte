@@ -17,7 +17,7 @@
 <script lang="ts">
 
 import { Editor } from '@tiptap/core'
-import type { FindResult, Doc } from '@anticrm/core'
+import type { FindResult, Doc, Ref } from '@anticrm/core'
 import type { Person } from '@anticrm/contact'
 import contact from '@anticrm/contact'
 import { getClient, UserInfo } from '@anticrm/presentation'
@@ -29,17 +29,29 @@ export let editor: Editor
 export let query: string
 export let clientRect: () => ClientRect
 export let command: (props: any) => void
+export let search = ''
 
 let popup: HTMLElement
+let selected = 0
 
-export function onKeyDown() {
-  console.log("onKeyDown!!!!!!!")
+export function onKeyDown(ev: KeyboardEvent) {
+  if (ev.key === 'ArrowDown') {
+    if (selected < items.length - 1) selected++
+    return true
+  }
+  if (ev.key === 'ArrowUp') {
+    if (selected > 0) selected--
+    return true
+  }
+  if (ev.key === 'Enter') {
+    const person = items[selected]
+    command({id: person._id, label: person.firstName + ' ' + person.lastName})
+  }
+  return true
 }
 
-function click() {
-  command({id: 'fuck-this-id', label: 'Der Label'})
-  console.log(editor.getJSON())
-  console.log(editor.getHTML())
+export function done() {
+  console.log('done')
 }
 
 let persons: Person[] = []
@@ -50,11 +62,7 @@ $: {
     const x = clientRect().left
     let height = popup.getBoundingClientRect().height
     let y = clientRect().top - height - 16
-    if (clientRect().top - height - 16 < 20) {
-      y = 20
-      height = clientRect().top - 36
-    }
-    style = `left: ${x}px; top: ${y}px; height: ${height}px`
+    style = `left: ${x}px; top: ${y}px;`
   }
 }
 
@@ -64,19 +72,23 @@ $: {
 
 <div>
   <div bind:this={popup} class='completion' {style}>
-    <EditStylish icon={IconSearch} placeholder={'Search for someone'} />
+    <EditStylish icon={IconSearch} placeholder={'Type to search...'}/>
     <div class="caption">SUGGESTED</div>
     <div class="scroll">
-      {#each items as item}
-        <UserInfo size={36} value={item} />
+      {#each items as item, i}
+        <div class:selected={i === selected}>
+          <UserInfo size={36} value={item} />
+        </div>
       {/each}
     </div>
-    <!-- <h1>HELLO! {query}</h1>
-    <button on:click={click}>Hey</button> -->
   </div>
 </div>
 
 <style lang="scss">
+
+.selected {
+  background-color: red;
+}
 
 .completion {
   position: absolute;
