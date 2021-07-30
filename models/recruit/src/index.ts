@@ -75,5 +75,7 @@ export function createModel(builder: Builder) {
     description: 'Public Candidates',
     private: false,
     members: []
-  })
+  }, recruit.space.CandidatesPublic)
 }
+
+export { default as default } from './plugin'

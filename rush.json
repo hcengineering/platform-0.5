@@ -26,7 +26,7 @@
    * Specify one of: "pnpmVersion", "npmVersion", or "yarnVersion".  See the Rush documentation
    * for details about these alternatives.
    */
-  "pnpmVersion": "6.10.0",
+  "pnpmVersion": "6.11.5",
 
   // "npmVersion": "4.5.0",
   // "yarnVersion": "1.9.4",
@@ -542,6 +542,11 @@
     {
       "packageName": "@anticrm/model-all",
       "projectFolder": "models/all",
+      "shouldPublish": false
+    },
+    {
+      "packageName": "@anticrm/model-demo",
+      "projectFolder": "models/demo",
       "shouldPublish": false
     },
     {

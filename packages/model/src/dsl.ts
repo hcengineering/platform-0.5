@@ -27,6 +27,7 @@ import type {
   Domain,
   TxMixin,
   Mixin,
+  Space,
   ExtendedAttributes
 } from '@anticrm/core'
 import {
@@ -128,10 +129,12 @@ function generateIds (objectId: Ref<Doc>, txes: Array<NoIDs<Tx>>): Tx[] {
   }))
 }
 
+// TODO: let used add Doc properties to Attributes
 function txCreateDoc<T extends Doc> (
   _class: Ref<Class<T>>,
   attributes: Data<T>,
-  objectId?: Ref<T>
+  objectId?: Ref<T>,
+  space?: Ref<Space>
 ): TxCreateDoc<T> {
   return {
     _id: generateId<TxCreateDoc<T>>(),
@@ -141,7 +144,7 @@ function txCreateDoc<T extends Doc> (
     modifiedOn: Date.now(),
     objectId: objectId ?? generateId(),
     objectClass: _class,
-    objectSpace: core.space.Model,
+    objectSpace: space ?? core.space.Model,
     attributes
   }
 }
@@ -222,13 +225,15 @@ export class Builder {
   createDoc<T extends Doc>(
     _class: Ref<Class<T>>,
     attributes: Data<T>,
-    objectId?: Ref<T>
+    objectId?: Ref<T>,
+    space?: Ref<Space>
   ): void {
     this.txes.push(
       txCreateDoc(
         _class,
         attributes,
-        objectId
+        objectId,
+        space
       )
     )
   }

@@ -15,6 +15,7 @@ specifiers:
   '@rush-temp/model-chunter': file:./projects/model-chunter.tgz
   '@rush-temp/model-contact': file:./projects/model-contact.tgz
   '@rush-temp/model-core': file:./projects/model-core.tgz
+  '@rush-temp/model-demo': file:./projects/model-demo.tgz
   '@rush-temp/model-recruit': file:./projects/model-recruit.tgz
   '@rush-temp/model-workbench': file:./projects/model-workbench.tgz
   '@rush-temp/platform': file:./projects/platform.tgz
@@ -98,6 +99,7 @@ dependencies:
   '@rush-temp/model-chunter': file:projects/model-chunter.tgz_23ed2e7cfc017d0cde46697e705ce1aa
   '@rush-temp/model-contact': file:projects/model-contact.tgz_23ed2e7cfc017d0cde46697e705ce1aa
   '@rush-temp/model-core': file:projects/model-core.tgz_dc24138b0e06e172c01c7f526ee1b96d
+  '@rush-temp/model-demo': file:projects/model-demo.tgz_dc24138b0e06e172c01c7f526ee1b96d
   '@rush-temp/model-recruit': file:projects/model-recruit.tgz_23ed2e7cfc017d0cde46697e705ce1aa
   '@rush-temp/model-workbench': file:projects/model-workbench.tgz_23ed2e7cfc017d0cde46697e705ce1aa
   '@rush-temp/platform': file:projects/platform.tgz_23ed2e7cfc017d0cde46697e705ce1aa
@@ -9657,6 +9659,31 @@ packages:
       - utf-8-validate
     dev: false
 
+  file:projects/model-demo.tgz_dc24138b0e06e172c01c7f526ee1b96d:
+    resolution: {integrity: sha512-nYURv+eV13Q/CbqJ4+WVA+UFsfd/NJiwA2kSFo6bW2BpyFPEi3ny0oPk99ebnqGMU1s+B2YK3jVuvafVYgI4mA==, tarball: file:projects/model-demo.tgz}
+    id: file:projects/model-demo.tgz
+    name: '@rush-temp/model-demo'
+    version: 0.0.0
+    dependencies:
+      '@microsoft/api-extractor': 7.18.4
+      '@types/jest': 26.0.24
+      jest: 26.6.3_ts-node@10.1.0
+      prettier: 2.3.2
+      ts-jest: 26.5.6_jest@26.6.3+typescript@4.3.5
+      ts-node: 10.1.0_13403c2f2d9ddab699dd2f492f123cbf
+      ts-standard: 10.0.0_e8f8737ec08c6b54ccd6ee9c0aab1b01
+      typescript: 4.3.5
+    transitivePeerDependencies:
+      - '@swc/core'
+      - '@swc/wasm'
+      - '@types/node'
+      - '@typescript-eslint/parser'
+      - bufferutil
+      - canvas
+      - supports-color
+      - utf-8-validate
+    dev: false
+
   file:projects/model-recruit.tgz_23ed2e7cfc017d0cde46697e705ce1aa:
     resolution: {integrity: sha512-WFEREwwmE47D4/Ta3HWUxoDJThD7+xdz08T7e5sjonHMCYAUmnq58H/g1AGTmUPceDlSKUoYthXzwoUH47tYng==, tarball: file:projects/model-recruit.tgz}
     id: file:projects/model-recruit.tgz
@@ -10143,7 +10170,7 @@ packages:
     dev: false
 
   file:projects/text-editor.tgz_31a9a36c12febab27be66838f0689686:
-    resolution: {integrity: sha512-ir69mjpCmLyQzveFB3wklpawuh0vmmICMTUcj+2XprZuuG51lWzqjqdXQqaqHWoSeFsCTtpwBavtmK4j3i0Esg==, tarball: file:projects/text-editor.tgz}
+    resolution: {integrity: sha512-wykfJwTENINI11O98E2sTekGtIbaWijlC48bjrwHldaEkQU11fUx5JCQzqvq2OSUy8R0pjParrAphuBEpsAESw==, tarball: file:projects/text-editor.tgz}
     id: file:projects/text-editor.tgz
     name: '@rush-temp/text-editor'
     version: 0.0.0

@@ -15,7 +15,7 @@
 
 import { mergeIds } from '@anticrm/platform' 
 import type { IntlString, Asset } from '@anticrm/platform'
-import type { Ref, Class } from '@anticrm/core'
+import type { Ref, Class, Space } from '@anticrm/core'
 import type { Vacancy, Candidates, Candidate } from '@anticrm/recruit'
 import type { AnyComponent } from '@anticrm/ui'
 import { recruitId } from '@anticrm/recruit'
@@ -35,5 +35,8 @@ export default mergeIds(recruitId, recruit, {
     CreateApplication: '' as AnyComponent,
     VacancyView: '' as AnyComponent,
     CandidatesView: '' as AnyComponent,
+  },
+  space: {
+    CandidatesPublic: '' as Ref<Space>
   }
 })
