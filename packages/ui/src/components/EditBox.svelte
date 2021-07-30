@@ -37,7 +37,9 @@
   onMount(() => { computeSize(input) })
 </script>
 
-<div class="editbox" style="{width ? 'width: ' + width : ''}">
+<div class="editbox" style="{width ? 'width: ' + width : ''}"
+  on:click={() => { input.focus() }}
+>
   <div class="text" bind:this={text}></div>
   {#if label}<div class="label"><Label label={label}/></div>{/if}
   {#if password}
