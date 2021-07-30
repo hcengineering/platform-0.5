@@ -17,21 +17,20 @@
 <script lang="ts">
 
 import { Editor } from '@tiptap/core'
+import { onMount } from 'svelte'
 import type { FindResult, Doc, Ref } from '@anticrm/core'
 import type { Person } from '@anticrm/contact'
 import contact from '@anticrm/contact'
 import { getClient, UserInfo } from '@anticrm/presentation'
 import { EditStylish, IconSearch } from '@anticrm/ui'
-import ScrollBox from '../../../presentation/node_modules/@anticrm/ui/src/components/ScrollBox.svelte'
 
 export let items: Person[]
 export let editor: Editor
 export let query: string
 export let clientRect: () => ClientRect
 export let command: (props: any) => void
-export let search = ''
 
-let popup: HTMLElement
+let popup: HTMLDivElement
 let selected = 0
 
 export function onKeyDown(ev: KeyboardEvent) {
@@ -45,9 +44,13 @@ export function onKeyDown(ev: KeyboardEvent) {
   }
   if (ev.key === 'Enter') {
     const person = items[selected]
-    command({id: person._id, label: person.firstName + ' ' + person.lastName})
+    if (person) {
+      command({id: person._id, label: person.firstName + ' ' + person.lastName})
+      return true
+    } else
+      return false
   }
-  return true
+  return false
 }
 
 export function done() {
@@ -66,13 +69,14 @@ $: {
   }
 }
 
+
 //$: items(query).then(result => persons = result)
 
 </script>
 
 <div>
   <div bind:this={popup} class='completion' {style}>
-    <EditStylish icon={IconSearch} placeholder={'Type to search...'}/>
+    <!-- <EditStylish icon={IconSearch} placeholder={'Type to search...'} value={query}/> -->
     <div class="caption">SUGGESTED</div>
     <div class="scroll">
       {#each items as item, i}
