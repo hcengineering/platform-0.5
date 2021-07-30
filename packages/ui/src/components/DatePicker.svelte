@@ -23,8 +23,8 @@
 
   export let title: IntlString
   export let selected: Date = new Date(Date.now())
+  export let show: boolean = false
 
-  let pressed: boolean = false
   let view: Date = selected
   const months: Array<string> = [
     'January',
@@ -57,17 +57,17 @@
 </script>
 
 <div class="dataPicker">
-  <PopupMenu bind:show={pressed}>
+  <PopupMenu bind:show={show}>
     <button
       slot="trigger"
       class="btn"
-      class:selected={pressed}
+      class:selected={show}
       on:click|preventDefault={() => {
-        pressed = !pressed
+        show = !show
       }}
     >
       <div class="icon">
-        {#if pressed}<Close size={16} />{:else}<Calendar size={20} />{/if}
+        {#if show}<Close size={16} />{:else}<Calendar size={20} />{/if}
       </div>
     </button>
 
@@ -109,7 +109,7 @@
           style="grid-column: {day + 1}/{day + 2};"
           on:click={() => {
             selected = new Date(view.getFullYear(), view.getMonth(), i + 1)
-            pressed = false
+            show = false
           }}
         >
           {i + 1}

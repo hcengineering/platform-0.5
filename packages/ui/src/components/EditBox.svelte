@@ -23,6 +23,7 @@
   export let value: string | undefined
   export let placeholder: string = 'placeholder'
   export let password: boolean = false
+  export let focus: boolean = false
 
   let text: HTMLElement
   let input: HTMLInputElement
@@ -34,7 +35,13 @@
     target.style.width = text.clientWidth + 6 + 'px'
   }
 
-  onMount(() => { computeSize(input) })
+  onMount(() => {
+    computeSize(input)
+    if (focus) {
+      input.focus()
+      focus = false
+    }
+  })
 </script>
 
 <div class="editbox" style="{width ? 'width: ' + width : ''}">

@@ -56,7 +56,7 @@
   <Tabs/>
   <Section icon={File} label={'Personal Information'}>
     <Grid>
-      <EditBox label={'First name *'} placeholder={'John'} bind:value={firstName}/>
+      <EditBox label={'First name *'} placeholder={'John'} bind:value={firstName} focus/>
       <EditBox label={'Last name *'} placeholder={'Smith'} bind:value={lastName}/>
       <EditBox label={'Email *'} placeholder={'john.smith@gmail.com'} bind:value={email}/>
       <EditBox label={'Phone *'} placeholder={'+00 (000) 000 00'} bind:value={phone}/>
