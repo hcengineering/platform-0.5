@@ -15,7 +15,7 @@
 
 <script lang="ts">
   import { createEventDispatcher } from 'svelte'
-  import { TextArea, EditBox, Dialog, ToggleWithLabel } from '@anticrm/ui'
+  import { TextArea, EditBox, Dialog, ToggleWithLabel, Grid } from '@anticrm/ui'
 
   import { getClient } from '@anticrm/presentation'
 
@@ -42,11 +42,11 @@
         okLabel={chunter.string.CreateChannel} 
         okAction={createChannel}
         on:close={() => { dispatch('close') }}>
-  <div class="content">
-    <div class="row"><EditBox label={chunter.string.ChannelName} bind:value={name}/></div>
-    <div class="row"><TextArea label={chunter.string.ChannelDescription} bind:value={description}/></div>
-    <div class="row"><ToggleWithLabel label={chunter.string.MakePrivate} description={chunter.string.MakePrivateDescription}/></div>
-  </div>
+  <Grid column={1}>
+    <EditBox label={chunter.string.ChannelName} bind:value={name} focus/>
+    <TextArea label={chunter.string.ChannelDescription} bind:value={description}/>
+    <ToggleWithLabel label={chunter.string.MakePrivate} description={chunter.string.MakePrivateDescription}/>
+  </Grid>
 </Dialog>
 
 

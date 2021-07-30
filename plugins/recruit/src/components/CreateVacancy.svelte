@@ -48,7 +48,7 @@
   <Tabs/>
   <Section icon={File} label={'General Information'}>
     <Grid column={1}>
-      <EditBox label={recruit.string.VacancyName} bind:value={name} placeholder="Software Engineer"/>
+      <EditBox label={recruit.string.VacancyName} bind:value={name} placeholder="Software Engineer" focus/>
       <TextArea label={recruit.string.VacancyDescription} bind:value={description} placeholder="Start typing..."/>
       <ToggleWithLabel label={recruit.string.MakePrivate} description={recruit.string.MakePrivateDescription}/>
     </Grid>

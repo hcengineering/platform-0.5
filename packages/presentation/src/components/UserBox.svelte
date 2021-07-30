@@ -29,8 +29,8 @@
   export let title: IntlString
   export let caption: IntlString
   export let value: Ref<Person>
+  export let show: boolean = false
 
-  let pressed: boolean = false
   let search: string = ''
   let selected: Person | undefined
 
@@ -41,20 +41,20 @@
 </script>
 
 <div class="userBox">
-  <PopupMenu bind:show={pressed}>
+  <PopupMenu bind:show={show}>
     <button
       slot="trigger"
       class="btn"
-      class:selected={pressed}
+      class:selected={show}
       on:click|preventDefault={() => {
-        pressed = !pressed
+        show = !show
       }}
     >
       {#if selected}
         <Avatar size={34} />
       {:else}
         <div class="icon">
-          {#if pressed}<Close size={16} />{:else}<Add size={16} />{/if}
+          {#if show}<Close size={16} />{:else}<Add size={16} />{/if}
         </div>
       {/if}
     </button>
@@ -69,7 +69,7 @@
       <button class="menu-item" on:click={() => {
         selected = person
         value = person._id
-        pressed = !pressed
+        show = !show
       }}><UserInfo value={person}/></button>
     {/each}
   </PopupMenu>

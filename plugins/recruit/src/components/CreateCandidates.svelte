@@ -44,7 +44,7 @@
         okAction={createCandidates}
         on:close={() => { dispatch('close') }}>
   <Grid column={1}>
-    <EditBox label={recruit.string.CandidatesName} bind:value={name}/>
+    <EditBox label={recruit.string.CandidatesName} bind:value={name} focus/>
     <TextArea label={recruit.string.CandidatesDescription} bind:value={description}/>
     <ToggleWithLabel label={recruit.string.MakePrivate} description={recruit.string.MakePrivateDescription}/>
   </Grid>
