@@ -49,6 +49,7 @@ interface ClassTxes {
   domain?: Domain
   label?: IntlString
   icon?: Asset
+  triggers?: Trigger[]
   txes: Array<NoIDs<Tx>>
   kind: ClassifierKind
 }
@@ -65,7 +66,7 @@ function getTxes (target: any): ClassTxes {
   return txes
 }
 
-export function Prop (type: Type<PropertyType>, trigger?: Trigger) {
+export function Prop (type: Type<PropertyType>) {
   return function (target: any, propertyKey: string): void {
     const txes = getTxes(target)
     const tx: NoIDs<TxCreateDoc<Attribute<PropertyType>>> = {
@@ -76,7 +77,6 @@ export function Prop (type: Type<PropertyType>, trigger?: Trigger) {
       objectSpace: core.space.Model,
       objectClass: core.class.Attribute,
       attributes: {
-        trigger,
         type,
         name: propertyKey,
         attributeOf: txes._id
@@ -120,6 +120,20 @@ export function UX<T extends Obj> (
     const txes = getTxes(constructor.prototype)
     txes.label = label
     txes.icon = icon
+  }
+}
+
+export function Trigger (
+  trigger: Trigger,
+) {
+  return function classDecorator<C extends new () => Doc> (constructor: C): void {
+    const txes = getTxes(constructor.prototype)
+    let triggers = txes.triggers
+    if (triggers === undefined) {
+      triggers = []
+      txes.triggers = triggers
+    }
+    triggers.push(trigger)
   }
 }
 
@@ -180,7 +194,8 @@ function _generateTx (tx: ClassTxes): Tx[] {
       kind: ClassifierKind.CLASS,
       extends: tx.extends,
       label: tx.label,
-      icon: tx.icon
+      icon: tx.icon,
+      triggers: tx.triggers,
     },
     objectId
   )

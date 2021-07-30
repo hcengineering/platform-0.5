@@ -14,8 +14,7 @@
 //
 
 import type { KeysByType } from 'simplytyped'
-import type { Class, Doc, Ref } from './classes'
-import type { Tx } from './tx'
+import type { Class, Doc, Ref, Tx } from './classes'
 
 // eslint-disable-next-line @typescript-eslint/consistent-type-definitions
 export type QuerySelector<T> = {

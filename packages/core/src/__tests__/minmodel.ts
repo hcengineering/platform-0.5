@@ -1,6 +1,6 @@
-import { Account, Class, ClassifierKind, Data, Doc, Domain, DOMAIN_MODEL, Obj, Ref } from '../classes'
+import { Account, Class, ClassifierKind, Data, Doc, Domain, DOMAIN_MODEL, Obj, Ref, Tx } from '../classes'
 import core from '../component'
-import { DOMAIN_TX, Tx, TxCreateDoc } from '../tx'
+import { DOMAIN_TX, TxCreateDoc } from '../tx'
 import { generateId } from '../utils'
 
 export function createClass<T extends Class<Obj>> (_id: Ref<T>, cl: Omit<Data<T>, 'kind'>, domain?: Domain): Tx {

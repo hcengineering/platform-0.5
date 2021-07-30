@@ -23,6 +23,7 @@ import type {
   FindResult,
   FindOptions
 } from '@anticrm/core'
+import { getResource } from '@anticrm/platform'
 import core, { ModelDb, TxDb, Hierarchy, DOMAIN_TX } from '@anticrm/core'
 
 async function getModel (): Promise<Tx[]> {
@@ -59,6 +60,18 @@ export async function connect (handler: (tx: Tx) => void): Promise<Storage> {
       }
       await Promise.all([model.tx(tx), transactions.tx(tx)])
       handler(tx)
+      // invoke triggers
+      const triggers = hierarchy.getClass(tx.objectClass).triggers
+      if (triggers !== undefined) {
+        for (const trigger of triggers) {
+          const impl = await getResource(trigger)
+          const txes = await impl(tx)
+          for (const tx of txes) {
+            await Promise.all([model.tx(tx), transactions.tx(tx)])
+            handler(tx)      
+          }
+        }
+      }
     }
   }
 }

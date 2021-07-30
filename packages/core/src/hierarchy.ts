@@ -13,9 +13,9 @@
 // limitations under the License.
 //
 
-import type { Ref, Class, Obj, Domain, Mixin, Doc, AnyAttribute, Trigger } from './classes'
+import type { Ref, Class, Obj, Domain, Mixin, Doc, AnyAttribute, Tx } from './classes'
 import { ClassifierKind } from './classes'
-import type { Tx, TxCreateDoc } from './tx'
+import type { TxCreateDoc } from './tx'
 import { TxProcessor  } from './tx'
 
 import core from './component'
@@ -23,7 +23,6 @@ import core from './component'
 export class Hierarchy {
   private readonly classes = new Map<Ref<Class<Obj>>, Class<Obj>>()
   private readonly attributes = new Map<Ref<Class<Obj>>, Map<string, AnyAttribute>>()
-  private readonly triggers = new Map<Ref<Class<Obj>>, Map<string, Trigger>>()
   private readonly descendants = new Map<Ref<Class<Obj>>, Ref<Class<Obj>>[]>()
   private readonly ancestors = new Map<Ref<Class<Obj>>, Ref<Class<Obj>>[]>()
   private readonly proxies = new Map<Ref<Mixin<Doc>>, ProxyHandler<Doc>>()
@@ -152,22 +151,10 @@ export class Hierarchy {
       this.attributes.set(_class, attributes)
     }
     attributes.set(attribute.name, attribute)
-    if (attribute.trigger !== undefined) {
-      let triggers = this.triggers.get(_class)
-      if (triggers === undefined) {
-        triggers = new Map<string, Trigger>()
-        this.triggers.set(_class, triggers)
-      }
-      triggers.set(attribute.name, attribute.trigger)
-    }
   }
 
   getAttribute(_class: Ref<Class<Obj>>, name: string): AnyAttribute | undefined {
     return this.attributes.get(_class)?.get(name)
-  }
-
-  getTrigger(_class: Ref<Class<Obj>>, name: string): Trigger | undefined {
-    return this.triggers.get(_class)?.get(name)
   }
 
 }

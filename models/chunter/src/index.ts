@@ -13,7 +13,7 @@
 // limitations under the License.
 //
 
-import { Builder, Model, TypeString, UX, Prop } from '@anticrm/model'
+import { Builder, Model, TypeString, UX, Trigger } from '@anticrm/model'
 
 import { TSpace, TDoc } from '@anticrm/model-core'
 import type { Channel, Message } from '@anticrm/chunter'
@@ -27,8 +27,8 @@ import chunter, { server } from './plugin'
 export class TChannel extends TSpace implements Channel {}
 
 @Model(chunter.class.Message, core.class.Doc)
+@Trigger(server.trigger.OnMessage)
 export class TMessage extends TDoc implements Message {
-  @Prop(TypeString(), server.trigger.MessageContent)
   content!: string
 }
 

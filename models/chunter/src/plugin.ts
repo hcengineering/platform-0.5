@@ -28,6 +28,6 @@ export default mergeIds(chunterId, chunter, {
 
 export const server = plugin(chunterServerId, {
   trigger: {
-    MessageContent: '' as Trigger
+    OnMessage: '' as Trigger
   }
 })

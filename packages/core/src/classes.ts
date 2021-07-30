@@ -40,13 +40,12 @@ export interface UXObject extends Obj {
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export interface Type<T extends PropertyType> extends UXObject {}
 
-export type Trigger = Resource<() => void>
+export type Trigger = Resource<(tx: Tx) => Promise<Tx[]>>
 
 export interface Attribute<T extends PropertyType> extends Doc, UXObject {
   attributeOf: Ref<Class<Obj>>
   name: string
   type: Type<T>
-  trigger?: Trigger
 }
 
 export type AnyAttribute = Attribute<Type<any>>
@@ -66,6 +65,7 @@ export type Domain = string & { __domain: true }
 export interface Class<T extends Obj> extends Classifier {
   extends?: Ref<Class<Obj>>
   domain?: Domain
+  triggers?: Trigger[]
 }
 
 export type Mixin<T extends Doc> = Class<T>
@@ -104,3 +104,11 @@ export interface Space extends Doc {
 }
 
 export interface Account extends Doc {}
+
+// T X 
+
+export interface Tx<T extends Doc = Doc> extends Doc {
+  objectId: Ref<T>
+  objectClass: Ref<Class<T>>
+  objectSpace: Ref<Space>
+}

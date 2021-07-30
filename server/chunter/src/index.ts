@@ -15,15 +15,17 @@
 //
 
 import type { Plugin } from '@anticrm/platform'
+import type { Tx } from '@anticrm/core'
 
 export const chunterServerId = 'chunter-server' as Plugin
 
-function MessageContent() {
-  
+async function OnMessage(tx: Tx): Promise<Tx[]> {
+  console.log('invoked trigger: ', tx)
+  return []  
 }
 
 export default async () => ({
   trigger: {
-    MessageContent,
+    OnMessage,
   }
 })

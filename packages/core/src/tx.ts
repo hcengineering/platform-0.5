@@ -14,15 +14,9 @@
 //
 
 import type { KeysByType } from 'simplytyped'
-import type { Class, Data, Doc, Domain, Ref, Account, Space, Arr, Mixin } from './classes'
+import type { Class, Data, Doc, Domain, Ref, Account, Space, Arr, Mixin, Tx } from './classes'
 import core from './component'
 import { generateId } from './utils'
-
-export interface Tx<T extends Doc = Doc> extends Doc {
-  objectId: Ref<T>
-  objectClass: Ref<Class<T>>
-  objectSpace: Ref<Space>
-}
 
 export interface TxCreateDoc<T extends Doc> extends Tx<T> {
   attributes: Data<T>
