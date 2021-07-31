@@ -13,10 +13,9 @@
 // limitations under the License.
 //
 
-import { Class, Doc, Obj, Ref } from '../classes'
+import type { Class, Doc, Obj, Ref, TxCreateDoc } from '../classes'
 import core from '../component'
 import { Hierarchy } from '../hierarchy'
-import { TxCreateDoc } from '../tx'
 import { genMinModel } from './minmodel'
 
 const txes = genMinModel()

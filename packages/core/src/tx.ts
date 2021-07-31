@@ -14,13 +14,9 @@
 //
 
 import type { KeysByType } from 'simplytyped'
-import type { Class, Data, Doc, Domain, Ref, Account, Space, Arr, Mixin, Tx } from './classes'
+import type { Class, Data, Doc, Domain, Ref, Account, Space, Arr, Mixin, Tx, TxCreateDoc } from './classes'
 import core from './component'
 import { generateId } from './utils'
-
-export interface TxCreateDoc<T extends Doc> extends Tx<T> {
-  attributes: Data<T>
-}
 
 export type ExtendedAttributes<D extends Doc, M extends D> = Omit<M, keyof D>
 

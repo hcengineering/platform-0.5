@@ -21,10 +21,13 @@ import type {
   Class,
   DocumentQuery,
   FindResult,
-  FindOptions
+  FindOptions,
+  Data,
+  TxCreateDoc,
+  Space
 } from '@anticrm/core'
 import { getResource } from '@anticrm/platform'
-import core, { ModelDb, TxDb, Hierarchy, DOMAIN_TX } from '@anticrm/core'
+import core, { ModelDb, TxDb, Hierarchy, DOMAIN_TX, generateId } from '@anticrm/core'
 
 async function getModel (): Promise<Tx[]> {
   return import('./model.tx.json') as unknown as Tx[]
@@ -52,6 +55,22 @@ export async function connect (handler: (tx: Tx) => void): Promise<Storage> {
     return await model.findAll(_class, query, options)
   }
 
+  const txFactory = { 
+    createTxCreateDoc<T extends Doc>(_class: Ref<Class<T>>, space: Ref<Space>, attributes: Data<T>): TxCreateDoc<T> {
+      return { 
+        _id: generateId(),
+        _class: core.class.TxCreateDoc,
+        space: core.space.Tx,
+        objectId: generateId(),
+        objectClass: _class,
+        objectSpace: space,
+        modifiedOn: Date.now(),
+        modifiedBy: core.account.System, 
+        attributes
+      }
+    }
+  }
+
   return {
     findAll,
     tx: async (tx: Tx): Promise<void> => {
@@ -65,8 +84,9 @@ export async function connect (handler: (tx: Tx) => void): Promise<Storage> {
       if (triggers !== undefined) {
         for (const trigger of triggers) {
           const impl = await getResource(trigger)
-          const txes = await impl(tx)
+          const txes = await impl(tx, txFactory)
           for (const tx of txes) {
+            console.log('triggered', tx)
             await Promise.all([model.tx(tx), transactions.tx(tx)])
             handler(tx)      
           }

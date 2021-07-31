@@ -13,9 +13,8 @@
 // limitations under the License.
 //
 
-import type { Ref, Class, Obj, Domain, Mixin, Doc, AnyAttribute, Tx } from './classes'
+import type { Ref, Class, Obj, Domain, Mixin, Doc, AnyAttribute, Tx, TxCreateDoc } from './classes'
 import { ClassifierKind } from './classes'
-import type { TxCreateDoc } from './tx'
 import { TxProcessor  } from './tx'
 
 import core from './component'

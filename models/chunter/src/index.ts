@@ -14,9 +14,9 @@
 //
 
 import { Builder, Model, TypeString, UX, Trigger } from '@anticrm/model'
-
+import type { Ref, Doc, Class} from '@anticrm/core'
 import { TSpace, TDoc } from '@anticrm/model-core'
-import type { Channel, Message } from '@anticrm/chunter'
+import type { Backlink, Channel, Message } from '@anticrm/chunter'
 
 import workbench from '@anticrm/model-workbench'
 import core from '@anticrm/model-core'
@@ -32,8 +32,15 @@ export class TMessage extends TDoc implements Message {
   content!: string
 }
 
+@Model(chunter.class.Backlink, core.class.Doc)
+export class TBacklink extends TDoc implements Backlink {
+  objectId!: Ref<Doc>
+  backlinkId!: Ref<Doc>
+  backlinkClass!: Ref<Class<Doc>>
+}
+
 export function createModel(builder: Builder) {
-  builder.createModel(TChannel, TMessage)
+  builder.createModel(TChannel, TMessage, TBacklink)
   builder.mixin(chunter.class.Channel, core.class.Class, workbench.mixin.SpaceView, {
     view: chunter.component.ChannelView
   })

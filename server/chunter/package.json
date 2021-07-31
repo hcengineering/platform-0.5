@@ -23,6 +23,7 @@
   },
   "dependencies": {
     "@anticrm/core":"~0.5.0",
-    "@anticrm/platform":"~0.5.0"
+    "@anticrm/platform":"~0.5.0",
+    "@anticrm/chunter":"~0.5.0"
   }
 }

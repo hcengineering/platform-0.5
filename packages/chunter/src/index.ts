@@ -14,14 +14,19 @@
 //
 
 import { plugin } from '@anticrm/platform'
-import type { Asset } from '@anticrm/platform'
-import type { Plugin } from '@anticrm/platform'
-import type { Space, Doc } from '@anticrm/core'
+import type { Asset, Plugin } from '@anticrm/platform'
+import type { Space, Doc, Ref, Class } from '@anticrm/core'
 
 export interface Channel extends Space {}
 
 export interface Message extends Doc {
   content: string
+}
+
+export interface Backlink extends Doc {
+  objectId: Ref<Doc>
+  backlinkId: Ref<Doc>
+  backlinkClass: Ref<Class<Doc>>
 }
 
 export const chunterId = 'chunter' as Plugin
@@ -31,5 +36,12 @@ export default plugin(chunterId, {
     Chunter: '' as Asset,
     Hashtag: '' as Asset,
     Lock: '' as Asset
+  },
+  class: {
+    Message: '' as Ref<Class<Message>>,
+    Backlink: '' as Ref<Class<Backlink>>
+  },
+  space: {
+    Backlinks: '' as Ref<Space>
   }
 })
