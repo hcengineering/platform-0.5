@@ -14,7 +14,7 @@
 -->
 
 <script lang="ts">
-  import type { Ref, Space } from '@anticrm/core'
+  import type { Ref, Space, Doc } from '@anticrm/core'
   import { getClient } from '@anticrm/presentation'
 
   import { Component, StringPresenter, ViewSelection } from '@anticrm/ui'
@@ -29,6 +29,10 @@
   export let view: string = 'list'
 
   const client = getClient()
+
+  function onClick(doc: Doc) {
+    
+  }
 
 </script>
 
@@ -68,7 +72,7 @@
           },
         ]
       }
-    }/>
+    } on:click={onClick}/>
 
     {:else if view === 'card'}
       <CardView />

@@ -16,13 +16,13 @@
 
 <script lang="ts">
 
-import { onDestroy } from 'svelte'
+import { createEventDispatcher } from 'svelte'
 import type { Ref, Class, Doc, Space, FindOptions } from '@anticrm/core'
 import type { AttributeModel } from '@anticrm/table'
 
 import { Label } from '@anticrm/ui'
 
-import { getClient } from '@anticrm/presentation'
+import { createQuery } from '@anticrm/presentation'
 
 export let _class: Ref<Class<Doc>>
 export let space: Ref<Space>
@@ -31,15 +31,8 @@ export let model: AttributeModel[]
 
 let objects: Doc[]
 
-let client = getClient()
-let unsubscribe = () => {}
-
-$: {
-  unsubscribe()
-  unsubscribe = client.query(_class, { space }, result => { objects = result; console.log(result) }, options)
-}
-
-onDestroy(unsubscribe)
+const query = createQuery()
+$: query.query(_class, { space }, result => { objects = result }, options)
 
 function getValue(doc: Doc, key: string): any {
   if (key.length === 0)
@@ -50,8 +43,13 @@ function getValue(doc: Doc, key: string): any {
   for (let i=0; i<len; i++){
     obj = obj?.[path[i]]
   }
-  console.log('result', obj)
   return obj
+}
+
+const dispatch = createEventDispatcher()
+
+function onObjectClick(object: Doc) {
+  dispatch('click', object._id)
 }
 
 </script>
@@ -64,7 +62,7 @@ function getValue(doc: Doc, key: string): any {
   </tr>
   {#if objects}
     {#each objects as object (object._id)}
-      <tr class="tr-body">
+      <tr class="tr-body" on:click={() => onObjectClick(object)}>
       {#each model as attribute}
         <td><svelte:component this={attribute.component} value={getValue(object, attribute.key)}/></td>
       {/each}

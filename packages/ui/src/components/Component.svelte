@@ -31,7 +31,7 @@
   <div class="spinner-container"><div class="inner"><Spinner /></div></div>
 {:then Ctor}
   <ErrorBoundary>
-    <Ctor {...props} on:change on:close on:open />
+    <Ctor {...props} on:change on:close on:open on:click/>
   </ErrorBoundary>
 {:catch err}
   ERROR: {console.log(err, JSON.stringify(component))}
