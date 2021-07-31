@@ -56,6 +56,7 @@ export { default as StringPresenter } from './components/presenter/StringPresent
 export { default as IconAdd } from './components/icons/Add.svelte'
 export { default as IconSearch } from './components/icons/Search.svelte'
 export { default as IconToDo } from './components/icons/ToDo.svelte'
+export { default as IconComments } from './components/icons/Comments.svelte'
 
 export function createApp (target: HTMLElement): SvelteComponent {
   return new Root({ target })
