@@ -22,7 +22,7 @@
   import Star from './icons/Star.svelte'
 
   import { getClient } from '@anticrm/presentation'
-  import { showModal } from '@anticrm/workbench'
+  import { showModal } from '@anticrm/ui'
   import { classIcon } from '../utils'
   import core from '@anticrm/core'
 

@@ -23,7 +23,7 @@
 
   import { IconAdd } from '@anticrm/ui'
   import { getClient } from '@anticrm/presentation'
-  import { showModal } from '@anticrm/workbench'
+  import { showModal } from '@anticrm/ui'
 
   import { classIcon } from '../../utils'
 

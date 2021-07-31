@@ -54,24 +54,3 @@ export default plugin(workbenchId, {
     SpaceView: '' as Ref<Mixin<SpaceView>>
   }
 })
-
-interface CompAndProps {
-  is: AnySvelteComponent | AnyComponent | undefined
-  props: any
-  element: HTMLElement | undefined
-}
-
-export const store = writable<CompAndProps>({
-  is: undefined,
-  props: {},
-  element: undefined
-})
-
-export function showModal (component: AnySvelteComponent | AnyComponent, props: any, element?: HTMLElement): void {
-  store.set({ is: component, props, element: element })
-}
-
-export function closeModal (): void {
-  store.set({ is: undefined, props: {}, element: undefined })
-}
-

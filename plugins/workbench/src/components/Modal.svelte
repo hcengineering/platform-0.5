@@ -13,7 +13,7 @@
 // limitations under the License.
 -->
 <script lang="ts">
-  import { store as modal } from '@anticrm/workbench'
+  import { store as modal } from '@anticrm/ui'
   import Component from '@anticrm/ui/src/components/Component.svelte'
 
   let modalHTML: HTMLElement
