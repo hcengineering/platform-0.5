@@ -48,11 +48,14 @@ export { default as EditStylish } from './components/EditStylish.svelte'
 export { default as Grid } from './components/Grid.svelte'
 export { default as Row } from './components/Row.svelte'
 export { default as DialogHeader } from './components/DialogHeader.svelte'
+export { default as CheckBoxWithLabel } from './components/CheckBoxWithLabel.svelte'
+export { default as CheckBoxList } from './components/CheckBoxList.svelte'
 
 export { default as StringPresenter } from './components/presenter/StringPresenter.svelte'
 
 export { default as IconAdd } from './components/icons/Add.svelte'
 export { default as IconSearch } from './components/icons/Search.svelte'
+export { default as IconToDo } from './components/icons/ToDo.svelte'
 
 export function createApp (target: HTMLElement): SvelteComponent {
   return new Root({ target })

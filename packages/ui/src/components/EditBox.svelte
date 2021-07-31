@@ -36,11 +36,11 @@
   }
 
   onMount(() => {
-    computeSize(input)
     if (focus) {
       input.focus()
       focus = false
     }
+    computeSize(input)
   })
 </script>
 
@@ -50,9 +50,9 @@
   <div class="text" bind:this={text}></div>
   {#if label}<div class="label"><Label label={label}/></div>{/if}
   {#if password}
-    <input bind:this={input} type="password" bind:value {placeholder} on:input={(ev) => ev.target && computeSize(ev.target)}/>
+    <input bind:this={input} type="password" bind:value {placeholder} on:input={(ev) => ev.target && computeSize(ev.target)} />
   {:else}
-    <input bind:this={input} type="text" bind:value {placeholder} on:input={(ev) => ev.target && computeSize(ev.target)}/>
+    <input bind:this={input} type="text" bind:value {placeholder} on:input={(ev) => ev.target && computeSize(ev.target)} />
   {/if}
 </div>
 
@@ -66,7 +66,7 @@
     display: flex;
     flex-direction: column;
     min-width: 50px;
-    height: 36px;
+    height: auto;
 
     .label {
       margin-bottom: 4px;
