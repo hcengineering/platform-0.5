@@ -24,8 +24,9 @@
 
   export let _class: Ref<Class<Doc>>
   export let key: string
-  export let value: any
-  export let focus: boolean
+  export let newValue: any
+  export let oldValue: any
+  export let focus: boolean = false
 
   const client = getClient()
   const hierarchy = client.getHierarchy()
@@ -46,7 +47,7 @@
   {#await editor}
     ...
   {:then instance}
-    <svelte:component this={instance} label={attribute?.label} placeholder={attribute?.label} bind:value={value} {focus}/>
+    <svelte:component this={instance} label={attribute?.label} placeholder={attribute?.label} bind:value={newValue[key]} {focus}/>
   {/await}
 {/if}
 
