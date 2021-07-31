@@ -13,7 +13,7 @@
 // limitations under the License.
 //
 
-import type { Ref, Class, Obj, Domain, Mixin, Doc, AnyAttribute, Tx, TxCreateDoc } from './classes'
+import type { Ref, Class, Obj, Domain, Mixin, Doc, AnyAttribute, Tx, TxCreateDoc, TxMixin } from './classes'
 import { ClassifierKind } from './classes'
 import { TxProcessor  } from './tx'
 
@@ -84,7 +84,16 @@ export class Hierarchy {
   }
 
   tx (tx: Tx): void {
-    if (tx._class !== core.class.TxCreateDoc) return
+    if (tx._class !== core.class.TxCreateDoc) {
+      if (tx._class === core.class.TxMixin) {
+        const mixinTx = tx as TxMixin<Doc, Doc>
+        if (tx.objectClass !== core.class.Class)
+          return
+        const obj = this.getClass(tx.objectId as Ref<Class<Obj>>) as any
+        obj[mixinTx.mixin] = mixinTx.attributes    
+      }
+      return
+    }
     const createTx = tx as TxCreateDoc<Doc>
     if (createTx.objectClass === core.class.Class) {
       const createTx = tx as TxCreateDoc<Class<Obj>>
@@ -150,6 +159,7 @@ export class Hierarchy {
       this.attributes.set(_class, attributes)
     }
     attributes.set(attribute.name, attribute)
+    console.log('added attribute:', _class, attribute.name)
   }
 
   getAttribute(_class: Ref<Class<Obj>>, name: string): AnyAttribute | undefined {

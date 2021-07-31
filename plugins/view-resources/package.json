@@ -1,17 +1,17 @@
 {
-  "name": "@anticrm/model-all",
+  "name": "@anticrm/view-resources",
   "version": "0.5.0",
-  "main": "lib/index.js",
+  "main": "src/index.ts",
   "author": "Anticrm Platform Contributors",
   "license": "EPL-2.0",
   "scripts": {
-    "build": "tsc",
+    "build": "echo 'source code'",
     "build:docs": "api-extractor run --local",
     "test": "echo 'no tests'",
     "lint": "ts-standard src",
     "lint:fix": "ts-standard --fix src",
     "format": "prettier --write 'src/**/*.{ts*,js*,yml}' && ts-standard --fix src",
-    "gen-model": "ts-node src/genmodel.ts"
+    "svelte-check": "svelte-check"
   },
   "devDependencies": {
     "@microsoft/api-extractor": "^7.13.4",
@@ -21,18 +21,15 @@
     "ts-standard": "^10.0.0",
     "typescript": "^4.2.4",
     "ts-jest": "^26.5.6",
-    "ts-node": "^10.0.0"
+    "svelte-loader": "^3.1.0",
+    "svelte-check": "^2.1.0",
+    "sass": "^1.32.8"
   },
   "dependencies": {
-    "@anticrm/model":"~0.5.0",
     "@anticrm/core":"~0.5.0",
     "@anticrm/platform":"~0.5.0",
-    "@anticrm/model-workbench":"~0.5.0",
-    "@anticrm/model-core":"~0.5.0",
-    "@anticrm/model-contact":"~0.5.0",
-    "@anticrm/model-view":"~0.5.0",
-    "@anticrm/model-chunter":"~0.5.0",
-    "@anticrm/model-recruit":"~0.5.0",
-    "@anticrm/model-demo":"~0.5.0"
+    "@anticrm/ui":"~0.5.0",
+    "@anticrm/view":"~0.5.0",
+    "svelte":"^3.37.0"
   }
 }

@@ -1,6 +1,5 @@
 //
-// Copyright © 2020, 2021 Anticrm Platform Contributors.
-// Copyright © 2021 Hardcore Engineering Inc.
+// Copyright © 2020 Anticrm Platform Contributors.
 // 
 // Licensed under the Eclipse Public License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License. You may
@@ -14,10 +13,12 @@
 // limitations under the License.
 //
 
-export * from './utils'
+import { mergeIds } from '@anticrm/platform'
+import type { AnyComponent } from '@anticrm/ui'
+import view, { viewId } from '@anticrm/view'
 
-export { default as UserBox } from './components/UserBox.svelte'
-export { default as UserInfo } from './components/UserInfo.svelte'
-export { default as Avatar } from './components/Avatar.svelte'
-export { default as MarkdownViewer } from './components/MarkdownViewer.svelte'
-export { default as AttributeEditor } from './components/AttributeEditor.svelte'
+export default mergeIds(viewId, view, {
+  component: {
+    StringEditor: '' as AnyComponent
+  }
+})

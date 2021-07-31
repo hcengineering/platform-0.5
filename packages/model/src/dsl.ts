@@ -66,7 +66,7 @@ function getTxes (target: any): ClassTxes {
   return txes
 }
 
-export function Prop (type: Type<PropertyType>) {
+export function Prop (type: Type<PropertyType>, label?: IntlString, icon?: Asset) {
   return function (target: any, propertyKey: string): void {
     const txes = getTxes(target)
     const tx: NoIDs<TxCreateDoc<Attribute<PropertyType>>> = {
@@ -79,7 +79,9 @@ export function Prop (type: Type<PropertyType>) {
       attributes: {
         type,
         name: propertyKey,
-        attributeOf: txes._id
+        label,
+        icon,
+        attributeOf: txes._id // undefined, need to fix later
       }
     }
     txes.txes.push(tx)
@@ -137,12 +139,16 @@ export function Trigger (
   }
 }
 
-function generateIds (objectId: Ref<Doc>, txes: Array<NoIDs<Tx>>): Tx[] {
-  return txes.map((tx) => ({
-    _id: generateId<Tx>(),
-    objectId,
-    ...tx
-  }))
+function generateIds (objectId: Ref<Doc>, txes: NoIDs<TxCreateDoc<Attribute<PropertyType>>>[]): Tx[] {
+  return txes.map((tx) => {
+    const withId = {
+      _id: generateId<Tx>(),
+      objectId: generateId(),
+      ...tx
+    }
+    withId.attributes.attributeOf = objectId as Ref<Class<Obj>>
+    return withId
+  })
 }
 
 const txFactory = new DefaultTxFactory(core.account.System)
@@ -162,7 +168,7 @@ function _generateTx (tx: ClassTxes): Tx[] {
     },
     objectId
   )
-  return [createTx, ...generateIds(objectId, tx.txes)]
+  return [createTx, ...generateIds(objectId, tx.txes as NoIDs<TxCreateDoc<Attribute<PropertyType>>>[])]
 }
 
 export class Builder {

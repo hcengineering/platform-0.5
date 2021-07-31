@@ -20,6 +20,7 @@ import { createModel as workbenchModel } from '@anticrm/model-workbench'
 import { createModel as contactModel } from '@anticrm/model-contact'
 import { createModel as chunterModel } from '@anticrm/model-chunter'
 import { createModel as recruitModel } from '@anticrm/model-recruit'
+import { createModel as viewModel } from '@anticrm/model-view'
 // import { createModel as taskModel } from '@anticrm/model-task'
 
 import { createDemo } from '@anticrm/model-demo'
@@ -27,6 +28,7 @@ import { createDemo } from '@anticrm/model-demo'
 const builder = new Builder()
 
 coreModel(builder)
+viewModel(builder)
 workbenchModel(builder)
 contactModel(builder)
 chunterModel(builder)

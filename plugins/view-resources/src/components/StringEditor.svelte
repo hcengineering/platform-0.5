@@ -1,4 +1,4 @@
-//
+<!--
 // Copyright © 2020, 2021 Anticrm Platform Contributors.
 // Copyright © 2021 Hardcore Engineering Inc.
 // 
@@ -12,12 +12,18 @@
 // 
 // See the License for the specific language governing permissions and
 // limitations under the License.
-//
+-->
 
-export * from './utils'
+<script lang="ts">
 
-export { default as UserBox } from './components/UserBox.svelte'
-export { default as UserInfo } from './components/UserInfo.svelte'
-export { default as Avatar } from './components/Avatar.svelte'
-export { default as MarkdownViewer } from './components/MarkdownViewer.svelte'
-export { default as AttributeEditor } from './components/AttributeEditor.svelte'
+import type { IntlString } from '@anticrm/platform'
+import { EditBox } from '@anticrm/ui'
+
+export let label: IntlString
+export let placeholder: IntlString
+export let value: any
+export let focus: boolean
+
+</script>
+
+<EditBox {label} {placeholder} bind:value={value} {focus} />

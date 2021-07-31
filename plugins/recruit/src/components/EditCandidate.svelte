@@ -17,6 +17,7 @@
   import { createEventDispatcher } from 'svelte'
   import type { Ref, Space, Doc } from '@anticrm/core'
   import { TextArea, EditBox, Dialog, Tabs, Section, Grid, DialogHeader } from '@anticrm/ui'
+  import { AttributeEditor } from '@anticrm/presentation'
   import type { Candidate } from '@anticrm/recruit'
   import type { Backlink } from '@anticrm/chunter'
   import File from './icons/File.svelte'
@@ -27,6 +28,7 @@
 
   import recruit from '../plugin'
   import chunter from '@anticrm/chunter'
+  import contact from '@anticrm/contact'
 
   export let object: Candidate
   export let space: Ref<Space>
@@ -49,6 +51,7 @@
   <Tabs/>
   <Section icon={File} label={'Personal Information'}>
     <Grid>
+      <AttributeEditor _class={contact.class.Person} key={'firstName'}/>
       <EditBox label={'First name *'} placeholder={'John'} bind:value={newValues.firstName} focus/>
       <EditBox label={'Last name *'} placeholder={'Smith'} bind:value={newValues.lastName}/>
       <EditBox label={'Email *'} placeholder={'john.smith@gmail.com'} bind:value={newValues.email}/>
