@@ -15,59 +15,55 @@
 
 <script lang="ts">
   import { createEventDispatcher } from 'svelte'
-  import type { Ref, Space } from '@anticrm/core'
+  import type { Ref, Space, Doc } from '@anticrm/core'
   import { TextArea, EditBox, Dialog, Tabs, Section, Grid, DialogHeader } from '@anticrm/ui'
+  import type { Candidate } from '@anticrm/recruit'
+  import type { Backlink } from '@anticrm/chunter'
   import File from './icons/File.svelte'
   import Address from './icons/Address.svelte'
   import Attachment from './icons/Attachment.svelte'
 
-  import { getClient } from '@anticrm/presentation'
+  import { createQuery } from '@anticrm/presentation'
 
   import recruit from '../plugin'
+  import chunter from '@anticrm/chunter'
 
+  export let object: Candidate
   export let space: Ref<Space>
+
+  let newValues = Object.assign({}, object)
 
   const dispatch = createEventDispatcher()
 
-  let firstName: string = ''
-  let lastName: string = ''
-  let email: string = ''
-  let phone: string = ''
-  let city: string = ''
+  let backlinks: Backlink[]
 
-  const client = getClient()
-
-  function createCandidate() {
-    client.createDoc(recruit.class.Candidate, space, {
-      firstName,
-      lastName,
-      email,
-      phone,
-      city,
-    })
-  }
+  const query = createQuery()
+  query.query(chunter.class.Backlink, { objectId: object._id }, result => { backlinks = result })
 </script>
 
 <Dialog label={recruit.string.CreateCandidate} 
         okLabel={recruit.string.CreateCandidate} 
-        okAction={createCandidate}
+        okAction={() => {}}
         on:close={() => { dispatch('close') }}>
   <DialogHeader />
   <Tabs/>
   <Section icon={File} label={'Personal Information'}>
     <Grid>
-      <EditBox label={'First name *'} placeholder={'John'} bind:value={firstName} focus/>
-      <EditBox label={'Last name *'} placeholder={'Smith'} bind:value={lastName}/>
-      <EditBox label={'Email *'} placeholder={'john.smith@gmail.com'} bind:value={email}/>
-      <EditBox label={'Phone *'} placeholder={'+00 (000) 000 00'} bind:value={phone}/>
+      <EditBox label={'First name *'} placeholder={'John'} bind:value={newValues.firstName} focus/>
+      <EditBox label={'Last name *'} placeholder={'Smith'} bind:value={newValues.lastName}/>
+      <EditBox label={'Email *'} placeholder={'john.smith@gmail.com'} bind:value={newValues.email}/>
+      <EditBox label={'Phone *'} placeholder={'+00 (000) 000 00'} bind:value={newValues.phone}/>
     </Grid>
   </Section>
   <Section icon={Address} label={'Address'}>
     <Grid>
       <EditBox label={'Street'} placeholder={'Broderick st'} />
-      <EditBox label={'City *'} placeholder={'Los Angeles'} bind:value={city}/>
+      <EditBox label={'City *'} placeholder={'Los Angeles'} bind:value={newValues.city}/>
       <EditBox label={'ZIP / Postal code'} placeholder={'26892'} />
       <EditBox label={'Country'} placeholder={'United States'} />
     </Grid>
+  </Section>
+  <Section icon={Address} label={'Backlinks'}>
+    {JSON.stringify(backlinks)}
   </Section>
 </Dialog>

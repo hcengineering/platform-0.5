@@ -48,10 +48,6 @@ function getValue(doc: Doc, key: string): any {
 
 const dispatch = createEventDispatcher()
 
-function onObjectClick(object: Doc) {
-  dispatch('click', object._id)
-}
-
 </script>
 
 <table class="table-body">
@@ -62,7 +58,7 @@ function onObjectClick(object: Doc) {
   </tr>
   {#if objects}
     {#each objects as object (object._id)}
-      <tr class="tr-body" on:click={() => onObjectClick(object)}>
+      <tr class="tr-body" on:click={() => dispatch('click', object)}>
       {#each model as attribute}
         <td><svelte:component this={attribute.component} value={getValue(object, attribute.key)}/></td>
       {/each}

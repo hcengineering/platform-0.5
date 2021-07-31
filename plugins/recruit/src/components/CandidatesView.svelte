@@ -17,7 +17,7 @@
   import type { Ref, Space, Doc } from '@anticrm/core'
   import { getClient } from '@anticrm/presentation'
 
-  import { Component, StringPresenter, ViewSelection } from '@anticrm/ui'
+  import { Component, StringPresenter, ViewSelection, showModal } from '@anticrm/ui'
   import { UserInfo } from '@anticrm/presentation'
   import recruit from '../plugin'
   import table from '@anticrm/table'
@@ -25,13 +25,16 @@
   import CardView from './CardView.svelte'
   import KanbanView from './KanbanView.svelte'
 
+  import EditCandidate from './EditCandidate.svelte'
+
   export let space: Ref<Space>
   export let view: string = 'list'
 
   const client = getClient()
 
-  function onClick(doc: Doc) {
-    
+  function onClick(ev: CustomEvent) {
+    console.log(ev.detail)
+    showModal(EditCandidate, { object: ev.detail })
   }
 
 </script>
