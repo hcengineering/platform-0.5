@@ -14,13 +14,13 @@
 //
 
 import { PlatformError, Severity, Status } from '@anticrm/platform'
-import type { Class, Doc, Ref, Tx, TxCreateDoc } from './classes'
+import type { Class, Doc, Ref, Tx, TxCreateDoc, TxMixin } from './classes'
 import core from './component'
 import type { Hierarchy } from './hierarchy'
 import { getOperator } from './operator'
 import { findProperty, resultSort } from './query'
 import type { DocumentQuery, FindOptions, FindResult, Storage, WithLookup, LookupData, Refs } from './storage'
-import type { TxMixin, TxRemoveDoc, TxUpdateDoc } from './tx'
+import type { TxRemoveDoc, TxUpdateDoc } from './tx'
 import { TxProcessor } from './tx'
 
 class MemDb extends TxProcessor {

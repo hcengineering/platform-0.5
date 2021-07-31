@@ -44,7 +44,7 @@ export function createModel(builder: Builder) {
   builder.mixin(chunter.class.Channel, core.class.Class, workbench.mixin.SpaceView, {
     view: chunter.component.ChannelView
   })
-  builder.createDoc(workbench.class.Application, {
+  builder.createDoc(workbench.class.Application, core.space.Model, {
     label: chunter.string.ApplicationLabelChunter,
     icon: chunter.icon.Chunter,
     navigatorModel: {
@@ -58,13 +58,13 @@ export function createModel(builder: Builder) {
       ]
     }
   })
-  builder.createDoc(chunter.class.Channel, {
+  builder.createDoc(chunter.class.Channel, core.space.Model, {
     name: 'general',
     description: 'General Channel',
     private: false,
     members: []
   })
-  builder.createDoc(chunter.class.Channel, {
+  builder.createDoc(chunter.class.Channel, core.space.Model, {
     name: 'random',
     description: 'Random Talks',
     private: false,

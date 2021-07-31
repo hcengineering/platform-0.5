@@ -14,16 +14,9 @@
 //
 
 import type { KeysByType } from 'simplytyped'
-import type { Class, Data, Doc, Domain, Ref, Account, Space, Arr, Mixin, Tx, TxCreateDoc } from './classes'
+import type { Class, Data, Doc, Domain, Ref, Account, Space, Arr, Mixin, Tx, TxCreateDoc, TxFactory, TxMixin, ExtendedAttributes } from './classes'
 import core from './component'
 import { generateId } from './utils'
-
-export type ExtendedAttributes<D extends Doc, M extends D> = Omit<M, keyof D>
-
-export interface TxMixin<D extends Doc, M extends D> extends Tx<D> {
-  mixin: Ref<Mixin<M>>
-  attributes: ExtendedAttributes<D, M>
-}
 
 type ArrayAsElement<T extends Doc> = {
   [P in keyof T]: T[P] extends Arr<infer X> ? X : never
@@ -154,4 +147,39 @@ export function withOperations<T extends WithTx> (user: Ref<Account>, storage: T
   }
 
   return result
+}
+
+export class DefaultTxFactory implements TxFactory { 
+
+  constructor(readonly account: Ref<Account>) {}
+
+  createTxCreateDoc<T extends Doc>(_class: Ref<Class<T>>, space: Ref<Space>, attributes: Data<T>, objectId?: Ref<T>): TxCreateDoc<T> {
+    return { 
+      _id: generateId(),
+      _class: core.class.TxCreateDoc,
+      space: core.space.Tx,
+      objectId: objectId ?? generateId(),
+      objectClass: _class,
+      objectSpace: space,
+      modifiedOn: Date.now(),
+      modifiedBy: this.account, 
+      attributes
+    }
+  }
+
+  createTxMixin<D extends Doc, M extends D>(objectId: Ref<D>, objectClass: Ref<Class<D>>, mixin: Ref<Mixin<M>>, attributes: ExtendedAttributes<D, M>): TxMixin<D, M> {
+    return {
+      _id: generateId(),
+      _class: core.class.TxMixin,
+      space: core.space.Tx,
+      modifiedBy: this.account,
+      modifiedOn: Date.now(),
+      objectId,
+      objectClass,
+      objectSpace: core.space.Model,
+      mixin,
+      attributes
+    }    
+  }
+
 }

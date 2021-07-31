@@ -29,12 +29,12 @@ import type {
   Mixin,
   Space,
   ExtendedAttributes,
-  Trigger
+  Trigger,
 } from '@anticrm/core'
 import {
   ClassifierKind,
   generateId,
-  // Hierarchy,
+  DefaultTxFactory,
 } from '@anticrm/core'
 import type { IntlString, Asset } from '@anticrm/platform'
 import toposort from 'toposort'
@@ -73,7 +73,7 @@ export function Prop (type: Type<PropertyType>) {
       _class: core.class.TxCreateDoc,
       space: core.space.Tx,
       modifiedBy: core.account.System,
-      modifiedOn: 0,
+      modifiedOn: Date.now(),
       objectSpace: core.space.Model,
       objectClass: core.class.Attribute,
       attributes: {
@@ -145,50 +145,13 @@ function generateIds (objectId: Ref<Doc>, txes: Array<NoIDs<Tx>>): Tx[] {
   }))
 }
 
-// TODO: let used add Doc properties to Attributes
-function txCreateDoc<T extends Doc> (
-  _class: Ref<Class<T>>,
-  attributes: Data<T>,
-  objectId?: Ref<T>,
-  space?: Ref<Space>
-): TxCreateDoc<T> {
-  return {
-    _id: generateId<TxCreateDoc<T>>(),
-    _class: core.class.TxCreateDoc,
-    space: core.space.Tx,
-    modifiedBy: core.account.System,
-    modifiedOn: Date.now(),
-    objectId: objectId ?? generateId(),
-    objectClass: _class,
-    objectSpace: space ?? core.space.Model,
-    attributes
-  }
-}
-
-function txMixin<D extends Doc, M extends D> (
-  objectId: Ref<D>,
-  objectClass: Ref<Class<D>>,
-  mixin: Ref<Mixin<M>>,
-  attributes: ExtendedAttributes<D, M>,
-): TxMixin<D, M> {
-  return {
-    _id: generateId<TxMixin<D, M>>(),
-    _class: core.class.TxMixin,
-    space: core.space.Tx,
-    modifiedBy: core.account.System,
-    modifiedOn: Date.now(),
-    objectId,
-    objectClass,
-    objectSpace: core.space.Model,
-    mixin,
-    attributes
-  }
-}
+const txFactory = new DefaultTxFactory(core.account.System)
 
 function _generateTx (tx: ClassTxes): Tx[] {
   const objectId = tx._id
-  const createTx = txCreateDoc(
+  const createTx = txFactory.createTxCreateDoc(
     core.class.Class,
+    core.space.Model,
     {
       domain: tx.domain,
       kind: ClassifierKind.CLASS,
@@ -239,18 +202,19 @@ export class Builder {
     )
   }
 
+  // do we need this?
   createDoc<T extends Doc>(
     _class: Ref<Class<T>>,
+    space: Ref<Space>,
     attributes: Data<T>,
     objectId?: Ref<T>,
-    space?: Ref<Space>
   ): void {
     this.txes.push(
-      txCreateDoc(
+      txFactory.createTxCreateDoc(
         _class,
+        space,
         attributes,
-        objectId,
-        space
+        objectId
       )
     )
   }
@@ -261,7 +225,7 @@ export class Builder {
     mixin: Ref<Mixin<M>>,
     attributes: ExtendedAttributes<D, M>,
   ): void {
-    this.txes.push(txMixin(objectId, objectClass, mixin, attributes))
+    this.txes.push(txFactory.createTxMixin(objectId, objectClass, mixin, attributes))
   }  
 
   getTxes (): Tx[] {

@@ -70,7 +70,7 @@ export type Mixin<T extends Doc> = Class<T>
 
 // D A T A
 
-export type Data<T extends Doc> = Omit<T, keyof Doc> & Partial<Doc>
+export type Data<T extends Doc> = Omit<T, keyof Doc>
 
 // T Y P E S
 
@@ -107,6 +107,7 @@ export interface Account extends Doc {}
 
 export interface TxFactory {
   createTxCreateDoc<T extends Doc>(_class: Ref<Class<T>>, space: Ref<Space>, attributes: Data<T>): TxCreateDoc<T>
+  createTxMixin<D extends Doc, M extends D>(objectId: Ref<D>, objectClass: Ref<Class<D>>, mixin: Ref<Mixin<M>>, attributes: ExtendedAttributes<D, M>): TxMixin<D, M>
 }
 
 export type Trigger = Resource<(tx: Tx, txFactory: TxFactory) => Promise<Tx[]>>
@@ -121,3 +122,9 @@ export interface TxCreateDoc<T extends Doc> extends Tx<T> {
   attributes: Data<T>
 }
 
+export type ExtendedAttributes<D extends Doc, M extends D> = Omit<M, keyof D>
+
+export interface TxMixin<D extends Doc, M extends D> extends Tx<D> {
+  mixin: Ref<Mixin<M>>
+  attributes: ExtendedAttributes<D, M>
+}

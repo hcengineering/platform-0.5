@@ -50,7 +50,7 @@ export function createModel(builder: Builder) {
     view: recruit.component.CandidatesView,
     createItemDialog: recruit.component.CreateCandidate
   })
-  builder.createDoc(workbench.class.Application, {
+  builder.createDoc(workbench.class.Application, core.space.Model, {
     label: recruit.string.RecruitApplication,
     icon: recruit.icon.RecruitApplication,
     navigatorModel: {
@@ -70,7 +70,7 @@ export function createModel(builder: Builder) {
       ]
     }
   })
-  builder.createDoc(recruit.class.Candidates, {
+  builder.createDoc(recruit.class.Candidates, core.space.Model, {
     name: 'public',
     description: 'Public Candidates',
     private: false,

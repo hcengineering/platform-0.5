@@ -21,20 +21,20 @@ import recruit from '@anticrm/model-recruit'
 
 export function createDemo(builder: Builder) {
 
-  builder.createDoc(recruit.class.Candidate, {
+  builder.createDoc(recruit.class.Candidate, recruit.space.CandidatesPublic, {
     firstName: 'Andrey',
     lastName: 'P.',
     email: 'andrey@hc.engineering',
     phone: '+1 646 667 6832',
     city: 'Monte Carlo'
-  }, generateId(), recruit.space.CandidatesPublic)
+  })
 
-  builder.createDoc(recruit.class.Candidate, {
+  builder.createDoc(recruit.class.Candidate, recruit.space.CandidatesPublic, {
     firstName: 'Marina',
     lastName: 'M.',
     email: 'marina@hc.engineering',
     phone: '+1 646 777 3333',
     city: 'Los Angeles'
-  }, generateId(), recruit.space.CandidatesPublic)
+  })
 
 }
