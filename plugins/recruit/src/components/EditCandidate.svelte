@@ -31,7 +31,6 @@
   import contact from '@anticrm/contact'
 
   export let object: Candidate
-  export let space: Ref<Space>
 
   let newValue = Object.assign({}, object)
 
@@ -62,7 +61,6 @@
   <Tabs/>
   <Section icon={File} label={'Personal Information'}>
     <Grid>
-      {object._id}
       <AttributeEditor _class={contact.class.Person} key={'firstName'} {newValue} oldValue={object} focus/>
       <AttributeEditor _class={contact.class.Person} key={'lastName'} {newValue} oldValue={object}/>
       <AttributeEditor _class={contact.class.Person} key={'email'} {newValue} oldValue={object}/>
