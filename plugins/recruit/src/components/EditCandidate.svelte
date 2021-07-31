@@ -38,7 +38,7 @@
   let backlinks: Backlink[]
 
   const query = createQuery()
-  query.query(chunter.class.Backlink, { objectId: object._id }, result => { backlinks = result })
+  $: query.query(chunter.class.Backlink, { objectId: object._id }, result => { backlinks = result })
 </script>
 
 <Dialog label={recruit.string.CreateCandidate} 
