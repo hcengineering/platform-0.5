@@ -27,9 +27,12 @@
     "@anticrm/platform":"~0.5.0",
     "@anticrm/workbench":"~0.5.0",
     "@anticrm/chunter":"~0.5.0",
+    "@anticrm/view":"~0.5.0",
+    "@anticrm/ui":"~0.5.0",
     "@anticrm/plugin-chunter":"~0.5.0",
     "@anticrm/chunter-server":"~0.5.0",
     "@anticrm/model-workbench":"~0.5.0",
-    "@anticrm/model-core":"~0.5.0"
+    "@anticrm/model-core":"~0.5.0",
+    "@anticrm/model-view":"~0.5.0"
   }
 }

@@ -13,13 +13,16 @@
 // limitations under the License.
 //
 
+import type { IntlString } from '@anticrm/platform'
 import { Builder, Model, TypeString, UX, Trigger } from '@anticrm/model'
 import type { Ref, Doc, Class} from '@anticrm/core'
 import { TSpace, TDoc } from '@anticrm/model-core'
 import type { Backlink, Channel, Message } from '@anticrm/chunter'
+import type { AnyComponent } from '@anticrm/ui'
 
 import workbench from '@anticrm/model-workbench'
 import core from '@anticrm/model-core'
+import view from '@anticrm/model-view'
 import chunter, { server } from './plugin'
 
 @Model(chunter.class.Channel, core.class.Space)
@@ -47,6 +50,20 @@ export function createModel(builder: Builder) {
       class: chunter.class.Message,
     }
   })
+
+  builder.createDoc(view.class.ViewletDescriptor, core.space.Model, {
+    label: 'Chat' as IntlString,
+    icon: view.icon.Table,
+    component: chunter.component.ChannelView
+  }, chunter.viewlet.Chat)
+
+  builder.createDoc(view.class.Viewlet, core.space.Model, {
+    attachTo: chunter.class.Message,
+    descriptor: chunter.viewlet.Chat,
+    open: 'X' as AnyComponent,
+    config: {}
+  })
+
   builder.createDoc(workbench.class.Application, core.space.Model, {
     label: chunter.string.ApplicationLabelChunter,
     icon: chunter.icon.Chunter,

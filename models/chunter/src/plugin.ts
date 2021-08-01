@@ -18,11 +18,15 @@ import chunter from '@anticrm/plugin-chunter/src/plugin'
 import type { IntlString } from '@anticrm/platform'
 import { mergeIds, plugin } from '@anticrm/platform'
 import { chunterServerId } from '@anticrm/chunter-server'
-import type { Trigger } from '@anticrm/core'
+import type { Trigger, Ref } from '@anticrm/core'
+import { ViewletDescriptor } from '@anticrm/view'
 
 export default mergeIds(chunterId, chunter, {
   string: { 
     ApplicationLabelChunter: '' as IntlString,
+  },
+  viewlet: {
+    Chat: '' as Ref<ViewletDescriptor>
   }
 })
 
