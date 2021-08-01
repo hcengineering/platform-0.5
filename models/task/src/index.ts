@@ -18,9 +18,11 @@ import type { Ref, Doc, Class} from '@anticrm/core'
 import { TSpace, TDoc } from '@anticrm/model-core'
 import type { Project, Task } from '@anticrm/task'
 import type { Employee } from '@anticrm/contact'
+import type { AnyComponent } from '@anticrm/ui'
 
 import workbench from '@anticrm/model-workbench'
 import core from '@anticrm/model-core'
+import view from '@anticrm/model-view'
 import task from './plugin'
 
 @Model(task.class.Project, core.class.Space)
@@ -38,6 +40,14 @@ export function createModel(builder: Builder) {
       class: task.class.Task, 
     }
   })
+
+  builder.createDoc(view.class.Viewlet, core.space.Model, {
+    attachTo: task.class.Task,
+    descriptor: view.viewlet.Table,
+    open: 'ZX' as AnyComponent,
+    config: []
+  })
+
   builder.createDoc(workbench.class.Application, core.space.Model, {
     label: task.string.ApplicationLabelTask,
     icon: task.icon.Task,

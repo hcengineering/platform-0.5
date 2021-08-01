@@ -68,6 +68,7 @@ let selected = 0
     <Component is={viewlets[selected].$lookup?.descriptor?.component} props={ {
       _class,
       space,
+      open: viewlets[selected].open,
       options: viewlets[selected].options, 
       config: viewlets[selected].config
     } } />

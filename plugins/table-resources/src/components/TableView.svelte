@@ -18,16 +18,16 @@
 
 import { createEventDispatcher } from 'svelte'
 import type { Ref, Class, Doc, Space, FindOptions } from '@anticrm/core'
-import type { AttributeModel } from '../utils'
 import { buildModel } from '../utils'
 import { getClient } from '@anticrm/presentation'
-
-import { Label } from '@anticrm/ui'
+import { Label, showModal } from '@anticrm/ui'
+import type { AnyComponent } from '@anticrm/ui'
 
 import { createQuery } from '@anticrm/presentation'
 
 export let _class: Ref<Class<Doc>>
 export let space: Ref<Space>
+export let open: AnyComponent
 export let options: FindOptions<Doc> | undefined
 export let config: string[]
 
@@ -51,6 +51,11 @@ function getValue(doc: Doc, key: string): any {
 const dispatch = createEventDispatcher()
 const client = getClient()
 
+function onClick(object: Doc) {
+  console.log('going modal: ', open)
+  showModal(open, { object })
+}
+
 </script>
 
 {#await buildModel(client, _class, config, options)}
@@ -64,7 +69,7 @@ const client = getClient()
   </tr>
   {#if objects}
     {#each objects as object (object._id)}
-      <tr class="tr-body" on:click={() => dispatch('click', object)}>
+      <tr class="tr-body" on:click={() => onClick(object)}>
       {#each model as attribute}
         <td><svelte:component this={attribute.presenter} value={getValue(object, attribute.key)}/></td>
       {/each}

@@ -44,6 +44,7 @@ export class TViewletDescriptor extends TDoc implements ViewletDescriptor {
 export class TViewlet extends TDoc implements Viewlet {
   attachTo!: Ref<Class<Space>>
   descriptor!: Ref<ViewletDescriptor>
+  open!: AnyComponent
   config: any
 }
 

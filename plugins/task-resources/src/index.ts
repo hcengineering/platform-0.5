@@ -14,10 +14,7 @@
 // limitations under the License.
 //
 
-import ProjectView from './components/ProjectView.svelte'
-
 export default async () => ({
   component: {
-    ProjectView
   },
 })

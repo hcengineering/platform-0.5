@@ -36,6 +36,7 @@ export interface ViewletDescriptor extends Doc, UXObject {
 export interface Viewlet extends Doc {
   attachTo: Ref<Class<Space>>
   descriptor: Ref<ViewletDescriptor>
+  open: AnyComponent
   options?: FindOptions<Doc>
   config: any
 }

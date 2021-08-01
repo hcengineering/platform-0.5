@@ -92,12 +92,14 @@ export function createModel(builder: Builder) {
   builder.createDoc(view.class.Viewlet, core.space.Model, {
     attachTo: recruit.class.Candidate,
     descriptor: view.viewlet.Table,
+    open: recruit.component.EditCandidate,
     config: ['', 'email', 'phone', 'city']
   })
 
   builder.createDoc(view.class.Viewlet, core.space.Model, {
     attachTo: recruit.class.Applicant,
     descriptor: view.viewlet.Table,
+    open: recruit.component.EditCandidate,
     options: {
       lookup: {
         candidate: recruit.class.Candidate
