@@ -17,6 +17,7 @@
   import { createEventDispatcher } from 'svelte'
   import type { Ref, Space, Doc } from '@anticrm/core'
   import { TextArea, EditBox, Dialog, Tabs, Section, Grid, DialogHeader, IconComments } from '@anticrm/ui'
+  import { AttributeEditor, getClient } from '@anticrm/presentation'
   import type { Candidate } from '@anticrm/recruit'
   import type { Backlink } from '@anticrm/chunter'
   import File from './icons/File.svelte'
@@ -28,38 +29,49 @@
 
   import recruit from '../plugin'
   import chunter from '@anticrm/chunter'
+  import contact from '@anticrm/contact'
 
   export let object: Candidate
-  export let space: Ref<Space>
 
-  let newValues = Object.assign({}, object)
+  let newValue = Object.assign({}, object)
 
   const dispatch = createEventDispatcher()
 
   let backlinks: Backlink[]
 
+  const client = getClient()
   const query = createQuery()
   $: query.query(chunter.class.Backlink, { objectId: object._id }, result => { backlinks = result })
+
+  function save() {
+    const attributes: Record<string, any> = {}
+    for (const key in object) {
+      if ((newValue as any)[key] !== (object as any)[key]) {
+        attributes[key] = (newValue as any)[key]
+      }
+    }
+    client.updateDoc(recruit.class.Candidate, object.space, object._id, attributes)
+  }
 </script>
 
 <Dialog label={recruit.string.CreateCandidate} 
         okLabel={recruit.string.CreateCandidate} 
-        okAction={() => {}}
+        okAction={save}
         on:close={() => { dispatch('close') }}>
   <DialogHeader />
   <Tabs/>
   <Section icon={File} label={'Personal Information'}>
     <Grid>
-      <EditBox label={'First name *'} placeholder={'John'} bind:value={newValues.firstName} focus/>
-      <EditBox label={'Last name *'} placeholder={'Smith'} bind:value={newValues.lastName}/>
-      <EditBox label={'Email *'} placeholder={'john.smith@gmail.com'} bind:value={newValues.email}/>
-      <EditBox label={'Phone *'} placeholder={'+00 (000) 000 00'} bind:value={newValues.phone}/>
+      <AttributeEditor _class={contact.class.Person} key={'firstName'} {newValue} oldValue={object} focus/>
+      <AttributeEditor _class={contact.class.Person} key={'lastName'} {newValue} oldValue={object}/>
+      <AttributeEditor _class={contact.class.Person} key={'email'} {newValue} oldValue={object}/>
+      <AttributeEditor _class={contact.class.Person} key={'phone'} {newValue} oldValue={object}/>
     </Grid>
   </Section>
   <Section icon={Address} label={'Address'}>
     <Grid>
       <EditBox label={'Street'} placeholder={'Broderick st'} />
-      <EditBox label={'City *'} placeholder={'Los Angeles'} bind:value={newValues.city}/>
+      <EditBox label={'City *'} placeholder={'Los Angeles'} bind:value={newValue.city}/>
       <EditBox label={'ZIP / Postal code'} placeholder={'26892'} />
       <EditBox label={'Country'} placeholder={'United States'} />
     </Grid>

@@ -42,6 +42,7 @@
     "@anticrm/client": "~0.5.0",
     "@anticrm/contact": "~0.5.0",
     "@anticrm/ui": "~0.5.0",
+    "@anticrm/view": "~0.5.0",
     "svelte": "^3.37.0"
   }
 }

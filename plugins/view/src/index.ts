@@ -14,10 +14,21 @@
 // limitations under the License.
 //
 
-export * from './utils'
+import type { Plugin } from '@anticrm/platform'
+import { plugin } from '@anticrm/platform'
+import type { Ref, Mixin } from '@anticrm/core'
 
-export { default as UserBox } from './components/UserBox.svelte'
-export { default as UserInfo } from './components/UserInfo.svelte'
-export { default as Avatar } from './components/Avatar.svelte'
-export { default as MarkdownViewer } from './components/MarkdownViewer.svelte'
-export { default as AttributeEditor } from './components/AttributeEditor.svelte'
+import type { Class, Doc } from '@anticrm/core'
+import type { AnyComponent } from '@anticrm/ui'
+
+export interface AttributeEditor extends Class<Doc> {
+  editor: AnyComponent
+}
+
+export const viewId = 'view' as Plugin
+
+export default plugin(viewId, { 
+  mixin: {
+    AttributeEditor: '' as Ref<Mixin<AttributeEditor>>
+  }
+})

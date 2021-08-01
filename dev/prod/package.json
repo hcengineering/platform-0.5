@@ -56,6 +56,8 @@
     "@anticrm/recruit-assets": "~0.5.0",
     "@anticrm/table": "~0.5.0",
     "@anticrm/table-resources": "~0.5.0",
+    "@anticrm/view": "~0.5.0",
+    "@anticrm/view-resources": "~0.5.0",
     "@anticrm/chunter-server": "~0.5.0"
   }
 }

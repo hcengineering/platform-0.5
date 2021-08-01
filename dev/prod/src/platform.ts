@@ -21,6 +21,7 @@ import { workbenchId } from '@anticrm/workbench'
 import { chunterId } from '@anticrm/chunter'
 import { recruitId } from '@anticrm/recruit'
 import { tableId } from '@anticrm/table'
+import { viewId } from '@anticrm/view'
 
 import { chunterServerId } from '@anticrm/chunter-server'
 // import task from '@anticrm/task'
@@ -64,6 +65,7 @@ export function configurePlatform() {
   addLocation(chunterId, () => import(/* webpackChunkName: "chunter" */ '@anticrm/plugin-chunter'))
   addLocation(recruitId, () => import(/* webpackChunkName: "recruit" */ '@anticrm/plugin-recruit'))
   addLocation(tableId, () => import(/* webpackChunkName: "table" */ '@anticrm/table-resources'))
+  addLocation(viewId, () => import(/* webpackChunkName: "view" */ '@anticrm/view-resources'))
 
   addLocation(chunterServerId, () => import(/* webpackChunkName: "chunter-server" */ '@anticrm/chunter-server'))
 
