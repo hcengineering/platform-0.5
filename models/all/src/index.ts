@@ -21,7 +21,7 @@ import { createModel as contactModel } from '@anticrm/model-contact'
 import { createModel as chunterModel } from '@anticrm/model-chunter'
 import { createModel as recruitModel } from '@anticrm/model-recruit'
 import { createModel as viewModel } from '@anticrm/model-view'
-// import { createModel as taskModel } from '@anticrm/model-task'
+import { createModel as taskModel } from '@anticrm/model-task'
 
 import { createDemo } from '@anticrm/model-demo'
 
@@ -32,8 +32,8 @@ viewModel(builder)
 workbenchModel(builder)
 contactModel(builder)
 chunterModel(builder)
+taskModel(builder)
 recruitModel(builder)
-// taskModel(builder)
 
 createDemo(builder)
 

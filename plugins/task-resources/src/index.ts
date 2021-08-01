@@ -1,5 +1,6 @@
 //
 // Copyright © 2020, 2021 Anticrm Platform Contributors.
+// Copyright © 2021 Hardcore Engineering Inc.
 // 
 // Licensed under the Eclipse Public License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License. You may
@@ -13,21 +14,8 @@
 // limitations under the License.
 //
 
-import { plugin } from '@anticrm/platform'
-import type { Plugin, Asset } from '@anticrm/platform'
-import type { Space, Doc, Ref } from '@anticrm/core'
-import type { Employee } from '@anticrm/contact'
 
-export interface Project extends Space {}
-
-export interface Task extends Doc {
-  assignee: Ref<Employee>
-}
-
-export const taskId = 'task' as Plugin
-
-export default plugin(taskId, {
-  icon: {
-    Task: '' as Asset,
+export default async () => ({
+  component: {
   },
 })

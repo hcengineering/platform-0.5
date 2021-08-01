@@ -510,6 +510,21 @@
       "shouldPublish": true
     },
     {
+      "packageName": "@anticrm/task-resources",
+      "projectFolder": "plugins/task-resources",
+      "shouldPublish": true
+    },
+    {
+      "packageName": "@anticrm/task-assets",
+      "projectFolder": "plugins/task-assets",
+      "shouldPublish": true
+    },
+    {
+      "packageName": "@anticrm/model-task",
+      "projectFolder": "models/task",
+      "shouldPublish": false
+    },
+    {
       "packageName": "@anticrm/client",
       "projectFolder": "packages/client",
       "shouldPublish": true

@@ -22,33 +22,14 @@ import { chunterId } from '@anticrm/chunter'
 import { recruitId } from '@anticrm/recruit'
 import { tableId } from '@anticrm/table'
 import { viewId } from '@anticrm/view'
+import { taskId } from '@anticrm/task'
 
 import { chunterServerId } from '@anticrm/chunter-server'
-// import task from '@anticrm/task'
-// import meeting from '@anticrm/meeting'
-// import i18n from '@anticrm/platform-i18n'
-// import activity from '@anticrm/activity'
-// import activityMeta from '@anticrm/activity/src/__meta__'
-// import presentation from '@anticrm/presentation'
-// import contact from '@anticrm/contact'
-// import chunter from '@anticrm/chunter'
-// import guidebook from '@anticrm/guidebook'
-// import datagen from '@anticrm/data-generator'
-// import recruiting from '@anticrm/recruiting'
-// import personExtras from '@anticrm/person-extras'
-// import calendar from '@anticrm/calendar'
 
 import '@anticrm/login-assets'
 import '@anticrm/chunter-assets'
 import '@anticrm/recruit-assets'
-// import '@anticrm/task-assets'
-// import '@anticrm/meeting-assets'
-// import uiMeta from '@anticrm/platform-ui/src/__meta__/meta'
-// import workbenchMeta from '@anticrm/workbench/src/__meta__'
-// import chunterMeta from '@anticrm/chunter/src/__meta__'
-// import recruitingMeta from '@anticrm/recruiting/src/__meta__'
-// import presentationMeta from '@anticrm/presentation/src/__meta__'
-// import dataGenMeta from '@anticrm/data-generator/src/__meta__'
+import '@anticrm/task-assets'
 
 export function configurePlatform() {
 
@@ -66,33 +47,8 @@ export function configurePlatform() {
   addLocation(recruitId, () => import(/* webpackChunkName: "recruit" */ '@anticrm/plugin-recruit'))
   addLocation(tableId, () => import(/* webpackChunkName: "table" */ '@anticrm/table-resources'))
   addLocation(viewId, () => import(/* webpackChunkName: "view" */ '@anticrm/view-resources'))
+  addLocation(taskId, () => import(/* webpackChunkName: "view" */ '@anticrm/task-resources'))
 
   addLocation(chunterServerId, () => import(/* webpackChunkName: "chunter-server" */ '@anticrm/chunter-server'))
-
-  // addLocation(task, () => import(/* webpackChunkName: "task" */ '@anticrm/task-impl'))
-  // addLocation(meeting, () => import(/* webpackChunkName: "meeting" */ '@anticrm/meeting-impl'))
-  // platform.addLocation(i18n, () => import(/* webpackChunkName: "platform-i18n" */ '@anticrm/platform-i18n/src/plugin'))
-// platform.addLocation(presentation, () => import(/* webpackChunkName: "presentation" */ '@anticrm/presentation/src/plugin'))
-// platform.addLocation(contact, () => import(/* webpackChunkName: "contact" */ '@anticrm/contact/src/plugin'))
-// platform.addLocation(chunter, () => import(/* webpackChunkName: "chunter" */ '@anticrm/chunter/src/plugin'))
-// platform.addLocation(guidebook, () => import(/* webpackChunkName: "guidebook" */ '@anticrm/guidebook/src/plugin'))
-// platform.addLocation(recruiting, () => import(/* webpackChunkName: "recruiting" */ '@anticrm/recruiting/src/plugin'))
-// platform.addLocation(personExtras, () => import(/* webpackChunkName: "person-extras" */ '@anticrm/person-extras/src/plugin'))
-// platform.addLocation(calendar, () => import(/* webpackChunkName: "calendar" */ '@anticrm/calendar/src/plugin'))
-// platform.addLocation(activity, () => import(/* webpackChunkName: "activity" */ '@anticrm/activity/src/plugin'))
-
-// platform.addLocation(datagen, () => import(/* webpackChunkName: "datagen" */ '@anticrm/data-generator/src/plugin'))
-
-// uiMeta(platform)
-//  loginMeta()
-// workbenchMeta(platform)
-// activityMeta(platform)
-// chunterMeta(platform)
-// recruitmentMeta(platform)
-// recruitingMeta(platform)
-// taskMeta(platform)
-// presentationMeta(platform)
-// contactMeta(platform)
-// dataGenMeta(platform)
 
 }
