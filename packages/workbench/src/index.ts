@@ -42,7 +42,6 @@ export interface NavigatorModel {
 
 export interface ViewConfiguration {
   class: Ref<Class<Doc>> // show object of this class
-  options?: FindOptions<Doc> // search query options
   createItemDialog?: AnyComponent  
 }
 

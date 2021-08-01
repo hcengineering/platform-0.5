@@ -16,7 +16,7 @@
 
 import type { Plugin, Asset } from '@anticrm/platform'
 import { plugin } from '@anticrm/platform'
-import type { Ref, Mixin, UXObject, Space } from '@anticrm/core'
+import type { Ref, Mixin, UXObject, Space, FindOptions } from '@anticrm/core'
 
 import type { Class, Doc } from '@anticrm/core'
 import type { AnyComponent } from '@anticrm/ui'
@@ -36,6 +36,7 @@ export interface ViewletDescriptor extends Doc, UXObject {
 export interface Viewlet extends Doc {
   attachTo: Ref<Class<Space>>
   descriptor: Ref<ViewletDescriptor>
+  options?: FindOptions<Doc>
   config: any
 }
 

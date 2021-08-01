@@ -14,7 +14,7 @@
 //
 
 import { Builder, Model, UX } from '@anticrm/model'
-import type { Ref } from '@anticrm/core'
+import type { Ref, FindOptions, Doc } from '@anticrm/core'
 import { TSpace, TDoc } from '@anticrm/model-core'
 import type { Vacancy, Candidates, Candidate, Applicant } from '@anticrm/recruit'
 
@@ -94,6 +94,18 @@ export function createModel(builder: Builder) {
     descriptor: view.viewlet.Table,
     config: ['', 'email', 'phone', 'city']
   })
+
+  builder.createDoc(view.class.Viewlet, core.space.Model, {
+    attachTo: recruit.class.Applicant,
+    descriptor: view.viewlet.Table,
+    options: {
+      lookup: {
+        candidate: recruit.class.Candidate
+      }
+    } as FindOptions<Doc>,
+    config: ['$lookup.candidate', '$lookup.candidate.email', '$lookup.candidate.city']
+  })
+
 }
 
 export { default as default } from './plugin'

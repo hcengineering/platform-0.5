@@ -53,7 +53,7 @@ const client = getClient()
 
 </script>
 
-{#await buildModel(client, _class, config)}
+{#await buildModel(client, _class, config, options)}
  ...
 {:then model}
 <table class="table-body">
