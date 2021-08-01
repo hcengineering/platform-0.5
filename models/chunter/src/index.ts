@@ -43,7 +43,9 @@ export class TBacklink extends TDoc implements Backlink {
 export function createModel(builder: Builder) {
   builder.createModel(TChannel, TMessage, TBacklink)
   builder.mixin(chunter.class.Channel, core.class.Class, workbench.mixin.SpaceView, {
-    view: chunter.component.ChannelView
+    view: {
+      class: chunter.class.Message,
+    }
   })
   builder.createDoc(workbench.class.Application, core.space.Model, {
     label: chunter.string.ApplicationLabelChunter,

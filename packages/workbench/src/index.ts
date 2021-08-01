@@ -14,9 +14,10 @@
 //
 
 import type { IntlString, Asset } from '@anticrm/platform'
-import type { Ref, Class, Doc, Obj, Space, Mixin } from '@anticrm/core'
+import type { Ref, Class, Doc, Obj, Space, Mixin, FindOptions } from '@anticrm/core'
 import type { Plugin } from '@anticrm/platform'
-import type { AnyComponent, AnySvelteComponent } from '@anticrm/ui'
+import type { AnyComponent } from '@anticrm/ui'
+import type { ViewletDescriptor } from '@anticrm/view'
 import { writable } from 'svelte/store'
 
 import { plugin } from '@anticrm/platform'
@@ -39,9 +40,14 @@ export interface NavigatorModel {
   spaces: SpacesNavModel[]
 }
 
+export interface ViewConfiguration {
+  class: Ref<Class<Doc>> // show object of this class
+  options?: FindOptions<Doc> // search query options
+  createItemDialog?: AnyComponent  
+}
+
 export interface SpaceView extends Class<Obj> {
-  view: AnyComponent
-  createItemDialog?: AnyComponent
+  view: ViewConfiguration
 }
 
 export const workbenchId = 'workbench' as Plugin

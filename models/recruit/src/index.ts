@@ -20,6 +20,7 @@ import type { Vacancy, Candidates, Candidate, Applicant } from '@anticrm/recruit
 
 import workbench from '@anticrm/model-workbench'
 import core from '@anticrm/model-core'
+import view from '@anticrm/model-view'
 import contact, { TPerson } from '@anticrm/model-contact'
 import recruit from './plugin'
 import { Person } from '@anticrm/contact'
@@ -42,14 +43,25 @@ export class TApplicant extends TDoc implements Applicant {
 
 export function createModel(builder: Builder) {
   builder.createModel(TVacancy, TCandidates, TCandidate, TApplicant)
+
   builder.mixin(recruit.class.Vacancy, core.class.Class, workbench.mixin.SpaceView, {
-    view: recruit.component.VacancyView,
-    createItemDialog: recruit.component.CreateApplication
+    view: {
+      class: recruit.class.Applicant,
+      createItemDialog: recruit.component.CreateApplication
+    },
   })
+
   builder.mixin(recruit.class.Candidates, core.class.Class, workbench.mixin.SpaceView, {
-    view: recruit.component.CandidatesView,
-    createItemDialog: recruit.component.CreateCandidate
+    view: {
+      class: recruit.class.Candidate,
+      createItemDialog: recruit.component.CreateCandidate
+    },
   })
+
+  builder.mixin(recruit.class.Candidate, core.class.Class, view.mixin.AttributePresenter, {
+    presenter: recruit.component.CandidatePresenter
+  })
+
   builder.createDoc(workbench.class.Application, core.space.Model, {
     label: recruit.string.RecruitApplication,
     icon: recruit.icon.RecruitApplication,
@@ -76,6 +88,12 @@ export function createModel(builder: Builder) {
     private: false,
     members: []
   }, recruit.space.CandidatesPublic)
+
+  builder.createDoc(view.class.Viewlet, core.space.Model, {
+    attachTo: recruit.class.Candidate,
+    descriptor: view.viewlet.Table,
+    config: ['', 'email', 'phone', 'city']
+  })
 }
 
 export { default as default } from './plugin'

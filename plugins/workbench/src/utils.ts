@@ -14,10 +14,11 @@
 // limitations under the License.
 //
 
-import type { Ref, Obj, Class } from '@anticrm/core'
-import type { Asset } from '@anticrm/platform'
+import type { Ref, Obj, Class, WithLookup } from '@anticrm/core'
+import type { Asset, IntlString } from '@anticrm/platform'
 import type { Connection } from '@anticrm/client'
 
 export function classIcon(client: Connection, _class: Ref<Class<Obj>>): Asset | undefined {
   return client.getHierarchy().getClass(_class).icon
 }
+

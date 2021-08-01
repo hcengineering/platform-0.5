@@ -30,6 +30,7 @@
     "@anticrm/presentation": "~0.5.0",
     "@anticrm/workbench": "~0.5.0",
     "@anticrm/client": "~0.5.0",
-    "@anticrm/core": "~0.5.0"
+    "@anticrm/core": "~0.5.0",
+    "@anticrm/view": "~0.5.0"
   }
 }

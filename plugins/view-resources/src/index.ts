@@ -14,9 +14,11 @@
 //
 
 import StringEditor from './components/StringEditor.svelte'
+import StringPresenter from './components/StringPresenter.svelte'
 
 export default async () => ({
   component: {
     StringEditor,
+    StringPresenter,
   },
 })

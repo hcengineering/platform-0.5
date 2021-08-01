@@ -13,13 +13,10 @@
 // limitations under the License.
 //
 
-import { mergeIds } from '@anticrm/platform'
-import type { AnyComponent } from '@anticrm/ui'
-import view, { viewId } from '@anticrm/view'
+import { loadMetadata } from '@anticrm/platform'
+import view from '@anticrm/view'
 
-export default mergeIds(viewId, view, {
-  component: {
-    StringEditor: '' as AnyComponent,
-    StringPresenter: '' as AnyComponent
-  }
+const icons = require('../assets/icons.svg')
+loadMetadata(view.icon, {
+  Table: `${icons}#table`,
 })

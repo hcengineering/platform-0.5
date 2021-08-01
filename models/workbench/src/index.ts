@@ -16,8 +16,7 @@
 import type { IntlString, Asset } from '@anticrm/platform'
 import { DOMAIN_MODEL } from '@anticrm/core' 
 import { Model, Mixin, Builder } from '@anticrm/model'
-import type { Application, SpaceView } from '@anticrm/workbench'
-import type { AnyComponent } from '@anticrm/ui'
+import type { Application, SpaceView, ViewConfiguration } from '@anticrm/workbench'
 
 import core, { TDoc, TClass } from '@anticrm/model-core'
 import workbench from './plugin'
@@ -30,7 +29,7 @@ export class TApplication extends TDoc implements Application {
 
 @Mixin(workbench.mixin.SpaceView, core.class.Class)
 export class TSpaceView extends TClass implements SpaceView {
-  view!: AnyComponent
+  view!: ViewConfiguration
 }
 
 export function createModel(builder: Builder) {

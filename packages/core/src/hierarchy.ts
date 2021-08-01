@@ -162,8 +162,17 @@ export class Hierarchy {
     console.log('added attribute:', _class, attribute.name)
   }
 
-  getAttribute(_class: Ref<Class<Obj>>, name: string): AnyAttribute | undefined {
-    return this.attributes.get(_class)?.get(name)
+  getAttribute(_class: Ref<Class<Obj>>, name: string): AnyAttribute {
+    const attribute = this.attributes.get(_class)?.get(name)
+    if (attribute === undefined) {
+      const clazz = this.getClass(_class)
+      if (clazz.extends !== undefined) {
+        return this.getAttribute(clazz.extends, name)
+      } else {
+        throw new Error('attribute not found: ' + name)
+      }
+    }
+    return attribute
   }
 
 }

@@ -14,9 +14,9 @@
 // limitations under the License.
 //
 
-import type { Plugin } from '@anticrm/platform'
+import type { Plugin, Asset } from '@anticrm/platform'
 import { plugin } from '@anticrm/platform'
-import type { Ref, Mixin } from '@anticrm/core'
+import type { Ref, Mixin, UXObject, Space } from '@anticrm/core'
 
 import type { Class, Doc } from '@anticrm/core'
 import type { AnyComponent } from '@anticrm/ui'
@@ -25,10 +25,35 @@ export interface AttributeEditor extends Class<Doc> {
   editor: AnyComponent
 }
 
+export interface AttributePresenter extends Class<Doc> {
+  presenter: AnyComponent
+}
+
+export interface ViewletDescriptor extends Doc, UXObject {
+  component: AnyComponent
+}
+
+export interface Viewlet extends Doc {
+  attachTo: Ref<Class<Space>>
+  descriptor: Ref<ViewletDescriptor>
+  config: any
+}
+
 export const viewId = 'view' as Plugin
 
 export default plugin(viewId, { 
   mixin: {
-    AttributeEditor: '' as Ref<Mixin<AttributeEditor>>
+    AttributeEditor: '' as Ref<Mixin<AttributeEditor>>,
+    AttributePresenter: '' as Ref<Mixin<AttributePresenter>>
+  },
+  class: {
+    ViewletDescriptor: '' as Ref<Class<ViewletDescriptor>>,
+    Viewlet: '' as Ref<Class<Viewlet>>
+  },
+  viewlet: {
+    Table: '' as Ref<ViewletDescriptor>
+  },
+  icon: {
+    Table: '' as Asset
   }
 })

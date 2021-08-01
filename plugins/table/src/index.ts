@@ -14,14 +14,9 @@
 //
 
 import { plugin } from '@anticrm/platform'
-import type { Plugin, IntlString } from '@anticrm/platform'
-import type { AnyComponent, AnySvelteComponent } from '@anticrm/ui'
-
-export interface AttributeModel {
-  label: IntlString
-  key: string
-  component: AnySvelteComponent
-}
+import type { Plugin } from '@anticrm/platform'
+import type { Ref, Class, Doc, Space } from '@anticrm/core'
+import type { AnyComponent } from '@anticrm/ui'
 
 export const tableId = 'table' as Plugin
 

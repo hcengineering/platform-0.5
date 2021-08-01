@@ -415,6 +415,11 @@
       "shouldPublish": true
     },
     {
+      "packageName": "@anticrm/view-assets",
+      "projectFolder": "plugins/view-assets",
+      "shouldPublish": true
+    },
+    {
       "packageName": "@anticrm/model-view",
       "projectFolder": "models/view",
       "shouldPublish": false

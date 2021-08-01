@@ -1,5 +1,6 @@
-//
-// Copyright © 2020 Anticrm Platform Contributors.
+<!--
+// Copyright © 2020, 2021 Anticrm Platform Contributors.
+// Copyright © 2021 Hardcore Engineering Inc.
 // 
 // Licensed under the Eclipse Public License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License. You may
@@ -11,15 +12,16 @@
 // 
 // See the License for the specific language governing permissions and
 // limitations under the License.
-//
+-->
 
-import { mergeIds } from '@anticrm/platform'
-import type { AnyComponent } from '@anticrm/ui'
-import view, { viewId } from '@anticrm/view'
+<script lang="ts">
 
-export default mergeIds(viewId, view, {
-  component: {
-    StringEditor: '' as AnyComponent,
-    StringPresenter: '' as AnyComponent
-  }
-})
+import type { Candidate } from '@anticrm/recruit'
+import { UserInfo } from '@anticrm/presentation'
+
+export let value: Candidate
+
+</script>
+
+<UserInfo {value}/>
+

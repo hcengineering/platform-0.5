@@ -34,7 +34,9 @@ export class TTask extends TDoc implements Task {
 export function createModel(builder: Builder) {
   builder.createModel(TProject, TTask)
   builder.mixin(task.class.Project, core.class.Class, workbench.mixin.SpaceView, {
-    view: task.component.ProjectView
+    view: {
+      class: task.class.Task, 
+    }
   })
   builder.createDoc(workbench.class.Application, core.space.Model, {
     label: task.string.ApplicationLabelTask,

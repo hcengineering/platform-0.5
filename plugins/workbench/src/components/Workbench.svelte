@@ -23,13 +23,14 @@
   import type { Connection } from '@anticrm/client'
 
   import type { Ref, Space } from '@anticrm/core'
-  import type { Application, NavigatorModel } from '@anticrm/workbench'
+  import type { Application, NavigatorModel, ViewConfiguration } from '@anticrm/workbench'
   import { setClient } from '@anticrm/presentation'
   import workbench from '@anticrm/workbench'
 
   import Navigator from './Navigator.svelte'
   import Modal from './Modal.svelte'
   import SpaceHeader from './SpaceHeader.svelte'
+  import SpaceView from './SpaceView.svelte'
   
   import { AnyComponent, Component, location } from '@anticrm/ui'
   import core from '@anticrm/core'
@@ -40,7 +41,7 @@
 
   let currentApp: Ref<Application> | undefined
   let currentSpace: Ref<Space> | undefined
-  let currentView: AnyComponent | undefined
+  let currentView: ViewConfiguration | undefined
   let createItemDialog: AnyComponent | undefined
   let navigatorModel: NavigatorModel | undefined
 
@@ -52,7 +53,7 @@
       const spaceClass = client.getHierarchy().getClass(space._class) // (await client.findAll(core.class.Class, { _id: space._class }))[0]
       const view = client.getHierarchy().as(spaceClass, workbench.mixin.SpaceView)
       currentView = view.view
-      createItemDialog = view.createItemDialog
+      createItemDialog = currentView.createItemDialog
     } else {
       currentView = undefined
       createItemDialog = undefined
@@ -82,8 +83,8 @@
   {/if}
   <div class="component">
     <SpaceHeader space={currentSpace} {createItemDialog}/>
-    {#if currentView}
-      <Component is={currentView} props={ { space: currentSpace } }/>
+    {#if currentView && currentSpace}
+      <SpaceView space={currentSpace} _class={currentView.class} options={currentView.options} />
     {/if}
   </div>
   <!-- <div class="aside"><Chat thread/></div> -->
