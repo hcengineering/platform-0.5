@@ -33,8 +33,6 @@ export default mergeIds(recruitId, recruit, {
     CreateCandidates: '' as AnyComponent,
     CreateCandidate: '' as AnyComponent,
     CreateApplication: '' as AnyComponent,
-    VacancyView: '' as AnyComponent,
-    CandidatesView: '' as AnyComponent,
     CandidatePresenter: '' as AnyComponent,
   },
   space: {

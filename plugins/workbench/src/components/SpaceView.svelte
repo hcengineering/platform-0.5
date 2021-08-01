@@ -29,7 +29,6 @@ import core from '@anticrm/core'
 
 export let _class: Ref<Class<Doc>>
 export let space: Ref<Space>
-export let options: FindOptions<Doc> | undefined
 
 const client = getClient()
 
