@@ -27,6 +27,7 @@ export interface Backlink extends Doc {
   objectId: Ref<Doc>
   backlinkId: Ref<Doc>
   backlinkClass: Ref<Class<Doc>>
+  message: string
 }
 
 export const chunterId = 'chunter' as Plugin

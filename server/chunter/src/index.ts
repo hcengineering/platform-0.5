@@ -23,17 +23,18 @@ import chunter from '@anticrm/chunter'
 
 export const chunterServerId = 'chunter-server' as Plugin
 
-function extractBacklinks(backlinkId: Ref<Doc>, kids: NodeListOf<HTMLElement>): Data<Backlink>[] {
+function extractBacklinks(backlinkId: Ref<Doc>, message: string, kids: NodeListOf<HTMLElement>): Data<Backlink>[] {
   const result: Data<Backlink>[] = []
   for (const kid of kids) {
     if (kid.nodeName === 'span') {
       result.push({ 
         objectId: kid.getAttribute('data-id') as Ref<Doc>,
         backlinkId,
-        backlinkClass: chunter.class.Message
+        backlinkClass: chunter.class.Message,
+        message
       })
     }
-    result.push(...extractBacklinks(backlinkId, kid.childNodes as NodeListOf<HTMLElement>))
+    result.push(...extractBacklinks(backlinkId, message, kid.childNodes as NodeListOf<HTMLElement>))
   }
   return result
 }
@@ -41,7 +42,7 @@ function extractBacklinks(backlinkId: Ref<Doc>, kids: NodeListOf<HTMLElement>): 
 function getBacklinks(backlinkId: Ref<Doc>, content: string) {
   const parser = new DOMParser()
   const doc = parser.parseFromString(content, 'application/xhtml+xml')
-  return extractBacklinks(backlinkId, doc.childNodes as NodeListOf<HTMLElement>)
+  return extractBacklinks(backlinkId, content, doc.childNodes as NodeListOf<HTMLElement>)
 }
 
 async function OnMessage(tx: Tx, txFactory: TxFactory): Promise<Tx[]> {

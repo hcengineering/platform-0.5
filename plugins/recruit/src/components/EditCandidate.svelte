@@ -20,6 +20,7 @@
   import { AttributeEditor, getClient } from '@anticrm/presentation'
   import type { Candidate } from '@anticrm/recruit'
   import type { Backlink } from '@anticrm/chunter'
+  import { Backlink as BacklinkComponent } from '@anticrm/presentation'
   import File from './icons/File.svelte'
   import Address from './icons/Address.svelte'
   import Attachment from './icons/Attachment.svelte'
@@ -76,9 +77,6 @@
       <EditBox label={'Country'} placeholder={'United States'} />
     </Grid>
   </Section>
-  <Section icon={Address} label={'Backlinks'}>
-    {JSON.stringify(backlinks)}
-  </Section>
   <Section icon={IconComments} label={'Comments'}>
     <Grid column={1} rowGap={24}>
       <CommentMessage user={{firstName: 'Tim', lastName: 'Ferris'}}
@@ -89,4 +87,11 @@
       />
     </Grid>
   </Section>
+  {#if backlinks && backlinks.length > 0}
+  <Section icon={Address} label={'Backlinks'}>
+    {#each backlinks as backlink}
+      <BacklinkComponent {backlink} />
+    {/each}
+  </Section>
+  {/if}
 </Dialog>

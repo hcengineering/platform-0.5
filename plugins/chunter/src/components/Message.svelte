@@ -24,7 +24,7 @@
   import Replies from './Replies.svelte'
   import avatar from '../../img/avatar.png'
 
-  import { MarkdownViewer } from '@anticrm/presentation'
+  import { MessageViewer } from '@anticrm/presentation'
 
   export let message: Message
 
@@ -39,7 +39,7 @@
   <div class="avatar"><img src={avatar} alt="Avatar"></div>
   <div class="message">
     <div class="header">{name}<span>{time}</span></div>
-    <div class="text"><MarkdownViewer message={message.content}/></div>
+    <div class="text"><MessageViewer message={message.content}/></div>
     {#if (reactions || replies) && !thread}
       <div class="footer">
         <div>{#if reactions}<Reactions/>{/if}</div>

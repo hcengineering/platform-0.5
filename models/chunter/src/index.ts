@@ -37,6 +37,7 @@ export class TBacklink extends TDoc implements Backlink {
   objectId!: Ref<Doc>
   backlinkId!: Ref<Doc>
   backlinkClass!: Ref<Class<Doc>>
+  message!: string
 }
 
 export function createModel(builder: Builder) {
