@@ -15,7 +15,7 @@
 
 import { plugin } from '@anticrm/platform'
 import type { Plugin, Asset } from '@anticrm/platform'
-import type { Space, Doc, Ref } from '@anticrm/core'
+import type { Space, Doc, Ref, Class } from '@anticrm/core'
 import type { Employee } from '@anticrm/contact'
 
 export interface Project extends Space {}
@@ -27,6 +27,9 @@ export interface Task extends Doc {
 export const taskId = 'task' as Plugin
 
 export default plugin(taskId, {
+  class: {
+    Task: '' as Ref<Class<Task>>
+  },
   icon: {
     Task: '' as Asset,
   },

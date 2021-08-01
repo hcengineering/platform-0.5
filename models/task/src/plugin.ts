@@ -24,12 +24,11 @@ import { mergeIds } from '@anticrm/platform'
 
 export default mergeIds(taskId, task, {
   component: {
-    TaskView: '' as AnyComponent,
+    ProjectView: '' as AnyComponent,
     CreateProject: '' as AnyComponent,
   },
   class: {
     Project: '' as Ref<Class<Project>>,
-    Task: '' as Ref<Class<Task>>
   },
   string: { 
     ApplicationLabelTask: '' as IntlString,
