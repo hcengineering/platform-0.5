@@ -14,6 +14,7 @@
   // import Mute from './icons/Mute.svelte'
   import WiFi from './icons/WiFi.svelte'
   import ThemeSelector from './ThemeSelector.svelte'
+  import FontSizeSelector from './FontSizeSelector.svelte'
   
   let application: AnyComponent | undefined
 
@@ -43,6 +44,9 @@
           </div>
           <div class="widget">
             <ThemeSelector />
+          </div>
+          <div class="widget">
+            <FontSizeSelector />
           </div>
           <div class="widget">
             <WiFi size={16}/>
