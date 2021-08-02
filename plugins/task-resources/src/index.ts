@@ -14,7 +14,10 @@
 // limitations under the License.
 //
 
+import CreateTask from './components/CreateTask.svelte'
+
 export default async () => ({
   component: {
+    CreateTask
   },
 })

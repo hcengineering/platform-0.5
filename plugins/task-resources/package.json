@@ -32,6 +32,7 @@
     "@anticrm/task":"~0.5.0",
     "@anticrm/presentation":"~0.5.0",
     "@anticrm/table":"~0.5.0",
+    "@anticrm/contact":"~0.5.0",
     "svelte":"^3.37.0"
   }
 }

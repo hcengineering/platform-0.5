@@ -1,25 +1,25 @@
 [
   {
-    "_id": "6106f2e10fa1522993302771",
+    "_id": "6107ab00b5ba9604bac7e835",
     "_class": "core.class.TxCreateDoc",
     "space": "core.space.Tx",
     "objectId": "core.class.Obj",
     "objectClass": "core.class.Class",
     "objectSpace": "core.space.Model",
-    "modifiedOn": 1627845345803,
+    "modifiedOn": 1627892480136,
     "modifiedBy": "core.account.System",
     "attributes": {
       "kind": 0
     }
   },
   {
-    "_id": "6106f2e10fa1522993302772",
+    "_id": "6107ab00b5ba9604bac7e836",
     "_class": "core.class.TxCreateDoc",
     "space": "core.space.Tx",
     "objectId": "core.class.Doc",
     "objectClass": "core.class.Class",
     "objectSpace": "core.space.Model",
-    "modifiedOn": 1627845345803,
+    "modifiedOn": 1627892480136,
     "modifiedBy": "core.account.System",
     "attributes": {
       "kind": 0,
@@ -27,13 +27,13 @@
     }
   },
   {
-    "_id": "6106f2e10fa1522993302773",
+    "_id": "6107ab00b5ba9604bac7e837",
     "_class": "core.class.TxCreateDoc",
     "space": "core.space.Tx",
     "objectId": "core.class.Type",
     "objectClass": "core.class.Class",
     "objectSpace": "core.space.Model",
-    "modifiedOn": 1627845345803,
+    "modifiedOn": 1627892480136,
     "modifiedBy": "core.account.System",
     "attributes": {
       "kind": 0,
@@ -41,13 +41,13 @@
     }
   },
   {
-    "_id": "6106f2e10fa1522993302774",
+    "_id": "6107ab00b5ba9604bac7e838",
     "_class": "core.class.TxCreateDoc",
     "space": "core.space.Tx",
     "objectId": "core.class.TypeString",
     "objectClass": "core.class.Class",
     "objectSpace": "core.space.Model",
-    "modifiedOn": 1627845345803,
+    "modifiedOn": 1627892480136,
     "modifiedBy": "core.account.System",
     "attributes": {
       "kind": 0,
@@ -55,13 +55,13 @@
     }
   },
   {
-    "_id": "6106f2e10fa1522993302775",
+    "_id": "6107ab00b5ba9604bac7e839",
     "_class": "core.class.TxCreateDoc",
     "space": "core.space.Tx",
     "objectId": "core.class.Attribute",
     "objectClass": "core.class.Class",
     "objectSpace": "core.space.Model",
-    "modifiedOn": 1627845345803,
+    "modifiedOn": 1627892480136,
     "modifiedBy": "core.account.System",
     "attributes": {
       "kind": 0,
@@ -69,13 +69,13 @@
     }
   },
   {
-    "_id": "6106f2e10fa1522993302776",
+    "_id": "6107ab00b5ba9604bac7e83a",
     "_class": "core.class.TxCreateDoc",
     "space": "core.space.Tx",
     "objectId": "core.class.Account",
     "objectClass": "core.class.Class",
     "objectSpace": "core.space.Model",
-    "modifiedOn": 1627845345803,
+    "modifiedOn": 1627892480136,
     "modifiedBy": "core.account.System",
     "attributes": {
       "domain": "model",
@@ -84,13 +84,13 @@
     }
   },
   {
-    "_id": "6106f2e10fa1522993302777",
+    "_id": "6107ab00b5ba9604bac7e83b",
     "_class": "core.class.TxCreateDoc",
     "space": "core.space.Tx",
     "objectId": "core.class.Space",
     "objectClass": "core.class.Class",
     "objectSpace": "core.space.Model",
-    "modifiedOn": 1627845345803,
+    "modifiedOn": 1627892480136,
     "modifiedBy": "core.account.System",
     "attributes": {
       "domain": "model",
@@ -99,13 +99,13 @@
     }
   },
   {
-    "_id": "6106f2e10fa1522993302778",
+    "_id": "6107ab00b5ba9604bac7e83c",
     "_class": "core.class.TxCreateDoc",
     "space": "core.space.Tx",
     "objectId": "core.class.Tx",
     "objectClass": "core.class.Class",
     "objectSpace": "core.space.Model",
-    "modifiedOn": 1627845345803,
+    "modifiedOn": 1627892480136,
     "modifiedBy": "core.account.System",
     "attributes": {
       "domain": "tx",
@@ -114,13 +114,13 @@
     }
   },
   {
-    "_id": "6106f2e10fa1522993302779",
+    "_id": "6107ab00b5ba9604bac7e83d",
     "_class": "core.class.TxCreateDoc",
     "space": "core.space.Tx",
     "objectId": "core.class.TxUpdateDoc",
     "objectClass": "core.class.Class",
     "objectSpace": "core.space.Model",
-    "modifiedOn": 1627845345803,
+    "modifiedOn": 1627892480136,
     "modifiedBy": "core.account.System",
     "attributes": {
       "kind": 0,
@@ -128,13 +128,13 @@
     }
   },
   {
-    "_id": "6106f2e10fa152299330277a",
+    "_id": "6107ab00b5ba9604bac7e83e",
     "_class": "core.class.TxCreateDoc",
     "space": "core.space.Tx",
     "objectId": "core.class.TxMixin",
     "objectClass": "core.class.Class",
     "objectSpace": "core.space.Model",
-    "modifiedOn": 1627845345803,
+    "modifiedOn": 1627892480136,
     "modifiedBy": "core.account.System",
     "attributes": {
       "kind": 0,
@@ -142,13 +142,13 @@
     }
   },
   {
-    "_id": "6106f2e10fa152299330277b",
+    "_id": "6107ab00b5ba9604bac7e83f",
     "_class": "core.class.TxCreateDoc",
     "space": "core.space.Tx",
     "objectId": "core.class.TxCreateDoc",
     "objectClass": "core.class.Class",
     "objectSpace": "core.space.Model",
-    "modifiedOn": 1627845345803,
+    "modifiedOn": 1627892480136,
     "modifiedBy": "core.account.System",
     "attributes": {
       "kind": 0,
@@ -156,13 +156,13 @@
     }
   },
   {
-    "_id": "6106f2e10fa152299330277c",
+    "_id": "6107ab00b5ba9604bac7e840",
     "_class": "core.class.TxCreateDoc",
     "space": "core.space.Tx",
     "objectId": "core.class.Class",
     "objectClass": "core.class.Class",
     "objectSpace": "core.space.Model",
-    "modifiedOn": 1627845345803,
+    "modifiedOn": 1627892480136,
     "modifiedBy": "core.account.System",
     "attributes": {
       "domain": "model",
@@ -171,13 +171,13 @@
     }
   },
   {
-    "_id": "6106f2e10fa152299330277d",
+    "_id": "6107ab00b5ba9604bac7e841",
     "_class": "core.class.TxCreateDoc",
     "space": "core.space.Tx",
     "objectId": "core.class.Mixin",
     "objectClass": "core.class.Class",
     "objectSpace": "core.space.Model",
-    "modifiedOn": 1627845345803,
+    "modifiedOn": 1627892480136,
     "modifiedBy": "core.account.System",
     "attributes": {
       "kind": 0,
@@ -185,13 +185,13 @@
     }
   },
   {
-    "_id": "6106f2e10fa152299330277e",
+    "_id": "6107ab00b5ba9604bac7e842",
     "_class": "core.class.TxCreateDoc",
     "space": "core.space.Tx",
     "objectId": "view.class.Viewlet",
     "objectClass": "core.class.Class",
     "objectSpace": "core.space.Model",
-    "modifiedOn": 1627845345803,
+    "modifiedOn": 1627892480137,
     "modifiedBy": "core.account.System",
     "attributes": {
       "domain": "model",
@@ -200,13 +200,13 @@
     }
   },
   {
-    "_id": "6106f2e10fa152299330277f",
+    "_id": "6107ab00b5ba9604bac7e843",
     "_class": "core.class.TxCreateDoc",
     "space": "core.space.Tx",
     "objectId": "view.class.ViewletDescriptor",
     "objectClass": "core.class.Class",
     "objectSpace": "core.space.Model",
-    "modifiedOn": 1627845345803,
+    "modifiedOn": 1627892480137,
     "modifiedBy": "core.account.System",
     "attributes": {
       "domain": "model",
@@ -215,13 +215,13 @@
     }
   },
   {
-    "_id": "6106f2e10fa1522993302780",
+    "_id": "6107ab00b5ba9604bac7e844",
     "_class": "core.class.TxCreateDoc",
     "space": "core.space.Tx",
     "objectId": "view.mixin.AttributePresenter",
     "objectClass": "core.class.Class",
     "objectSpace": "core.space.Model",
-    "modifiedOn": 1627845345803,
+    "modifiedOn": 1627892480137,
     "modifiedBy": "core.account.System",
     "attributes": {
       "kind": 0,
@@ -229,13 +229,13 @@
     }
   },
   {
-    "_id": "6106f2e10fa1522993302781",
+    "_id": "6107ab00b5ba9604bac7e845",
     "_class": "core.class.TxCreateDoc",
     "space": "core.space.Tx",
     "objectId": "view.mixin.AttributeEditor",
     "objectClass": "core.class.Class",
     "objectSpace": "core.space.Model",
-    "modifiedOn": 1627845345803,
+    "modifiedOn": 1627892480137,
     "modifiedBy": "core.account.System",
     "attributes": {
       "kind": 0,
@@ -243,11 +243,11 @@
     }
   },
   {
-    "_id": "6106f2e10fa1522993302782",
+    "_id": "6107ab00b5ba9604bac7e846",
     "_class": "core.class.TxMixin",
     "space": "core.space.Tx",
     "modifiedBy": "core.account.System",
-    "modifiedOn": 1627845345803,
+    "modifiedOn": 1627892480137,
     "objectId": "core.class.TypeString",
     "objectClass": "core.class.Class",
     "objectSpace": "core.space.Model",
@@ -257,11 +257,11 @@
     }
   },
   {
-    "_id": "6106f2e10fa1522993302783",
+    "_id": "6107ab00b5ba9604bac7e847",
     "_class": "core.class.TxMixin",
     "space": "core.space.Tx",
     "modifiedBy": "core.account.System",
-    "modifiedOn": 1627845345803,
+    "modifiedOn": 1627892480137,
     "objectId": "core.class.TypeString",
     "objectClass": "core.class.Class",
     "objectSpace": "core.space.Model",
@@ -271,13 +271,13 @@
     }
   },
   {
-    "_id": "6106f2e10fa1522993302784",
+    "_id": "6107ab00b5ba9604bac7e848",
     "_class": "core.class.TxCreateDoc",
     "space": "core.space.Tx",
     "objectId": "view.viewlet.Table",
     "objectClass": "view.class.ViewletDescriptor",
     "objectSpace": "core.space.Model",
-    "modifiedOn": 1627845345803,
+    "modifiedOn": 1627892480137,
     "modifiedBy": "core.account.System",
     "attributes": {
       "label": "Table",
@@ -286,13 +286,13 @@
     }
   },
   {
-    "_id": "6106f2e10fa1522993302785",
+    "_id": "6107ab00b5ba9604bac7e849",
     "_class": "core.class.TxCreateDoc",
     "space": "core.space.Tx",
     "objectId": "workbench.mixin.SpaceView",
     "objectClass": "core.class.Class",
     "objectSpace": "core.space.Model",
-    "modifiedOn": 1627845345803,
+    "modifiedOn": 1627892480137,
     "modifiedBy": "core.account.System",
     "attributes": {
       "kind": 0,
@@ -300,13 +300,13 @@
     }
   },
   {
-    "_id": "6106f2e10fa1522993302786",
+    "_id": "6107ab00b5ba9604bac7e84a",
     "_class": "core.class.TxCreateDoc",
     "space": "core.space.Tx",
     "objectId": "workbench.class.Application",
     "objectClass": "core.class.Class",
     "objectSpace": "core.space.Model",
-    "modifiedOn": 1627845345803,
+    "modifiedOn": 1627892480137,
     "modifiedBy": "core.account.System",
     "attributes": {
       "domain": "model",
@@ -315,13 +315,13 @@
     }
   },
   {
-    "_id": "6106f2e10fa1522993302787",
+    "_id": "6107ab00b5ba9604bac7e84b",
     "_class": "core.class.TxCreateDoc",
     "space": "core.space.Tx",
     "objectId": "contact.class.Contact",
     "objectClass": "core.class.Class",
     "objectSpace": "core.space.Model",
-    "modifiedOn": 1627845345803,
+    "modifiedOn": 1627892480137,
     "modifiedBy": "core.account.System",
     "attributes": {
       "kind": 0,
@@ -329,13 +329,13 @@
     }
   },
   {
-    "_id": "6106f2e10fa1522993302788",
+    "_id": "6107ab00b5ba9604bac7e84c",
     "_class": "core.class.TxCreateDoc",
     "space": "core.space.Tx",
     "objectId": "contact.class.Organization",
     "objectClass": "core.class.Class",
     "objectSpace": "core.space.Model",
-    "modifiedOn": 1627845345803,
+    "modifiedOn": 1627892480137,
     "modifiedBy": "core.account.System",
     "attributes": {
       "kind": 0,
@@ -343,13 +343,13 @@
     }
   },
   {
-    "_id": "6106f2e10fa1522993302789",
+    "_id": "6107ab00b5ba9604bac7e84d",
     "_class": "core.class.TxCreateDoc",
     "space": "core.space.Tx",
     "objectId": "contact.class.Person",
     "objectClass": "core.class.Class",
     "objectSpace": "core.space.Model",
-    "modifiedOn": 1627845345803,
+    "modifiedOn": 1627892480137,
     "modifiedBy": "core.account.System",
     "attributes": {
       "kind": 0,
@@ -357,12 +357,12 @@
     }
   },
   {
-    "_id": "6106f2e10fa152299330278a",
-    "objectId": "6106f2e10fa152299330278b",
+    "_id": "6107ab00b5ba9604bac7e84e",
+    "objectId": "6107ab00b5ba9604bac7e84f",
     "_class": "core.class.TxCreateDoc",
     "space": "core.space.Tx",
     "modifiedBy": "core.account.System",
-    "modifiedOn": 1627845345624,
+    "modifiedOn": 1627892479943,
     "objectSpace": "core.space.Model",
     "objectClass": "core.class.Attribute",
     "attributes": {
@@ -375,12 +375,12 @@
     }
   },
   {
-    "_id": "6106f2e10fa152299330278c",
-    "objectId": "6106f2e10fa152299330278d",
+    "_id": "6107ab00b5ba9604bac7e850",
+    "objectId": "6107ab00b5ba9604bac7e851",
     "_class": "core.class.TxCreateDoc",
     "space": "core.space.Tx",
     "modifiedBy": "core.account.System",
-    "modifiedOn": 1627845345624,
+    "modifiedOn": 1627892479943,
     "objectSpace": "core.space.Model",
     "objectClass": "core.class.Attribute",
     "attributes": {
@@ -393,12 +393,12 @@
     }
   },
   {
-    "_id": "6106f2e10fa152299330278e",
-    "objectId": "6106f2e10fa152299330278f",
+    "_id": "6107ab00b5ba9604bac7e852",
+    "objectId": "6107ab00b5ba9604bac7e853",
     "_class": "core.class.TxCreateDoc",
     "space": "core.space.Tx",
     "modifiedBy": "core.account.System",
-    "modifiedOn": 1627845345624,
+    "modifiedOn": 1627892479943,
     "objectSpace": "core.space.Model",
     "objectClass": "core.class.Attribute",
     "attributes": {
@@ -411,12 +411,12 @@
     }
   },
   {
-    "_id": "6106f2e10fa1522993302790",
-    "objectId": "6106f2e10fa1522993302791",
+    "_id": "6107ab00b5ba9604bac7e854",
+    "objectId": "6107ab00b5ba9604bac7e855",
     "_class": "core.class.TxCreateDoc",
     "space": "core.space.Tx",
     "modifiedBy": "core.account.System",
-    "modifiedOn": 1627845345624,
+    "modifiedOn": 1627892479943,
     "objectSpace": "core.space.Model",
     "objectClass": "core.class.Attribute",
     "attributes": {
@@ -429,12 +429,12 @@
     }
   },
   {
-    "_id": "6106f2e10fa1522993302792",
-    "objectId": "6106f2e10fa1522993302793",
+    "_id": "6107ab00b5ba9604bac7e856",
+    "objectId": "6107ab00b5ba9604bac7e857",
     "_class": "core.class.TxCreateDoc",
     "space": "core.space.Tx",
     "modifiedBy": "core.account.System",
-    "modifiedOn": 1627845345624,
+    "modifiedOn": 1627892479943,
     "objectSpace": "core.space.Model",
     "objectClass": "core.class.Attribute",
     "attributes": {
@@ -447,13 +447,13 @@
     }
   },
   {
-    "_id": "6106f2e10fa1522993302794",
+    "_id": "6107ab00b5ba9604bac7e858",
     "_class": "core.class.TxCreateDoc",
     "space": "core.space.Tx",
     "objectId": "chunter.class.Backlink",
     "objectClass": "core.class.Class",
     "objectSpace": "core.space.Model",
-    "modifiedOn": 1627845345804,
+    "modifiedOn": 1627892480137,
     "modifiedBy": "core.account.System",
     "attributes": {
       "kind": 0,
@@ -461,13 +461,13 @@
     }
   },
   {
-    "_id": "6106f2e10fa1522993302795",
+    "_id": "6107ab00b5ba9604bac7e859",
     "_class": "core.class.TxCreateDoc",
     "space": "core.space.Tx",
     "objectId": "chunter.class.Message",
     "objectClass": "core.class.Class",
     "objectSpace": "core.space.Model",
-    "modifiedOn": 1627845345804,
+    "modifiedOn": 1627892480137,
     "modifiedBy": "core.account.System",
     "attributes": {
       "kind": 0,
@@ -478,13 +478,13 @@
     }
   },
   {
-    "_id": "6106f2e10fa1522993302796",
+    "_id": "6107ab00b5ba9604bac7e85a",
     "_class": "core.class.TxCreateDoc",
     "space": "core.space.Tx",
     "objectId": "chunter.class.Channel",
     "objectClass": "core.class.Class",
     "objectSpace": "core.space.Model",
-    "modifiedOn": 1627845345804,
+    "modifiedOn": 1627892480137,
     "modifiedBy": "core.account.System",
     "attributes": {
       "kind": 0,
@@ -494,11 +494,11 @@
     }
   },
   {
-    "_id": "6106f2e10fa1522993302797",
+    "_id": "6107ab00b5ba9604bac7e85b",
     "_class": "core.class.TxMixin",
     "space": "core.space.Tx",
     "modifiedBy": "core.account.System",
-    "modifiedOn": 1627845345804,
+    "modifiedOn": 1627892480137,
     "objectId": "chunter.class.Channel",
     "objectClass": "core.class.Class",
     "objectSpace": "core.space.Model",
@@ -510,13 +510,13 @@
     }
   },
   {
-    "_id": "6106f2e10fa1522993302798",
+    "_id": "6107ab00b5ba9604bac7e85c",
     "_class": "core.class.TxCreateDoc",
     "space": "core.space.Tx",
     "objectId": "chunter.viewlet.Chat",
     "objectClass": "view.class.ViewletDescriptor",
     "objectSpace": "core.space.Model",
-    "modifiedOn": 1627845345804,
+    "modifiedOn": 1627892480137,
     "modifiedBy": "core.account.System",
     "attributes": {
       "label": "Chat",
@@ -525,13 +525,13 @@
     }
   },
   {
-    "_id": "6106f2e10fa1522993302799",
+    "_id": "6107ab00b5ba9604bac7e85d",
     "_class": "core.class.TxCreateDoc",
     "space": "core.space.Tx",
-    "objectId": "6106f2e10fa152299330279a",
+    "objectId": "6107ab00b5ba9604bac7e85e",
     "objectClass": "view.class.Viewlet",
     "objectSpace": "core.space.Model",
-    "modifiedOn": 1627845345804,
+    "modifiedOn": 1627892480137,
     "modifiedBy": "core.account.System",
     "attributes": {
       "attachTo": "chunter.class.Message",
@@ -541,13 +541,13 @@
     }
   },
   {
-    "_id": "6106f2e10fa152299330279b",
+    "_id": "6107ab00b5ba9604bac7e85f",
     "_class": "core.class.TxCreateDoc",
     "space": "core.space.Tx",
-    "objectId": "6106f2e10fa152299330279c",
+    "objectId": "6107ab00b5ba9604bac7e860",
     "objectClass": "workbench.class.Application",
     "objectSpace": "core.space.Model",
-    "modifiedOn": 1627845345804,
+    "modifiedOn": 1627892480137,
     "modifiedBy": "core.account.System",
     "attributes": {
       "label": "chunter.string.ApplicationLabelChunter",
@@ -565,13 +565,13 @@
     }
   },
   {
-    "_id": "6106f2e10fa152299330279d",
+    "_id": "6107ab00b5ba9604bac7e861",
     "_class": "core.class.TxCreateDoc",
     "space": "core.space.Tx",
-    "objectId": "6106f2e10fa152299330279e",
+    "objectId": "6107ab00b5ba9604bac7e862",
     "objectClass": "chunter.class.Channel",
     "objectSpace": "core.space.Model",
-    "modifiedOn": 1627845345804,
+    "modifiedOn": 1627892480137,
     "modifiedBy": "core.account.System",
     "attributes": {
       "name": "general",
@@ -581,13 +581,13 @@
     }
   },
   {
-    "_id": "6106f2e10fa152299330279f",
+    "_id": "6107ab00b5ba9604bac7e863",
     "_class": "core.class.TxCreateDoc",
     "space": "core.space.Tx",
-    "objectId": "6106f2e10fa15229933027a0",
+    "objectId": "6107ab00b5ba9604bac7e864",
     "objectClass": "chunter.class.Channel",
     "objectSpace": "core.space.Model",
-    "modifiedOn": 1627845345804,
+    "modifiedOn": 1627892480137,
     "modifiedBy": "core.account.System",
     "attributes": {
       "name": "random",
@@ -597,13 +597,13 @@
     }
   },
   {
-    "_id": "6106f2e10fa15229933027a1",
+    "_id": "6107ab00b5ba9604bac7e865",
     "_class": "core.class.TxCreateDoc",
     "space": "core.space.Tx",
     "objectId": "task.class.Task",
     "objectClass": "core.class.Class",
     "objectSpace": "core.space.Model",
-    "modifiedOn": 1627845345804,
+    "modifiedOn": 1627892480137,
     "modifiedBy": "core.account.System",
     "attributes": {
       "kind": 0,
@@ -611,43 +611,46 @@
     }
   },
   {
-    "_id": "6106f2e10fa15229933027a2",
+    "_id": "6107ab00b5ba9604bac7e866",
     "_class": "core.class.TxCreateDoc",
     "space": "core.space.Tx",
     "objectId": "task.class.Project",
     "objectClass": "core.class.Class",
     "objectSpace": "core.space.Model",
-    "modifiedOn": 1627845345804,
+    "modifiedOn": 1627892480137,
     "modifiedBy": "core.account.System",
     "attributes": {
       "kind": 0,
-      "extends": "core.class.Space"
+      "extends": "core.class.Space",
+      "label": "Project",
+      "icon": "task.icon.Task"
     }
   },
   {
-    "_id": "6106f2e10fa15229933027a3",
+    "_id": "6107ab00b5ba9604bac7e867",
     "_class": "core.class.TxMixin",
     "space": "core.space.Tx",
     "modifiedBy": "core.account.System",
-    "modifiedOn": 1627845345804,
+    "modifiedOn": 1627892480137,
     "objectId": "task.class.Project",
     "objectClass": "core.class.Class",
     "objectSpace": "core.space.Model",
     "mixin": "workbench.mixin.SpaceView",
     "attributes": {
       "view": {
-        "class": "task.class.Task"
+        "class": "task.class.Task",
+        "createItemDialog": "task.component.CreateTask"
       }
     }
   },
   {
-    "_id": "6106f2e10fa15229933027a4",
+    "_id": "6107ab00b5ba9604bac7e868",
     "_class": "core.class.TxCreateDoc",
     "space": "core.space.Tx",
-    "objectId": "6106f2e10fa15229933027a5",
+    "objectId": "6107ab00b5ba9604bac7e869",
     "objectClass": "view.class.Viewlet",
     "objectSpace": "core.space.Model",
-    "modifiedOn": 1627845345804,
+    "modifiedOn": 1627892480137,
     "modifiedBy": "core.account.System",
     "attributes": {
       "attachTo": "task.class.Task",
@@ -657,13 +660,13 @@
     }
   },
   {
-    "_id": "6106f2e10fa15229933027a6",
+    "_id": "6107ab00b5ba9604bac7e86a",
     "_class": "core.class.TxCreateDoc",
     "space": "core.space.Tx",
-    "objectId": "6106f2e10fa15229933027a7",
+    "objectId": "6107ab00b5ba9604bac7e86b",
     "objectClass": "workbench.class.Application",
     "objectSpace": "core.space.Model",
-    "modifiedOn": 1627845345804,
+    "modifiedOn": 1627892480137,
     "modifiedBy": "core.account.System",
     "attributes": {
       "label": "task.string.ApplicationLabelTask",
@@ -681,13 +684,13 @@
     }
   },
   {
-    "_id": "6106f2e10fa15229933027a8",
+    "_id": "6107ab00b5ba9604bac7e86c",
     "_class": "core.class.TxCreateDoc",
     "space": "core.space.Tx",
-    "objectId": "6106f2e10fa15229933027a9",
+    "objectId": "6107ab00b5ba9604bac7e86d",
     "objectClass": "task.class.Project",
     "objectSpace": "core.space.Model",
-    "modifiedOn": 1627845345804,
+    "modifiedOn": 1627892480137,
     "modifiedBy": "core.account.System",
     "attributes": {
       "name": "demo",
@@ -697,13 +700,13 @@
     }
   },
   {
-    "_id": "6106f2e10fa15229933027aa",
+    "_id": "6107ab00b5ba9604bac7e86e",
     "_class": "core.class.TxCreateDoc",
     "space": "core.space.Tx",
     "objectId": "recruit.class.Applicant",
     "objectClass": "core.class.Class",
     "objectSpace": "core.space.Model",
-    "modifiedOn": 1627845345804,
+    "modifiedOn": 1627892480137,
     "modifiedBy": "core.account.System",
     "attributes": {
       "kind": 0,
@@ -711,13 +714,13 @@
     }
   },
   {
-    "_id": "6106f2e10fa15229933027ab",
+    "_id": "6107ab00b5ba9604bac7e86f",
     "_class": "core.class.TxCreateDoc",
     "space": "core.space.Tx",
     "objectId": "recruit.class.Candidate",
     "objectClass": "core.class.Class",
     "objectSpace": "core.space.Model",
-    "modifiedOn": 1627845345804,
+    "modifiedOn": 1627892480137,
     "modifiedBy": "core.account.System",
     "attributes": {
       "kind": 0,
@@ -725,13 +728,13 @@
     }
   },
   {
-    "_id": "6106f2e10fa15229933027ac",
+    "_id": "6107ab00b5ba9604bac7e870",
     "_class": "core.class.TxCreateDoc",
     "space": "core.space.Tx",
     "objectId": "recruit.class.Candidates",
     "objectClass": "core.class.Class",
     "objectSpace": "core.space.Model",
-    "modifiedOn": 1627845345804,
+    "modifiedOn": 1627892480137,
     "modifiedBy": "core.account.System",
     "attributes": {
       "kind": 0,
@@ -741,13 +744,13 @@
     }
   },
   {
-    "_id": "6106f2e10fa15229933027ad",
+    "_id": "6107ab00b5ba9604bac7e871",
     "_class": "core.class.TxCreateDoc",
     "space": "core.space.Tx",
     "objectId": "recruit.class.Vacancy",
     "objectClass": "core.class.Class",
     "objectSpace": "core.space.Model",
-    "modifiedOn": 1627845345804,
+    "modifiedOn": 1627892480137,
     "modifiedBy": "core.account.System",
     "attributes": {
       "kind": 0,
@@ -757,11 +760,11 @@
     }
   },
   {
-    "_id": "6106f2e10fa15229933027ae",
+    "_id": "6107ab00b5ba9604bac7e872",
     "_class": "core.class.TxMixin",
     "space": "core.space.Tx",
     "modifiedBy": "core.account.System",
-    "modifiedOn": 1627845345804,
+    "modifiedOn": 1627892480137,
     "objectId": "recruit.class.Vacancy",
     "objectClass": "core.class.Class",
     "objectSpace": "core.space.Model",
@@ -774,11 +777,11 @@
     }
   },
   {
-    "_id": "6106f2e10fa15229933027af",
+    "_id": "6107ab00b5ba9604bac7e873",
     "_class": "core.class.TxMixin",
     "space": "core.space.Tx",
     "modifiedBy": "core.account.System",
-    "modifiedOn": 1627845345804,
+    "modifiedOn": 1627892480137,
     "objectId": "recruit.class.Candidates",
     "objectClass": "core.class.Class",
     "objectSpace": "core.space.Model",
@@ -791,11 +794,11 @@
     }
   },
   {
-    "_id": "6106f2e10fa15229933027b0",
+    "_id": "6107ab00b5ba9604bac7e874",
     "_class": "core.class.TxMixin",
     "space": "core.space.Tx",
     "modifiedBy": "core.account.System",
-    "modifiedOn": 1627845345804,
+    "modifiedOn": 1627892480137,
     "objectId": "recruit.class.Candidate",
     "objectClass": "core.class.Class",
     "objectSpace": "core.space.Model",
@@ -805,13 +808,13 @@
     }
   },
   {
-    "_id": "6106f2e10fa15229933027b1",
+    "_id": "6107ab00b5ba9604bac7e875",
     "_class": "core.class.TxCreateDoc",
     "space": "core.space.Tx",
-    "objectId": "6106f2e10fa15229933027b2",
+    "objectId": "6107ab00b5ba9604bac7e876",
     "objectClass": "workbench.class.Application",
     "objectSpace": "core.space.Model",
-    "modifiedOn": 1627845345804,
+    "modifiedOn": 1627892480137,
     "modifiedBy": "core.account.System",
     "attributes": {
       "label": "recruit.string.RecruitApplication",
@@ -835,13 +838,13 @@
     }
   },
   {
-    "_id": "6106f2e10fa15229933027b3",
+    "_id": "6107ab00b5ba9604bac7e877",
     "_class": "core.class.TxCreateDoc",
     "space": "core.space.Tx",
     "objectId": "recruit.space.CandidatesPublic",
     "objectClass": "recruit.class.Candidates",
     "objectSpace": "core.space.Model",
-    "modifiedOn": 1627845345804,
+    "modifiedOn": 1627892480137,
     "modifiedBy": "core.account.System",
     "attributes": {
       "name": "public",
@@ -851,13 +854,13 @@
     }
   },
   {
-    "_id": "6106f2e10fa15229933027b4",
+    "_id": "6107ab00b5ba9604bac7e878",
     "_class": "core.class.TxCreateDoc",
     "space": "core.space.Tx",
-    "objectId": "6106f2e10fa15229933027b5",
+    "objectId": "6107ab00b5ba9604bac7e879",
     "objectClass": "view.class.Viewlet",
     "objectSpace": "core.space.Model",
-    "modifiedOn": 1627845345804,
+    "modifiedOn": 1627892480137,
     "modifiedBy": "core.account.System",
     "attributes": {
       "attachTo": "recruit.class.Candidate",
@@ -872,13 +875,13 @@
     }
   },
   {
-    "_id": "6106f2e10fa15229933027b6",
+    "_id": "6107ab00b5ba9604bac7e87a",
     "_class": "core.class.TxCreateDoc",
     "space": "core.space.Tx",
-    "objectId": "6106f2e10fa15229933027b7",
+    "objectId": "6107ab00b5ba9604bac7e87b",
     "objectClass": "view.class.Viewlet",
     "objectSpace": "core.space.Model",
-    "modifiedOn": 1627845345804,
+    "modifiedOn": 1627892480137,
     "modifiedBy": "core.account.System",
     "attributes": {
       "attachTo": "recruit.class.Applicant",
@@ -897,13 +900,13 @@
     }
   },
   {
-    "_id": "6106f2e10fa15229933027b8",
+    "_id": "6107ab00b5ba9604bac7e87c",
     "_class": "core.class.TxCreateDoc",
     "space": "core.space.Tx",
-    "objectId": "6106f2e10fa15229933027b9",
+    "objectId": "6107ab00b5ba9604bac7e87d",
     "objectClass": "recruit.class.Candidate",
     "objectSpace": "recruit.space.CandidatesPublic",
-    "modifiedOn": 1627845345804,
+    "modifiedOn": 1627892480137,
     "modifiedBy": "core.account.System",
     "attributes": {
       "firstName": "Andrey",
@@ -914,13 +917,13 @@
     }
   },
   {
-    "_id": "6106f2e10fa15229933027ba",
+    "_id": "6107ab00b5ba9604bac7e87e",
     "_class": "core.class.TxCreateDoc",
     "space": "core.space.Tx",
-    "objectId": "6106f2e10fa15229933027bb",
+    "objectId": "6107ab00b5ba9604bac7e87f",
     "objectClass": "recruit.class.Candidate",
     "objectSpace": "recruit.space.CandidatesPublic",
-    "modifiedOn": 1627845345804,
+    "modifiedOn": 1627892480137,
     "modifiedBy": "core.account.System",
     "attributes": {
       "firstName": "Marina",

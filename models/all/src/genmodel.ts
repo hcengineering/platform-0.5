@@ -1,3 +1,6 @@
 import builder from '.'
+import { writeFileSync } from 'fs'
 
-console.log(JSON.stringify(builder.getTxes()))
+const content = JSON.stringify(builder.getTxes(), undefined, 2)
+writeFileSync('../../plugins/client-dev/src/model.tx.json', content)
+

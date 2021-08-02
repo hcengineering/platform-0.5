@@ -13,6 +13,7 @@
 // limitations under the License.
 //
 
+import type { IntlString } from '@anticrm/platform'
 import { Builder, Model, TypeString, UX, Trigger } from '@anticrm/model'
 import type { Ref, Doc, Class} from '@anticrm/core'
 import { TSpace, TDoc } from '@anticrm/model-core'
@@ -26,6 +27,7 @@ import view from '@anticrm/model-view'
 import task from './plugin'
 
 @Model(task.class.Project, core.class.Space)
+@UX('Project' as IntlString, task.icon.Task)
 export class TProject extends TSpace implements Project {}
 
 @Model(task.class.Task, core.class.Doc)
@@ -37,7 +39,8 @@ export function createModel(builder: Builder) {
   builder.createModel(TProject, TTask)
   builder.mixin(task.class.Project, core.class.Class, workbench.mixin.SpaceView, {
     view: {
-      class: task.class.Task, 
+      class: task.class.Task,
+      createItemDialog: task.component.CreateTask
     }
   })
 
