@@ -58,10 +58,6 @@ export function createModel(builder: Builder) {
     },
   })
 
-  builder.mixin(recruit.class.Candidate, core.class.Class, view.mixin.AttributePresenter, {
-    presenter: recruit.component.CandidatePresenter
-  })
-
   builder.createDoc(workbench.class.Application, core.space.Model, {
     label: recruit.string.RecruitApplication,
     icon: recruit.icon.RecruitApplication,

@@ -27,7 +27,6 @@ export default async () => ({
     CreateCandidates,
     CreateCandidate,
     CreateApplication,
-    CandidatePresenter,
     EditCandidate
   },
 })
