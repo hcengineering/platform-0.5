@@ -30,7 +30,7 @@
   {/if}
   <Tooltip label={label} direction="right">
     <div class="container" class:noty={notify}>
-      <Icon icon={icon} size={28}/>
+      <Icon icon={icon} size={'large'}/>
     </div>
   </Tooltip>
 </button>

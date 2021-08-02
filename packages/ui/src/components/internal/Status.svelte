@@ -10,7 +10,7 @@
 
 <div class="status">
   {#if status.severity !== Severity.OK}
-    <Info size={14}/>
+    <Info size={'small'}/>
   {/if}
   {#if status.severity !== Severity.OK}
     <span><Label label={status.code} params={status.params}/></span>

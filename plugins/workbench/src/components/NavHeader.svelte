@@ -24,7 +24,7 @@
   <div class="title">
     <span>{title}</span>
     <div class="arrow">
-      <ActionIcon icon={MoreH} size={16}/>
+      <ActionIcon icon={MoreH} size={'small'}/>
     </div>
   </div>
 </div>

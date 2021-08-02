@@ -15,7 +15,7 @@
 </script>
 
 <div class="container" on:click={changeFontSize}>
-  <FontSize size={16}/>
+  <FontSize size={'small'}/>
 </div>
 
 <style lang="scss">

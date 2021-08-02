@@ -18,13 +18,28 @@
   import { getMetadata } from '@anticrm/platform'
 
   export let icon: Asset
-  export let size: 16 | 20 | 24 | 28
+  export let size: 'small' | 'medium' | 'large'
   export let fill = 'var(--theme-caption-color)'
 
   let url: string
   $: url = getMetadata(icon) ?? 'https://anticrm.org/logo.svg'
 </script>
 
-<svg width={size} height={size} {fill}>
+<svg class={size} {fill}>
   <use href={url} />
 </svg>
+
+<style lang="scss">
+  .small {
+    width: 1.143em;
+    height: 1.143em;
+  }
+  .medium {
+    width: 1.429em;
+    height: 1.429em;
+  }
+  .large {
+    width: 1.714em;
+    height: 1.714em;
+  }
+</style>

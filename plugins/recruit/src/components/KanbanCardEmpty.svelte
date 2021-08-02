@@ -23,7 +23,7 @@
 
 <div class="card-container">
   <div class="icon">
-    <IconAdd size={16} />
+    <IconAdd size={'small'} />
   </div>
   <Label {label} />
 </div>

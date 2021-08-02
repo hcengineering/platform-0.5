@@ -49,6 +49,7 @@ export { default as Row } from './components/Row.svelte'
 export { default as DialogHeader } from './components/DialogHeader.svelte'
 export { default as CheckBoxWithLabel } from './components/CheckBoxWithLabel.svelte'
 export { default as CheckBoxList } from './components/CheckBoxList.svelte'
+export { default as IconSize } from './components/IconSize.svelte'
 
 export { default as IconAdd } from './components/icons/Add.svelte'
 export { default as IconSearch } from './components/icons/Search.svelte'

@@ -30,9 +30,9 @@
     closed = !closed
   }}
 >
-  <svelte:component this={icon} size={20} />
+  <svelte:component this={icon} size={'medium'} />
   <div class="title"><Label {label} /></div>
-  <div class="arrow">{#if closed}<ArrowUp />{:else}<ArrowDown />{/if}</div>
+  <div class="arrow">{#if closed}<ArrowUp size={'small'} />{:else}<ArrowDown size={'small'} />{/if}</div>
 </div>
 <div class="section-content" class:hidden={closed}><slot/></div>
 

@@ -49,7 +49,7 @@
             <FontSizeSelector />
           </div>
           <div class="widget">
-            <WiFi size={16}/>
+            <WiFi size={'small'}/>
           </div>
         </div>
       </div>
