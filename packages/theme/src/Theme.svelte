@@ -16,10 +16,16 @@
 <script lang="ts">
   import { setContext, onMount } from 'svelte'
 
-  const currentTheme = localStorage.getItem('theme') ?? 'theme-dark'
+  const getCurrentTheme = (): string => localStorage.getItem('theme') ?? 'theme-dark'
+  const getCurrnetFontSize = (): string => localStorage.getItem('fontsize') ?? 'normal-font'
+  const currentTheme = getCurrentTheme()
+  const currentFontSize = getCurrnetFontSize()
 
   const setRootColors = (theme: string) => {
-    document.body.setAttribute('class', theme)
+    document.body.setAttribute('class', `${theme} ${getCurrnetFontSize()}`)
+  }
+  const setRootFontSize = (fontsize: string) => {
+    document.body.setAttribute('class', `${getCurrentTheme()} ${fontsize}`)
   }
 
   setContext('theme', {
@@ -29,9 +35,17 @@
       localStorage.setItem('theme', name)
     }
   })
+  setContext('fontsize', {
+    currentFontSize: currentFontSize,
+    setFontSize: (fontsize: string) => {
+      setRootFontSize(fontsize)
+      localStorage.setItem('fontsize', fontsize)
+    }
+  })
 
   onMount(() => {
     setRootColors(currentTheme)
+    setRootFontSize(currentFontSize)
   })
 </script>
 
