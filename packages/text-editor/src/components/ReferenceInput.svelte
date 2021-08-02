@@ -46,7 +46,6 @@
     display: flex;
     flex-direction: column;
     min-height: 74px;
-    margin: 24px 0 0;
 
     .textInput {
       display: flex;
@@ -148,8 +147,5 @@
         margin-left: 16px;
       }
     }
-  }
-  :global(.msg-board + .ref-container) {
-    margin: 20px 40px;
   }
 </style>

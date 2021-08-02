@@ -35,7 +35,9 @@
 <div class="msg-board">
   <Channel {space} />
 </div>
-<ReferenceInput on:message={onMessage}/>
+<div class="reference">
+  <ReferenceInput on:message={onMessage}/>
+</div>
 
 <style lang="scss">
   .msg-board {
@@ -45,5 +47,8 @@
     margin: 15px 15px 0px;
     padding: 25px 25px 0px;
     overflow: auto;
+  }
+  .reference {
+    margin: 20px 40px;
   }
 </style>

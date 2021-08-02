@@ -57,6 +57,12 @@
   </Section>
   <Section icon={IconComments} label={'Comments'}>
     <CommentViewer />
-    <ReferenceInput />
+    <div class="reference"><ReferenceInput /></div>
   </Section>
 </Dialog>
+
+<style lang="scss">
+  .reference {
+    margin-top: 24px;
+  }
+</style>

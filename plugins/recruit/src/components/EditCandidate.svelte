@@ -79,7 +79,7 @@
   </Section>
   <Section icon={IconComments} label={'Comments'}>
     <CommentViewer />
-    <ReferenceInput />
+    <div class="reference"><ReferenceInput /></div>
   </Section>
   {#if backlinks && backlinks.length > 0}
   <Section icon={Address} label={'Backlinks'}>
@@ -89,3 +89,9 @@
   </Section>
   {/if}
 </Dialog>
+
+<style lang="scss">
+  .reference {
+    margin-top: 24px;
+  }
+</style>
