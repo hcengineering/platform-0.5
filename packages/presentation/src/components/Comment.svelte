@@ -14,7 +14,7 @@
 -->
 
 <script lang="ts">
-  import { Avatar } from '@anticrm/presentation'
+  import Avatar from './Avatar.svelte'
 
   interface Person {
     firstName: string
