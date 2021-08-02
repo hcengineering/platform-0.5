@@ -18,6 +18,7 @@
   import type { Ref, Space, Doc } from '@anticrm/core'
   import { TextArea, EditBox, Dialog, Tabs, Section, Grid, DialogHeader, IconComments } from '@anticrm/ui'
   import { AttributeEditor, getClient, CommentViewer } from '@anticrm/presentation'
+  import { ReferenceInput } from '@anticrm/text-editor'
   import type { Candidate } from '@anticrm/recruit'
   import type { Backlink } from '@anticrm/chunter'
   import { Backlink as BacklinkComponent } from '@anticrm/presentation'
@@ -78,6 +79,7 @@
   </Section>
   <Section icon={IconComments} label={'Comments'}>
     <CommentViewer />
+    <ReferenceInput />
   </Section>
   {#if backlinks && backlinks.length > 0}
   <Section icon={Address} label={'Backlinks'}>
