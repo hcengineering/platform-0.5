@@ -46,7 +46,6 @@
     display: flex;
     flex-direction: column;
     min-height: 74px;
-    margin: 20px 40px;
 
     .textInput {
       display: flex;

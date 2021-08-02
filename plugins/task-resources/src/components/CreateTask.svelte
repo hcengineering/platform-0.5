@@ -16,8 +16,9 @@
 <script lang="ts">
   import { createEventDispatcher } from 'svelte'
   import type { Ref, Space } from '@anticrm/core'
-  import { DatePicker, EditBox, Dialog, Tabs, Section, Grid } from '@anticrm/ui'
-  import { UserBox } from '@anticrm/presentation'
+  import { DatePicker, EditBox, Dialog, Tabs, Section, Grid, Row, TextArea, IconComments } from '@anticrm/ui'
+  import { UserBox, CommentViewer } from '@anticrm/presentation'
+  import { ReferenceInput } from '@anticrm/text-editor'
   import type { Person } from '@anticrm/contact'
   import File from './icons/File.svelte'
   
@@ -48,8 +49,20 @@
   <Tabs/>
   <Section icon={File} label={'General Information'}>
     <Grid>
-      <UserBox _class={contact.class.Person} title='Assignee' caption='Employees' bind:value={assignee} show/>
+      <Row><EditBox label={'Task name *'} placeholder={'The Secret Project'} focus /></Row>
+      <UserBox _class={contact.class.Person} title='Assignee' caption='Employees' bind:value={assignee} />
       <DatePicker title={'Pick due date'} />
+      <Row><TextArea label={'Description'} /></Row>
     </Grid>
   </Section>
+  <Section icon={IconComments} label={'Comments'}>
+    <CommentViewer />
+    <div class="reference"><ReferenceInput /></div>
+  </Section>
 </Dialog>
+
+<style lang="scss">
+  .reference {
+    margin-top: 24px;
+  }
+</style>

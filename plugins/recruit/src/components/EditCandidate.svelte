@@ -17,14 +17,14 @@
   import { createEventDispatcher } from 'svelte'
   import type { Ref, Space, Doc } from '@anticrm/core'
   import { TextArea, EditBox, Dialog, Tabs, Section, Grid, DialogHeader, IconComments } from '@anticrm/ui'
-  import { AttributeEditor, getClient } from '@anticrm/presentation'
+  import { AttributeEditor, getClient, CommentViewer } from '@anticrm/presentation'
+  import { ReferenceInput } from '@anticrm/text-editor'
   import type { Candidate } from '@anticrm/recruit'
   import type { Backlink } from '@anticrm/chunter'
   import { Backlink as BacklinkComponent } from '@anticrm/presentation'
   import File from './icons/File.svelte'
   import Address from './icons/Address.svelte'
   import Attachment from './icons/Attachment.svelte'
-  import CommentMessage from './CommentMessage.svelte'
 
   import { createQuery } from '@anticrm/presentation'
 
@@ -78,14 +78,8 @@
     </Grid>
   </Section>
   <Section icon={IconComments} label={'Comments'}>
-    <Grid column={1} rowGap={24}>
-      <CommentMessage user={{firstName: 'Tim', lastName: 'Ferris'}}
-        message={{createDate: Date.now(), text: 'The Dark Lord has Nine. But we have One, mightier than they: the White Rider. Hero  has passed through the fire and the abyss, and they shall fear him. mightier than they: the White Rider. Hero  has passed through the fire and the abyss, and they shall fear him.'}}
-      />
-      <CommentMessage user={{firstName: 'Rosamund', lastName: 'Chen'}}
-        message={{createDate: Date.now(), text: 'The Dark Lord has Nine. But we have One, mightier than they: the White Rider. Hero  has passed through the fire and the abyss, and they shall fear him. mightier than they: the White Rider. Hero  has passed through the fire and the abyss, and they shall fear him.'}}
-      />
-    </Grid>
+    <CommentViewer />
+    <div class="reference"><ReferenceInput /></div>
   </Section>
   {#if backlinks && backlinks.length > 0}
   <Section icon={Address} label={'Backlinks'}>
@@ -95,3 +89,9 @@
   </Section>
   {/if}
 </Dialog>
+
+<style lang="scss">
+  .reference {
+    margin-top: 24px;
+  }
+</style>
