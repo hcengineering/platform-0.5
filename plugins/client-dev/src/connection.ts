@@ -69,7 +69,6 @@ export async function connect (handler: (tx: Tx) => void): Promise<Storage> {
           const impl = await getResource(trigger)
           const txes = await impl(tx, txFactory)
           for (const tx of txes) {
-            console.log('triggered', tx)
             await Promise.all([model.tx(tx), transactions.tx(tx)])
             handler(tx)      
           }
