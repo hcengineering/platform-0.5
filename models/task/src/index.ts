@@ -33,6 +33,10 @@ export class TProject extends TSpace implements Project {}
 
 @Model(task.class.Task, core.class.Doc)
 export class TTask extends TDoc implements Task {
+  @Prop(TypeString(), 'Title' as IntlString)
+  title!: string
+  @Prop(TypeString(), 'Description' as IntlString)
+  description!: string
   @Prop(TypeString(), 'Assignee' as IntlString)
   assignee!: Ref<Employee>
 }
@@ -55,7 +59,7 @@ export function createModel(builder: Builder) {
         assignee: contact.class.Person
       }
     } as FindOptions<Doc>,
-    config: ['$lookup.assignee']
+    config: ['title', '$lookup.assignee']
   })
 
   builder.createDoc(workbench.class.Application, core.space.Model, {

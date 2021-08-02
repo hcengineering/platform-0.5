@@ -21,6 +21,8 @@ import type { Employee } from '@anticrm/contact'
 export interface Project extends Space {}
 
 export interface Task extends Doc {
+  title: string
+  description: string
   assignee: Ref<Employee>
 }
 

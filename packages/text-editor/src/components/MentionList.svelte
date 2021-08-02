@@ -96,6 +96,7 @@ $: {
 
 .completion {
   position: absolute;
+  z-index: 1010;
   padding: 16px;
   background-color: var(--theme-button-bg-hovered);
   border: 1px solid var(--theme-bg-accent-hover);

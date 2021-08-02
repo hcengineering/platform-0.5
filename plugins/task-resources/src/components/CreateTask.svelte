@@ -31,12 +31,14 @@
 
   const dispatch = createEventDispatcher()
 
+  let title: string
   let assignee: Ref<Person>
 
   const client = getClient()
 
   function createCandidate() {
     client.createDoc(task.class.Task, space, {
+      title,
       assignee,
     })
   }
@@ -49,10 +51,10 @@
   <Tabs/>
   <Section icon={File} label={'General Information'}>
     <Grid>
-      <Row><EditBox label={'Task name *'} placeholder={'The Secret Project'} focus /></Row>
+      <Row><EditBox label={'Title *'} placeholder={'The Secret Project'} bind:value={title} focus /></Row>
       <UserBox _class={contact.class.Person} title='Assignee' caption='Employees' bind:value={assignee} />
       <DatePicker title={'Pick due date'} />
-      <Row><TextArea label={'Description'} /></Row>
+      <Row><ReferenceInput /></Row>
     </Grid>
   </Section>
   <Section icon={IconComments} label={'Comments'}>
