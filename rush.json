@@ -455,6 +455,11 @@
       "shouldPublish": true
     },
     {
+      "packageName": "@anticrm/contact-resources",
+      "projectFolder": "plugins/contact-resources",
+      "shouldPublish": true
+    },
+    {
       "packageName": "@anticrm/login",
       "projectFolder": "packages/login",
       "shouldPublish": true

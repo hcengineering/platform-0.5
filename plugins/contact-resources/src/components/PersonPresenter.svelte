@@ -1,5 +1,6 @@
-//
-// Copyright © 2020 Anticrm Platform Contributors.
+<!--
+// Copyright © 2020, 2021 Anticrm Platform Contributors.
+// Copyright © 2021 Hardcore Engineering Inc.
 // 
 // Licensed under the Eclipse Public License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License. You may
@@ -11,15 +12,17 @@
 // 
 // See the License for the specific language governing permissions and
 // limitations under the License.
-//
+-->
 
-import { mergeIds } from '@anticrm/platform' 
-import contact, { contactId } from '@anticrm/contact'
-import type { AnyComponent } from '@anticrm/ui'
-import {} from '@anticrm/core'
+<script lang="ts">
 
-export const ids = mergeIds(contactId, contact, {
-  component: {
-    PersonPresenter: '' as AnyComponent,
-  }
-})
+import type { Person } from '@anticrm/contact'
+import { UserInfo } from '@anticrm/presentation'
+
+export let value: Person
+
+</script>
+
+<UserInfo {value}/>
+
+  

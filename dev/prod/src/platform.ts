@@ -23,6 +23,7 @@ import { recruitId } from '@anticrm/recruit'
 import { tableId } from '@anticrm/table'
 import { viewId } from '@anticrm/view'
 import { taskId } from '@anticrm/task'
+import { contactId } from '@anticrm/contact'
 
 import { chunterServerId } from '@anticrm/chunter-server'
 
@@ -48,7 +49,8 @@ export function configurePlatform() {
   addLocation(recruitId, () => import(/* webpackChunkName: "recruit" */ '@anticrm/plugin-recruit'))
   addLocation(tableId, () => import(/* webpackChunkName: "table" */ '@anticrm/table-resources'))
   addLocation(viewId, () => import(/* webpackChunkName: "view" */ '@anticrm/view-resources'))
-  addLocation(taskId, () => import(/* webpackChunkName: "view" */ '@anticrm/task-resources'))
+  addLocation(taskId, () => import(/* webpackChunkName: "task" */ '@anticrm/task-resources'))
+  addLocation(contactId, () => import(/* webpackChunkName: "contact" */ '@anticrm/contact-resources'))
 
   addLocation(chunterServerId, () => import(/* webpackChunkName: "chunter-server" */ '@anticrm/chunter-server'))
 

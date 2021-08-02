@@ -13,13 +13,9 @@
 // limitations under the License.
 //
 
-import { mergeIds } from '@anticrm/platform' 
-import contact, { contactId } from '@anticrm/contact'
-import type { AnyComponent } from '@anticrm/ui'
-import {} from '@anticrm/core'
+import { mergeIds } from '@anticrm/platform'
 
-export const ids = mergeIds(contactId, contact, {
-  component: {
-    PersonPresenter: '' as AnyComponent,
-  }
+import contact, { contactId } from '@anticrm/contact'
+
+export default mergeIds(contactId, contact, {
 })

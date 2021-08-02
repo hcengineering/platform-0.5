@@ -28,9 +28,16 @@ export interface AttributeModel {
   presenter: AnySvelteComponent
 }
 
-async function getObjectPresenter(client: Connection, _class: Ref<Class<Obj>>, preserveKey: string) { 
+async function getObjectPresenter(client: Connection, _class: Ref<Class<Obj>>, preserveKey: string): Promise<AttributeModel> { 
   const clazz = client.getHierarchy().getClass(_class) 
   const presenterMixin = client.getHierarchy().as(clazz, view.mixin.AttributePresenter)
+  if (presenterMixin.presenter === undefined) {
+    if (clazz.extends !== undefined) {
+      return getObjectPresenter(client, clazz.extends, preserveKey)
+    } else {
+      throw new Error('object presenter not found for ' + preserveKey)
+    }
+  }
   const presenter = await getResource(presenterMixin.presenter)
   return {
     key: preserveKey,
@@ -43,6 +50,9 @@ async function getAttributePresenter(client: Connection, _class: Ref<Class<Obj>>
   const attribute = client.getHierarchy().getAttribute(_class, key)
   const clazz = client.getHierarchy().getClass(attribute.type._class) 
   const presenterMixin = client.getHierarchy().as(clazz, view.mixin.AttributePresenter)
+  if (presenterMixin.presenter === undefined) {
+    throw new Error('attribute presenter not found for ' + preserveKey)
+  }
   const presenter = await getResource(presenterMixin.presenter)
   return {
     key: preserveKey,
@@ -67,5 +77,6 @@ async function getPresenter(client: Connection, _class: Ref<Class<Obj>>, key: st
 
 export async function buildModel(client: Connection, _class: Ref<Class<Obj>>, keys: string[], options?: FindOptions<Doc>): Promise<AttributeModel[]> {
   const model = keys.map(key => getPresenter(client, _class, key, key, options))
+  console.log(model)
   return Promise.all(model)
 }

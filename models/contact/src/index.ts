@@ -20,6 +20,7 @@ import { TDoc } from '@anticrm/model-core'
 import type { Contact, Person, Organization } from '@anticrm/contact'
 
 import core from '@anticrm/model-core'
+import view from '@anticrm/model-view'
 import { ids as contact } from './plugin'
 
 @Model(contact.class.Contact, core.class.Doc)
@@ -47,6 +48,11 @@ export class TOrganization extends TContact implements Organization {
 
 export function createModel(builder: Builder) {
   builder.createModel(TContact, TPerson, TOrganization)
+
+  builder.mixin(contact.class.Person, core.class.Class, view.mixin.AttributePresenter, {
+    presenter: contact.component.PersonPresenter
+  })
+
 }
 
 export { contact as default }

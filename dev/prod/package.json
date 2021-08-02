@@ -62,6 +62,8 @@
     "@anticrm/task": "~0.5.0",
     "@anticrm/task-resources": "~0.5.0",
     "@anticrm/task-assets": "~0.5.0",
+    "@anticrm/contact": "~0.5.0",
+    "@anticrm/contact-resources": "~0.5.0",
     "@anticrm/chunter-server": "~0.5.0"
   }
 }

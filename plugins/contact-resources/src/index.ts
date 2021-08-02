@@ -1,5 +1,6 @@
 //
-// Copyright © 2020 Anticrm Platform Contributors.
+// Copyright © 2020, 2021 Anticrm Platform Contributors.
+// Copyright © 2021 Hardcore Engineering Inc.
 // 
 // Licensed under the Eclipse Public License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License. You may
@@ -13,13 +14,10 @@
 // limitations under the License.
 //
 
-import { mergeIds } from '@anticrm/platform' 
-import contact, { contactId } from '@anticrm/contact'
-import type { AnyComponent } from '@anticrm/ui'
-import {} from '@anticrm/core'
+import PersonPresenter from './components/PersonPresenter.svelte'
 
-export const ids = mergeIds(contactId, contact, {
+export default async () => ({
   component: {
-    PersonPresenter: '' as AnyComponent,
-  }
+    PersonPresenter
+  },
 })

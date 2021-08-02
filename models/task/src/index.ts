@@ -15,7 +15,7 @@
 
 import type { IntlString } from '@anticrm/platform'
 import { Builder, Model, TypeString, UX, Trigger } from '@anticrm/model'
-import type { Ref, Doc, Class} from '@anticrm/core'
+import type { Ref, Doc, FindOptions } from '@anticrm/core'
 import { TSpace, TDoc } from '@anticrm/model-core'
 import type { Project, Task } from '@anticrm/task'
 import type { Employee } from '@anticrm/contact'
@@ -24,6 +24,7 @@ import type { AnyComponent } from '@anticrm/ui'
 import workbench from '@anticrm/model-workbench'
 import core from '@anticrm/model-core'
 import view from '@anticrm/model-view'
+import contact from '@anticrm/contact'
 import task from './plugin'
 
 @Model(task.class.Project, core.class.Space)
@@ -48,7 +49,12 @@ export function createModel(builder: Builder) {
     attachTo: task.class.Task,
     descriptor: view.viewlet.Table,
     open: 'ZX' as AnyComponent,
-    config: []
+    options: {
+      lookup: {
+        assignee: contact.class.Person
+      }
+    } as FindOptions<Doc>,
+    config: ['$lookup.assignee']
   })
 
   builder.createDoc(workbench.class.Application, core.space.Model, {
