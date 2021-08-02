@@ -17,8 +17,6 @@ import CreateVacancy from './components/CreateVacancy.svelte'
 import CreateCandidates from './components/CreateCandidates.svelte'
 import CreateCandidate from './components/CreateCandidate.svelte'
 import CreateApplication from './components/CreateApplication.svelte'
-
-import CandidatePresenter from './components/CandidatePresenter.svelte'
 import EditCandidate from './components/EditCandidate.svelte'
 
 export default async () => ({

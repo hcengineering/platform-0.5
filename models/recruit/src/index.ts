@@ -13,7 +13,8 @@
 // limitations under the License.
 //
 
-import { Builder, Model, UX } from '@anticrm/model'
+import type { IntlString } from '@anticrm/platform'
+import { Builder, Model, UX, Prop, TypeString } from '@anticrm/model'
 import type { Ref, FindOptions, Doc } from '@anticrm/core'
 import { TSpace, TDoc } from '@anticrm/model-core'
 import type { Vacancy, Candidates, Candidate, Applicant } from '@anticrm/recruit'
@@ -34,10 +35,12 @@ export class TVacancy extends TSpace implements Vacancy {}
 export class TCandidates extends TSpace implements Candidates {}
 
 @Model(recruit.class.Candidate, contact.class.Person)
+@UX('Candidate' as IntlString)
 export class TCandidate extends TPerson implements Candidate {}
 
 @Model(recruit.class.Applicant, core.class.Doc)
 export class TApplicant extends TDoc implements Applicant {
+  @Prop(TypeString(), 'Candidate' as IntlString)
   candidate!: Ref<Person>
 }
 

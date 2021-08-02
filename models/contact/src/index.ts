@@ -13,7 +13,7 @@
 // limitations under the License.
 //
 
-import { Builder, Model, Prop, TypeString } from '@anticrm/model'
+import { Builder, Model, Prop, TypeString, UX } from '@anticrm/model'
 import type { IntlString } from '@anticrm/platform'
 
 import { TDoc } from '@anticrm/model-core'
@@ -28,6 +28,7 @@ export class TContact extends TDoc implements Contact {
 }
 
 @Model(contact.class.Person, contact.class.Contact)
+@UX('Person' as IntlString)
 export class TPerson extends TContact implements Person {
   @Prop(TypeString(), 'First name' as IntlString)
   firstName!: string

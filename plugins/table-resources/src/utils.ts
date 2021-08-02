@@ -20,7 +20,7 @@ import type { Ref, Class, Obj, FindOptions, Doc } from '@anticrm/core'
 import type { Connection } from '@anticrm/client'
 import type { AnySvelteComponent } from '@anticrm/ui'
 
-import view, { AttributePresenter } from '@anticrm/view'
+import view from '@anticrm/view'
 
 export interface AttributeModel {
   key: string
@@ -67,9 +67,17 @@ async function getPresenter(client: Connection, _class: Ref<Class<Obj>>, key: st
   } else {
     const split = key.split('.')
     if (split[0] === '$lookup') {
-      const _class = (options?.lookup as any)[split[1]] as Ref<Class<Obj>>
-      const key = split[2] ?? ''
-      return getPresenter(client, _class, key, preserveKey)
+      const lookupClass = (options?.lookup as any)[split[1]] as Ref<Class<Obj>>
+      const lookupKey = split[2] ?? ''
+      const model = await getPresenter(client, lookupClass, lookupKey, preserveKey)
+      if (lookupKey === '') {
+        const attribute = client.getHierarchy().getAttribute(_class, split[1])
+        model.label = attribute.label as IntlString
+      } else {
+        const attribute = client.getHierarchy().getAttribute(lookupClass, lookupKey)
+        model.label = attribute.label as IntlString
+      }
+      return model
     }
     return getAttributePresenter(client, _class, key, preserveKey)
   }

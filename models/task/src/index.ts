@@ -14,7 +14,7 @@
 //
 
 import type { IntlString } from '@anticrm/platform'
-import { Builder, Model, TypeString, UX, Trigger } from '@anticrm/model'
+import { Builder, Model, TypeString, UX, Trigger, Prop } from '@anticrm/model'
 import type { Ref, Doc, FindOptions } from '@anticrm/core'
 import { TSpace, TDoc } from '@anticrm/model-core'
 import type { Project, Task } from '@anticrm/task'
@@ -33,6 +33,7 @@ export class TProject extends TSpace implements Project {}
 
 @Model(task.class.Task, core.class.Doc)
 export class TTask extends TDoc implements Task {
+  @Prop(TypeString(), 'Assignee' as IntlString)
   assignee!: Ref<Employee>
 }
 
