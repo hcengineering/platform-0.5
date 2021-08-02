@@ -19,7 +19,7 @@
   import { getClient } from '@anticrm/presentation'
 
   import Channel from './Channel.svelte'
-  import ReferenceInput from './ReferenceInput.svelte'
+  import { ReferenceInput } from '@anticrm/text-editor'
 
   export let space: Ref<Space>
 

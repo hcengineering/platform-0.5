@@ -20,7 +20,7 @@
   import GIF from './icons/GIF.svelte'
   import TextStyle from './icons/TextStyle.svelte'
 
-  import { TextEditor } from '@anticrm/text-editor'
+  import TextEditor from './TextEditor.svelte'
 
   const dispatch = createEventDispatcher()
 

@@ -15,3 +15,4 @@
 //
 
 export { default as TextEditor } from './components/TextEditor.svelte'
+export { default as ReferenceInput } from './components/ReferenceInput.svelte'
