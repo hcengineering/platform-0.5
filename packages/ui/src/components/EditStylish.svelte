@@ -27,9 +27,9 @@
   <input type="text" bind:value {placeholder} />
   <div class="icon">
     {#if typeof (icon) === 'string'}
-      <Icon {icon} size={16} />
+      <Icon {icon} size={'small'} />
     {:else}
-      <svelte:component this={icon} size={16} />
+      <svelte:component this={icon} size={'small'} />
     {/if}
   </div>
 </div>

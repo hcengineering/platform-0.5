@@ -35,7 +35,7 @@
   <form class="dialog">
     <div class="header">
       <div class="title"><Label {label}/></div>
-      <div class="tool" on:click={() => { dispatch('close') }}><Close size={16}/></div>
+      <div class="tool" on:click={() => { dispatch('close') }}><Close size={'small'}/></div>
     </div>
     <div class="content">
       <ScrollBox vertical gap={0}><slot/></ScrollBox>

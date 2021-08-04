@@ -23,14 +23,14 @@
   export let label: IntlString
   export let direction: string = 'top'
   export let icon: Asset | AnySvelteComponent
-  export let size: 16 | 20 | 24
+  export let size: 'small' | 'medium' | 'large'
   export let action: () => Promise<void>
   export let invisible: boolean = false
 </script>
 
 <Tooltip label={label} direction={direction}>
-  <button class="button" style="width: {size}px; height: {size}px" on:click|stopPropagation={action}>
-    <div class="icon" style="width: {size}px; height: {size}px" class:invisible={invisible}>
+  <button class="button {size}" on:click|stopPropagation={action}>
+    <div class="icon {size}" class:invisible={invisible}>
       {#if typeof (icon) === 'string'}
         <Icon {icon} {size}/>
       {:else}
@@ -68,5 +68,17 @@
         opacity: 1;
       }
     }
+  }
+  .small {
+    width: 1.143em;
+    height: 1.143em;
+  }
+  .medium {
+    width: 1.429em;
+    height: 1.429em;
+  }
+  .large {
+    width: 1.714em;
+    height: 1.714em;
   }
 </style>

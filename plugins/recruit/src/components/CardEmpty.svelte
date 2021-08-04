@@ -24,7 +24,7 @@
 <div class="card-container">
   <div class="circle">
     <div class="icon">
-      <IconAdd size={24} />
+      <IconAdd size={'large'} />
     </div>
   </div>
   <Label {label} />

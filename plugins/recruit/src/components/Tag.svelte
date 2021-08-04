@@ -26,9 +26,9 @@
 <div class="tag-container">
   <div class="icon">
     {#if typeof (icon) === 'string'}
-      <Icon {icon} size={16}/>
+      <Icon {icon} size={'small'}/>
     {:else}
-      <svelte:component this={icon} size={16} />
+      <svelte:component this={icon} size={'small'} />
     {/if}
   </div>
   <Label {label} />

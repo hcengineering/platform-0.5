@@ -37,7 +37,7 @@
   <div class="title" class:sub={!node}>
     <div class="icon" class:sub={!node}>
       {#if icon}
-        <Icon {icon} size={16}/>
+        <Icon {icon} size={'small'}/>
       {:else}
         {#if collapsed}<Collapsed/>{:else}<Expanded/>{/if}
       {/if}
@@ -47,7 +47,7 @@
     </span>
     {#each actions as action}
       <div class="tool">
-        <ActionIcon label={action.label} icon={action.icon} size={16} action={action.action} />
+        <ActionIcon label={action.label} icon={action.icon} size={'small'} action={action.action} />
       </div>
     {/each}
     {#if notifications > 0 && collapsed}

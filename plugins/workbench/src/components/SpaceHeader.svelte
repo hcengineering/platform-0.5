@@ -47,7 +47,7 @@
   {#if data}
   <div class="caption">
     <div class="title">
-      <span><Icon icon={classIcon(client, data._class)} size={16}/></span>
+      <span><Icon icon={classIcon(client, data._class)} size={'small'}/></span>
       {data.name}
     </div>
     <div class="subtitle">{data.description}</div>
@@ -56,9 +56,9 @@
     <Button label="Create" primary={true} on:click={showCreateDialog}/>
   {/if}
   <div class="buttons">
-    <div class="button"><ActionIcon icon={Star} size={16}/></div>
-    <div class="button"><ActionIcon icon={Add} size={16}/></div>
-    <div class="button"><ActionIcon icon={MoreH} size={16}/></div>
+    <div class="button"><ActionIcon icon={Star} size={'small'}/></div>
+    <div class="button"><ActionIcon icon={Add} size={'small'}/></div>
+    <div class="button"><ActionIcon icon={MoreH} size={'small'}/></div>
   </div>
   {/if}
 </div>

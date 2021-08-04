@@ -56,7 +56,7 @@ let selected = 0
     <div class="viewSelection-container">
       {#each viewlets as viewlet, i}
         <div class="button" class:selected={i === selected}>
-          <div class="icon"><Icon icon={viewlet.$lookup?.descriptor?.icon} size={16}/></div>
+          <div class="icon"><Icon icon={viewlet.$lookup?.descriptor?.icon} size={'small'}/></div>
         </div>
       {/each}
     </div>

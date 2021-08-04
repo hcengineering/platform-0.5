@@ -54,7 +54,7 @@
         <Avatar size={34} />
       {:else}
         <div class="icon">
-          {#if show}<Close size={16} />{:else}<Add size={16} />{/if}
+          {#if show}<Close size={'small'} />{:else}<Add size={'small'} />{/if}
         </div>
       {/if}
     </button>

@@ -67,7 +67,7 @@
       }}
     >
       <div class="icon">
-        {#if show}<Close size={16} />{:else}<Calendar size={20} />{/if}
+        {#if show}<Close size={'small'} />{:else}<Calendar size={'medium'} />{/if}
       </div>
     </button>
 
@@ -79,7 +79,7 @@
           on:click|preventDefault={() => {
             view.setMonth(view.getMonth() - 1)
             view = view
-          }}><div class="icon"><Back size={16} /></div></button>
+          }}><div class="icon"><Back size={'small'} /></div></button>
         <div class="monthYear">
           {monthYear}
         </div>
@@ -88,7 +88,7 @@
           on:click|preventDefault={() => {
             view.setMonth(view.getMonth() + 1)
             view = view
-          }}><div class="icon"><Forward size={16} /></div></button>
+          }}><div class="icon"><Forward size={'small'} /></div></button>
       </div>
     </div>
 
